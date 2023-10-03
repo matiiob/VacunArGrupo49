@@ -7,7 +7,7 @@ import java.time.LocalDate;
  *
  * @AlexAnders
  */
-public class citaVacuna {
+public class CitaVacuna {
     private int codCita;
     private Ciudadano persona;
     private int codRefuerzo;
@@ -16,10 +16,10 @@ public class citaVacuna {
     private LocalDate fechaHoraColoca; 
     private int dosis;
 
-    public citaVacuna() {
+    public CitaVacuna() {
     }
 
-    public citaVacuna(Ciudadano persona, int codRefuerzo, String fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis) {
+    public CitaVacuna(Ciudadano persona, int codRefuerzo, String fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis) {
         this.persona = persona;
         this.codRefuerzo = codRefuerzo;
         this.fechaHoraCita = fechaHoraCita;
@@ -28,7 +28,7 @@ public class citaVacuna {
         this.dosis = dosis;
     }
 
-    public citaVacuna(int codCita, Ciudadano persona, int codRefuerzo, String fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis) {
+    public CitaVacuna(int codCita, Ciudadano persona, int codRefuerzo, String fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis) {
         this.codCita = codCita;
         this.persona = persona;
         this.codRefuerzo = codRefuerzo;
@@ -93,5 +93,11 @@ public class citaVacuna {
     public void setDosis(int dosis) {
         this.dosis = dosis;
     }
+
+    @Override
+    public String toString() {
+        return "CitaVacuna{" + "codCita=" + codCita + ", persona=" + persona + ", codRefuerzo=" + codRefuerzo + ", fechaHoraCita=" + fechaHoraCita + ", centroVacunacion=" + centroVacunacion + ", fechaHoraColoca=" + fechaHoraColoca + ", dosis=" + dosis + '}';
+    }
+    
     
 }
