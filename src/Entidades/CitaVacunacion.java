@@ -7,7 +7,7 @@ import java.time.LocalDate;
  *
  * @AlexAnders
  */
-public class CitaVacuna {
+public class CitaVacunacion {
     private int codCita;
     private Ciudadano persona;
     private int codRefuerzo;
@@ -15,20 +15,22 @@ public class CitaVacuna {
     private String centroVacunacion;
     private LocalDate fechaHoraColoca; 
     private int dosis;
+    private boolean estado;
 
-    public CitaVacuna() {
+    public CitaVacunacion() {
     }
 
-    public CitaVacuna(Ciudadano persona, int codRefuerzo, String fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis) {
+    public CitaVacunacion(Ciudadano persona, int codRefuerzo, String fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis, boolean estado) {
         this.persona = persona;
         this.codRefuerzo = codRefuerzo;
         this.fechaHoraCita = fechaHoraCita;
         this.centroVacunacion = centroVacunacion;
         this.fechaHoraColoca = fechaHoraColoca;
         this.dosis = dosis;
+        this.estado = estado;
     }
 
-    public CitaVacuna(int codCita, Ciudadano persona, int codRefuerzo, String fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis) {
+    public CitaVacunacion(int codCita, Ciudadano persona, int codRefuerzo, String fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis, boolean estado) {
         this.codCita = codCita;
         this.persona = persona;
         this.codRefuerzo = codRefuerzo;
@@ -36,6 +38,7 @@ public class CitaVacuna {
         this.centroVacunacion = centroVacunacion;
         this.fechaHoraColoca = fechaHoraColoca;
         this.dosis = dosis;
+        this.estado = estado;
     }
 
     public int getCodCita() {
@@ -94,10 +97,16 @@ public class CitaVacuna {
         this.dosis = dosis;
     }
 
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     @Override
     public String toString() {
-        return "CitaVacuna{" + "codCita=" + codCita + ", persona=" + persona + ", codRefuerzo=" + codRefuerzo + ", fechaHoraCita=" + fechaHoraCita + ", centroVacunacion=" + centroVacunacion + ", fechaHoraColoca=" + fechaHoraColoca + ", dosis=" + dosis + '}';
+        return "CitaVacunacion{" + "codCita=" + codCita + ", persona=" + persona + ", codRefuerzo=" + codRefuerzo + ", fechaHoraCita=" + fechaHoraCita + ", centroVacunacion=" + centroVacunacion + ", fechaHoraColoca=" + fechaHoraColoca + ", dosis=" + dosis + ", estado=" + estado + '}';
     }
-    
-    
 }
