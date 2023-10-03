@@ -80,7 +80,7 @@ public class CiudadanoData {
         // La busqueda permite al usuario buscar un Ciudadano por su dni.
         
         String sql = "SELECT dni, nombreCompleto, email, celular, patologia, "
-                + "ambitoTrabajo FROM Ciudadano WHERE dniCiudadano = ?";
+                + "ambitoTrabajo FROM ciudadano WHERE dni = ?";
 
         Ciudadano ciudadano = null;
         try {
