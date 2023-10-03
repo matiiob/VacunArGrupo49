@@ -21,11 +21,12 @@ public class Laboratorio {
     }
     
     // CONSTRUCTOR SIN ID
-    public Laboratorio(long cuit, String nomLaboratorio, String pais, String domComercial) {
+    public Laboratorio(long cuit, String nomLaboratorio, String pais, String domComercial, boolean estado) {
         this.cuit = cuit;
         this.nomLaboratorio = nomLaboratorio;
         this.pais = pais;
         this.domComercial = domComercial;
+        this.estado = estado;
     }
     
     // CONSTRUCTOR VACIO
