@@ -21,13 +21,13 @@ import org.mariadb.jdbc.Statement;
 public class CitaVacunacionData {
    private Connection con = null;
    private LaboratorioData ld;
-   private VacunaData vd;
+//   private VacunaData vd;
    private CiudadanoData cd;
    
    public CitaVacunacionData() {
         con = Conexion.getConexion();
         ld = new LaboratorioData();
-        vd = new VacunaData();
+//        vd = new VacunaData();
         cd = new CiudadanoData();
     }
    

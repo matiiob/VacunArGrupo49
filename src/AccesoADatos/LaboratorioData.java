@@ -22,7 +22,7 @@ public class LaboratorioData {
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, laboratorio.getCuit());
+            ps.setLong(1, laboratorio.getCuit());
             ps.setString(2, laboratorio.getNomLaboratorio());
             ps.setString(3, laboratorio.getPais());
             ps.setString(4, laboratorio.getDomComercial());
@@ -45,7 +45,7 @@ public class LaboratorioData {
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, laboratorio.getCuit());
+            ps.setLong(1, laboratorio.getCuit());
             ps.setString(2, laboratorio.getNomLaboratorio());
             ps.setString(3, laboratorio.getPais());
             ps.setString(4, laboratorio.getDomComercial());
