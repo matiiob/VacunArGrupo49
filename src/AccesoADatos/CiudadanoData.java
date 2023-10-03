@@ -34,7 +34,7 @@ public class CiudadanoData {
             ps.setInt(1, ciudadano.getDni());
             ps.setString(2, ciudadano.getNombreCompleto());
             ps.setString(3, ciudadano.getEmail());
-            ps.setString(3, ciudadano.getCelular());
+            ps.setString(4, ciudadano.getCelular());
             ps.setString(5, ciudadano.getPatologia());
             ps.setString(6, ciudadano.getAmbitoTrabajo());
             ps.executeUpdate();
