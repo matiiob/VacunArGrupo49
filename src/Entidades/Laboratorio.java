@@ -8,14 +8,16 @@ public class Laboratorio {
     private String nomLaboratorio;
     private String pais;
     private String domComercial;
+    private boolean estado;
     
     // CONSTRUCTOR COMPLETO
-    public Laboratorio(int idLaboratorio, int cuit, String nomLaboratorio, String pais, String domComercial) {
+    public Laboratorio(int idLaboratorio, int cuit, String nomLaboratorio, String pais, String domComercial, boolean estado) {
         this.idLaboratorio = idLaboratorio;
         this.cuit = cuit;
         this.nomLaboratorio = nomLaboratorio;
         this.pais = pais;
         this.domComercial = domComercial;
+        this.estado = estado;
     }
     
     // CONSTRUCTOR SIN ID
@@ -71,9 +73,21 @@ public class Laboratorio {
         this.domComercial = domComercial;
     }
 
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+    
+    
+
     // TO STRING
+
     @Override
     public String toString() {
-        return "Laboratorio{" + "idLaboratorio=" + idLaboratorio + ", cuit=" + cuit + ", nomLaboratorio=" + nomLaboratorio + ", pais=" + pais + ", domComercial=" + domComercial + '}';
+        return "Laboratorio{" + "idLaboratorio=" + idLaboratorio + ", cuit=" + cuit + ", nomLaboratorio=" + nomLaboratorio + ", pais=" + pais + ", domComercial=" + domComercial + ", estado=" + estado + '}';
     }
+    
 }
