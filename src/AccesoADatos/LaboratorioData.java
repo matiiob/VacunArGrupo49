@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -134,5 +136,30 @@ public class LaboratorioData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Laboratorio" + ex.getMessage());
         }
         return laboratorio;
+    }
+    
+//  METODO LISTAR LABORATORIOS
+    public List<Laboratorio> listarLaboratorios (boolean estado){
+        List<Laboratorio> laboratorios = new ArrayList<>();
+        String sql = "SELECT * FROM laboratorio WHERE estado = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setBoolean(1, estado);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Laboratorio lab = new Laboratorio();
+                lab.setIdLaboratorio(rs.getInt("idLaboratorio"));
+                lab.setCuit(rs.getLong("cuit"));
+                lab.setNomLaboratorio(rs.getString("nomLaboratorio"));
+                lab.setPais(rs.getString("pais"));
+                lab.setDomComercial(rs.getString("domComercial"));
+                lab.setEstado(estado);
+                laboratorios.add(lab);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Laboratorio" + ex.getMessage());
+        }
+        return laboratorios;
     }
 }
