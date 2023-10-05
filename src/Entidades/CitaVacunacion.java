@@ -8,7 +8,7 @@ import java.time.LocalDate;
  * @AlexAnders
  */
 public class CitaVacunacion {
-    private int codCita;
+    private int idCodCita;
     private Ciudadano persona;
     private int codRefuerzo;
     private String fechaHoraCita;
@@ -30,8 +30,8 @@ public class CitaVacunacion {
         this.estado = estado;
     }
 
-    public CitaVacunacion(int codCita, Ciudadano persona, int codRefuerzo, String fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis, boolean estado) {
-        this.codCita = codCita;
+    public CitaVacunacion(int idCodCita, Ciudadano persona, int codRefuerzo, String fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis, boolean estado) {
+        this.idCodCita = idCodCita;
         this.persona = persona;
         this.codRefuerzo = codRefuerzo;
         this.fechaHoraCita = fechaHoraCita;
@@ -41,12 +41,12 @@ public class CitaVacunacion {
         this.estado = estado;
     }
 
-    public int getCodCita() {
-        return codCita;
+    public int getIdCodCita() {
+        return idCodCita;
     }
 
-    public void setCodCita(int codCita) {
-        this.codCita = codCita;
+    public void setIdCodCita(int idCodCita) {
+        this.idCodCita = idCodCita;
     }
 
     public Ciudadano getPersona() {
@@ -107,6 +107,8 @@ public class CitaVacunacion {
 
     @Override
     public String toString() {
-        return "CitaVacunacion{" + "codCita=" + codCita + ", persona=" + persona + ", codRefuerzo=" + codRefuerzo + ", fechaHoraCita=" + fechaHoraCita + ", centroVacunacion=" + centroVacunacion + ", fechaHoraColoca=" + fechaHoraColoca + ", dosis=" + dosis + ", estado=" + estado + '}';
+        return "CitaVacunacion{" + "idCodCita=" + idCodCita + ", persona=" + persona + ", codRefuerzo=" + codRefuerzo + ", fechaHoraCita=" + fechaHoraCita + ", centroVacunacion=" + centroVacunacion + ", fechaHoraColoca=" + fechaHoraColoca + ", dosis=" + dosis + ", estado=" + estado + '}';
     }
+
+    
 }
