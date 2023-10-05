@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class LaboratorioData {
@@ -16,6 +18,7 @@ public class LaboratorioData {
         con = Conexion.getConexion();
     }
 
+//  METODO GUARDAR
     public void guardarLaboratorio(Laboratorio laboratorio) {
         String sql = "INSERT INTO laboratorio (cuit, nomLaboratorio, pais, domComercial, estado)"
                 + "VALUES (?,?,?,?,?)";
@@ -39,6 +42,7 @@ public class LaboratorioData {
         }
     }
 
+//  METODO MODIFICAR
     public void modificarLaboratorio(Laboratorio laboratorio) {
         String sql = "UPDATE laboratorio SET cuit=?, nomLaboratorio=?, pais=?, domComercial=? WHERE idLaboratorio="
                 + laboratorio.getIdLaboratorio() + "";
@@ -59,5 +63,76 @@ public class LaboratorioData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Laboratorio" + ex.getMessage());
         }
+    }
+
+//  METODO ELIMINAR LOGICO
+    public void eliminarLaboratorio(int idLaboratorio) {
+        String sql = "UPDATE laboratorio SET estado = 0 WHERE idLaboratorio = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idLaboratorio);
+            int fila = ps.executeUpdate();
+            if (fila == 1) {
+                JOptionPane.showMessageDialog(null, "Se eliminó el laboratorio.");
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe el Laboratorio.");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Laboratorio" + ex.getMessage());
+        }
+    }
+
+//  METODO BUSCAR POR ID
+    public Laboratorio buscarLaboratorioId(int idLaboratorio, boolean estado) {
+        String sql = "SELECT cuit, nomLaboratorio, pais, domComercial FROM laboratorio "
+                + "WHERE idLAboratorio = ? AND estado = ?";
+        Laboratorio laboratorio = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idLaboratorio);
+            ps.setBoolean(2, estado);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                laboratorio = new Laboratorio();
+                laboratorio.setIdLaboratorio(idLaboratorio);
+                laboratorio.setCuit(rs.getLong("cuit"));
+                laboratorio.setNomLaboratorio(rs.getString("nomLaboratorio"));
+                laboratorio.setPais(rs.getString("pais"));
+                laboratorio.setDomComercial(rs.getString("domComercial"));
+                laboratorio.setEstado(estado);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Laboratorio" + ex.getMessage());
+        }
+        return laboratorio;
+    }
+
+//  METODO BUSCAR POR CUIT
+    public Laboratorio buscarLaboratorioCuit(long cuit, boolean estado) {
+        String sql = "SELECT idLaboratorio, nomLaboratorio, pais, domComercial FROM laboratorio "
+                + "WHERE cuit = ? AND estado = ?";
+        Laboratorio laboratorio = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setLong(1, cuit);
+            ps.setBoolean(2, estado);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                laboratorio = new Laboratorio();
+                laboratorio.setIdLaboratorio(rs.getInt("idLaboratorio"));
+                laboratorio.setCuit(cuit);
+                laboratorio.setNomLaboratorio(rs.getString("nomLaboratorio"));
+                laboratorio.setPais(rs.getString("pais"));
+                laboratorio.setDomComercial(rs.getString("domComercial"));
+                laboratorio.setEstado(estado);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Laboratorio" + ex.getMessage());
+        }
+        return laboratorio;
     }
 }
