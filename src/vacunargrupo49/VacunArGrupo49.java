@@ -29,7 +29,6 @@ public class VacunArGrupo49 {
 //        CiudadanoData ciu = new CiudadanoData();
 //        System.out.println(ciu.buscarCiudadanoId(1));
 
-//
         
 //      Prueba Modificar LAboratorio
 //        Laboratorio labo = new Laboratorio(2, 33445566779L, "Pfizer", "USA", "Colectora Panamericana", true);
