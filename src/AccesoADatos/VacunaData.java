@@ -136,24 +136,28 @@ public class VacunaData {
                      // METODO BUSCAR FECHA CADUCA 
      
      
-    public LocalDate buscarVacunaFechaCaduca(LocalDate fechaCaduca, boolean colocada) {
-    String sql = "SELECT fechaCaduca FROM vacuna WHERE fechaCaduca = ? AND colocada = ?";
-    LocalDate fechaEncontrada = null;
-    try {
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setDate(1, Date.valueOf(fechaCaduca));
-        ps.setBoolean(2, colocada);
-        ResultSet rs = ps.executeQuery();
-
-        if (rs.next()) {
-            fechaEncontrada = rs.getDate("fechaCaduca").toLocalDate();
-        }
-        ps.close();
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla vacuna" + e.getMessage());
-    }
-    return fechaEncontrada;
-}
+//    public List<Vacuna> buscarVacunaFechaCaduca(LocalDate fechaCaduca, boolean colocada) {
+//    List<Vacuna> vacunasVencidas = new ArrayList<>();
+//        String sql = "SELECT * FROM vacuna WHERE fechaCaduca = ? AND colocada = ?";
+//    LocalDate fechaEncontrada = null;
+//    try {
+//        PreparedStatement ps = con.prepareStatement(sql);
+//        ps.setDate(1, Date.valueOf(fechaCaduca));
+//        ps.setBoolean(2, colocada);
+//        ResultSet rs = ps.executeQuery();
+//
+//        while (rs.next()) {
+//            Vacuna vacuna = new Vacuna();
+//            vacuna.setIdVacuna(rs.getInt("IdVacuna"));
+//            vacuna.
+//            fechaEncontrada = rs.getDate("fechaCaduca").toLocalDate();
+//        }
+//        ps.close();
+//    } catch (SQLException e) {
+//        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla vacuna" + e.getMessage());
+//    }
+//    return fechaEncontrada;
+//}
      
      
                      // METODO BUSCAR VACUNA POR LABORATORIO
