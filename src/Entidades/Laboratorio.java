@@ -81,11 +81,14 @@ public class Laboratorio {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+    
+    
 
     // TO STRING
+
     @Override
     public String toString() {
-        return "id= " + idLaboratorio + ", cuit= " + cuit + ", nombre= " + nomLaboratorio + ", pais= " + pais + ", domicilio= " + domComercial + ", estado= " + estado;
+        return "Laboratorio{" + "idLaboratorio=" + idLaboratorio + ", cuit=" + cuit + ", nomLaboratorio=" + nomLaboratorio + ", pais=" + pais + ", domComercial=" + domComercial + ", estado=" + estado + '}';
     }
     
 }
