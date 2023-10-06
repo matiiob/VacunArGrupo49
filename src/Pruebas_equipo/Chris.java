@@ -29,12 +29,15 @@ public class Chris {
 
 
 
-//   -*-   PRUEBA ELIMINAR VACUNA
+//   -*-   PRUEBA ELIMINAR VACUNA FOR EVER
 
 //         VacunaData vacu = new VacunaData(); 
 //         vacu.eliminarVacuna(1);
 
 
+//   -*-   PRUEBA ELIMINAR VACUNA LOGICO
+           VacunaData vacu = new VacunaData();   
+           vacu.eliminarVacuna(3);
 
 
 //   -*-   PRUEBA LISTAR VACUNA
