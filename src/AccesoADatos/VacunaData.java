@@ -47,12 +47,23 @@ public class VacunaData {
         if (rs.next()) {
             vacuna.setIdVacuna(rs.getInt(1));
             JOptionPane.showMessageDialog(null, "Vacuna añadida con exito!!!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Faltan datos o alguno es ta duplicado, verificar!");
         }
         ps.close();
+                   
     } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de vacuna" + ex.getMessage());
+   
+        if (ex.getMessage().contains("Duplicate entry")) {
+            JOptionPane.showMessageDialog(null, "Error: Ya existe una vacuna con el número de serie de dosis ingresado.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de vacuna" + ex.getMessage());
+        }
     }
-}
+        
+    }
+
+
     
                      // METODO MODIFICAR-*-
     
@@ -78,26 +89,7 @@ public class VacunaData {
     }
 }
     
-     
-                     // METODO  BORRAR -*-
-     
-     
-//    public void eliminarVacuna(int id) {
-//    try {
-//        String sql = "DELETE FROM vacuna WHERE idVacuna=?";
-//        PreparedStatement ps = con.prepareStatement(sql);
-//        ps.setInt(1, id);
-//        int fila = ps.executeUpdate();
-//        if (fila == 1) {
-//            JOptionPane.showMessageDialog(null, "Se eliminó la vacuna.");
-//        } else {
-//            JOptionPane.showMessageDialog(null, "No existe la vacuna.");
-//        }
-//        ps.close();
-//    } catch (SQLException e) {
-//        JOptionPane.showMessageDialog(null, "Error al eliminar vacuna: " + e.getMessage());
-//    }
-//}
+                      // METODO BORRAR              
      
      
      public void eliminarVacuna(int id) {
@@ -124,7 +116,7 @@ public class VacunaData {
                      // METODO LISTAR VACUNA 
      
      
-     public List<Vacuna> listarVacunas(boolean colocada) {
+    public List<Vacuna> listarVacunas(boolean colocada) {
     List<Vacuna> vacunas = new ArrayList<>();
     String sql = "SELECT * FROM vacuna WHERE colocada = ?";
 
@@ -142,7 +134,6 @@ public class VacunaData {
             vacuna.setFechaCaduca(rs.getDate("fechaCaduca").toLocalDate());
             vacuna.setColocada(rs.getBoolean("colocada"));
             vacuna.setLaboratorio(rs.getInt("laboratorio"));
-
             vacunas.add(vacuna);
         }
         ps.close();

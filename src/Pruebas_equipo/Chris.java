@@ -15,36 +15,30 @@ public class Chris {
         
 //   -*-   PRUEBA GUARDAR VACUNA
 //
-//         VacunaData vacu = new VacunaData();  
-//         Vacuna vacuna = new Vacuna(2345, "Faiser", 0.3, LocalDate.of(2023, 10, 31), true, 2);
-//         vacu.GuardarVacuna(vacuna);
+//        Vacuna vacuna = new Vacuna(1212, "62b2", 0.3, LocalDate.of(2025, 10, 02), true, 2, false);              
+//        VacunaData vacun = new VacunaData();
+//        vacun.GuardarVacuna(vacuna);
 
 
 
 //   -*-   PRUEBA MODIFICAR VACUNA
 
-//         VacunaData vacu = new VacunaData();  
-//         Vacuna vacuna = new Vacuna(3, 2345, "Astraseneca", 0.3, LocalDate.of(2022, 11, 21), true, 2);
-//         vacu.modificarVacuna(vacuna);
+         VacunaData vacu = new VacunaData();  
+         Vacuna vacuna = new Vacuna(3, 2345, "Astraseneca", 0.3, LocalDate.of(2022, 11, 21), true, 2, false);
+         vacu.modificarVacuna(vacuna);
 
-
-
-//   -*-   PRUEBA ELIMINAR VACUNA FOR EVER
-
-//         VacunaData vacu = new VacunaData(); 
-//         vacu.eliminarVacuna(1);
 
 
 //   -*-   PRUEBA ELIMINAR VACUNA LOGICO
 //           VacunaData vacu = new VacunaData();   
-//           vacu.eliminarVacuna(3);
+//           vacu.eliminarVacuna(1);
 
 
 //   -*-   PRUEBA LISTAR VACUNA
 
 //         VacunaData vacu = new VacunaData(); 
 //         for (Vacuna vacuna : vacu.listarVacunas(true)) {
-//         System.out.println(vacu);
+//         System.out.println(vacuna);
 //         }
 
 
@@ -70,7 +64,7 @@ public class Chris {
 //  -*-   PRUEBA BUSCAR VACUNA X LABORATORIO
 
 //        VacunaData vacu = new VacunaData();
-//        List<Vacuna> vacunaPorLaboratorio = vacu.buscarVacunaPorLaboratorio(1, false);
+//        List<Vacuna> vacunaPorLaboratorio = vacu.buscarVacunaPorLaboratorio(2, true);
 //        System.out.println("Se encontro " + vacunaPorLaboratorio.size() + " vacuna/s  del Laboratorio.");
 //        for (Vacuna vacuna : vacunaPorLaboratorio) {
 //        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");

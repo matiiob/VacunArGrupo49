@@ -111,7 +111,15 @@ public class Vacuna {
 
     @Override
     public String toString() {
-        return "Vacuna{" + "idVacuna=" + idVacuna + ", nroSerieDosis=" + nroSerieDosis + ", marca=" + marca + ", medida=" + medida + ", fechaCaduca=" + fechaCaduca + ", colocada=" + colocada + ", laboratorio=" + laboratorio + ", eliminada=" + eliminada + '}';
+        return "Vacuna{" +
+                "idVacuna=" + idVacuna +
+                ", nroSerieDosis=" + nroSerieDosis +
+                ", marca='" + marca + '\'' +
+                ", medida=" + medida +
+                ", fechaCaduca=" + fechaCaduca +
+                ", colocada=" + colocada +
+                ", laboratorio=" + laboratorio +
+                '}';
     }
 
     
