@@ -19,20 +19,22 @@ public class Vacuna {
     private LocalDate fechaCaduca;
     private boolean colocada;
     private int laboratorio;
+    private boolean eliminada;
 
     public Vacuna() {
     }
 
-    public Vacuna(long nroSerieDosis, String marca, double medida, LocalDate fechaCaduca, boolean colocada, int laboratorio) {
+    public Vacuna(long nroSerieDosis, String marca, double medida, LocalDate fechaCaduca, boolean colocada, int laboratorio, boolean eliminada) {
         this.nroSerieDosis = nroSerieDosis;
         this.marca = marca;
         this.medida = medida;
         this.fechaCaduca = fechaCaduca;
         this.colocada = colocada;
         this.laboratorio = laboratorio;
+        this.eliminada = eliminada;
     }
 
-    public Vacuna(int idVacuna, long nroSerieDosis, String marca, double medida, LocalDate fechaCaduca, boolean colocada, int laboratorio) {
+    public Vacuna(int idVacuna, long nroSerieDosis, String marca, double medida, LocalDate fechaCaduca, boolean colocada, int laboratorio, boolean eliminada) {
         this.idVacuna = idVacuna;
         this.nroSerieDosis = nroSerieDosis;
         this.marca = marca;
@@ -40,6 +42,7 @@ public class Vacuna {
         this.fechaCaduca = fechaCaduca;
         this.colocada = colocada;
         this.laboratorio = laboratorio;
+        this.eliminada = eliminada;
     }
 
     public int getIdVacuna() {
@@ -98,10 +101,19 @@ public class Vacuna {
         this.laboratorio = laboratorio;
     }
 
+    public boolean isEliminada() {
+        return eliminada;
+    }
+
+    public void setEliminada(boolean eliminada) {
+        this.eliminada = eliminada;
+    }
+
     @Override
     public String toString() {
-        return "Vacuna{" + "idVacuna=" + idVacuna + ", nroSerieDosis=" + nroSerieDosis + ", marca=" + marca + ", medida=" + medida + ", fechaCaduca=" + fechaCaduca + ", colocada=" + colocada + ", laboratorio=" + laboratorio + '}';
+        return "Vacuna{" + "idVacuna=" + idVacuna + ", nroSerieDosis=" + nroSerieDosis + ", marca=" + marca + ", medida=" + medida + ", fechaCaduca=" + fechaCaduca + ", colocada=" + colocada + ", laboratorio=" + laboratorio + ", eliminada=" + eliminada + '}';
     }
+
     
     
 }
