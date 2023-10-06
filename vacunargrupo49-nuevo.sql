@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-10-2023 a las 23:24:30
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Tiempo de generación: 06-10-2023 a las 23:37:22
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `vacunargrupo49`
 --
+CREATE DATABASE IF NOT EXISTS `vacunargrupo49` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `vacunargrupo49`;
 
 -- --------------------------------------------------------
 
@@ -35,7 +37,7 @@ CREATE TABLE `citavacunacion` (
   `centroVacunacion` varchar(60) NOT NULL,
   `fechaHoraColoca` datetime NOT NULL,
   `dosis` int(11) NOT NULL,
-  `estado` tinyint(4) NOT NULL
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -59,7 +61,7 @@ CREATE TABLE `ciudadano` (
 --
 
 INSERT INTO `ciudadano` (`idCiudadano`, `dni`, `nombreCompleto`, `email`, `celular`, `patologia`, `ambitoTrabajo`) VALUES
-(1, 123, 'Juan Lopez', 'juan@lopez', '012', NULL, 'Salud');
+(1, 123, 'Juan Carlos Lopez', 'juan@lopez', '012', NULL, 'salud');
 
 -- --------------------------------------------------------
 
@@ -73,7 +75,7 @@ CREATE TABLE `laboratorio` (
   `nomLaboratorio` varchar(60) NOT NULL,
   `pais` varchar(60) NOT NULL,
   `domComercial` varchar(60) NOT NULL,
-  `estado` tinyint(4) NOT NULL
+  `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -81,8 +83,7 @@ CREATE TABLE `laboratorio` (
 --
 
 INSERT INTO `laboratorio` (`idLaboratorio`, `cuit`, `nomLaboratorio`, `pais`, `domComercial`, `estado`) VALUES
-(1, 33445566779, 'Pfizer', 'USA', 'Complejo LUMINA Thames\nColectora Panamericana 1804, Piso 1° ', 1),
-(2, 33556644339, 'Bayer', 'Argentina', 'CABA, Calle numero', 0);
+(1, 33445566779, 'Pfizer', 'USA', 'Complejo LUMINA Thames\nColectora Panamericana 1804, Piso 1° ', 0);
 
 -- --------------------------------------------------------
 
@@ -97,18 +98,8 @@ CREATE TABLE `vacuna` (
   `medida` double NOT NULL,
   `fechaCaduca` date NOT NULL,
   `colocada` tinyint(1) NOT NULL,
-  `laboratorio` int(11) NOT NULL,
-  `eliminada` tinyint(1) NOT NULL
+  `laboratorio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `vacuna`
---
-
-INSERT INTO `vacuna` (`idVacuna`, `nroSerieDosis`, `marca`, `medida`, `fechaCaduca`, `colocada`, `laboratorio`, `eliminada`) VALUES
-(2, 123, 'Moderna', 0.6, '2023-10-11', 0, 1, 1),
-(3, 2345, 'Astraseneca', 0.3, '2022-11-21', 1, 2, 1),
-(4, 987, 'Sputnik', 0.7, '2013-10-01', 1, 2, 0);
 
 --
 -- Índices para tablas volcadas
@@ -141,8 +132,7 @@ ALTER TABLE `laboratorio`
 --
 ALTER TABLE `vacuna`
   ADD PRIMARY KEY (`idVacuna`),
-  ADD UNIQUE KEY `nroSerieDosis` (`nroSerieDosis`),
-  ADD KEY `vacuna_ibfk_1` (`laboratorio`);
+  ADD UNIQUE KEY `nroSerieDosis` (`nroSerieDosis`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -164,13 +154,13 @@ ALTER TABLE `ciudadano`
 -- AUTO_INCREMENT de la tabla `laboratorio`
 --
 ALTER TABLE `laboratorio`
-  MODIFY `idLaboratorio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idLaboratorio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `vacuna`
 --
 ALTER TABLE `vacuna`
-  MODIFY `idVacuna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idVacuna` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
