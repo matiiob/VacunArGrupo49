@@ -9,7 +9,7 @@ import java.time.LocalDate;
  */
 public class CitaVacunacion {
     private int idCodCita;
-    private Ciudadano persona;
+    private int dni;
     private int codRefuerzo;
     private String fechaHoraCita;
     private String centroVacunacion;
@@ -20,8 +20,9 @@ public class CitaVacunacion {
     public CitaVacunacion() {
     }
 
-    public CitaVacunacion(Ciudadano persona, int codRefuerzo, String fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis, boolean estado) {
-        this.persona = persona;
+    public CitaVacunacion(int idCodCita, int dni, int codRefuerzo, String fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis, boolean estado) {
+        this.idCodCita = idCodCita;
+        this.dni = dni;
         this.codRefuerzo = codRefuerzo;
         this.fechaHoraCita = fechaHoraCita;
         this.centroVacunacion = centroVacunacion;
@@ -30,9 +31,8 @@ public class CitaVacunacion {
         this.estado = estado;
     }
 
-    public CitaVacunacion(int idCodCita, Ciudadano persona, int codRefuerzo, String fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis, boolean estado) {
-        this.idCodCita = idCodCita;
-        this.persona = persona;
+    public CitaVacunacion(int dni, int codRefuerzo, String fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis, boolean estado) {
+        this.dni = dni;
         this.codRefuerzo = codRefuerzo;
         this.fechaHoraCita = fechaHoraCita;
         this.centroVacunacion = centroVacunacion;
@@ -49,12 +49,12 @@ public class CitaVacunacion {
         this.idCodCita = idCodCita;
     }
 
-    public Ciudadano getPersona() {
-        return persona;
+    public int getDni() {
+        return dni;
     }
 
-    public void setPersona(Ciudadano persona) {
-        this.persona = persona;
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public int getCodRefuerzo() {
@@ -107,8 +107,9 @@ public class CitaVacunacion {
 
     @Override
     public String toString() {
-        return "CitaVacunacion{" + "idCodCita=" + idCodCita + ", persona=" + persona + ", codRefuerzo=" + codRefuerzo + ", fechaHoraCita=" + fechaHoraCita + ", centroVacunacion=" + centroVacunacion + ", fechaHoraColoca=" + fechaHoraColoca + ", dosis=" + dosis + ", estado=" + estado + '}';
+        return "CitaVacunacion{" + "idCodCita=" + idCodCita + ", dni=" + dni + ", codRefuerzo=" + codRefuerzo + ", fechaHoraCita=" + fechaHoraCita + ", centroVacunacion=" + centroVacunacion + ", fechaHoraColoca=" + fechaHoraColoca + ", dosis=" + dosis + ", estado=" + estado + '}';
     }
 
+    
     
 }

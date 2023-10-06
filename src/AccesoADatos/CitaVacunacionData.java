@@ -38,10 +38,10 @@ public class CitaVacunacionData {
    
    public void guardarCitaVacunacion(CitaVacunacion citav){
    
-        String sql = "INSERT INTO citavacunacion(dniCiudadano,codRefuerzo,fechaHoraCita,centroVacunacion, fechaHoraColoca, dosis, estado)VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO citavacunacion(dni,codRefuerzo,fechaHoraCita,centroVacunacion, fechaHoraColoca, dosis, estado)VALUES (?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1,citav.getPersona().getDni());
+            ps.setInt(1,citav.getDni());
             ps.setInt(2,citav.getCodRefuerzo());
             ps.setString(3,citav.getFechaHoraCita());
             ps.setString(4,citav.getCentroVacunacion());
@@ -116,29 +116,29 @@ public class CitaVacunacionData {
         }
     }
    
-   public List<CitaVacunacion> obtenerTodasLasCitas() {
-
-        List<CitaVacunacion> citas = new ArrayList<>();
-
-        String sql = "SELECT idcitavacunacion,idCiudadano FROM citavacunacion";
-        try{
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-
-                CitaVacunacion cit = new CitaVacunacion();
-
-                cit.setIdCodCita(rs.getInt("idCodCita"));
-
-                Ciudadano ciu = cd.buscarCiudadanoDni(rs.getInt("idDni"));
-               
-                cit.setPersona(ciu);
-                
-                citas.add(cit);
-            }
-        }catch(SQLException ex){
-        
-        }
-       return citas;
-   }
+//   public List<CitaVacunacion> obtenerTodasLasCitas() {
+//
+//        List<CitaVacunacion> citas = new ArrayList<>();
+//
+//        String sql = "SELECT idcitavacunacion,idCiudadano FROM citavacunacion";
+//        try{
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//
+//                CitaVacunacion cit = new CitaVacunacion();
+//
+//                cit.setIdCodCita(rs.getInt("idCodCita"));
+//
+//                Ciudadano ciu = cd.buscarCiudadanoDni(rs.getInt("idDni"));
+//               
+//                cit.setPersona(ciu);
+//                
+//                citas.add(cit);
+//            }
+//        }catch(SQLException ex){
+//        
+//        }
+//       return citas;
+//   }
 }
