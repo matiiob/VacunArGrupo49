@@ -135,44 +135,45 @@ public class VacunaData {
     
                      // METODO BUSCAR FECHA CADUCA 
      
-     
-//    public List<Vacuna> buscarVacunaFechaCaduca(LocalDate fechaCaduca, boolean colocada) {
-//    List<Vacuna> vacunasVencidas = new ArrayList<>();
-//        String sql = "SELECT * FROM vacuna WHERE fechaCaduca = ? AND colocada = ?";
-//    LocalDate fechaEncontrada = null;
-//    try {
-//        PreparedStatement ps = con.prepareStatement(sql);
-//        ps.setDate(1, Date.valueOf(fechaCaduca));
-//        ps.setBoolean(2, colocada);
-//        ResultSet rs = ps.executeQuery();
-//
-//        while (rs.next()) {
-//            Vacuna vacuna = new Vacuna();
-//            vacuna.setIdVacuna(rs.getInt("IdVacuna"));
-//            vacuna.
-//            fechaEncontrada = rs.getDate("fechaCaduca").toLocalDate();
-//        }
-//        ps.close();
-//    } catch (SQLException e) {
-//        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla vacuna" + e.getMessage());
-//    }
-//    return fechaEncontrada;
-//}
-     
+    public List<Vacuna> buscarVacunaVencida(LocalDate fechaActual) {
+    List<Vacuna> vacunasVencidas = new ArrayList<>();
+    String sql = "SELECT * FROM vacuna WHERE fechaCaduca < ?";
+    // > busca la ultima fecha- < busca la fecha mas antigua- 'con Operadores'
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setDate(1, Date.valueOf(fechaActual));
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Vacuna vacuna = new Vacuna();
+            vacuna.setIdVacuna(rs.getInt("IdVacuna"));
+            vacuna.setFechaCaduca(rs.getDate("fechaCaduca").toLocalDate());
+            vacuna.setColocada(rs.getBoolean("colocada"));
+            // Agrega la vacuna a la lista 'caducadas'
+            vacunasVencidas.add(vacuna);
+        }
+        ps.close();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla vacuna" + e.getMessage());
+    }
+    return vacunasVencidas;
+}
+    
      
                      // METODO BUSCAR VACUNA POR LABORATORIO
     
-    public Vacuna buscarVacunaPorLaboratorio(int laboratorio, boolean colocada) {
-    String sql = "SELECT * FROM vacuna WHERE laboratorio = ? AND colocada = ?";
-    Vacuna vacuna = null;
+    public List<Vacuna> buscarVacunaPorLaboratorio(int laboratorio, boolean colocada) {
+    List<Vacuna> vacunaPorLaboratorio = new ArrayList<>();
+    //String sql = "SELECT * FROM vacuna WHERE laboratorio = ?";
+    String sql = "SELECT idVacuna, nroSerieDosis, marca, medida, fechaCaduca, colocada, laboratorio FROM vacuna WHERE laboratorio = ? AND colocada = ?";
     try {
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, laboratorio);
         ps.setBoolean(2, colocada);
         ResultSet rs = ps.executeQuery();
-
-        if (rs.next()) {
-            vacuna = new Vacuna();
+         
+        while (rs.next()) {
+            Vacuna vacuna = new Vacuna();
             vacuna.setIdVacuna(rs.getInt("idVacuna"));
             vacuna.setNroSerieDosis(rs.getLong("nroSerieDosis"));
             vacuna.setMarca(rs.getString("marca"));
@@ -180,12 +181,13 @@ public class VacunaData {
             vacuna.setFechaCaduca(rs.getDate("fechaCaduca").toLocalDate());
             vacuna.setColocada(rs.getBoolean("colocada"));
             vacuna.setLaboratorio(laboratorio);
+            vacunaPorLaboratorio.add(vacuna); // Agregar la instancia de Vacuna a la lista
         }
         ps.close();
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "Error al acceder a la tabla vacuna" + e.getMessage());
     }
-    return vacuna;
+    return vacunaPorLaboratorio;
 }
     
      
