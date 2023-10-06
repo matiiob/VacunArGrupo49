@@ -36,8 +36,8 @@ public class Chris {
 
 
 //   -*-   PRUEBA ELIMINAR VACUNA LOGICO
-           VacunaData vacu = new VacunaData();   
-           vacu.eliminarVacuna(3);
+//           VacunaData vacu = new VacunaData();   
+//           vacu.eliminarVacuna(3);
 
 
 //   -*-   PRUEBA LISTAR VACUNA
