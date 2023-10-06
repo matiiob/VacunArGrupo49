@@ -1,6 +1,9 @@
 
 package Pruebas_equipo;
 
+import AccesoADatos.VacunaData;
+import Entidades.Vacuna;
+import java.time.LocalDate;
 
 public class Gonzalo {
 
@@ -25,7 +28,11 @@ public class Gonzalo {
 //        CiudadanoData ciu = new CiudadanoData();
 //        System.out.println(ciu.buscarCiudadanoId(1));
 
-     
+        //Prueba método guardarVacuna.
+        Vacuna vacuna = new Vacuna(123, "BNT162b2", 0.3, LocalDate.of(2025, 10, 02), true, 1, false);              
+        VacunaData vacun = new VacunaData();
+        vacun.GuardarVacuna(vacuna);
+
     }
     
 }

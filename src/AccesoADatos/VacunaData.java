@@ -30,8 +30,8 @@ public class VacunaData {
                      // METODO GUARDAR-*-
     
     public void GuardarVacuna(Vacuna vacuna) {
-    String sql = "INSERT INTO vacuna (nroSerieDosis, marca, medida, fechaCaduca, colocada, laboratorio)"
-            + "VALUES(?,?,?,?,?,?)";
+    String sql = "INSERT INTO vacuna (nroSerieDosis, marca, medida, fechaCaduca, colocada, laboratorio, eliminada)"
+            + "VALUES(?,?,?,?,?,?,?)";
 
     try {
         PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -41,6 +41,7 @@ public class VacunaData {
         ps.setDate(4, Date.valueOf(vacuna.getFechaCaduca()));
         ps.setBoolean(5, vacuna.isColocada());
         ps.setInt(6, vacuna.getLaboratorio());
+        ps.setBoolean(7, vacuna.isEliminada());
         ps.executeUpdate();
         ResultSet rs = ps.getGeneratedKeys();
         if (rs.next()) {
