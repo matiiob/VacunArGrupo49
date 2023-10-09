@@ -30,18 +30,18 @@ public class CitaVacunacionData {
    
    public CitaVacunacionData() {
         con = Conexion.getConexion();
-        ld = new LaboratorioData();
-        vd = new VacunaData();
-        cd = new CiudadanoData();
-        cvd = new CitaVacunacionData();
+//        ld = new LaboratorioData();
+//        vd = new VacunaData();
+//        cd = new CiudadanoData();
+//        cvd = new CitaVacunacionData();
     }
    
    public void guardarCitaVacunacion(CitaVacunacion citav){
    
-        String sql = "INSERT INTO citavacunacion(dni,codRefuerzo,fechaHoraCita,centroVacunacion, fechaHoraColoca, dosis, estado)VALUES (?,?,?,?,?,?,?)";
-        try {
+        String sql = "INSERT INTO citavacunacion(idCiudadano,codRefuerzo,fechaHoraCita,centroVacunacion,fechaHoraColoca,dosis,estado)VALUES (?,?,?,?,?,?,?)";
+        try {                                                                  
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1,citav.getDni());
+            ps.setInt(1,citav.getIdCiudadano());
             ps.setInt(2,citav.getCodRefuerzo());
             ps.setString(3,citav.getFechaHoraCita());
             ps.setString(4,citav.getCentroVacunacion());
