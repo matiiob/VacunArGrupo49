@@ -12,8 +12,11 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.mariadb.jdbc.Statement;
 
@@ -43,7 +46,7 @@ public class CitaVacunacionData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1,citav.getIdCiudadano());
             ps.setInt(2,citav.getCodRefuerzo());
-            ps.setString(3,citav.getFechaHoraCita());
+            ps.setDate(3,Date.valueOf(citav.getFechaHoraCita()));
             ps.setString(4,citav.getCentroVacunacion());
             ps.setDate(5,Date.valueOf(citav.getFechaHoraColoca()));
             ps.setInt(6,citav.getDosis());
@@ -141,4 +144,33 @@ public class CitaVacunacionData {
 //        }
 //       return citas;
 //   }
+    
+    public List<CitaVacunacion> obtenerCitasMensual(LocalDate fechaInicio, LocalDate fechaFin, boolean estado) {
+        List<CitaVacunacion> citasMes = new ArrayList<>();
+        String sql = "SELECT * FROM citavacunacion "
+                + "WHERE fechaHoraCita >= ? AND fechaHoraCita <= ? AND estado = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(fechaInicio));
+            ps.setDate(2, Date.valueOf(fechaFin));
+            ps.setBoolean(3, estado);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                CitaVacunacion cita = new CitaVacunacion();
+                cita.setIdCodCita(rs.getInt("idCodCita"));
+                cita.setIdCiudadano(rs.getInt("idciudadano"));
+                cita.setCodRefuerzo(rs.getInt("codRefuerzo"));
+                cita.setFechaHoraCita(rs.getDate("fechaHoraCita").toLocalDate());
+                cita.setCentroVacunacion(rs.getString("centroVacunacion"));
+                cita.setFechaHoraColoca(rs.getDate("fechaHoraColoca").toLocalDate());
+                cita.setDosis(rs.getInt("dosis"));
+                cita.setEstado(estado);
+                citasMes.add(cita);
+            }
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cita vacunacion" + e.getMessage());
+        }
+        return citasMes;
+    }
 }

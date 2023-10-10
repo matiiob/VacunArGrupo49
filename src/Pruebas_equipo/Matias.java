@@ -1,6 +1,10 @@
 
 package Pruebas_equipo;
 
+import AccesoADatos.CitaVacunacionData;
+import Entidades.CitaVacunacion;
+import java.time.LocalDate;
+
 
 public class Matias {
 
@@ -8,7 +12,7 @@ public class Matias {
     public static void main(String[] args) {
      
            
-//      Prueba Modificar LAboratorio
+//      Prueba Modificar Laboratorio
 //        Laboratorio labo = new Laboratorio(2, 33445566779L, "Pfizer", "USA", "Colectora Panamericana", true);
 //        LaboratorioData laboData = new LaboratorioData();
 //        laboData.modificarLaboratorio(labo);
@@ -35,15 +39,16 @@ public class Matias {
 //        } else {
 //            System.out.println("El laboratorio buscado no existe.");
 //        }
-//      PRUEBA LISTAR LABORATORIOS
+//      Prueba listar laboratorios
 //        LaboratorioData labData = new LaboratorioData();
 //        for (Laboratorio labo : labData.listarLaboratorios(true)) {
 //            System.out.println(labo);
 //        }
         
-
-        
-        
+//      Prueba listar Citas Mensual
+        CitaVacunacionData citavData = new CitaVacunacionData();
+        for (CitaVacunacion citav : citavData.obtenerCitasMensual(LocalDate.of(2023, 10, 1), LocalDate.of(2023, 10, 15), true)) {
+            System.out.println(citav);
+        } 
     }
-    
 }
