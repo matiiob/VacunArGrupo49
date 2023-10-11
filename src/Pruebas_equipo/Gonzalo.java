@@ -51,11 +51,11 @@ public class Gonzalo {
 //        laboData.modificarLaboratorio(labo);
 
 //          Prueba método guardarCita
-          CitaVacunacion cita1 = new CitaVacunacion(123, 2, "2022-10-25", "Centro", LocalDate.of(2020, Month.MARCH, 12), 1, true);
+//          CitaVacunacion cita1 = new CitaVacunacion(123, 2, "2022-10-25", "Centro", LocalDate.of(2020, Month.MARCH, 12), 1, true);
 //          JOptionPane.showMessageDialog(null, ciu.buscarCiudadanoDni(123)); 
 //
-          CitaVacunacionData citaVacun = new CitaVacunacionData();
-          citaVacun.guardarCitaVacunacion(cita1);
+//          CitaVacunacionData citaVacun = new CitaVacunacionData();
+//          citaVacun.guardarCitaVacunacion(cita1);
     }
     
 }

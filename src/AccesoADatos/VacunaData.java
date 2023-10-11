@@ -202,6 +202,6 @@ public class VacunaData {
     return vacunaPorLaboratorio;
 }
     
-     
     
+       
 }

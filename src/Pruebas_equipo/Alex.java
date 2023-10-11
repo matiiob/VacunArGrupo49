@@ -119,9 +119,9 @@ public class Alex {
 //**************************************************************************************
 //        PRUEBA CITAVACUNACION:
 //         GUARDAR CITA VACUNACION.
-        CitaVacunacion cita = new CitaVacunacion(2, 01,"2023/10/15","Centro de vacunacion ATE", LocalDate.of(2023,Month.NOVEMBER,9), 2,true);
-        CitaVacunacionData citaData = new CitaVacunacionData();
-        citaData.guardarCitaVacunacion(cita);
+//        CitaVacunacion cita = new CitaVacunacion(2, 01,"2023/10/15","Centro de vacunacion ATE", LocalDate.of(2023,Month.NOVEMBER,9), 2,true);
+//        CitaVacunacionData citaData = new CitaVacunacionData();
+//        citaData.guardarCitaVacunacion(cita);
     }
     
 }
