@@ -12,6 +12,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +35,7 @@ public class CitaVacunacionData {
    
    public CitaVacunacionData() {
         con = Conexion.getConexion();
-//        ld = new LaboratorioData();
-//        vd = new VacunaData();
-//        cd = new CiudadanoData();
-//        cvd = new CitaVacunacionData();
+
     }
    
    public void guardarCitaVacunacion(CitaVacunacion citav){
@@ -46,9 +45,9 @@ public class CitaVacunacionData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1,citav.getIdCiudadano());
             ps.setInt(2,citav.getCodRefuerzo());
-            ps.setDate(3,Date.valueOf(citav.getFechaHoraCita()));
+            ps.setTimestamp(3, new Timestamp(citav.getFechaHoraCita().getTime()));//se usa con java util date
             ps.setString(4,citav.getCentroVacunacion());
-            ps.setDate(5,Date.valueOf(citav.getFechaHoraColoca()));
+            ps.setTimestamp(5, new Timestamp(citav.getFechaHoraColoca().getTime()));
             ps.setInt(6,citav.getDosis());
             ps.setBoolean(7,citav.isEstado());
             ps.executeUpdate();
@@ -65,32 +64,40 @@ public class CitaVacunacionData {
 
         }
     }
-   public void eliminarCitaVacunacion(int idCiudadano, int idCitaVacunacion){
-       
-       String sql = "DELETE FROM citavacunacion WHERE idCiudadano=? AND idCitaVacunacion=?";
-       try{
-           PreparedStatement ps = con.prepareStatement(sql);
-           ps.setInt(1, idCiudadano);
-           ps.setInt(2,idCitaVacunacion);
-           int citaEliminada = ps.executeUpdate();
-           if (citaEliminada == 1){
-               JOptionPane.showMessageDialog(null, "Cita borrada con éxito");
-           }
-           ps.close();
-       }catch(SQLException ex){
-           JOptionPane.showMessageDialog(null, "No se pudo ingresar a la tabla cita vacunacion" + ex.getMessage());
-       }
+        
+       public void eliminarCitaVacunacion(int idCodCita) {
+
+        String sql = "UPDATE citavacunacion SET estado = 0  WHERE idCodCita= ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idCodCita);
+            int citaEliminada = ps.executeUpdate();
+            if (citaEliminada == 1) {
+                JOptionPane.showMessageDialog(null, "Cita borrada con éxito");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se pudo ingresar a la tabla cita vacunacion" + ex.getMessage());
+        }
    }
-   
-   public void modificarCitaVacunacion(int idCiudadano, int idCitaVacunacion){
+ 
+    public void modificarCitaVacunacion(CitaVacunacion citav){
        
-       String sql ="UPDATE citavacuna SET fechaHoraCita WHERE idCiudadano=?";
+       
+       String sql ="UPDATE citavacunacion SET codRefuerzo=?,fechaHoraCita=?,centroVacunacion=?,fechaHoraColoca=?,dosis=?,estado=? WHERE idCiudadano="+citav.getIdCiudadano()+"";
        try {
            PreparedStatement ps = con.prepareStatement(sql);
-           ps.setInt(1, idCiudadano);
-           ps.setInt(2, idCitaVacunacion);
+           ps.setInt(1,citav.getCodRefuerzo());
+           ps.setTimestamp(2, new Timestamp(citav.getFechaHoraCita().getTime()));
+           ps.setString(3,citav.getCentroVacunacion());
+           ps.setTimestamp(4, new Timestamp(citav.getFechaHoraColoca().getTime()));
+           ps.setInt(5,citav.getDosis());
+           ps.setBoolean(6,citav.isEstado());
+            ps.setInt(8,citav.getIdCiudadano());
+         
            int citaModificada = ps.executeUpdate();
-           if (citaModificada > 1){
+           
+           if (citaModificada == 1){
                JOptionPane.showMessageDialog(null, "Cita modificada");
            }
             ps.close();
@@ -98,52 +105,64 @@ public class CitaVacunacionData {
            JOptionPane.showMessageDialog(null, "No se pudo ingresar a la tabla cita vacunacion" + ex.getMessage());
        }
    }
-    public void buscarCitaVacunacion(int idCiudadano){
-        String sql = "SELECT citavacunacion WHERE idCiudadano=? ";
+
+    public CitaVacunacion buscarCitaVacunacion(int idcodCita, boolean estado){
+        String sql = "SELECT idCodCita, idCiudadano,codRefuerzo,fechaHoraCita, centroVacunacion,fechaHoraColoca,dosis,estado FROM citavacunacion WHERE idCodcita=? AND estado=? ";
 
         CitaVacunacion cita = null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1,idCiudadano);
+
+            ps.setInt(1,idcodCita);
+            ps.setBoolean(2, estado);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
                 cita = new CitaVacunacion();
                 
-                cita.setIdCodCita(rs.getInt("codigo cita"));
-                cita.setCentroVacunacion(rs.getString("centro de vacunacion"));
+                cita.setIdCodCita(rs.getInt("idCodCita"));
+                cita.setIdCiudadano(rs.getInt("idCiudadano"));
+                cita.setCodRefuerzo(rs.getInt("codRefuerzo"));
+                cita.setFechaHoraCita(rs.getTimestamp("fechaHoraCita"));
+                cita.setCentroVacunacion(rs.getString("centroVacunacion"));
+                cita.setFechaHoraColoca(rs.getTimestamp("fechaHoraColoca"));
+                cita.setDosis(rs.getInt("dosis"));
+                cita.setEstado(rs.getBoolean("estado"));
              }
             ps.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cita vacunacion" + e.getMessage());
         }
+        return cita;
     }
-   
-//   public List<CitaVacunacion> obtenerTodasLasCitas() {
-//
-//        List<CitaVacunacion> citas = new ArrayList<>();
-//
-//        String sql = "SELECT idcitavacunacion,idCiudadano FROM citavacunacion";
-//        try{
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ResultSet rs = ps.executeQuery();
-//            while (rs.next()) {
-//
-//                CitaVacunacion cit = new CitaVacunacion();
-//
-//                cit.setIdCodCita(rs.getInt("idCodCita"));
-//
-//                Ciudadano ciu = cd.buscarCiudadanoDni(rs.getInt("idDni"));
-//               
-//                cit.setPersona(ciu);
-//                
-//                citas.add(cit);
-//            }
-//        }catch(SQLException ex){
-//        
-//        }
-//       return citas;
-//   }
+   public List<CitaVacunacion> obtenerTodasLasCitas() {
+
+        List<CitaVacunacion> citas = new ArrayList<>();
+
+        String sql = "SELECT* FROM citavacunacion";
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                CitaVacunacion cit = new CitaVacunacion();
+
+                cit.setIdCodCita(rs.getInt("idCodCita"));
+                cit.setIdCiudadano(rs.getInt("idCiudadano"));
+                cit.setCodRefuerzo(rs.getInt("codRefuerzo"));
+                cit.setFechaHoraCita(rs.getTimestamp("fechaHoraCita"));
+                cit.setCentroVacunacion(rs.getString("centroVacunacion"));
+                cit.setFechaHoraColoca(rs.getTimestamp("fechaHoraColoca"));
+                cit.setDosis(rs.getInt("dosis"));
+                cit.setEstado(rs.getBoolean("estado"));
+                
+                citas.add(cit);
+            }
+        }catch(SQLException ex){
+        
+        }
+       return citas;
+   }
     
     public List<CitaVacunacion> obtenerCitasMensual(LocalDate fechaInicio, LocalDate fechaFin, boolean estado) {
         List<CitaVacunacion> citasMes = new ArrayList<>();
@@ -160,9 +179,9 @@ public class CitaVacunacionData {
                 cita.setIdCodCita(rs.getInt("idCodCita"));
                 cita.setIdCiudadano(rs.getInt("idciudadano"));
                 cita.setCodRefuerzo(rs.getInt("codRefuerzo"));
-                cita.setFechaHoraCita(rs.getDate("fechaHoraCita").toLocalDate());
+                cita.setFechaHoraCita(rs.getTimestamp("fechaHoraCita"));
                 cita.setCentroVacunacion(rs.getString("centroVacunacion"));
-                cita.setFechaHoraColoca(rs.getDate("fechaHoraColoca").toLocalDate());
+                cita.setFechaHoraColoca(rs.getTimestamp("fechaHoraColoca"));
                 cita.setDosis(rs.getInt("dosis"));
                 cita.setEstado(estado);
                 citasMes.add(cita);

@@ -45,10 +45,10 @@ public class Matias {
 //            System.out.println(labo);
 //        }
         
-//      Prueba listar Citas Mensual
-        CitaVacunacionData citavData = new CitaVacunacionData();
-        for (CitaVacunacion citav : citavData.obtenerCitasMensual(LocalDate.of(2023, 10, 1), LocalDate.of(2023, 10, 15), true)) {
-            System.out.println(citav);
-        } 
+////      Prueba listar Citas Mensual
+//        CitaVacunacionData citavData = new CitaVacunacionData();
+//        for (CitaVacunacion citav : citavData.obtenerCitasMensual(LocalDate.of(2023, 10, 1), LocalDate.of(2023, 10, 15), true)) {
+//            System.out.println(citav);
+//        } 
     }
 }
