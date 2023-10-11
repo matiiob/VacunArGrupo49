@@ -2,6 +2,8 @@
 package Entidades;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  *
@@ -11,16 +13,16 @@ public class CitaVacunacion {
     private int idCodCita;
     private int idCiudadano;
     private int codRefuerzo;
-    private LocalDate fechaHoraCita;
+    private Date fechaHoraCita;
     private String centroVacunacion;
-    private LocalDate fechaHoraColoca; 
+    private Date fechaHoraColoca; 
     private int dosis;
     private boolean estado;
 
     public CitaVacunacion() {
     }
 
-    public CitaVacunacion(int idCiudadano, int codRefuerzo, LocalDate fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis, boolean estado) {
+    public CitaVacunacion(int idCiudadano, int codRefuerzo, Date fechaHoraCita, String centroVacunacion, Date fechaHoraColoca, int dosis, boolean estado) {
         this.idCiudadano = idCiudadano;
         this.codRefuerzo = codRefuerzo;
         this.fechaHoraCita = fechaHoraCita;
@@ -30,7 +32,7 @@ public class CitaVacunacion {
         this.estado = estado;
     }
 
-    public CitaVacunacion(int idCodCita, int idCiudadano, int codRefuerzo, LocalDate fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis, boolean estado) {
+    public CitaVacunacion(int idCodCita, int idCiudadano, int codRefuerzo, Date fechaHoraCita, String centroVacunacion, Date fechaHoraColoca, int dosis, boolean estado) {
         this.idCodCita = idCodCita;
         this.idCiudadano = idCiudadano;
         this.codRefuerzo = codRefuerzo;
@@ -65,11 +67,11 @@ public class CitaVacunacion {
         this.codRefuerzo = codRefuerzo;
     }
 
-    public LocalDate getFechaHoraCita() {
+    public Date getFechaHoraCita() {
         return fechaHoraCita;
     }
 
-    public void setFechaHoraCita(LocalDate fechaHoraCita) {
+    public void setFechaHoraCita(Date fechaHoraCita) {
         this.fechaHoraCita = fechaHoraCita;
     }
 
@@ -81,11 +83,11 @@ public class CitaVacunacion {
         this.centroVacunacion = centroVacunacion;
     }
 
-    public LocalDate getFechaHoraColoca() {
+    public Date getFechaHoraColoca() {
         return fechaHoraColoca;
     }
 
-    public void setFechaHoraColoca(LocalDate fechaHoraColoca) {
+    public void setFechaHoraColoca(Date fechaHoraColoca) {
         this.fechaHoraColoca = fechaHoraColoca;
     }
 
@@ -107,8 +109,11 @@ public class CitaVacunacion {
 
     @Override
     public String toString() {
-        return "CitaVacunacion{" + "idCodCita=" + idCodCita + ", idCiudadano=" + idCiudadano + ", codRefuerzo=" + codRefuerzo + ", fechaHoraCita=" + fechaHoraCita + ", centroVacunacion=" + centroVacunacion + ", fechaHoraColoca=" + fechaHoraColoca + ", dosis=" + dosis + ", estado=" + estado + '}';
+        return "CitaVacunacion: "+"idCodCita: "+idCodCita+", idCiudadano: "+idCiudadano+", codRefuerzo: "+codRefuerzo+", fechaHoraCita: "+fechaHoraCita+", centroVacunacion: "+centroVacunacion+", fechaHoraColoca: "+fechaHoraColoca+", dosis: "+dosis+", estado: "+estado;
     }
 
+    
+
+    
     
 }
