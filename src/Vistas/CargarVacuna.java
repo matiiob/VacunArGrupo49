@@ -278,21 +278,31 @@ public class CargarVacuna extends javax.swing.JFrame {
     
     private void btnGuardarVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarVacunaActionPerformed
         
-        
-        Long nroSerieDosis = Long.parseLong(jTFNroSerieDosis.getText());
+String nroSerieDosisText = jTFNroSerieDosis.getText();
+if (nroSerieDosisText.length() == 10 && nroSerieDosisText.matches("[0-9]+")) {
+    Long nroSerieDosis = Long.parseLong(nroSerieDosisText);
+    // verifica si ya existe la vacuna en la DB
+    VacunaData vacunaData = new VacunaData();
+    if (!vacunaData.existeVacuna(nroSerieDosis)) {
+        // si no existe se almacena en DB
         String marca = jTFMarca.getText();
         Double medida = Double.parseDouble(jTFMedida.getText());
         LocalDate fechaCaduca = jDCFechaCaduca.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         Boolean colocada = jRBColocada.isSelected();
         Integer laboratorio = Integer.parseInt(jTFLaboratorio.getText());
         Boolean eliminada = jRBEliminada.isSelected();
-         
         Vacuna vacuna = new Vacuna(nroSerieDosis, marca, medida, fechaCaduca, colocada, laboratorio, eliminada);
-  
-        VacunaData vacunaData = new VacunaData();
         vacunaData.GuardarVacuna(vacuna);
-        
         limpiarPantalla();
+    } else {
+        JOptionPane.showMessageDialog(this, "Debe ingresar un nroSerieDosis válido.");
+    }
+} else {
+        JOptionPane.showMessageDialog(this, "Debe ingresar 10 digitos, sin punto ni caracteres especiales.");
+}
+
+
+
     }//GEN-LAST:event_btnGuardarVacunaActionPerformed
 
                     // BOTON LIMPIAR-*-   
@@ -309,7 +319,7 @@ public class CargarVacuna extends javax.swing.JFrame {
      
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
     
-           int x = JOptionPane.showOptionDialog(this, "¿Te gusto esta página", "Elije una respuesta", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
+           int x = JOptionPane.showOptionDialog(this, "¿Estás seguro?", "Elije una respuesta", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
                                              //mensaje               //titulo                                                                                      //String                 
 
         if (x == 0) {
@@ -426,18 +436,6 @@ public class CargarVacuna extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarVacunaMouseReleased
 
     // EVENTOS HOVER DE LOS BTN-------------------------
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     

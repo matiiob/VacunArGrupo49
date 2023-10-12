@@ -201,6 +201,32 @@ public class VacunaData {
     }
     return vacunaPorLaboratorio;
 }
+
+    
+                    // METODO EXISTE VACUNA (evitar duplicados)-*-
+    
+    public boolean existeVacuna(Long nroSerieDosis) {
+        
+        boolean existe = false;
+    try {
+        Connection con = Conexion.getConexion();
+        String sql = "SELECT * FROM vacuna WHERE nroSerieDosis = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setLong(1, nroSerieDosis);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            existe = true;
+        }
+//        rs.close();
+//        ps.close();
+//        con.close();
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return existe;
+        
+        
+    }
     
     
        
