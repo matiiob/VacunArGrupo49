@@ -13,8 +13,11 @@ import Entidades.CitaVacunacion;
 import Entidades.Ciudadano;
 import Entidades.Laboratorio;
 import Entidades.Vacuna;
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.Date;
 
 /**
  *
@@ -119,9 +122,60 @@ public class Alex {
 //**************************************************************************************
 //        PRUEBA CITAVACUNACION:
 //         GUARDAR CITA VACUNACION.
-//        CitaVacunacion cita = new CitaVacunacion(2, 01,"2023/10/15","Centro de vacunacion ATE", LocalDate.of(2023,Month.NOVEMBER,9), 2,true);
+////        CitaVacunacion cita = new CitaVacunacion(4,01,Timestamp.valueOf(LocalDateTime.of(2023,Month.NOVEMBER,15,10,30)),"Centro de vacunacion ATE",Timestamp.valueOf(LocalDateTime.of(2023,Month.NOVEMBER,9,10,30)), 2,true);
+////        CitaVacunacionData citaData = new CitaVacunacionData();
+////        citaData.guardarCitaVacunacion(cita);
+//******************************************************************************************    
+//      Prueba listar Citas por fechas Matias
+//        CitaVacunacionData citavData = new CitaVacunacionData();
+//        for (CitaVacunacion citav : citavData.obtenerCitasPorFecha(LocalDate.of(2023, 10, 1), LocalDate.of(2023, 10, 15), true)) {
+//            System.out.println(citav);
+//********************************************************************************************
+//      BUSCAR CITAS POR ID Y ESTADO
+//          
 //        CitaVacunacionData citaData = new CitaVacunacionData();
-//        citaData.guardarCitaVacunacion(cita);
+////       
+//        System.out.println(citaData.buscarCitaVacunacion(8, true)); //revisar antes de subir
+//******************************************************************************************
+//        MODIFICAR CITA
+//        CitaVacunacion cita = new CitaVacunacion(1,02,"2023/10/15","Centro de vacunacion ATE", LocalDate.of(2023,Month.NOVEMBER,9), 2,true);
+//        CitaVacunacionData citaData = new CitaVacunacionData();
+//        citaData.modificarCitaVacunacion(cita);
+//****************************************************************************************
+////       ELIMINAR CITA
+//         CitaVacunacion cita = new CitaVacunacion();
+//         CitaVacunacionData citaData = new CitaVacunacionData();
+//         citaData.eliminarCitaVacunacion(4);
+//****************************************************************************************
+//          PRUEBA LISTAR citas
+//       CitaVacunacionData citaData = new CitaVacunacionData();
+//        for (CitaVacunacion citaDat : citaData.obtenerTodasLasCitas()) {
+//            System.out.println(citaDat);
+//        }
+//**************************************************************************************
+//    PRUEBA CITAS VENCIDAS
+//        CitaVacunacionData citaData = new CitaVacunacionData();
+//        for (CitaVacunacion citaDat : citaData.obtenerCitasVencidas()) {
+//            System.out.println(citaDat);
+//        }
+//**************************************************************************************
+//    PRUEBA CITAS CUMPLIDAS
+//        CitaVacunacionData citaData = new CitaVacunacionData();
+//        for (CitaVacunacion citaDat : citaData.obtenerCitasCumplidas()) {
+//            System.out.println(citaDat);
+//        }
+//**************************************************************************************
+//    PRUEBA CITAS VENCIDAS
+//        CitaVacunacionData citaData = new CitaVacunacionData();
+//        for (CitaVacunacion citaDat : citaData.obtenerCitasCanceladas()) {
+//            System.out.println(citaDat);
+//        }
+//****************************************************************************************
+    CitaVacunacionData citaData = new CitaVacunacionData();
+        for (CitaVacunacion citaDat : citaData.obtenerVacunasAplicadasPorCentro(LocalDate.of(2023, 10, 1), LocalDate.of(2023, 11, 30))) {
+            System.out.println(citaDat);
+        }
+
     }
-    
-}
+   }  
+

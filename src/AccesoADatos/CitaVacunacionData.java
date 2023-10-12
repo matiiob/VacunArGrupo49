@@ -158,13 +158,14 @@ public class CitaVacunacionData {
                 
                 citas.add(cit);
             }
+            ps.close();
         }catch(SQLException ex){
-        
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cita vacunacion" + ex.getMessage());
         }
        return citas;
    }
     
-    public List<CitaVacunacion> obtenerCitasMensual(LocalDate fechaInicio, LocalDate fechaFin, boolean estado) {
+    public List<CitaVacunacion> obtenerCitasPorFechas(LocalDate fechaInicio, LocalDate fechaFin, boolean estado) {
         List<CitaVacunacion> citasMes = new ArrayList<>();
         String sql = "SELECT * FROM citavacunacion "
                 + "WHERE fechaHoraCita >= ? AND fechaHoraCita <= ? AND estado = ?";
@@ -192,4 +193,116 @@ public class CitaVacunacionData {
         }
         return citasMes;
     }
+    //entedemos por citas vencidas son anteriores a la fecha actual y no estan cumplidas , ni canceladas
+    public List<CitaVacunacion> obtenerCitasVencidas() {
+        List<CitaVacunacion> citasVencidas = new ArrayList<>();
+        String sql = "SELECT * FROM citavacunacion WHERE fechaHoraCita < CURRENT_TIMESTAMP AND fechaHoraColoca IS null AND estado = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                CitaVacunacion cita = new CitaVacunacion();
+                cita.setIdCodCita(rs.getInt("idCodCita"));
+                cita.setIdCiudadano(rs.getInt("idciudadano"));
+                cita.setCodRefuerzo(rs.getInt("codRefuerzo"));
+                cita.setFechaHoraCita(rs.getTimestamp("fechaHoraCita"));
+                cita.setCentroVacunacion(rs.getString("centroVacunacion"));
+                cita.setFechaHoraColoca(rs.getTimestamp("fechaHoraColoca"));
+                cita.setDosis(rs.getInt("dosis"));
+                cita.setEstado(rs.getBoolean("estado"));
+                citasVencidas.add(cita);
+            }
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cita vacunacion" + e.getMessage());
+        }
+        return citasVencidas;
+    }
+    public List<CitaVacunacion> obtenerCitasCumplidas() {
+        List<CitaVacunacion> citasCumplidas = new ArrayList<>();
+        String sql = "SELECT * FROM citavacunacion WHERE fechaHoraCita < CURRENT_TIMESTAMP AND fechaHoraColoca IS NOT null AND estado = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                CitaVacunacion cita = new CitaVacunacion();
+                cita.setIdCodCita(rs.getInt("idCodCita"));
+                cita.setIdCiudadano(rs.getInt("idciudadano"));
+                cita.setCodRefuerzo(rs.getInt("codRefuerzo"));
+                cita.setFechaHoraCita(rs.getTimestamp("fechaHoraCita"));
+                cita.setCentroVacunacion(rs.getString("centroVacunacion"));
+                cita.setFechaHoraColoca(rs.getTimestamp("fechaHoraColoca"));
+                cita.setDosis(rs.getInt("dosis"));
+                cita.setEstado(rs.getBoolean("estado"));
+                citasCumplidas.add(cita);
+            }
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cita vacunacion" + e.getMessage());
+        }
+        return citasCumplidas;
+    }
+        public List<CitaVacunacion> obtenerCitasCanceladas() {
+
+        List<CitaVacunacion> citas = new ArrayList<>();
+
+        String sql = "SELECT* FROM citavacunacion WHERE estado = 0";
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                CitaVacunacion cit = new CitaVacunacion();
+
+                cit.setIdCodCita(rs.getInt("idCodCita"));
+                cit.setIdCiudadano(rs.getInt("idCiudadano"));
+                cit.setCodRefuerzo(rs.getInt("codRefuerzo"));
+                cit.setFechaHoraCita(rs.getTimestamp("fechaHoraCita"));
+                cit.setCentroVacunacion(rs.getString("centroVacunacion"));
+                cit.setFechaHoraColoca(rs.getTimestamp("fechaHoraColoca"));
+                cit.setDosis(rs.getInt("dosis"));
+                cit.setEstado(rs.getBoolean("estado"));
+                
+                citas.add(cit);
+            }
+            ps.close();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cita vacunacion" + ex.getMessage());
+        }
+       return citas;
+   }
+   public List<CitaVacunacion> obtenerVacunasAplicadasPorCentro(LocalDate fechaInicio, LocalDate fechaFin) {
+
+        List<CitaVacunacion> citas = new ArrayList<>();
+
+        String sql = "SELECT centroVacunacion, COUNT(dosis) AS dosis FROM `citavacunacion` "
+                + "WHERE fechaHoraColoca >= ? AND fechaHoraColoca <= ? AND estado=1 GROUP BY centroVacunacion;";
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(fechaInicio));
+            ps.setDate(2, Date.valueOf(fechaFin));
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                CitaVacunacion cit = new CitaVacunacion();
+
+//                cit.setIdCodCita(rs.getInt("idCodCita"));
+//                cit.setIdCiudadano(rs.getInt("idCiudadano"));
+//                cit.setCodRefuerzo(rs.getInt("codRefuerzo"));
+//                cit.setFechaHoraCita(rs.getTimestamp("fechaHoraCita"));
+                cit.setCentroVacunacion(rs.getString("centroVacunacion"));
+//                cit.setFechaHoraColoca(rs.getTimestamp("fechaHoraColoca"));
+                cit.setDosis(rs.getInt("dosis"));
+//                cit.setEstado(rs.getBoolean("estado"));
+                
+                citas.add(cit);
+            }
+            ps.close();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cita vacunacion" + ex.getMessage());
+        }
+       return citas;
+   } 
 }
