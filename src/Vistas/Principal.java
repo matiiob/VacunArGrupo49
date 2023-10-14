@@ -61,14 +61,16 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(177, 177, 177))
         );
 
-        jDesktopPane2.setMaximumSize(new java.awt.Dimension(800, 533));
-        jDesktopPane2.setMinimumSize(new java.awt.Dimension(800, 533));
+        jDesktopPane2.setMaximumSize(new java.awt.Dimension(640, 427));
+        jDesktopPane2.setMinimumSize(new java.awt.Dimension(640, 427));
         jDesktopPane2.setOpaque(false);
-        jDesktopPane2.setPreferredSize(new java.awt.Dimension(800, 533));
+        jDesktopPane2.setPreferredSize(new java.awt.Dimension(640, 427));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/escoba.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/fondo.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
-        jLabel3.setPreferredSize(new java.awt.Dimension(800, 533));
+        jLabel3.setMaximumSize(new java.awt.Dimension(640, 427));
+        jLabel3.setMinimumSize(new java.awt.Dimension(640, 427));
+        jLabel3.setPreferredSize(new java.awt.Dimension(640, 427));
 
         jDesktopPane2.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -84,8 +86,8 @@ public class Principal extends javax.swing.JFrame {
             jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
