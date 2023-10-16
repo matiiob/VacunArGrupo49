@@ -36,12 +36,14 @@ public class Principal extends javax.swing.JFrame {
         jPSuperior = new javax.swing.JPanel();
         jPBotonCerrar = new javax.swing.JPanel();
         jLCerrar = new javax.swing.JLabel();
+        jLImagenFondo = new javax.swing.JLabel();
         jDEscritorio = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -108,6 +110,9 @@ public class Principal extends javax.swing.JFrame {
         );
 
         jPBackGround.add(jPSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 30));
+
+        jLImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/fondo.jpg"))); // NOI18N
+        jPBackGround.add(jLImagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, -1, -1));
 
         jDEscritorio.setPreferredSize(new java.awt.Dimension(640, 427));
 
@@ -187,6 +192,9 @@ public class Principal extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 240, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/LogoVacunAr2.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 200, 90));
 
         jPBackGround.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, -1));
 
@@ -273,6 +281,8 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDEscritorio;
     private javax.swing.JLabel jLCerrar;
+    private javax.swing.JLabel jLImagenFondo;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPBackGround;
     private javax.swing.JPanel jPBotonCerrar;
     private javax.swing.JPanel jPSuperior;
