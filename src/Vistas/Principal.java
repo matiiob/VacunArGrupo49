@@ -106,7 +106,7 @@ public class Principal extends javax.swing.JFrame {
         );
         jPSuperiorLayout.setVerticalGroup(
             jPSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPBotonCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+            .addComponent(jPBotonCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPBackGround.add(jPSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 30));
