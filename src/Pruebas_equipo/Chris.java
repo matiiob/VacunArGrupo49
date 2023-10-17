@@ -21,11 +21,11 @@ public class Chris {
 
 
 
-//   -*-   PRUEBA MODIFICAR VACUNA
-
-         VacunaData vacu = new VacunaData();  
-         Vacuna vacuna = new Vacuna(3, 2345, "Astraseneca", 0.3, LocalDate.of(2022, 11, 21), true, 2, false);
-         vacu.modificarVacuna(vacuna);
+////   -*-   PRUEBA MODIFICAR VACUNA
+//
+//         VacunaData vacu = new VacunaData();  
+//         Vacuna vacuna = new Vacuna(3, 2345, "Astraseneca", 0.3, LocalDate.of(2022, 11, 21), true, 2, false);
+//         vacu.modificarVacuna(vacuna);
 
 
 

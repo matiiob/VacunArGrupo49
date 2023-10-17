@@ -29,34 +29,67 @@ public class Alex {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//          PRUEBA GUARDAR VACUNA
+//   -*-   PRUEBA GUARDAR VACUNA
 //
+//        Vacuna vacuna = new Vacuna(1212, "62b2", 0.3, LocalDate.of(2025, 10, 02), true, 2, false);              
+//        VacunaData vacun = new VacunaData();
+//        vacun.GuardarVacuna(vacuna);
+
+
+
+//   -*-   PRUEBA MODIFICAR VACUNA
+
 //         VacunaData vacu = new VacunaData();  
-//         Vacuna vacuna = new Vacuna(1234567894, "Gam-Covid-VacM (Sputnik)", 0.3, LocalDate.of(2023, 06, 25), true, 2,false);
-//         vacu.GuardarVacuna(vacuna);
+//         Vacuna vacuna = new Vacuna(3, 2345, "Astraseneca", 0.3, LocalDate.of(2022, 11, 21), true, 2, false);
+//         vacu.modificarVacuna(vacuna);
 
-//        PRUEBA MODIFICAR VACUNA
-//          VacunaData vacu = new VacunaData();  
-//          Vacuna vacuna = new Vacuna(3, 2345, "Astraseneca", 0.3, LocalDate.of(2022, 11, 21), true, 2);
-//          vacu.modificarVacuna(vacuna);
 
-//        PRUEBA ELIMINAR VACUNA
-//          VacunaData vacu = new VacunaData(); 
-//          vacu.eliminarVacuna(1);
+
+//   -*-   PRUEBA ELIMINAR VACUNA LOGICO
+//           VacunaData vacu = new VacunaData();   
+//           vacu.eliminarVacuna(1);
+
+
+//   -*-   PRUEBA LISTAR VACUNA
+
+//         VacunaData vacu = new VacunaData(); 
+//         for (Vacuna vacuna : vacu.listarVacunas(true)) {
+//         System.out.println(vacuna);
+//         }
+
+
            
+//   -*-  PRUEBA FECHA CADUCA VACUNA
 
-//        PRUEBA LISTAR VACUNA
-//           VacunaData vacu = new VacunaData(); 
-//           for (Vacuna vacuna : vacu.listarVacunas(true)) {
-//           System.out.println(vacu);
-//           }
+//        LocalDate fechaCaducidad = LocalDate.of(2023, 1, 1); //fecha de vencimiento-*-
+//        VacunaData vacu = new VacunaData(); 
+//        List<Vacuna> vacunasVencidas = vacu.buscarVacunaVencida(fechaCaducidad);
+//        System.out.println("Se encontro " + vacunasVencidas.size() + " vacuna/s vencida/s.");
+//        for (Vacuna vacuna : vacunasVencidas) {
+//        System.out.println("#########################################");
+//        System.out.println("ID de la vacuna: " + vacuna.getIdVacuna());
+//        System.out.println("Fecha de caducidad: " + vacuna.getFechaCaduca());
+//        System.out.println("¿Fue colocada? " + vacuna.isColocada());
+//        System.out.println("#########################################");
+//        System.out.println();
+//        }
+        
 
 
-//        PRUEBA FECHA CADUCA VACUNA
-//           VacunaData vacu = new VacunaData(); 
-//           Vacuna vacuna : vacu.buscarVacunaFechaCaduca(LocalDate.MAX, true) {
-//           System.out.println(vacu);    
-//           }
+
+//  -*-   PRUEBA BUSCAR VACUNA X LABORATORIO
+
+//        VacunaData vacu = new VacunaData();
+//        List<Vacuna> vacunaPorLaboratorio = vacu.buscarVacunaPorLaboratorio(2, true);
+//        System.out.println("Se encontro " + vacunaPorLaboratorio.size() + " vacuna/s  del Laboratorio.");
+//        for (Vacuna vacuna : vacunaPorLaboratorio) {
+//        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+//        System.out.println("ID de la vacuna: " + vacuna.getIdVacuna());
+//        System.out.println("¿Fue colocada? " + vacuna.isColocada());
+//        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+//        }
+
+    
 //**************************************************************************************
 //        CODIGO DE PRUEBAS CIUDADANO
 
@@ -122,9 +155,9 @@ public class Alex {
 //**************************************************************************************
 //        PRUEBA CITAVACUNACION:
 //         GUARDAR CITA VACUNACION.
-////        CitaVacunacion cita = new CitaVacunacion(4,01,Timestamp.valueOf(LocalDateTime.of(2023,Month.NOVEMBER,15,10,30)),"Centro de vacunacion ATE",Timestamp.valueOf(LocalDateTime.of(2023,Month.NOVEMBER,9,10,30)), 2,true);
-////        CitaVacunacionData citaData = new CitaVacunacionData();
-////        citaData.guardarCitaVacunacion(cita);
+//        CitaVacunacion cita = new CitaVacunacion(4,01,Timestamp.valueOf(LocalDateTime.of(2023,Month.NOVEMBER,15,10,30)),"Centro de vacunacion ATE",Timestamp.valueOf(LocalDateTime.of(2023,Month.NOVEMBER,9,10,30)), 2,true);
+//        CitaVacunacionData citaData = new CitaVacunacionData();
+//        citaData.guardarCitaVacunacion(cita);
 //******************************************************************************************    
 //      Prueba listar Citas por fechas Matias
 //        CitaVacunacionData citavData = new CitaVacunacionData();
@@ -165,17 +198,17 @@ public class Alex {
 //            System.out.println(citaDat);
 //        }
 //**************************************************************************************
-//    PRUEBA CITAS VENCIDAS
+//    PRUEBA CITAS CANCELADAS
 //        CitaVacunacionData citaData = new CitaVacunacionData();
 //        for (CitaVacunacion citaDat : citaData.obtenerCitasCanceladas()) {
 //            System.out.println(citaDat);
 //        }
 //****************************************************************************************
-    CitaVacunacionData citaData = new CitaVacunacionData();
-        for (CitaVacunacion citaDat : citaData.obtenerVacunasAplicadasPorCentro(LocalDate.of(2023, 10, 1), LocalDate.of(2023, 11, 30))) {
-            System.out.println(citaDat);
-        }
-
+//    CitaVacunacionData citaData = new CitaVacunacionData();
+//        for (CitaVacunacion citaDat : citaData.obtenerVacunasAplicadasPorCentro(LocalDate.of(2023, 10, 1), LocalDate.of(2023, 11, 30))) {
+//            System.out.println(citaDat);
+//        }
+//
     }
    }  
 
