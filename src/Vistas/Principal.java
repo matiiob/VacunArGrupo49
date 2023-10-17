@@ -8,6 +8,11 @@ public class Principal extends javax.swing.JFrame {
     public int xMouse, yMouse;
     public Principal() {
         initComponents();
+        
+        jPCargarCiudadano.setVisible(false);
+        jPCargarVacuna.setVisible(false);
+        jPCargarLaboratorio.setVisible(false);
+        jPCargarCita.setVisible(false);
     }
 
     /**
@@ -20,20 +25,27 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPBackGround = new javax.swing.JPanel();
-        jPSuperior = new javax.swing.JPanel();
+        jPBarraSuperior = new javax.swing.JPanel();
         jPBotonCerrar = new javax.swing.JPanel();
         jLCerrar = new javax.swing.JLabel();
-        jPanelLateral = new javax.swing.JPanel();
-        jPanelBoton1 = new javax.swing.JPanel();
-        jLabelBoton1 = new javax.swing.JLabel();
-        jPanelBoton2 = new javax.swing.JPanel();
-        jLabelBoton2 = new javax.swing.JLabel();
-        jPanelBoton3 = new javax.swing.JPanel();
-        jLabelBoton3 = new javax.swing.JLabel();
-        jPanelBoton4 = new javax.swing.JPanel();
-        jLabelBoton4 = new javax.swing.JLabel();
         jLLogoProyecto = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        jPanelLateral = new javax.swing.JPanel();
+        jPBotonCiudadano = new javax.swing.JPanel();
+        jLBotonCiudadano = new javax.swing.JLabel();
+        jPBotonVacuna = new javax.swing.JPanel();
+        jLBotonVacuna = new javax.swing.JLabel();
+        jPBotonLaboratorio = new javax.swing.JPanel();
+        jLBotonLaboratorio = new javax.swing.JLabel();
+        jPBotonCita = new javax.swing.JPanel();
+        jLBotonCita = new javax.swing.JLabel();
+        jPCargarCiudadano = new javax.swing.JPanel();
+        jLCargarCiudadano = new javax.swing.JLabel();
+        jPCargarVacuna = new javax.swing.JPanel();
+        jLCargarVacuna = new javax.swing.JLabel();
+        jPCargarLaboratorio = new javax.swing.JPanel();
+        jLCargarLaboratorio = new javax.swing.JLabel();
+        jPCargarCita = new javax.swing.JPanel();
+        jLCargarCita = new javax.swing.JLabel();
         jLLogoministerio = new javax.swing.JLabel();
         jLImagenFondo = new javax.swing.JLabel();
         jDEscritorio = new javax.swing.JDesktopPane();
@@ -46,15 +58,15 @@ public class Principal extends javax.swing.JFrame {
         jPBackGround.setBackground(new java.awt.Color(255, 255, 255));
         jPBackGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPSuperior.setOpaque(false);
-        jPSuperior.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        jPBarraSuperior.setOpaque(false);
+        jPBarraSuperior.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jPSuperiorMouseDragged(evt);
+                jPBarraSuperiorMouseDragged(evt);
             }
         });
-        jPSuperior.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPBarraSuperior.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPSuperiorMousePressed(evt);
+                jPBarraSuperiorMousePressed(evt);
             }
         });
 
@@ -90,161 +102,259 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jLCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPSuperiorLayout = new javax.swing.GroupLayout(jPSuperior);
-        jPSuperior.setLayout(jPSuperiorLayout);
-        jPSuperiorLayout.setHorizontalGroup(
-            jPSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPSuperiorLayout.createSequentialGroup()
-                .addContainerGap(848, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPBarraSuperiorLayout = new javax.swing.GroupLayout(jPBarraSuperior);
+        jPBarraSuperior.setLayout(jPBarraSuperiorLayout);
+        jPBarraSuperiorLayout.setHorizontalGroup(
+            jPBarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBarraSuperiorLayout.createSequentialGroup()
+                .addContainerGap(1008, Short.MAX_VALUE)
                 .addComponent(jPBotonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPSuperiorLayout.setVerticalGroup(
-            jPSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPBarraSuperiorLayout.setVerticalGroup(
+            jPBarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPBotonCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jPBackGround.add(jPSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 30));
+        jPBackGround.add(jPBarraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 30));
+
+        jLLogoProyecto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/LogoVacunAr.png"))); // NOI18N
+        jPBackGround.add(jLLogoProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 200, 90));
 
         jPanelLateral.setBackground(new java.awt.Color(50, 71, 138));
         jPanelLateral.setPreferredSize(new java.awt.Dimension(240, 427));
         jPanelLateral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelBoton1.setBackground(new java.awt.Color(195, 227, 250));
+        jPBotonCiudadano.setBackground(new java.awt.Color(195, 227, 250));
 
-        jLabelBoton1.setForeground(new java.awt.Color(0, 51, 153));
-        jLabelBoton1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelBoton1.setText("Cargar Ciudadano");
-        jLabelBoton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelBoton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLBotonCiudadano.setForeground(new java.awt.Color(0, 51, 153));
+        jLBotonCiudadano.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLBotonCiudadano.setText("Gestionar Ciudadanos");
+        jLBotonCiudadano.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLBotonCiudadano.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLBotonCiudadanoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelBoton1MouseEntered(evt);
+                jLBotonCiudadanoMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelBoton1MouseExited(evt);
+                jLBotonCiudadanoMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanelBoton1Layout = new javax.swing.GroupLayout(jPanelBoton1);
-        jPanelBoton1.setLayout(jPanelBoton1Layout);
-        jPanelBoton1Layout.setHorizontalGroup(
-            jPanelBoton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelBoton1, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPBotonCiudadanoLayout = new javax.swing.GroupLayout(jPBotonCiudadano);
+        jPBotonCiudadano.setLayout(jPBotonCiudadanoLayout);
+        jPBotonCiudadanoLayout.setHorizontalGroup(
+            jPBotonCiudadanoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLBotonCiudadano, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
         );
-        jPanelBoton1Layout.setVerticalGroup(
-            jPanelBoton1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelBoton1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        jPBotonCiudadanoLayout.setVerticalGroup(
+            jPBotonCiudadanoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLBotonCiudadano, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanelLateral.add(jPanelBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 240, 40));
+        jPanelLateral.add(jPBotonCiudadano, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 240, 40));
 
-        jPanelBoton2.setBackground(new java.awt.Color(174, 215, 245));
+        jPBotonVacuna.setBackground(new java.awt.Color(174, 215, 245));
 
-        jLabelBoton2.setForeground(new java.awt.Color(0, 51, 153));
-        jLabelBoton2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelBoton2.setText("jLabelBoton2");
-        jLabelBoton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelBoton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLBotonVacuna.setForeground(new java.awt.Color(0, 51, 153));
+        jLBotonVacuna.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLBotonVacuna.setText("Gestionar Vacunas");
+        jLBotonVacuna.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLBotonVacuna.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLBotonVacunaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelBoton2MouseEntered(evt);
+                jLBotonVacunaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelBoton2MouseExited(evt);
+                jLBotonVacunaMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanelBoton2Layout = new javax.swing.GroupLayout(jPanelBoton2);
-        jPanelBoton2.setLayout(jPanelBoton2Layout);
-        jPanelBoton2Layout.setHorizontalGroup(
-            jPanelBoton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelBoton2, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPBotonVacunaLayout = new javax.swing.GroupLayout(jPBotonVacuna);
+        jPBotonVacuna.setLayout(jPBotonVacunaLayout);
+        jPBotonVacunaLayout.setHorizontalGroup(
+            jPBotonVacunaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLBotonVacuna, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
         );
-        jPanelBoton2Layout.setVerticalGroup(
-            jPanelBoton2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelBoton2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        jPBotonVacunaLayout.setVerticalGroup(
+            jPBotonVacunaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLBotonVacuna, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanelLateral.add(jPanelBoton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 240, 40));
+        jPanelLateral.add(jPBotonVacuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 240, 40));
 
-        jPanelBoton3.setBackground(new java.awt.Color(167, 206, 235));
+        jPBotonLaboratorio.setBackground(new java.awt.Color(167, 206, 235));
 
-        jLabelBoton3.setForeground(new java.awt.Color(0, 51, 153));
-        jLabelBoton3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelBoton3.setText("jLabelBoton3");
-        jLabelBoton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelBoton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLBotonLaboratorio.setForeground(new java.awt.Color(0, 51, 153));
+        jLBotonLaboratorio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLBotonLaboratorio.setText("Gestionar Laboratorios");
+        jLBotonLaboratorio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLBotonLaboratorio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLBotonLaboratorioMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelBoton3MouseEntered(evt);
+                jLBotonLaboratorioMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelBoton3MouseExited(evt);
+                jLBotonLaboratorioMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanelBoton3Layout = new javax.swing.GroupLayout(jPanelBoton3);
-        jPanelBoton3.setLayout(jPanelBoton3Layout);
-        jPanelBoton3Layout.setHorizontalGroup(
-            jPanelBoton3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelBoton3, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPBotonLaboratorioLayout = new javax.swing.GroupLayout(jPBotonLaboratorio);
+        jPBotonLaboratorio.setLayout(jPBotonLaboratorioLayout);
+        jPBotonLaboratorioLayout.setHorizontalGroup(
+            jPBotonLaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLBotonLaboratorio, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
         );
-        jPanelBoton3Layout.setVerticalGroup(
-            jPanelBoton3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelBoton3, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        jPBotonLaboratorioLayout.setVerticalGroup(
+            jPBotonLaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLBotonLaboratorio, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanelLateral.add(jPanelBoton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 240, 40));
+        jPanelLateral.add(jPBotonLaboratorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 240, 40));
 
-        jPanelBoton4.setBackground(new java.awt.Color(122, 184, 225));
+        jPBotonCita.setBackground(new java.awt.Color(122, 184, 225));
 
-        jLabelBoton4.setForeground(new java.awt.Color(0, 51, 153));
-        jLabelBoton4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelBoton4.setText("jLabelBoton4");
-        jLabelBoton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelBoton4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLBotonCita.setForeground(new java.awt.Color(0, 51, 153));
+        jLBotonCita.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLBotonCita.setText("Gestionar Citas");
+        jLBotonCita.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLBotonCita.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLBotonCitaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelBoton4MouseEntered(evt);
+                jLBotonCitaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelBoton4MouseExited(evt);
+                jLBotonCitaMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanelBoton4Layout = new javax.swing.GroupLayout(jPanelBoton4);
-        jPanelBoton4.setLayout(jPanelBoton4Layout);
-        jPanelBoton4Layout.setHorizontalGroup(
-            jPanelBoton4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelBoton4, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPBotonCitaLayout = new javax.swing.GroupLayout(jPBotonCita);
+        jPBotonCita.setLayout(jPBotonCitaLayout);
+        jPBotonCitaLayout.setHorizontalGroup(
+            jPBotonCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLBotonCita, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
         );
-        jPanelBoton4Layout.setVerticalGroup(
-            jPanelBoton4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelBoton4, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-        );
-
-        jPanelLateral.add(jPanelBoton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 240, 40));
-
-        jLLogoProyecto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/LogoVacunAr2.png"))); // NOI18N
-        jPanelLateral.add(jLLogoProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 200, 90));
-
-        jPBackGround.add(jPanelLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, -1));
-
-        jPanel1.setBackground(new java.awt.Color(73, 122, 178));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 427, Short.MAX_VALUE)
+        jPBotonCitaLayout.setVerticalGroup(
+            jPBotonCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLBotonCita, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPBackGround.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 220, 427));
+        jPanelLateral.add(jPBotonCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 240, 40));
+
+        jPBackGround.add(jPanelLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 533));
+
+        jPCargarCiudadano.setBackground(new java.awt.Color(122, 184, 225));
+
+        jLCargarCiudadano.setForeground(new java.awt.Color(0, 51, 153));
+        jLCargarCiudadano.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLCargarCiudadano.setText("Cargar Ciudadano");
+        jLCargarCiudadano.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLCargarCiudadano.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLCargarCiudadanoMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPCargarCiudadanoLayout = new javax.swing.GroupLayout(jPCargarCiudadano);
+        jPCargarCiudadano.setLayout(jPCargarCiudadanoLayout);
+        jPCargarCiudadanoLayout.setHorizontalGroup(
+            jPCargarCiudadanoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLCargarCiudadano, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+        );
+        jPCargarCiudadanoLayout.setVerticalGroup(
+            jPCargarCiudadanoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLCargarCiudadano, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        jPBackGround.add(jPCargarCiudadano, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 240, 40));
+
+        jPCargarVacuna.setBackground(new java.awt.Color(167, 206, 235));
+
+        jLCargarVacuna.setForeground(new java.awt.Color(0, 51, 153));
+        jLCargarVacuna.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLCargarVacuna.setText("Cargar Vacuna");
+        jLCargarVacuna.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLCargarVacuna.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLCargarVacunaMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPCargarVacunaLayout = new javax.swing.GroupLayout(jPCargarVacuna);
+        jPCargarVacuna.setLayout(jPCargarVacunaLayout);
+        jPCargarVacunaLayout.setHorizontalGroup(
+            jPCargarVacunaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLCargarVacuna, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+        );
+        jPCargarVacunaLayout.setVerticalGroup(
+            jPCargarVacunaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLCargarVacuna, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        jPBackGround.add(jPCargarVacuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 240, 40));
+
+        jPCargarLaboratorio.setBackground(new java.awt.Color(195, 227, 250));
+
+        jLCargarLaboratorio.setForeground(new java.awt.Color(0, 51, 153));
+        jLCargarLaboratorio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLCargarLaboratorio.setText("Cargar Laboratorio");
+        jLCargarLaboratorio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLCargarLaboratorio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLCargarLaboratorioMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPCargarLaboratorioLayout = new javax.swing.GroupLayout(jPCargarLaboratorio);
+        jPCargarLaboratorio.setLayout(jPCargarLaboratorioLayout);
+        jPCargarLaboratorioLayout.setHorizontalGroup(
+            jPCargarLaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLCargarLaboratorio, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+        );
+        jPCargarLaboratorioLayout.setVerticalGroup(
+            jPCargarLaboratorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLCargarLaboratorio, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        jPBackGround.add(jPCargarLaboratorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 240, 40));
+
+        jPCargarCita.setBackground(new java.awt.Color(174, 215, 245));
+
+        jLCargarCita.setForeground(new java.awt.Color(0, 51, 153));
+        jLCargarCita.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLCargarCita.setText("Cargar Cita");
+        jLCargarCita.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLCargarCita.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLCargarCitaMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPCargarCitaLayout = new javax.swing.GroupLayout(jPCargarCita);
+        jPCargarCita.setLayout(jPCargarCitaLayout);
+        jPCargarCitaLayout.setHorizontalGroup(
+            jPCargarCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLCargarCita, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+        );
+        jPCargarCitaLayout.setVerticalGroup(
+            jPCargarCitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLCargarCita, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        jPBackGround.add(jPCargarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 240, 40));
 
         jLLogoministerio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/min_salud (1).png"))); // NOI18N
-        jPBackGround.add(jLLogoministerio, new org.netbeans.lib.awtextra.AbsoluteConstraints(759, 368, 110, 50));
+        jPBackGround.add(jLLogoministerio, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 480, 110, 50));
 
-        jLImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/fondo.jpg"))); // NOI18N
+        jLImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/fondoo.jpg"))); // NOI18N
+        jLImagenFondo.setOpaque(true);
         jPBackGround.add(jLImagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, -1, -1));
 
         jDEscritorio.setPreferredSize(new java.awt.Dimension(640, 427));
@@ -253,14 +363,14 @@ public class Principal extends javax.swing.JFrame {
         jDEscritorio.setLayout(jDEscritorioLayout);
         jDEscritorioLayout.setHorizontalGroup(
             jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         jDEscritorioLayout.setVerticalGroup(
             jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 427, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
-        jPBackGround.add(jDEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, -1, -1));
+        jPBackGround.add(jDEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 800, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -276,19 +386,19 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPSuperiorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPSuperiorMousePressed
+    private void jPBarraSuperiorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPBarraSuperiorMousePressed
         // TODO add your handling code here:
 
         xMouse = evt.getX();
         yMouse = evt.getY();
-    }//GEN-LAST:event_jPSuperiorMousePressed
+    }//GEN-LAST:event_jPBarraSuperiorMousePressed
 
-    private void jPSuperiorMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPSuperiorMouseDragged
+    private void jPBarraSuperiorMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPBarraSuperiorMouseDragged
         // TODO add your handling code here:
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x - xMouse, y - yMouse);
-    }//GEN-LAST:event_jPSuperiorMouseDragged
+    }//GEN-LAST:event_jPBarraSuperiorMouseDragged
 
     private void jLCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCerrarMouseExited
         // TODO add your handling code here:
@@ -307,53 +417,145 @@ public class Principal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLCerrarMouseClicked
 
-    private void jLabelBoton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBoton1MouseEntered
+    private void jLBotonCiudadanoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonCiudadanoMouseEntered
         // TODO add your handling code here:
-        jPanelBoton1.setBackground(new Color(207, 64, 32));
-        jLabelBoton1.setForeground(Color.white);
-    }//GEN-LAST:event_jLabelBoton1MouseEntered
+        jPBotonCiudadano.setBackground(new Color(207, 64, 32));
+        jLBotonCiudadano.setForeground(Color.white);
+    }//GEN-LAST:event_jLBotonCiudadanoMouseEntered
 
-    private void jLabelBoton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBoton1MouseExited
+    private void jLBotonCiudadanoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonCiudadanoMouseExited
         // TODO add your handling code here:
-        jPanelBoton1.setBackground(new Color(195,227,250));
-        jLabelBoton1.setForeground(new Color(0, 51, 53));
-    }//GEN-LAST:event_jLabelBoton1MouseExited
+        jPBotonCiudadano.setBackground(new Color(195,227,250));
+        jLBotonCiudadano.setForeground(new Color(0, 51, 53));
+    }//GEN-LAST:event_jLBotonCiudadanoMouseExited
 
-    private void jLabelBoton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBoton2MouseEntered
+    private void jLBotonVacunaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonVacunaMouseEntered
         // TODO add your handling code here:
-        jPanelBoton2.setBackground(new Color(207, 64, 32));
-        jLabelBoton2.setForeground(Color.white);
-    }//GEN-LAST:event_jLabelBoton2MouseEntered
+        jPBotonVacuna.setBackground(new Color(207, 64, 32));
+        jLBotonVacuna.setForeground(Color.white);
+    }//GEN-LAST:event_jLBotonVacunaMouseEntered
 
-    private void jLabelBoton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBoton2MouseExited
+    private void jLBotonVacunaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonVacunaMouseExited
         // TODO add your handling code here:
-        jPanelBoton2.setBackground(new Color(174,215,245));
-        jLabelBoton2.setForeground(new Color(0, 51, 53));
-    }//GEN-LAST:event_jLabelBoton2MouseExited
+        jPBotonVacuna.setBackground(new Color(174,215,245));
+        jLBotonVacuna.setForeground(new Color(0, 51, 53));
+    }//GEN-LAST:event_jLBotonVacunaMouseExited
 
-    private void jLabelBoton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBoton3MouseEntered
+    private void jLBotonLaboratorioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonLaboratorioMouseEntered
         // TODO add your handling code here:
-        jPanelBoton3.setBackground(new Color(207, 64, 32));
-        jLabelBoton3.setForeground(Color.white);
-    }//GEN-LAST:event_jLabelBoton3MouseEntered
+        jPBotonLaboratorio.setBackground(new Color(207, 64, 32));
+        jLBotonLaboratorio.setForeground(Color.white);
+    }//GEN-LAST:event_jLBotonLaboratorioMouseEntered
 
-    private void jLabelBoton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBoton3MouseExited
+    private void jLBotonLaboratorioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonLaboratorioMouseExited
         // TODO add your handling code here:
-        jPanelBoton3.setBackground(new Color(167,206,235));
-        jLabelBoton3.setForeground(new Color(0, 51, 53));
-    }//GEN-LAST:event_jLabelBoton3MouseExited
+        jPBotonLaboratorio.setBackground(new Color(167,206,235));
+        jLBotonLaboratorio.setForeground(new Color(0, 51, 53));
+    }//GEN-LAST:event_jLBotonLaboratorioMouseExited
 
-    private void jLabelBoton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBoton4MouseEntered
+    private void jLBotonCitaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonCitaMouseEntered
         // TODO add your handling code here:
-        jPanelBoton4.setBackground(new Color(207, 64, 32));
-        jLabelBoton4.setForeground(Color.white);
-    }//GEN-LAST:event_jLabelBoton4MouseEntered
+        jPBotonCita.setBackground(new Color(207, 64, 32));
+        jLBotonCita.setForeground(Color.white);
+    }//GEN-LAST:event_jLBotonCitaMouseEntered
 
-    private void jLabelBoton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBoton4MouseExited
+    private void jLBotonCitaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonCitaMouseExited
         // TODO add your handling code here:
-        jPanelBoton4.setBackground(new Color(122,184,225));
-        jLabelBoton4.setForeground(new Color(0, 51, 53));
-    }//GEN-LAST:event_jLabelBoton4MouseExited
+        jPBotonCita.setBackground(new Color(122,184,225));
+        jLBotonCita.setForeground(new Color(0, 51, 53));
+    }//GEN-LAST:event_jLBotonCitaMouseExited
+
+    private void jLBotonCiudadanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonCiudadanoMouseClicked
+        // TODO add your handling code here:
+        if (jPCargarCiudadano.isVisible()) {
+            jPCargarCiudadano.setVisible(false);
+        } else {
+            jPCargarCiudadano.setVisible(true);
+            jPCargarVacuna.setVisible(false);
+            jPCargarLaboratorio.setVisible(false);
+            jPCargarCita.setVisible(false);
+        }
+    }//GEN-LAST:event_jLBotonCiudadanoMouseClicked
+
+    private void jLBotonVacunaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonVacunaMouseClicked
+        // TODO add your handling code here:
+        if (jPCargarVacuna.isVisible()) {
+            jPCargarVacuna.setVisible(false);
+        } else {
+            jPCargarCiudadano.setVisible(false);
+            jPCargarVacuna.setVisible(true);
+            jPCargarLaboratorio.setVisible(false);
+            jPCargarCita.setVisible(false);
+        }
+    }//GEN-LAST:event_jLBotonVacunaMouseClicked
+
+    private void jLCargarVacunaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCargarVacunaMouseClicked
+        // TODO add your handling code here:
+        jPCargarVacuna.setVisible(false);
+        jDEscritorio.removeAll();
+        jDEscritorio.repaint();
+        Cargar_Vacuna cv = new Cargar_Vacuna();
+        cv.setVisible(true);
+        jDEscritorio.add(cv);
+        jDEscritorio.moveToFront(cv);
+    }//GEN-LAST:event_jLCargarVacunaMouseClicked
+
+    private void jLCargarCiudadanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCargarCiudadanoMouseClicked
+        // TODO add your handling code here:
+        jPCargarCiudadano.setVisible(false);
+        jDEscritorio.removeAll();
+        jDEscritorio.repaint();
+        CargarCiudadano cc = new CargarCiudadano();
+        cc.setVisible(true);
+        jDEscritorio.add(cc);
+        jDEscritorio.moveToFront(cc);
+    }//GEN-LAST:event_jLCargarCiudadanoMouseClicked
+
+    private void jLBotonLaboratorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonLaboratorioMouseClicked
+        // TODO add your handling code here:
+         if (jPCargarLaboratorio.isVisible()) {
+            jPCargarLaboratorio.setVisible(false);
+        } else {
+            jPCargarCiudadano.setVisible(false);
+            jPCargarVacuna.setVisible(false);
+            jPCargarLaboratorio.setVisible(true);
+            jPCargarCita.setVisible(false);
+        }
+    }//GEN-LAST:event_jLBotonLaboratorioMouseClicked
+
+    private void jLBotonCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonCitaMouseClicked
+        // TODO add your handling code here:
+         if (jPCargarCita.isVisible()) {
+            jPCargarCita.setVisible(false);
+        } else {
+            jPCargarCiudadano.setVisible(false);
+            jPCargarVacuna.setVisible(false);
+            jPCargarLaboratorio.setVisible(false);
+            jPCargarCita.setVisible(true);
+        }
+    }//GEN-LAST:event_jLBotonCitaMouseClicked
+
+    private void jLCargarLaboratorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCargarLaboratorioMouseClicked
+        // TODO add your handling code here:
+        jPCargarLaboratorio.setVisible(false);
+        jDEscritorio.removeAll();
+        jDEscritorio.repaint();
+        CargarLaboratorio cl = new CargarLaboratorio();
+        cl.setVisible(true);
+        jDEscritorio.add(cl);
+        jDEscritorio.moveToFront(cl);
+    }//GEN-LAST:event_jLCargarLaboratorioMouseClicked
+
+    private void jLCargarCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCargarCitaMouseClicked
+        // TODO add your handling code here:
+        jPCargarCita.setVisible(false);
+        jDEscritorio.removeAll();
+        jDEscritorio.repaint();
+        CargarCitaView ccv = new CargarCitaView();
+        ccv.setVisible(true);
+        jDEscritorio.add(ccv);
+        jDEscritorio.moveToFront(ccv);
+    }//GEN-LAST:event_jLCargarCitaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -392,23 +594,30 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDEscritorio;
+    private javax.swing.JLabel jLBotonCita;
+    private javax.swing.JLabel jLBotonCiudadano;
+    private javax.swing.JLabel jLBotonLaboratorio;
+    private javax.swing.JLabel jLBotonVacuna;
+    private javax.swing.JLabel jLCargarCita;
+    private javax.swing.JLabel jLCargarCiudadano;
+    private javax.swing.JLabel jLCargarLaboratorio;
+    private javax.swing.JLabel jLCargarVacuna;
     private javax.swing.JLabel jLCerrar;
     private javax.swing.JLabel jLImagenFondo;
     private javax.swing.JLabel jLLogoProyecto;
     private javax.swing.JLabel jLLogoministerio;
-    private javax.swing.JLabel jLabelBoton1;
-    private javax.swing.JLabel jLabelBoton2;
-    private javax.swing.JLabel jLabelBoton3;
-    private javax.swing.JLabel jLabelBoton4;
     private javax.swing.JPanel jPBackGround;
+    private javax.swing.JPanel jPBarraSuperior;
     private javax.swing.JPanel jPBotonCerrar;
-    private javax.swing.JPanel jPSuperior;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPBotonCita;
+    private javax.swing.JPanel jPBotonCiudadano;
+    private javax.swing.JPanel jPBotonLaboratorio;
+    private javax.swing.JPanel jPBotonVacuna;
+    private javax.swing.JPanel jPCargarCita;
+    private javax.swing.JPanel jPCargarCiudadano;
+    private javax.swing.JPanel jPCargarLaboratorio;
+    private javax.swing.JPanel jPCargarVacuna;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanelBoton1;
-    private javax.swing.JPanel jPanelBoton2;
-    private javax.swing.JPanel jPanelBoton3;
-    private javax.swing.JPanel jPanelBoton4;
     private javax.swing.JPanel jPanelLateral;
     // End of variables declaration//GEN-END:variables
 }
