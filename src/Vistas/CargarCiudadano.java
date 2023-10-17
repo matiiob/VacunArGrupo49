@@ -28,6 +28,7 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         initComponents();
         cd = new CiudadanoData();
         ciudadano = new Ciudadano();
+        cargarPatologias();
         
     }
 
@@ -401,7 +402,7 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         ciudadano.setCelular(celularText);
         ciudadano.setEmail(emailText);
         ciudadano.setPatologia(patologiaText);
-        ciudadano.setAmbitoTrabajo(jCBAmbitoTrabajo.getName());
+        ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
         cd.guardarCiudadano(ciudadano);
     } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(this, "El campo DNI debe ser un número válido.");

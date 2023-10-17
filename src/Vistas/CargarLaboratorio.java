@@ -5,6 +5,9 @@
  */
 package Vistas;
 
+import java.awt.Color;
+import java.util.concurrent.TimeUnit;
+
 /**
  *
  * @author pc
@@ -27,21 +30,324 @@ public class CargarLaboratorio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLCargarLaboratorio = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        btnLimpiar = new javax.swing.JButton();
+        jTFCuit = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jTFNombreLaboratorio = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jTFPais = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jTFDomicilio = new javax.swing.JTextField();
+        btnSalir = new javax.swing.JButton();
+        btnCargarLaboratorio = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(142, 170, 189));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "www.argentina.gob.ar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12), new java.awt.Color(3, 67, 97))); // NOI18N
+        jPanel1.setDoubleBuffered(false);
+        jPanel1.setFocusCycleRoot(true);
+        jPanel1.setPreferredSize(new java.awt.Dimension(750, 500));
+
+        jLCargarLaboratorio.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLCargarLaboratorio.setText("CARGAR LABORATORIO");
+
+        jLabel8.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel8.setText("Cuit");
+
+        btnLimpiar.setBackground(new java.awt.Color(157, 161, 158));
+        btnLimpiar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(0, 0, 0));
+        btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/escoba.png"))); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLimpiarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLimpiarMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnLimpiarMouseReleased(evt);
+            }
+        });
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        jTFCuit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFCuitActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/min_salud (1).png"))); // NOI18N
+
+        jLabel11.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel11.setText("Nombre");
+
+        jLabel12.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel12.setText("Pais");
+
+        jLabel13.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel13.setText("Domicilio");
+
+        btnSalir.setBackground(new java.awt.Color(0, 204, 204));
+        btnSalir.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(0, 0, 0));
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnSalirMouseReleased(evt);
+            }
+        });
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+
+        btnCargarLaboratorio.setBackground(new java.awt.Color(35, 153, 67));
+        btnCargarLaboratorio.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnCargarLaboratorio.setForeground(new java.awt.Color(0, 0, 0));
+        btnCargarLaboratorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/vacuna.png"))); // NOI18N
+        btnCargarLaboratorio.setText("Cargar");
+        btnCargarLaboratorio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCargarLaboratorioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCargarLaboratorioMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnCargarLaboratorioMouseReleased(evt);
+            }
+        });
+        btnCargarLaboratorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarLaboratorioActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(btnCargarLaboratorio)
+                .addGap(82, 82, 82)
+                .addComponent(btnLimpiar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalir)
+                .addGap(37, 37, 37))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(229, 229, 229)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 221, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(jTFPais, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel12)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTFCuit, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel11)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTFNombreLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel13)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(138, 138, 138)
+                            .addComponent(jTFDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLCargarLaboratorio))
+                .addGap(151, 151, 151))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLCargarLaboratorio)
+                .addGap(54, 54, 54)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFCuit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFNombreLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCargarLaboratorio)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseEntered
+
+//        Color myColor = new Color(213, 230, 224); // creo mí color personalizado-*-
+
+//        btnLimpiar.setBackground(myColor);
+    }//GEN-LAST:event_btnLimpiarMouseEntered
+
+    private void btnLimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseExited
+
+        btnLimpiar.setBackground(new Color(157, 161, 158));
+    }//GEN-LAST:event_btnLimpiarMouseExited
+
+    private void btnLimpiarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseReleased
+
+//        try {
+//            TimeUnit.MILLISECONDS.sleep(300);
+//
+//            // En caso de haber funciones van aquí dentro-*-
+//        } catch (InterruptedException ex) {
+//            Logger.getLogger(CargarVacuna.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }//GEN-LAST:event_btnLimpiarMouseReleased
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+
+        limpiarPantalla();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void jTFCuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFCuitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFCuitActionPerformed
+
+    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
+
+//        Color myColor = new Color(88, 144, 173); // creo mí color personalizado-*-
+
+//        btnSalir.setBackground(myColor);
+    }//GEN-LAST:event_btnSalirMouseEntered
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+
+//        btnSalir.setBackground(new Color(0,204,204));
+    }//GEN-LAST:event_btnSalirMouseExited
+
+    private void btnSalirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseReleased
+//
+//        try {
+//            TimeUnit.MILLISECONDS.sleep(300);
+//
+//            // En caso de haber funciones van aquí dentro-*-
+//
+//        } catch (InterruptedException ex) {
+//            Logger.getLogger(CargarVacuna.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }//GEN-LAST:event_btnSalirMouseReleased
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+//        String [] botones = {"SI", "NO", "CANCELAR"};
+//        int x = JOptionPane.showOptionDialog(this, "¿Estás seguro que desea salir?", "Elije una respuesta", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
+//        //mensaje               //titulo                                                                                      //String
+//
+//        if (x == 0) {
+//            JOptionPane.showMessageDialog(this, "Gracias por tu visita!!!");
+//            dispose();
+//        }
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnCargarLaboratorioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarLaboratorioMouseEntered
+
+//        Color myColor = new Color(12, 71, 6); // creo mí color personalizado-*-
+
+//        btnCargarLaboratorio.setBackground(myColor);
+    }//GEN-LAST:event_btnCargarLaboratorioMouseEntered
+
+    private void btnCargarLaboratorioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarLaboratorioMouseExited
+
+//        btnCargarLaboratorio.setBackground(new Color(35,153,67));
+    }//GEN-LAST:event_btnCargarLaboratorioMouseExited
+
+    private void btnCargarLaboratorioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarLaboratorioMouseReleased
+
+//        try {
+//            TimeUnit.MILLISECONDS.sleep(300);
+//
+//            // En caso de haber funciones van aquí dentro-*-
+//
+//        } catch (InterruptedException ex) {
+//            Logger.getLogger(CargarVacuna.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }//GEN-LAST:event_btnCargarLaboratorioMouseReleased
+
+    private void btnCargarLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarLaboratorioActionPerformed
+
+//        try {
+//            String dniText = jTFCuit.getText();
+//            String nombreText = (String) jTFNombreLaboratorio.getText();
+//            String emailText = (String) jTFPais.getText();
+//            String celularText = (String) jTFDomicilio.getText();
+//            String patologiaText = (String) jTFPatologia.getText();
+//            String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getActionCommand();
+//
+//            if (dniText.length()>=9 || dniText.length()<5){
+//                //            JOptionPane.showMessageDialog(this, "Debe introducir un dni válido");
+//                jTFCuit.setText("");
+//            }
+//            int dni = Integer.parseInt(jTFCuit.getText());
+//            ciudadano.setDni(dni);
+//            ciudadano.setNombreCompleto(nombreText);
+//            ciudadano.setCelular(celularText);
+//            ciudadano.setEmail(emailText);
+//            ciudadano.setPatologia(patologiaText);
+//            ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
+//            cd.guardarCiudadano(ciudadano);
+//        } catch (NumberFormatException e) {
+//            JOptionPane.showMessageDialog(this, "El campo DNI debe ser un número válido.");
+//        }
+
+    }//GEN-LAST:event_btnCargarLaboratorioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +385,30 @@ public class CargarLaboratorio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCargarLaboratorio;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JLabel jLCargarLaboratorio;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTFCuit;
+    private javax.swing.JTextField jTFDomicilio;
+    private javax.swing.JTextField jTFNombreLaboratorio;
+    private javax.swing.JTextField jTFPais;
     // End of variables declaration//GEN-END:variables
+
+public void limpiarPantalla() {
+
+        jTFCuit.setText("");
+        jTFNombreLaboratorio.setText("");
+        jTFPais.setText("");
+        jTFDomicilio.setText("");
+       
+
+
+    }
 }
