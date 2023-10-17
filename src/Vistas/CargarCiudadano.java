@@ -36,8 +36,6 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        btnSalir = new javax.swing.JButton();
-        btnCargarCiudadano = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jTFDni = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -51,6 +49,8 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         jLabel14 = new javax.swing.JLabel();
         jTFPatologia = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
+        btnCargarCiudadano = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -65,23 +65,6 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel8.setText("Dni");
-
-        btnSalir.setBackground(new java.awt.Color(0, 204, 204));
-        btnSalir.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        btnSalir.setForeground(new java.awt.Color(0, 0, 0));
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida.png"))); // NOI18N
-        btnSalir.setText("Salir");
-
-        btnCargarCiudadano.setBackground(new java.awt.Color(35, 153, 67));
-        btnCargarCiudadano.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        btnCargarCiudadano.setForeground(new java.awt.Color(0, 0, 0));
-        btnCargarCiudadano.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/vacuna.png"))); // NOI18N
-        btnCargarCiudadano.setText("Cargar");
-        btnCargarCiudadano.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCargarCiudadanoActionPerformed(evt);
-            }
-        });
 
         btnLimpiar.setBackground(new java.awt.Color(157, 161, 158));
         btnLimpiar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -142,6 +125,50 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         jLabel15.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel15.setText("Ambito de Trabajo");
 
+        btnSalir.setBackground(new java.awt.Color(0, 204, 204));
+        btnSalir.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnSalir.setForeground(new java.awt.Color(0, 0, 0));
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida.png"))); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnSalirMouseReleased(evt);
+            }
+        });
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+
+        btnCargarCiudadano.setBackground(new java.awt.Color(35, 153, 67));
+        btnCargarCiudadano.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnCargarCiudadano.setForeground(new java.awt.Color(0, 0, 0));
+        btnCargarCiudadano.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/vacuna.png"))); // NOI18N
+        btnCargarCiudadano.setText("Cargar");
+        btnCargarCiudadano.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCargarCiudadanoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCargarCiudadanoMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnCargarCiudadanoMouseReleased(evt);
+            }
+        });
+        btnCargarCiudadano.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarCiudadanoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -153,7 +180,7 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
                 .addComponent(btnLimpiar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSalir)
-                .addGap(49, 49, 49))
+                .addGap(37, 37, 37))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(229, 229, 229)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -237,7 +264,9 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pack();
@@ -270,27 +299,7 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
 
         btnLimpiar.setBackground(myColor);
     }//GEN-LAST:event_btnLimpiarMouseEntered
-
-    private void btnCargarCiudadanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarCiudadanoActionPerformed
-
-        String dniText = jTFDni.getText();
-        String nombreText = (String) jTFNombre.getText();
-        String emailText = (String) jTFEmail.getText();
-        String celularText = (String) jTFCelular.getText();
-//
-        if (dniText.isEmpty() || nombreText.isEmpty() || emailText.isEmpty() || celularText.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
-        } else {
-            ciudadano.setDni(Integer.valueOf(jTFDni.getText()));
-            ciudadano.setNombreCompleto(jTFNombre.getText());
-            ciudadano.setCelular(jTFCelular.getText());
-            ciudadano.setEmail(jTFEmail.getText());
-            ciudadano.setPatologia(jTFPatologia.getText());
-            ciudadano.setAmbitoTrabajo(jCBAmbitoTrabajo.getName());
-            cd.guardarCiudadano(ciudadano);
-//            
-    }//GEN-LAST:event_btnCargarCiudadanoActionPerformed
-    }
+    
     private void jTFPatologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFPatologiaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFPatologiaActionPerformed
@@ -303,18 +312,105 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFDniActionPerformed
 
+    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
+
+        Color myColor = new Color(88, 144, 173); // creo mí color personalizado-*-
+
+        btnSalir.setBackground(myColor);
+
+    }//GEN-LAST:event_btnSalirMouseEntered
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+
+        btnSalir.setBackground(new Color(0,204,204));
+    }//GEN-LAST:event_btnSalirMouseExited
+
+    private void btnSalirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseReleased
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(300);
+
+            // En caso de haber funciones van aquí dentro-*-
+
+        } catch (InterruptedException ex) {
+            Logger.getLogger(CargarVacuna.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_btnSalirMouseReleased
+    
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        String [] botones = {"SI", "NO", "CANCELAR"};
+        int x = JOptionPane.showOptionDialog(this, "¿Estás seguro que desea salir?", "Elije una respuesta", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
+        //mensaje               //titulo                                                                                      //String
+
+        if (x == 0) {
+            JOptionPane.showMessageDialog(this, "Gracias por tu visita!!!");
+            dispose();
+        } 
+
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnCargarCiudadanoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarCiudadanoMouseEntered
+
+        Color myColor = new Color(12, 71, 6); // creo mí color personalizado-*-
+
+        btnCargarCiudadano.setBackground(myColor);
+
+    }//GEN-LAST:event_btnCargarCiudadanoMouseEntered
+
+    private void btnCargarCiudadanoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarCiudadanoMouseExited
+
+        btnCargarCiudadano.setBackground(new Color(35,153,67));
+
+    }//GEN-LAST:event_btnCargarCiudadanoMouseExited
+
+    private void btnCargarCiudadanoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarCiudadanoMouseReleased
+
+        try {
+            TimeUnit.MILLISECONDS.sleep(300);
+
+            // En caso de haber funciones van aquí dentro-*-
+
+        } catch (InterruptedException ex) {
+            Logger.getLogger(CargarVacuna.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_btnCargarCiudadanoMouseReleased
+
+    private void btnCargarCiudadanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarCiudadanoActionPerformed
+                                                
+
+        try {
+        String dniText = jTFDni.getText();
+        String nombreText = (String) jTFNombre.getText();
+        String emailText = (String) jTFEmail.getText();
+        String celularText = (String) jTFCelular.getText();
+        String patologiaText = (String) jTFPatologia.getText();
+        String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getActionCommand();
+        
+        if (dniText.length()>=9 || dniText.length()<5){
+//            JOptionPane.showMessageDialog(this, "Debe introducir un dni válido");
+            jTFDni.setText("");
+        }
+        int dni = Integer.parseInt(jTFDni.getText());
+        ciudadano.setDni(dni);
+        ciudadano.setNombreCompleto(nombreText);
+        ciudadano.setCelular(celularText);
+        ciudadano.setEmail(emailText);
+        ciudadano.setPatologia(patologiaText);
+        ciudadano.setAmbitoTrabajo(jCBAmbitoTrabajo.getName());
+        cd.guardarCiudadano(ciudadano);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "El campo DNI debe ser un número válido.");
+    }                                                  
+    
+
+    }//GEN-LAST:event_btnCargarCiudadanoActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-      
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CargarCiudadano().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCargarCiudadano;
@@ -340,11 +436,12 @@ public void limpiarPantalla() {
 
         jTFDni.setText("");
         jTFNombre.setText("");
-        jTFEmail.setText(" ");
-        jTFPatologia.setText(" ");
-//        jCBMedida.setSelectedIndex(0); // toma indice 0
+        jTFEmail.setText("");
+        jTFCelular.setText("");
+        jTFPatologia.setText("");
+        
         jCBAmbitoTrabajo.setSelectedIndex(0); // toma indice 0
-//        jRBEliminada.setSelected(true); 
+
 
     }
 }
