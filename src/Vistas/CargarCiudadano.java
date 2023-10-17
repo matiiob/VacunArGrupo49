@@ -7,7 +7,10 @@ package Vistas;
 
 import AccesoADatos.CiudadanoData;
 import Entidades.Ciudadano;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -407,10 +410,16 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnCargarCiudadanoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-   
+    private void cargarPatologias() {
+    List<String> listasAmbitoTrabajo = new ArrayList<>();
+    listasAmbitoTrabajo.add("Educación");
+    listasAmbitoTrabajo.add("Salud");
+    listasAmbitoTrabajo.add("Otros");
+    for (String ambitoTrabajo : listasAmbitoTrabajo) {
+        jCBAmbitoTrabajo.addItem(ambitoTrabajo); 
+    }
+}
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCargarCiudadano;
