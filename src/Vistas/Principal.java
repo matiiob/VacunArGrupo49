@@ -46,9 +46,8 @@ public class Principal extends javax.swing.JFrame {
         jLCargarLaboratorio = new javax.swing.JLabel();
         jPCargarCita = new javax.swing.JPanel();
         jLCargarCita = new javax.swing.JLabel();
-        jLLogoministerio = new javax.swing.JLabel();
-        jLImagenFondo = new javax.swing.JLabel();
         jDEscritorio = new javax.swing.JDesktopPane();
+        jLLogoministerio = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -107,7 +106,7 @@ public class Principal extends javax.swing.JFrame {
         jPBarraSuperiorLayout.setHorizontalGroup(
             jPBarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBarraSuperiorLayout.createSequentialGroup()
-                .addContainerGap(1008, Short.MAX_VALUE)
+                .addContainerGap(1178, Short.MAX_VALUE)
                 .addComponent(jPBotonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPBarraSuperiorLayout.setVerticalGroup(
@@ -115,7 +114,7 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jPBotonCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jPBackGround.add(jPBarraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 30));
+        jPBackGround.add(jPBarraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 30));
 
         jLLogoProyecto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/LogoVacunAr.png"))); // NOI18N
         jPBackGround.add(jLLogoProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 200, 90));
@@ -248,7 +247,7 @@ public class Principal extends javax.swing.JFrame {
 
         jPanelLateral.add(jPBotonCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 240, 40));
 
-        jPBackGround.add(jPanelLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 533));
+        jPBackGround.add(jPanelLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 660));
 
         jPCargarCiudadano.setBackground(new java.awt.Color(122, 184, 225));
 
@@ -350,27 +349,30 @@ public class Principal extends javax.swing.JFrame {
 
         jPBackGround.add(jPCargarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 240, 40));
 
-        jLLogoministerio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/min_salud (1).png"))); // NOI18N
-        jPBackGround.add(jLLogoministerio, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 480, 110, 50));
-
-        jLImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/fondoo.jpg"))); // NOI18N
-        jLImagenFondo.setOpaque(true);
-        jPBackGround.add(jLImagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, -1, -1));
-
         jDEscritorio.setPreferredSize(new java.awt.Dimension(640, 427));
+
+        jLLogoministerio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/min_salud (1).png"))); // NOI18N
+
+        jDEscritorio.setLayer(jLLogoministerio, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDEscritorioLayout = new javax.swing.GroupLayout(jDEscritorio);
         jDEscritorio.setLayout(jDEscritorioLayout);
         jDEscritorioLayout.setHorizontalGroup(
             jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDEscritorioLayout.createSequentialGroup()
+                .addContainerGap(489, Short.MAX_VALUE)
+                .addComponent(jLLogoministerio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(371, 371, 371))
         );
         jDEscritorioLayout.setVerticalGroup(
             jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDEscritorioLayout.createSequentialGroup()
+                .addContainerGap(574, Short.MAX_VALUE)
+                .addComponent(jLLogoministerio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        jPBackGround.add(jDEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 800, 500));
+        jPBackGround.add(jDEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 970, 630));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -603,7 +605,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLCargarLaboratorio;
     private javax.swing.JLabel jLCargarVacuna;
     private javax.swing.JLabel jLCerrar;
-    private javax.swing.JLabel jLImagenFondo;
     private javax.swing.JLabel jLLogoProyecto;
     private javax.swing.JLabel jLLogoministerio;
     private javax.swing.JPanel jPBackGround;
@@ -617,7 +618,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPCargarCiudadano;
     private javax.swing.JPanel jPCargarLaboratorio;
     private javax.swing.JPanel jPCargarVacuna;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelLateral;
     // End of variables declaration//GEN-END:variables
 }
