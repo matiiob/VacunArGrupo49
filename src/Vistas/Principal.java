@@ -67,6 +67,8 @@ public class Principal extends javax.swing.JFrame {
         jPBackGround.setBackground(new java.awt.Color(255, 255, 255));
         jPBackGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPBarraSuperior.setAlignmentX(0.0F);
+        jPBarraSuperior.setAlignmentY(0.0F);
         jPBarraSuperior.setOpaque(false);
         jPBarraSuperior.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -378,12 +380,12 @@ public class Principal extends javax.swing.JFrame {
         jDEscritorioLayout.setVerticalGroup(
             jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDEscritorioLayout.createSequentialGroup()
-                .addContainerGap(574, Short.MAX_VALUE)
+                .addContainerGap(604, Short.MAX_VALUE)
                 .addComponent(jLLogoministerio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPBackGround.add(jDEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 970, 630));
+        jPBackGround.add(jDEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 970, 660));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -393,7 +395,7 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPBackGround, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPBackGround, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -509,7 +511,7 @@ public class Principal extends javax.swing.JFrame {
         jDEscritorio.repaint();
         Cargar_Vacuna cv = new Cargar_Vacuna();
         cv.setVisible(true);
-        jDEscritorio.add(cv);
+        jDEscritorio.add(cv).setLocation(30, 30);
         jDEscritorio.moveToFront(cv);
     }//GEN-LAST:event_jLCargarVacunaMouseClicked
 
@@ -520,7 +522,7 @@ public class Principal extends javax.swing.JFrame {
         jDEscritorio.repaint();
         CargarCiudadano cc = new CargarCiudadano();
         cc.setVisible(true);
-        jDEscritorio.add(cc);
+        jDEscritorio.add(cc).setLocation(30, 30);
         jDEscritorio.moveToFront(cc);
     }//GEN-LAST:event_jLCargarCiudadanoMouseClicked
 
@@ -555,7 +557,7 @@ public class Principal extends javax.swing.JFrame {
         jDEscritorio.repaint();
         CargarLaboratorio cl = new CargarLaboratorio();
         cl.setVisible(true);
-        jDEscritorio.add(cl);
+        jDEscritorio.add(cl).setLocation(30, 30);
         jDEscritorio.moveToFront(cl);
     }//GEN-LAST:event_jLCargarLaboratorioMouseClicked
 
@@ -566,7 +568,7 @@ public class Principal extends javax.swing.JFrame {
         jDEscritorio.repaint();
         CargarCitaView ccv = new CargarCitaView();
         ccv.setVisible(true);
-        jDEscritorio.add(ccv);
+        jDEscritorio.add(ccv).setLocation(30, 30);
         jDEscritorio.moveToFront(ccv);
     }//GEN-LAST:event_jLCargarCitaMouseClicked
 
