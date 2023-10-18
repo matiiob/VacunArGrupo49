@@ -288,7 +288,7 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
 
             // En caso de haber funciones van aquí dentro-*-
         } catch (InterruptedException ex) {
-            Logger.getLogger(CargarVacuna.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CargarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnLimpiarMouseReleased
 
@@ -337,7 +337,7 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
             // En caso de haber funciones van aquí dentro-*-
 
         } catch (InterruptedException ex) {
-            Logger.getLogger(CargarVacuna.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CargarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_btnSalirMouseReleased
@@ -376,7 +376,7 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
             // En caso de haber funciones van aquí dentro-*-
 
         } catch (InterruptedException ex) {
-            Logger.getLogger(CargarVacuna.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CargarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_btnCargarCiudadanoMouseReleased
