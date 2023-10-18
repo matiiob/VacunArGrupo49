@@ -328,29 +328,28 @@ public class CargarLaboratorio extends javax.swing.JInternalFrame {
 
     private void btnCargarLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarLaboratorioActionPerformed
 
-        //        try {
-            //            String dniText = jTFCuit.getText();
-            //            String nombreText = (String) jTFNombreLaboratorio.getText();
-            //            String emailText = (String) jTFPais.getText();
-            //            String celularText = (String) jTFDomicilio.getText();
-            //            String patologiaText = (String) jTFPatologia.getText();
-            //            String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getActionCommand();
-            //
-            //            if (dniText.length()>=9 || dniText.length()<5){
-                //                //            JOptionPane.showMessageDialog(this, "Debe introducir un dni válido");
-                //                jTFCuit.setText("");
-                //            }
-            //            int dni = Integer.parseInt(jTFCuit.getText());
-            //            ciudadano.setDni(dni);
-            //            ciudadano.setNombreCompleto(nombreText);
-            //            ciudadano.setCelular(celularText);
-            //            ciudadano.setEmail(emailText);
-            //            ciudadano.setPatologia(patologiaText);
-            //            ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
-            //            cd.guardarCiudadano(ciudadano);
-            //        } catch (NumberFormatException e) {
-            //            JOptionPane.showMessageDialog(this, "El campo DNI debe ser un número válido.");
-            //        }
+//                try {
+//                        String cuitText = jTFCuit.getText();
+//                        String nombreLaboratorioText = (String) jTFNombreLaboratorio.getText();
+//                        String paisText = (String) jTFPais.getText();
+//                        String Text = (String) jTFDomicilio.getText();
+//                        
+//            
+//                        if (dniText.length()>=9 || dniText.length()<5){
+//                                //            JOptionPane.showMessageDialog(this, "Debe introducir un dni válido");
+//                                jTFCuit.setText("");
+//                            }
+//                        int dni = Integer.parseInt(jTFCuit.getText());
+//                        ciudadano.setDni(dni);
+//                        ciudadano.setNombreCompleto(nombreText);
+//                        ciudadano.setCelular(celularText);
+//                        ciudadano.setEmail(emailText);
+//                        ciudadano.setPatologia(patologiaText);
+//                        ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
+//                        cd.guardarCiudadano(ciudadano);
+//                    } catch (NumberFormatException e) {
+//                        JOptionPane.showMessageDialog(this, "El campo DNI debe ser un número válido.");
+//                    }
     }//GEN-LAST:event_btnCargarLaboratorioActionPerformed
 
 
