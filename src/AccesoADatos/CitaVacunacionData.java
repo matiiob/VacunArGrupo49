@@ -305,4 +305,33 @@ public class CitaVacunacionData {
         }
        return citas;
    } 
+   public Ciudadano buscarCiudadanoPorDni(int dni) {
+        // La busqueda permite al usuario buscar un Ciudadano por su dni.
+        
+        String sql = "SELECT* FROM ciudadano WHERE dni = ?";
+
+        Ciudadano ciudadano = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, dni);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                
+                ciudadano = new Ciudadano();
+                
+                ciudadano.setDni(rs.getInt("dni"));
+                ciudadano.setIdCiudadano(rs.getInt("idCiudadano"));
+                ciudadano.setNombreCompleto(rs.getString("nombreCompleto"));
+                ciudadano.setEmail(rs.getString("email"));
+                ciudadano.setCelular(rs.getString("celular"));
+                ciudadano.setPatologia(rs.getString("patologia"));
+                ciudadano.setAmbitoTrabajo(rs.getString("ambitoTrabajo"));
+            }
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Ciudadano" + e.getMessage());
+        }
+        return ciudadano;
+    }
 }
