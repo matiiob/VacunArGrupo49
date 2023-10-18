@@ -5,17 +5,24 @@
  */
 package Vistas;
 
-import java.awt.Color;
-import java.util.concurrent.TimeUnit;
 
-/**
- *
- * @author pc
- */
-public class CargarLaboratorio extends javax.swing.JFrame {
+import AccesoADatos.CiudadanoData;
+import Entidades.Ciudadano;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
+public class CargarLaboratorio extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form CargarLaboratorio
+     * Creates new form CargarLaboratorio1
      */
     public CargarLaboratorio() {
         initComponents();
@@ -44,8 +51,6 @@ public class CargarLaboratorio extends javax.swing.JFrame {
         jTFDomicilio = new javax.swing.JTextField();
         btnSalir = new javax.swing.JButton();
         btnCargarLaboratorio = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(142, 170, 189));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "www.argentina.gob.ar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12), new java.awt.Color(3, 67, 97))); // NOI18N
@@ -232,9 +237,9 @@ public class CargarLaboratorio extends javax.swing.JFrame {
 
     private void btnLimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseEntered
 
-//        Color myColor = new Color(213, 230, 224); // creo mí color personalizado-*-
+                Color myColor = new Color(213, 230, 224); // creo mí color personalizado-*-
 
-//        btnLimpiar.setBackground(myColor);
+                btnLimpiar.setBackground(myColor);
     }//GEN-LAST:event_btnLimpiarMouseEntered
 
     private void btnLimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseExited
@@ -244,13 +249,13 @@ public class CargarLaboratorio extends javax.swing.JFrame {
 
     private void btnLimpiarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseReleased
 
-//        try {
-//            TimeUnit.MILLISECONDS.sleep(300);
-//
-//            // En caso de haber funciones van aquí dentro-*-
-//        } catch (InterruptedException ex) {
-//            Logger.getLogger(CargarVacuna.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+                try {
+                        TimeUnit.MILLISECONDS.sleep(300);
+            
+                        // En caso de haber funciones van aquí dentro-*-
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(CargarLaboratorio.class.getName()).log(Level.SEVERE, null, ex);
+                    }
     }//GEN-LAST:event_btnLimpiarMouseReleased
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -264,125 +269,90 @@ public class CargarLaboratorio extends javax.swing.JFrame {
 
     private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
 
-//        Color myColor = new Color(88, 144, 173); // creo mí color personalizado-*-
+                Color myColor = new Color(88, 144, 173); // creo mí color personalizado-*-
 
-//        btnSalir.setBackground(myColor);
+                btnSalir.setBackground(myColor);
     }//GEN-LAST:event_btnSalirMouseEntered
 
     private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
 
-//        btnSalir.setBackground(new Color(0,204,204));
+                btnSalir.setBackground(new Color(0,204,204));
     }//GEN-LAST:event_btnSalirMouseExited
 
     private void btnSalirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseReleased
-//
-//        try {
-//            TimeUnit.MILLISECONDS.sleep(300);
-//
-//            // En caso de haber funciones van aquí dentro-*-
-//
-//        } catch (InterruptedException ex) {
-//            Logger.getLogger(CargarVacuna.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        
+                try {
+                        TimeUnit.MILLISECONDS.sleep(300);
+            
+                        // En caso de haber funciones van aquí dentro-*-
+            
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(CargarLaboratorio.class.getName()).log(Level.SEVERE, null, ex);
+                    }
     }//GEN-LAST:event_btnSalirMouseReleased
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-//        String [] botones = {"SI", "NO", "CANCELAR"};
-//        int x = JOptionPane.showOptionDialog(this, "¿Estás seguro que desea salir?", "Elije una respuesta", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
-//        //mensaje               //titulo                                                                                      //String
-//
-//        if (x == 0) {
-//            JOptionPane.showMessageDialog(this, "Gracias por tu visita!!!");
-//            dispose();
-//        }
+                String [] botones = {"SI", "NO", "CANCELAR"};
+                int x = JOptionPane.showOptionDialog(this, "¿Estás seguro que desea salir?", "Elije una respuesta", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
+                //mensaje               //titulo                                                                                      //String
+        
+                if (x == 0) {
+                        JOptionPane.showMessageDialog(this, "Gracias por tu visita!!!");
+                        dispose();
+                    }
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnCargarLaboratorioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarLaboratorioMouseEntered
 
-//        Color myColor = new Color(12, 71, 6); // creo mí color personalizado-*-
+                Color myColor = new Color(12, 71, 6); // creo mí color personalizado-*-
 
-//        btnCargarLaboratorio.setBackground(myColor);
+                btnCargarLaboratorio.setBackground(myColor);
     }//GEN-LAST:event_btnCargarLaboratorioMouseEntered
 
     private void btnCargarLaboratorioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarLaboratorioMouseExited
 
-//        btnCargarLaboratorio.setBackground(new Color(35,153,67));
+                btnCargarLaboratorio.setBackground(new Color(35,153,67));
     }//GEN-LAST:event_btnCargarLaboratorioMouseExited
 
     private void btnCargarLaboratorioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarLaboratorioMouseReleased
 
-//        try {
-//            TimeUnit.MILLISECONDS.sleep(300);
-//
-//            // En caso de haber funciones van aquí dentro-*-
-//
-//        } catch (InterruptedException ex) {
-//            Logger.getLogger(CargarVacuna.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+                try {
+                        TimeUnit.MILLISECONDS.sleep(300);
+            
+                        // En caso de haber funciones van aquí dentro-*-
+            
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(CargarLaboratorio.class.getName()).log(Level.SEVERE, null, ex);
+                    }
     }//GEN-LAST:event_btnCargarLaboratorioMouseReleased
 
     private void btnCargarLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarLaboratorioActionPerformed
 
-//        try {
-//            String dniText = jTFCuit.getText();
-//            String nombreText = (String) jTFNombreLaboratorio.getText();
-//            String emailText = (String) jTFPais.getText();
-//            String celularText = (String) jTFDomicilio.getText();
-//            String patologiaText = (String) jTFPatologia.getText();
-//            String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getActionCommand();
-//
-//            if (dniText.length()>=9 || dniText.length()<5){
-//                //            JOptionPane.showMessageDialog(this, "Debe introducir un dni válido");
-//                jTFCuit.setText("");
-//            }
-//            int dni = Integer.parseInt(jTFCuit.getText());
-//            ciudadano.setDni(dni);
-//            ciudadano.setNombreCompleto(nombreText);
-//            ciudadano.setCelular(celularText);
-//            ciudadano.setEmail(emailText);
-//            ciudadano.setPatologia(patologiaText);
-//            ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
-//            cd.guardarCiudadano(ciudadano);
-//        } catch (NumberFormatException e) {
-//            JOptionPane.showMessageDialog(this, "El campo DNI debe ser un número válido.");
-//        }
-
+        //        try {
+            //            String dniText = jTFCuit.getText();
+            //            String nombreText = (String) jTFNombreLaboratorio.getText();
+            //            String emailText = (String) jTFPais.getText();
+            //            String celularText = (String) jTFDomicilio.getText();
+            //            String patologiaText = (String) jTFPatologia.getText();
+            //            String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getActionCommand();
+            //
+            //            if (dniText.length()>=9 || dniText.length()<5){
+                //                //            JOptionPane.showMessageDialog(this, "Debe introducir un dni válido");
+                //                jTFCuit.setText("");
+                //            }
+            //            int dni = Integer.parseInt(jTFCuit.getText());
+            //            ciudadano.setDni(dni);
+            //            ciudadano.setNombreCompleto(nombreText);
+            //            ciudadano.setCelular(celularText);
+            //            ciudadano.setEmail(emailText);
+            //            ciudadano.setPatologia(patologiaText);
+            //            ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
+            //            cd.guardarCiudadano(ciudadano);
+            //        } catch (NumberFormatException e) {
+            //            JOptionPane.showMessageDialog(this, "El campo DNI debe ser un número válido.");
+            //        }
     }//GEN-LAST:event_btnCargarLaboratorioActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CargarLaboratorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CargarLaboratorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CargarLaboratorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CargarLaboratorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CargarLaboratorio().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCargarLaboratorio;
