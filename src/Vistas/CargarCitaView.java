@@ -9,6 +9,7 @@ import AccesoADatos.CitaVacunacionData;
 import AccesoADatos.CiudadanoData;
 import Entidades.CitaVacunacion;
 import Entidades.Ciudadano;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -64,6 +65,8 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         jTDocumento = new javax.swing.JTextField();
         jBBuscar = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jTIdCiudadano = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(142, 170, 189));
         setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -117,6 +120,11 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         jBLimpiar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jBLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/escoba.png"))); // NOI18N
         jBLimpiar.setText("Limpiar");
+        jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiarActionPerformed(evt);
+            }
+        });
 
         jBGuardar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jBGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/guardar-datos_1.png"))); // NOI18N
@@ -146,6 +154,9 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
                 jBBuscarActionPerformed(evt);
             }
         });
+
+        jLabel13.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel13.setText("IdCiudadano?");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,7 +188,8 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel12))
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13))
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -198,7 +210,8 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
                                 .addComponent(jTEmail, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTCelular, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTPatologiaBase, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTAmbitoLaboral, javax.swing.GroupLayout.Alignment.LEADING)))))
+                                .addComponent(jTAmbitoLaboral, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jTIdCiudadano, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -214,6 +227,10 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
                     .addComponent(jTDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jTIdCiudadano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -258,7 +275,7 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
                     .addComponent(jBLimpiar)
                     .addComponent(jBGuardar)
                     .addComponent(jBModificar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         getAccessibleContext().setAccessibleName("www.argentina.gob.ar");
@@ -271,15 +288,19 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         // boton buscar dni llena los text field de nombre,email,celular,patologia y ambito laboral
         try {
             int dni = Integer.parseInt(jTDocumento.getText());
-            if (jTDocumento.getText().length() == 10 && jTDocumento.getText().matches("[0-9]+")||(jTCelular.getText().length()==10 && jTCelular.getText().matches("[0-9]"))||(jTEmail.getText().contentEquals("@"))) {
-                ciudadano = cd.buscarCiudadanoDni(dni);
+//            int idCiudadano = Integer.parseInt(jTIdCiudadano.getText());
+            
+            if (jTDocumento.getText().length() == 8 && jTDocumento.getText().matches("[0-9]+")||(jTCelular.getText().length()== 8 && jTCelular.getText().matches("[0-9]"))||(jTEmail.getText().contentEquals("@"))) {
+                ciudadano = cvd.buscarCiudadanoPorDni(dni);
+                
+                jTIdCiudadano.setText(String.valueOf(ciudadano.getIdCiudadano()));
                 jTNombreCompleto.setText(ciudadano.getNombreCompleto());
                 jTEmail.setText(ciudadano.getEmail());
                 jTCelular.setText(ciudadano.getCelular());
                 jTPatologiaBase.setText(ciudadano.getPatologia());
                 jTAmbitoLaboral.setText(ciudadano.getAmbitoTrabajo());
             } else {
-                JOptionPane.showMessageDialog(this, "Numero de documento incompleto");
+                JOptionPane.showMessageDialog(this, "Numero de documento valido");
             }
         } catch (NumberFormatException nbe) {
             JOptionPane.showMessageDialog(this, "Debe ingresar números en el campo DNI." + nbe);
@@ -290,9 +311,11 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         // BOTON GUARDAR CITAVACUNACION
+        
 //         if (cita== null) {
-//                cita = new CitaVacunacion(fechaHoraCita,fechaHoraColoca);
-//                cita
+                    
+                cita = new CitaVacunacion();
+                cita.getIdCiudadano();
 //
 //            } else {
 //                alumno.setDni(dni);
@@ -303,6 +326,18 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
 //                ad.modificarAlumno(alumno);
 //            }
     }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
+        // LIMPIA LA PANTALLA DE EVENTOS 
+                jTDocumento.setText("");
+                jTIdCiudadano.setText("");
+                jTNombreCompleto.setText("");
+                jTEmail.setText("");
+                jTCelular.setText("");
+                jTPatologiaBase.setText("");
+                jTAmbitoLaboral.setText("");
+        
+    }//GEN-LAST:event_jBLimpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -319,6 +354,7 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -334,6 +370,7 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTCelular;
     private javax.swing.JTextField jTDocumento;
     private javax.swing.JTextField jTEmail;
+    private javax.swing.JTextField jTIdCiudadano;
     private javax.swing.JTextField jTNombreCompleto;
     private javax.swing.JTextField jTPatologiaBase;
     // End of variables declaration//GEN-END:variables

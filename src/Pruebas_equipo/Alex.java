@@ -208,7 +208,10 @@ public class Alex {
 //        for (CitaVacunacion citaDat : citaData.obtenerVacunasAplicadasPorCentro(LocalDate.of(2023, 10, 1), LocalDate.of(2023, 11, 30))) {
 //            System.out.println(citaDat);
 //        }
-//
+//**************************************************************************************
+////        Prueba metodo Buscarciudadanopor DNI (desde cita vacunacion)es una prueba
+//        CitaVacunacionData ciu = new CitaVacunacionData();
+//        System.out.println(ciu.buscarCiudadanoPorDni(12345678));
     }
    }  
 
