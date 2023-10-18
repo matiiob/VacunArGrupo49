@@ -49,12 +49,12 @@ public class Principal extends javax.swing.JFrame {
         jLCargarLaboratorio = new javax.swing.JLabel();
         jPCargarCita = new javax.swing.JPanel();
         jLCargarCita = new javax.swing.JLabel();
-        ImageIcon icon = new ImageIcon(getClass().getResource("/VacunArGrupo49/Recursos/fondo.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Recursos/fondo.jpg"));
         Image imagenFondo = icon.getImage();
         jDEscritorio = new javax.swing.JDesktopPane(){
 
             public void paintComponent(Graphics g){
-                g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(),this);
+                g.drawImage(imagenFondo, 0, 0, 970, 660,this);
             }
         };
         jLLogoministerio = new javax.swing.JLabel();
@@ -378,12 +378,12 @@ public class Principal extends javax.swing.JFrame {
         jDEscritorioLayout.setVerticalGroup(
             jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDEscritorioLayout.createSequentialGroup()
-                .addContainerGap(604, Short.MAX_VALUE)
+                .addContainerGap(574, Short.MAX_VALUE)
                 .addComponent(jLLogoministerio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPBackGround.add(jDEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 970, 660));
+        jPBackGround.add(jDEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 970, 630));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
