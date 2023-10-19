@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+ 
 package Vistas;
 
 import AccesoADatos.CiudadanoData;
@@ -28,7 +25,7 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         initComponents();
         cd = new CiudadanoData();
         ciudadano = new Ciudadano();
-        cargarPatologias();
+      //  cargarPatologias();
         
     }
 
@@ -51,10 +48,10 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         jTFCelular = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jTFPatologia = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         btnCargarCiudadano = new javax.swing.JButton();
+        jCBPatologia = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -62,12 +59,14 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "www.argentina.gob.ar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12), new java.awt.Color(3, 67, 97))); // NOI18N
         jPanel1.setDoubleBuffered(false);
         jPanel1.setFocusCycleRoot(true);
-        jPanel1.setPreferredSize(new java.awt.Dimension(750, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(750, 400));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(245, 245, 245));
         jLabel1.setText("CARGAR CIUDADANO");
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(245, 245, 245));
         jLabel8.setText("Dni");
 
         btnLimpiar.setBackground(new java.awt.Color(157, 161, 158));
@@ -101,7 +100,7 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/min_salud (1).png"))); // NOI18N
 
         jCBAmbitoTrabajo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jCBAmbitoTrabajo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- - - ", "1", "2", "3", "4", "5" }));
+        jCBAmbitoTrabajo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una Opción  ", "Personal de Salud", "Personal de Seguridad", "Personal de Fuerzas Armadas", "Personal de Bomberos", "Autoridad de Gobierno", "Otro" }));
         jCBAmbitoTrabajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBAmbitoTrabajoActionPerformed(evt);
@@ -109,24 +108,23 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         });
 
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(245, 245, 245));
         jLabel11.setText("Nombre Completo");
 
         jLabel12.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(245, 245, 245));
         jLabel12.setText("Email");
 
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(245, 245, 245));
         jLabel13.setText("Numero Celular");
 
         jLabel14.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(245, 245, 245));
         jLabel14.setText("Patologías");
 
-        jTFPatologia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFPatologiaActionPerformed(evt);
-            }
-        });
-
         jLabel15.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(245, 245, 245));
         jLabel15.setText("Ambito de Trabajo");
 
         btnSalir.setBackground(new java.awt.Color(0, 204, 204));
@@ -173,6 +171,9 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
             }
         });
 
+        jCBPatologia.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jCBPatologia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una Opción", "Diabétes", "Cáncer", "Obesidad", "Afección Renal", "Afección  Cardíaca", "Afección Pulmonar", "Otra", "Sin Patologías", " " }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -189,35 +190,36 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
                 .addGap(229, 229, 229)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 221, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(138, 138, 138)
-                            .addComponent(jTFEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jCBAmbitoTrabajo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel13)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(138, 138, 138)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTFPatologia, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTFCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addComponent(jLabel1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFDni, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(151, 151, 151))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(54, 54, 54)
+                                .addComponent(jTFDni, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel15))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(156, 156, 156)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel14))))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTFNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                            .addComponent(jTFEmail)
+                            .addComponent(jTFCelular)
+                            .addComponent(jCBPatologia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCBAmbitoTrabajo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,11 +228,11 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(54, 54, 54)
+                .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTFDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -245,12 +247,12 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFPatologia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCBPatologia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCBAmbitoTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -304,10 +306,6 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         btnLimpiar.setBackground(myColor);
     }//GEN-LAST:event_btnLimpiarMouseEntered
     
-    private void jTFPatologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFPatologiaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFPatologiaActionPerformed
-
     private void jCBAmbitoTrabajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAmbitoTrabajoActionPerformed
         
     }//GEN-LAST:event_jCBAmbitoTrabajoActionPerformed
@@ -381,6 +379,8 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnCargarCiudadanoMouseReleased
 
+                       // BTN CARGAR CIUDADANO  
+    
     private void btnCargarCiudadanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarCiudadanoActionPerformed
                                                 
 
@@ -389,13 +389,90 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         String nombreText = (String) jTFNombre.getText();
         String emailText = (String) jTFEmail.getText();
         String celularText = (String) jTFCelular.getText();
-        String patologiaText = (String) jTFPatologia.getText();
-        String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getActionCommand();
+        String patologiaText = (String) jCBPatologia.getSelectedItem();
+        String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getSelectedItem();
+        
+                      // Condicional para datos vacios-*-
+        
+       if (dniText.isEmpty() || nombreText.isEmpty() || emailText.isEmpty() || celularText.isEmpty() || patologiaText.isEmpty() || ambitoTrabajoText.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
+    return;
+} 
+                      // DNI  
         
         if (dniText.length()>=9 || dniText.length()<5){
-//            JOptionPane.showMessageDialog(this, "Debe introducir un dni válido");
+            JOptionPane.showMessageDialog(this, "Debe introducir un dni válido");
             jTFDni.setText("");
+            return; // <= buena práctica
         }
+        
+                         
+                      // No se permiten acentos ni carateres especiales en la DB-*-
+        
+        if (nombreText.length()>=25 || nombreText.length()<3 || !nombreText.matches("[a-zA-Z\\s]+")) {
+            JOptionPane.showMessageDialog(this, "Debe introducir un nombre válido");
+            jTFNombre.setText("");
+            return;
+            } else {
+            nombreText = nombreText.toLowerCase();
+}
+        
+        
+        
+        
+        
+//         if(emailText.length()>=25 || emailText.length()<10 || !emailText.contains("@")) {
+//            JOptionPane.showMessageDialog(this, "Ingrese un Email válido con '@'");    
+//            jTFEmail.setText("");
+//            return;
+//        }  
+         
+//       if(emailText.length()>=25 || emailText.length()<10 || !emailText.matches("[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")) {
+//           JOptionPane.showMessageDialog(this, "Ingrese un Email válido que contenga '@'");    
+//           jTFEmail.setText("");
+//           return;
+//           } else {
+//           emailText = emailText.toLowerCase().replaceAll("[^a-zA-Z0-9._-@]+", "");
+//}
+                      // No se permiten letras mayusculas ni caracteres especiales-*-    
+      
+          if(emailText.length()>=25 || emailText.length()<10 || !emailText.matches("[a-z0-9._-]+@[a-z0-9.-]+\\.[a-z]{2,4}")) {
+             JOptionPane.showMessageDialog(this, "Ingrese un Email en minuscula, que contenga '@' y sin caracteres especiales");    
+             jTFEmail.setText("");
+             return;
+             } else {
+             emailText = emailText.toLowerCase();
+}
+
+
+                      // Celular 
+
+        if(celularText.length()>=15 || celularText.length()<8 || !celularText.matches("[0-9]+")) {
+            JOptionPane.showMessageDialog(this, "Ingrese un numero de celular válido");
+            jTFCelular.setText("");
+            return; // <= buena práctica
+        }
+        
+        
+                     // Patología
+        
+        if(jCBPatologia.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una patología.");
+            jCBPatologia.setSelectedIndex(-1);
+            return;
+        }             
+        
+        
+                     // Ambito Trabajo 
+        
+        if (jCBAmbitoTrabajo.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un ámbito de trabajo válido.");
+            jCBAmbitoTrabajo.setSelectedIndex(-1);
+            return;
+}
+        
+        
+             
         int dni = Integer.parseInt(jTFDni.getText());
         ciudadano.setDni(dni);
         ciudadano.setNombreCompleto(nombreText);
@@ -403,6 +480,7 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         ciudadano.setEmail(emailText);
         ciudadano.setPatologia(patologiaText);
         ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
+        
         cd.guardarCiudadano(ciudadano);
         
         limpiarPantalla();
@@ -412,19 +490,21 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
     
 
     }//GEN-LAST:event_btnCargarCiudadanoActionPerformed
-
-    private void cargarPatologias() {
-    List<String> listasAmbitoTrabajo = new ArrayList<>();
-    listasAmbitoTrabajo.add("Educación");
-    listasAmbitoTrabajo.add("Salud");
-    listasAmbitoTrabajo.add("Otros");
+         
+             // SUSPENDIDA-*-
     
-    jCBAmbitoTrabajo.removeAllItems();
-    
-    for (String ambitoTrabajo : listasAmbitoTrabajo) {
-        jCBAmbitoTrabajo.addItem(ambitoTrabajo); 
-    }
-}
+//    private void cargarPatologias() {
+//    List<String> listasAmbitoTrabajo = new ArrayList<>();
+//    listasAmbitoTrabajo.add("Educación");
+//    listasAmbitoTrabajo.add("Salud");
+//    listasAmbitoTrabajo.add("Otros");
+//    
+//    jCBAmbitoTrabajo.removeAllItems();
+//    
+//    for (String ambitoTrabajo : listasAmbitoTrabajo) {
+//        jCBAmbitoTrabajo.addItem(ambitoTrabajo); 
+//    }
+//}
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -432,6 +512,7 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> jCBAmbitoTrabajo;
+    private javax.swing.JComboBox<String> jCBPatologia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -445,16 +526,15 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTFDni;
     private javax.swing.JTextField jTFEmail;
     private javax.swing.JTextField jTFNombre;
-    private javax.swing.JTextField jTFPatologia;
     // End of variables declaration//GEN-END:variables
-public void limpiarPantalla() {
+
+    public void limpiarPantalla() {
 
         jTFDni.setText("");
         jTFNombre.setText("");
         jTFEmail.setText("");
         jTFCelular.setText("");
-        jTFPatologia.setText("");
-        
+        jCBPatologia.setSelectedIndex(0); // toma indice 0
         jCBAmbitoTrabajo.setSelectedIndex(0); // toma indice 0
 
 
