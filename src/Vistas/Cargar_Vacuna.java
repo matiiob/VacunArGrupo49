@@ -280,7 +280,7 @@ public class Cargar_Vacuna extends javax.swing.JInternalFrame {
         Long nroSerieDosis = Long.parseLong(nroSerieDosisText);
         // verifica si ya existe la vacuna en la DB
         VacunaData vacunaData = new VacunaData();
-        if (!vacunaData.existeVacuna(nroSerieDosis)) {
+        if (!(vacunaData.existeVacuna(nroSerieDosis))) {
             // si no existe se almacena en DB
             Double medida = Double.parseDouble(medidaText);
             LocalDate fechaCaduca = jDCFechaCaduca.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();

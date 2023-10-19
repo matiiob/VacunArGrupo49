@@ -6,8 +6,8 @@
 package Vistas;
 
 
-import AccesoADatos.CiudadanoData;
-import Entidades.Ciudadano;
+import AccesoADatos.LaboratorioData;
+import Entidades.Laboratorio;
 import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -21,11 +21,14 @@ import javax.swing.JOptionPane;
 
 public class CargarLaboratorio extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form CargarLaboratorio1
-     */
+    private LaboratorioData ld;
+    private Laboratorio laboratorio;
+    
     public CargarLaboratorio() {
         initComponents();
+        
+        ld = new LaboratorioData();
+        laboratorio = new Laboratorio();
     }
 
     /**
@@ -328,28 +331,28 @@ public class CargarLaboratorio extends javax.swing.JInternalFrame {
 
     private void btnCargarLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarLaboratorioActionPerformed
 
-//                try {
-//                        String cuitText = jTFCuit.getText();
-//                        String nombreLaboratorioText = (String) jTFNombreLaboratorio.getText();
-//                        String paisText = (String) jTFPais.getText();
-//                        String Text = (String) jTFDomicilio.getText();
-//                        
-//            
-//                        if (dniText.length()>=9 || dniText.length()<5){
-//                                //            JOptionPane.showMessageDialog(this, "Debe introducir un dni válido");
-//                                jTFCuit.setText("");
-//                            }
-//                        int dni = Integer.parseInt(jTFCuit.getText());
-//                        ciudadano.setDni(dni);
-//                        ciudadano.setNombreCompleto(nombreText);
-//                        ciudadano.setCelular(celularText);
-//                        ciudadano.setEmail(emailText);
-//                        ciudadano.setPatologia(patologiaText);
-//                        ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
-//                        cd.guardarCiudadano(ciudadano);
-//                    } catch (NumberFormatException e) {
-//                        JOptionPane.showMessageDialog(this, "El campo DNI debe ser un número válido.");
-//                    }
+                try {
+                        String cuitText = jTFCuit.getText();
+                        String nombreLaboratorioText = (String) jTFNombreLaboratorio.getText();
+                        String paisText = (String) jTFPais.getText();
+                        String domicilioText = (String) jTFDomicilio.getText();
+                        
+            
+                        if (cuitText.length()>=12 || cuitText.length()<9){
+                                //            JOptionPane.showMessageDialog(this, "Debe introducir un número de cuit válido");
+                                jTFCuit.setText("");
+                            }
+                        long cuit = Long.parseLong(jTFCuit.getText());
+                        laboratorio.setCuit(cuit);
+                        laboratorio.setNomLaboratorio(nombreLaboratorioText);
+                        laboratorio.setPais(paisText);
+                        laboratorio.setDomComercial(domicilioText);
+                        laboratorio.setEstado(true);
+                        
+                        ld.guardarLaboratorio(laboratorio);
+                    } catch (NumberFormatException e) {
+                        JOptionPane.showMessageDialog(this, "El campo CUIT debe ser un número válido.");
+                    }
     }//GEN-LAST:event_btnCargarLaboratorioActionPerformed
 
 

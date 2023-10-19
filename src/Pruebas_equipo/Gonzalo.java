@@ -56,6 +56,10 @@ public class Gonzalo {
 //
 //          CitaVacunacionData citaVacun = new CitaVacunacionData();
 //          citaVacun.guardarCitaVacunacion(cita1);
+    
+            VacunaData vc = new VacunaData();
+            Vacuna vacuna = new Vacuna(1234567897, "marca", 0.3, LocalDate.of(2023, Month.MARCH, 10), false, 3, false);
+            vc.GuardarVacuna(vacuna);
     }
     
     
