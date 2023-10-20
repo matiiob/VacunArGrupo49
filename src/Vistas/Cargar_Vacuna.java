@@ -291,7 +291,7 @@ public class Cargar_Vacuna extends javax.swing.JInternalFrame {
             vacunaData.GuardarVacuna(vacuna);
             limpiarPantalla();
         } else {
-            JOptionPane.showMessageDialog(this, "Debe ingresar un nroSerieDosis válido.");
+            JOptionPane.showMessageDialog(this, "Ya existe una vacuna con ese número de serie.");
         }
     } else {
         JOptionPane.showMessageDialog(this, "Debe ingresar 10 digitos, sin punto ni caracteres especiales.");

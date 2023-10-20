@@ -525,6 +525,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         ciudadano.setEmail(emailText);
         ciudadano.setPatologia(patologiaText);
         ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
+        ciudadano.setEstado(eliminado);
         
         cd.guardarCiudadano(ciudadano);
           
@@ -543,15 +544,16 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
  
     try {
         int dni = Integer.parseInt(jTFDni.getText());
-        Ciudadano ciudadano = cd.buscarCiudadanoDni(dni);
+        ciudadano = cd.buscarCiudadanoDni(dni);
         if (ciudadano != null) {
             jTFNombre.setText(ciudadano.getNombreCompleto());
             jTFEmail.setText(ciudadano.getEmail());
             jTFCelular.setText(ciudadano.getCelular());
-          String patologiaText = (String) jCBPatologia.getSelectedItem();
-          String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getSelectedItem();
+//          String patologiaText = (String) jCBPatologia.getSelectedItem();
+//          String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getSelectedItem();
           jCBPatologia.setSelectedItem(ciudadano.getPatologia());
           jCBAmbitoTrabajo.setSelectedItem(ciudadano.getAmbitoTrabajo());
+          
 
         } else {
             JOptionPane.showMessageDialog(this, "El ciudadano no existe.");
@@ -575,6 +577,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
      try {
             cd.eliminarCiudadano(ciudadano.getIdCiudadano());
             btnLimpiar.doClick();
+            JOptionPane.showMessageDialog(this, "El ciudadano ha sido eliminado."+"id ciudadano: "+ciudadano.getIdCiudadano()+" nombre: " +ciudadano.getNombreCompleto());
         } catch (NullPointerException npe) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar un Ciudadano.");
         }

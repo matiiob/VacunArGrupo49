@@ -143,7 +143,7 @@ public class CiudadanoData {
     
     public void eliminarCiudadano(int id) { 
     try {
-        String sql = "UPDATE ciudadano SET eliminado = 0 WHERE idCiudadano = ?";
+        String sql = "UPDATE ciudadano SET eliminado = 1 WHERE idCiudadano = ?";
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, id);
         int fila = ps.executeUpdate();
