@@ -4,9 +4,12 @@ package Vistas;
 
 import AccesoADatos.CiudadanoData;
 import Entidades.Ciudadano;
-import com.sun.javafx.scene.control.skin.VirtualFlow;
+
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import java.util.concurrent.TimeUnit;
@@ -15,18 +18,18 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
-public class CargarCiudadano extends javax.swing.JInternalFrame {
+public class GestionarCiudadano extends javax.swing.JInternalFrame {
 
     private CiudadanoData cd;
     private Ciudadano ciudadano;
     
     
-    public CargarCiudadano() {
+    public GestionarCiudadano() {
         initComponents();
         cd = new CiudadanoData();
         ciudadano = new Ciudadano();
       //  cargarPatologias();
-        
+         
     }
 
    
@@ -52,6 +55,8 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         btnSalir = new javax.swing.JButton();
         btnCargarCiudadano = new javax.swing.JButton();
         jCBPatologia = new javax.swing.JComboBox<>();
+        btnBuscar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -63,7 +68,7 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(245, 245, 245));
-        jLabel1.setText("CARGAR CIUDADANO");
+        jLabel1.setText("GESTIONAR CIUDADANO");
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(245, 245, 245));
@@ -96,11 +101,16 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
                 jTFDniActionPerformed(evt);
             }
         });
+        jTFDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTFDniKeyPressed(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/min_salud (1).png"))); // NOI18N
 
         jCBAmbitoTrabajo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jCBAmbitoTrabajo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una Opción  ", "Personal de Salud", "Personal de Seguridad", "Personal de Fuerzas Armadas", "Personal de Bomberos", "Autoridad de Gobierno", "Otro" }));
+        jCBAmbitoTrabajo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una Opción  ", "Personal de Educación", "Personal de Salud", "Personal de Seguridad", "Personal de Fuerzas Armadas", "Personal de Bomberos", "Autoridad de Gobierno", "Otro" }));
         jCBAmbitoTrabajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBAmbitoTrabajoActionPerformed(evt);
@@ -152,8 +162,8 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         btnCargarCiudadano.setBackground(new java.awt.Color(35, 153, 67));
         btnCargarCiudadano.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         btnCargarCiudadano.setForeground(new java.awt.Color(0, 0, 0));
-        btnCargarCiudadano.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/vacuna.png"))); // NOI18N
-        btnCargarCiudadano.setText("Cargar");
+        btnCargarCiudadano.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/agregar-usuario.png"))); // NOI18N
+        btnCargarCiudadano.setText("Cargar/Modificar");
         btnCargarCiudadano.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCargarCiudadanoMouseEntered(evt);
@@ -174,32 +184,80 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         jCBPatologia.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jCBPatologia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una Opción", "Diabétes", "Cáncer", "Obesidad", "Afección Renal", "Afección  Cardíaca", "Afección Pulmonar", "Otra", "Sin Patologías", " " }));
 
+        btnBuscar.setBackground(new java.awt.Color(41, 84, 171));
+        btnBuscar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/lupa.png"))); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.setToolTipText("Ingresar un numero de DNI ");
+        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseReleased(evt);
+            }
+        });
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setBackground(new java.awt.Color(224, 9, 78));
+        btnEliminar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/basura.png"))); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseReleased(evt);
+            }
+        });
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(btnCargarCiudadano)
-                .addGap(82, 82, 82)
-                .addComponent(btnLimpiar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalir)
-                .addGap(37, 37, 37))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(229, 229, 229)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 221, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(btnCargarCiudadano)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnLimpiar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addComponent(btnEliminar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalir))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(156, 156, 156)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(54, 54, 54)
-                                .addComponent(jTFDni, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1)))
+                                .addComponent(jTFDni, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnBuscar))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -218,8 +276,9 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
                             .addComponent(jTFEmail)
                             .addComponent(jTFCelular)
                             .addComponent(jCBPatologia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCBAmbitoTrabajo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jCBAmbitoTrabajo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,11 +287,12 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(42, 42, 42)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                    .addComponent(jTFDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -252,11 +312,13 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCBAmbitoTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCargarCiudadano)))
+                    .addComponent(btnLimpiar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnSalir)
+                    .addComponent(btnCargarCiudadano))
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -290,7 +352,7 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
 
             // En caso de haber funciones van aquí dentro-*-
         } catch (InterruptedException ex) {
-            Logger.getLogger(CargarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnLimpiarMouseReleased
 
@@ -335,15 +397,15 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
             // En caso de haber funciones van aquí dentro-*-
 
         } catch (InterruptedException ex) {
-            Logger.getLogger(CargarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_btnSalirMouseReleased
     
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         String [] botones = {"SI", "CANCELAR"};
-        int x = JOptionPane.showOptionDialog(this, "¿Estás seguro que desea salir?", "Elije una respuesta", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
-        //mensaje               //titulo                                                                                      //String
+        int x = JOptionPane.showOptionDialog(this, "¿Esta seguro que desea salir?", "Elije una Opción", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
+                                                                   //mensaje               //titulo                                                                                      //String
 
         if (x == 0) {
 //            JOptionPane.showMessageDialog(this, "Gracias por tu visita!!!");
@@ -374,7 +436,7 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
             // En caso de haber funciones van aquí dentro-*-
 
         } catch (InterruptedException ex) {
-            Logger.getLogger(CargarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_btnCargarCiudadanoMouseReleased
@@ -382,15 +444,15 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
                        // BTN CARGAR CIUDADANO  
     
     private void btnCargarCiudadanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarCiudadanoActionPerformed
-                                                
-
+  
         try {
-        String dniText = jTFDni.getText();
-        String nombreText = (String) jTFNombre.getText();
-        String emailText = (String) jTFEmail.getText();
-        String celularText = (String) jTFCelular.getText();
-        String patologiaText = (String) jCBPatologia.getSelectedItem();
-        String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getSelectedItem();
+            String dniText = jTFDni.getText();
+            String nombreText = (String) jTFNombre.getText();
+            String emailText = (String) jTFEmail.getText();
+            String celularText = (String) jTFCelular.getText();
+            String patologiaText = (String) jCBPatologia.getSelectedItem();
+            String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getSelectedItem();
+            boolean eliminado = false;
         
                       // Condicional para datos vacios-*-
         
@@ -416,24 +478,7 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
             } else {
             nombreText = nombreText.toLowerCase();
 }
-        
-        
-        
-        
-        
-//         if(emailText.length()>=25 || emailText.length()<10 || !emailText.contains("@")) {
-//            JOptionPane.showMessageDialog(this, "Ingrese un Email válido con '@'");    
-//            jTFEmail.setText("");
-//            return;
-//        }  
-         
-//       if(emailText.length()>=25 || emailText.length()<10 || !emailText.matches("[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")) {
-//           JOptionPane.showMessageDialog(this, "Ingrese un Email válido que contenga '@'");    
-//           jTFEmail.setText("");
-//           return;
-//           } else {
-//           emailText = emailText.toLowerCase().replaceAll("[^a-zA-Z0-9._-@]+", "");
-//}
+               
                       // No se permiten letras mayusculas ni caracteres especiales-*-    
       
           if(emailText.length()>=25 || emailText.length()<10 || !emailText.matches("[a-z0-9._-]+@[a-z0-9.-]+\\.[a-z]{2,4}")) {
@@ -482,15 +527,138 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
         ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
         
         cd.guardarCiudadano(ciudadano);
-        
+          
         limpiarPantalla();
     } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(this, "El campo DNI debe ser un número válido.");
-    }                                                  
-    
+    }  
+   
 
     }//GEN-LAST:event_btnCargarCiudadanoActionPerformed
-         
+
+                  // BTN Buscar
+    
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        
+ 
+    try {
+        int dni = Integer.parseInt(jTFDni.getText());
+        Ciudadano ciudadano = cd.buscarCiudadanoDni(dni);
+        if (ciudadano != null) {
+            jTFNombre.setText(ciudadano.getNombreCompleto());
+            jTFEmail.setText(ciudadano.getEmail());
+            jTFCelular.setText(ciudadano.getCelular());
+          String patologiaText = (String) jCBPatologia.getSelectedItem();
+          String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getSelectedItem();
+          jCBPatologia.setSelectedItem(ciudadano.getPatologia());
+          jCBAmbitoTrabajo.setSelectedItem(ciudadano.getAmbitoTrabajo());
+
+        } else {
+            JOptionPane.showMessageDialog(this, "El ciudadano no existe.");
+        }
+    } catch (NumberFormatException nbe) {
+        JOptionPane.showMessageDialog(this, "Debe ingresar números en el campo DNI.");
+    }
+
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    
+    
+    
+    
+    
+    
+                  // BTN Eliminar  
+     
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+       
+     try {
+            cd.eliminarCiudadano(ciudadano.getIdCiudadano());
+            btnLimpiar.doClick();
+        } catch (NullPointerException npe) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un Ciudadano.");
+        }
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    // Evento de teclado captura tecla en el campo DNI acciona BTN Buscar
+    
+    private void jTFDniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFDniKeyPressed
+        
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnBuscar.doClick();
+        }
+        
+    }//GEN-LAST:event_jTFDniKeyPressed
+
+    
+                  // Hover BTN Buscar
+    
+    private void btnBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseEntered
+    
+         Color myColor = new Color(29, 34, 179); // creo mí color personalizado-*-
+
+        btnBuscar.setBackground(myColor);
+   
+    }//GEN-LAST:event_btnBuscarMouseEntered
+                  // Hover BTN Buscar  
+    
+    private void btnBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseExited
+    
+        btnBuscar.setBackground(new Color(41,84,171));
+        
+    }//GEN-LAST:event_btnBuscarMouseExited
+
+                  // Hover BTN Buscar  
+    
+    private void btnBuscarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseReleased
+        
+        try {
+            TimeUnit.MILLISECONDS.sleep(300);
+
+            // En caso de haber funciones van aquí dentro-*-
+
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnBuscarMouseReleased
+
+                  // Hover BTN Eliminar 
+    
+    private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
+       
+         Color myColor = new Color(94, 7, 12); // creo mí color personalizado-*-
+
+        btnEliminar.setBackground(myColor);
+    }//GEN-LAST:event_btnEliminarMouseEntered
+
+                  // Hover BTN Eliminar  
+    
+    private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
+       
+         btnEliminar.setBackground(new Color(224,9,78));
+        
+    }//GEN-LAST:event_btnEliminarMouseExited
+ 
+                  // Hover BTN Eliminar   
+                  
+    private void btnEliminarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseReleased
+       
+         try {
+            TimeUnit.MILLISECONDS.sleep(300);
+
+            // En caso de haber funciones van aquí dentro-*-
+
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEliminarMouseReleased
+     
+    
+
+
+    
              // SUSPENDIDA-*-
     
 //    private void cargarPatologias() {
@@ -508,7 +676,9 @@ public class CargarCiudadano extends javax.swing.JInternalFrame {
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCargarCiudadano;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> jCBAmbitoTrabajo;

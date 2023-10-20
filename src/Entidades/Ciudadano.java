@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Entidades;
 
 //Clase creada por Gonzalo
@@ -16,13 +12,15 @@ public class Ciudadano {
     private String celular;
     private String patologia;
     private String ambitoTrabajo;
+    private boolean eliminado; 
 
     //Constructor vacío.
     public Ciudadano() {
     }
 
     //Constructor con todos los parámetros.
-    public Ciudadano(int idCiudadano, int dni, String nombreCompleto, String email, String celular, String patologia, String ambitoTrabajo) {
+
+    public Ciudadano(int idCiudadano, int dni, String nombreCompleto, String email, String celular, String patologia, String ambitoTrabajo, boolean eliminado) {
         this.idCiudadano = idCiudadano;
         this.dni = dni;
         this.nombreCompleto = nombreCompleto;
@@ -30,16 +28,21 @@ public class Ciudadano {
         this.celular = celular;
         this.patologia = patologia;
         this.ambitoTrabajo = ambitoTrabajo;
+        this.eliminado = eliminado;
     }
+   
 
     //Constructor con todos los parámetros menos el idCiudadano.
-    public Ciudadano(int dni, String nombreCompleto, String email, String celular, String patologia, String ambitoTrabajo) {
+   
+
+    public Ciudadano(int dni, String nombreCompleto, String email, String celular, String patologia, String ambitoTrabajo, boolean eliminado) {
         this.dni = dni;
         this.nombreCompleto = nombreCompleto;
         this.email = email;
         this.celular = celular;
         this.patologia = patologia;
         this.ambitoTrabajo = ambitoTrabajo;
+        this.eliminado = eliminado;
     }
 
     public int getIdCiudadano() {
@@ -98,10 +101,19 @@ public class Ciudadano {
         this.ambitoTrabajo = ambitoTrabajo;
     }
 
+    public boolean isEstado() {
+        return eliminado;
+    }
+
+    public void setEstado(boolean eliminado) {
+        this.eliminado = eliminado;
+    }
+
+
     @Override
     public String toString() {
 
         return "DNI: " + dni + ", " + "Nombre completo: " + nombreCompleto + ", " + "Email: " + email
-                + ", Número de celular: " + celular + ", Patología: " + patologia + ", ambito de trabajo: " + ambitoTrabajo;
+                + ", Número de celular: " + celular + ", Patología: " + patologia + ", ambito de trabajo: " + ambitoTrabajo + ", " + "Eliminado: " + eliminado;
     }
 }

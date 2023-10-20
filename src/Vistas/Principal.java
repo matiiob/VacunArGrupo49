@@ -520,7 +520,7 @@ public class Principal extends javax.swing.JFrame {
         jPCargarCiudadano.setVisible(false);
         jDEscritorio.removeAll();
         jDEscritorio.repaint();
-        CargarCiudadano cc = new CargarCiudadano();
+        GestionarCiudadano cc = new GestionarCiudadano();
         cc.setVisible(true);
         jDEscritorio.add(cc).setLocation(30, 30);
         jDEscritorio.moveToFront(cc);

@@ -10,8 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
 import org.mariadb.jdbc.Statement;
 
@@ -25,21 +24,24 @@ public class CiudadanoData {
 
     public void guardarCiudadano(Ciudadano ciudadano) {
 
-        String sql = "INSERT INTO ciudadano (dni, nombreCompleto, email, celular, patologia, ambitoTrabajo)"
-                + "VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO ciudadano (dni, nombreCompleto, email, celular, patologia, ambitoTrabajo, eliminado)"
+                + "VALUES(?,?,?,?,?,?,?)";
 
-        PreparedStatement ps;
+        
         try {
-            ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+          //  ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, ciudadano.getDni());
             ps.setString(2, ciudadano.getNombreCompleto());
             ps.setString(3, ciudadano.getEmail());
             ps.setString(4, ciudadano.getCelular());
             ps.setString(5, ciudadano.getPatologia());
             ps.setString(6, ciudadano.getAmbitoTrabajo());
+            ps.setBoolean(7, ciudadano.isEstado());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
+                ciudadano.setIdCiudadano(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Ciudadano cargado con éxito..!!");
             }
         } catch (SQLException ex) {
@@ -51,8 +53,8 @@ public class CiudadanoData {
     public void modificarCiudadano(Ciudadano ciudadano) {
 
         String sql = "UPDATE ciudadano SET dni=?, nombreCompleto=?, email=?,"
-                + " celular=?, patologia=?, ambitoTrabajo=? WHERE idCiudadano="+ciudadano.getIdCiudadano();
-        
+                + " celular=?, patologia=?, ambitoTrabajo=?, eliminado = ? WHERE idCiudadano="+ciudadano.getIdCiudadano();
+                                                           // agregado 19-10 
         
       
         
@@ -65,6 +67,7 @@ public class CiudadanoData {
             ps.setString(4, ciudadano.getCelular());
             ps.setString(5, ciudadano.getPatologia());
             ps.setString(6, ciudadano.getAmbitoTrabajo());
+            ps.setBoolean(7, ciudadano.isEstado());  // agregado 19-10
             int cargado = ps.executeUpdate();
             if (cargado == 1) {
                 JOptionPane.showMessageDialog(null, "Ciudadano modificado con éxito..!");
@@ -134,4 +137,27 @@ public class CiudadanoData {
         }
         return ciudadano;
     }
+    
+    
+    
+    
+    public void eliminarCiudadano(int id) { 
+    try {
+        String sql = "UPDATE ciudadano SET eliminado = 0 WHERE idCiudadano = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, id);
+        int fila = ps.executeUpdate();
+            if (fila == 1) {
+
+                JOptionPane.showMessageDialog(null, "Se eliminó el Ciudadano.");
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar al Ciudadano: " + e.getMessage());
+        }
+    }
+        
+        
+    
 }
