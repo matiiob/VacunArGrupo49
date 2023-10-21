@@ -457,7 +457,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLCargarCitaMouseEntered
 
     private void jLCargarCitaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCargarCitaMouseExited
-        jPCargarCita.setBackground(new Color(122,184,225));
+        jPCargarCita.setBackground(new Color(174,215,245));
         jLCargarCita.setForeground(new Color(0, 51, 53));
     }//GEN-LAST:event_jLCargarCitaMouseExited
 
