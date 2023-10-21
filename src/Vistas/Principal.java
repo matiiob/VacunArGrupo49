@@ -42,7 +42,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPCargarCita = new javax.swing.JPanel();
         jLCargarCita = new javax.swing.JLabel();
-        ImageIcon icon = new ImageIcon(getClass().getResource("/Recursos/fondo.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Recursos/fondoTexto.jpg"));
         Image imagenFondo = icon.getImage();
         jDEscritorio = new javax.swing.JDesktopPane(){
 
@@ -310,8 +310,8 @@ public class Principal extends javax.swing.JFrame {
         jDEscritorio.setLayout(jDEscritorioLayout);
         jDEscritorioLayout.setHorizontalGroup(
             jDEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDEscritorioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jDEscritorioLayout.createSequentialGroup()
+                .addContainerGap(447, Short.MAX_VALUE)
                 .addComponent(jLLogoministerio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(413, 413, 413))
         );
