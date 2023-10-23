@@ -3,7 +3,7 @@ package Entidades;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
+//import java.util.Date;
 
 /**
  *
@@ -13,16 +13,16 @@ public class CitaVacunacion {
     private int idCodCita;
     private int idCiudadano;
     private int codRefuerzo;
-    private Date fechaHoraCita;
+    private LocalDate fechaHoraCita;
     private String centroVacunacion;
-    private Date fechaHoraColoca; 
+    private LocalDate fechaHoraColoca; 
     private int dosis;
     private boolean estado;
 
     public CitaVacunacion() {
     }
 
-    public CitaVacunacion(int idCiudadano, int codRefuerzo, Date fechaHoraCita, String centroVacunacion, Date fechaHoraColoca, int dosis, boolean estado) {
+    public CitaVacunacion(int idCiudadano, int codRefuerzo, LocalDate fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis, boolean estado) {
         this.idCiudadano = idCiudadano;
         this.codRefuerzo = codRefuerzo;
         this.fechaHoraCita = fechaHoraCita;
@@ -32,7 +32,7 @@ public class CitaVacunacion {
         this.estado = estado;
     }
 
-    public CitaVacunacion(int idCodCita, int idCiudadano, int codRefuerzo, Date fechaHoraCita, String centroVacunacion, Date fechaHoraColoca, int dosis, boolean estado) {
+    public CitaVacunacion(int idCodCita, int idCiudadano, int codRefuerzo, LocalDate fechaHoraCita, String centroVacunacion, LocalDate fechaHoraColoca, int dosis, boolean estado) {
         this.idCodCita = idCodCita;
         this.idCiudadano = idCiudadano;
         this.codRefuerzo = codRefuerzo;
@@ -67,11 +67,11 @@ public class CitaVacunacion {
         this.codRefuerzo = codRefuerzo;
     }
 
-    public Date getFechaHoraCita() {
+    public LocalDate getFechaHoraCita() {
         return fechaHoraCita;
     }
 
-    public void setFechaHoraCita(Date fechaHoraCita) {
+    public void setFechaHoraCita(LocalDate fechaHoraCita) {
         this.fechaHoraCita = fechaHoraCita;
     }
 
@@ -83,11 +83,11 @@ public class CitaVacunacion {
         this.centroVacunacion = centroVacunacion;
     }
 
-    public Date getFechaHoraColoca() {
+    public LocalDate getFechaHoraColoca() {
         return fechaHoraColoca;
     }
 
-    public void setFechaHoraColoca(Date fechaHoraColoca) {
+    public void setFechaHoraColoca(LocalDate fechaHoraColoca) {
         this.fechaHoraColoca = fechaHoraColoca;
     }
 

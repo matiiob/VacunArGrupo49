@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.mariadb.jdbc.Statement;
+//import java.util.Date;
 
 /**
  *
@@ -45,9 +46,11 @@ public class CitaVacunacionData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1,citav.getIdCiudadano());
             ps.setInt(2,citav.getCodRefuerzo());
-            ps.setTimestamp(3, new Timestamp(citav.getFechaHoraCita().getTime()));//se usa con java util date
+            ps.setDate(3, Date.valueOf(citav.getFechaHoraCita()));
+//            ps.setTimestamp(3, new Timestamp(citav.getFechaHoraCita().getTime()));//se usa con java util date
             ps.setString(4,citav.getCentroVacunacion());
-            ps.setTimestamp(5, new Timestamp(citav.getFechaHoraColoca().getTime()));
+            ps.setDate(5, Date.valueOf(citav.getFechaHoraColoca()));
+//            ps.setTimestamp(5, new Timestamp(citav.getFechaHoraColoca().getTime()));
             ps.setInt(6,citav.getDosis());
             ps.setBoolean(7,citav.isEstado());
             ps.executeUpdate();
@@ -88,9 +91,11 @@ public class CitaVacunacionData {
        try {
            PreparedStatement ps = con.prepareStatement(sql);
            ps.setInt(1,citav.getCodRefuerzo());
-           ps.setTimestamp(2, new Timestamp(citav.getFechaHoraCita().getTime()));
+           ps.setDate(3, Date.valueOf(citav.getFechaHoraCita()));
+//           ps.setTimestamp(2, new Timestamp(citav.getFechaHoraCita().getTime()));
            ps.setString(3,citav.getCentroVacunacion());
-           ps.setTimestamp(4, new Timestamp(citav.getFechaHoraColoca().getTime()));
+           ps.setDate(5, Date.valueOf(citav.getFechaHoraColoca()));
+//           ps.setTimestamp(4, new Timestamp(citav.getFechaHoraColoca().getTime()));
            ps.setInt(5,citav.getDosis());
            ps.setBoolean(6,citav.isEstado());
             ps.setInt(8,citav.getIdCiudadano());
@@ -123,9 +128,9 @@ public class CitaVacunacionData {
                 cita.setIdCodCita(rs.getInt("idCodCita"));
                 cita.setIdCiudadano(rs.getInt("idCiudadano"));
                 cita.setCodRefuerzo(rs.getInt("codRefuerzo"));
-                cita.setFechaHoraCita(rs.getTimestamp("fechaHoraCita"));
+                cita.setFechaHoraCita(rs.getDate("fechaHoraCita").toLocalDate());
                 cita.setCentroVacunacion(rs.getString("centroVacunacion"));
-                cita.setFechaHoraColoca(rs.getTimestamp("fechaHoraColoca"));
+                cita.setFechaHoraColoca(rs.getDate("fechaHoraColoca").toLocalDate());
                 cita.setDosis(rs.getInt("dosis"));
                 cita.setEstado(rs.getBoolean("estado"));
              }
@@ -150,9 +155,9 @@ public class CitaVacunacionData {
                 cit.setIdCodCita(rs.getInt("idCodCita"));
                 cit.setIdCiudadano(rs.getInt("idCiudadano"));
                 cit.setCodRefuerzo(rs.getInt("codRefuerzo"));
-                cit.setFechaHoraCita(rs.getTimestamp("fechaHoraCita"));
+                cit.setFechaHoraCita(rs.getDate("fechaHoraCita").toLocalDate());
                 cit.setCentroVacunacion(rs.getString("centroVacunacion"));
-                cit.setFechaHoraColoca(rs.getTimestamp("fechaHoraColoca"));
+                cit.setFechaHoraColoca(rs.getDate("fechaHoraColoca").toLocalDate());
                 cit.setDosis(rs.getInt("dosis"));
                 cit.setEstado(rs.getBoolean("estado"));
                 
@@ -180,9 +185,9 @@ public class CitaVacunacionData {
                 cita.setIdCodCita(rs.getInt("idCodCita"));
                 cita.setIdCiudadano(rs.getInt("idciudadano"));
                 cita.setCodRefuerzo(rs.getInt("codRefuerzo"));
-                cita.setFechaHoraCita(rs.getTimestamp("fechaHoraCita"));
+                cita.setFechaHoraCita(rs.getDate("fechaHoraCita").toLocalDate());
                 cita.setCentroVacunacion(rs.getString("centroVacunacion"));
-                cita.setFechaHoraColoca(rs.getTimestamp("fechaHoraColoca"));
+                cita.setFechaHoraColoca(rs.getDate("fechaHoraColoca").toLocalDate());
                 cita.setDosis(rs.getInt("dosis"));
                 cita.setEstado(estado);
                 citasMes.add(cita);
@@ -206,9 +211,9 @@ public class CitaVacunacionData {
                 cita.setIdCodCita(rs.getInt("idCodCita"));
                 cita.setIdCiudadano(rs.getInt("idciudadano"));
                 cita.setCodRefuerzo(rs.getInt("codRefuerzo"));
-                cita.setFechaHoraCita(rs.getTimestamp("fechaHoraCita"));
+                cita.setFechaHoraCita(rs.getDate("fechaHoraCita").toLocalDate());
                 cita.setCentroVacunacion(rs.getString("centroVacunacion"));
-                cita.setFechaHoraColoca(rs.getTimestamp("fechaHoraColoca"));
+                cita.setFechaHoraColoca(rs.getDate("fechaHoraColoca").toLocalDate());
                 cita.setDosis(rs.getInt("dosis"));
                 cita.setEstado(rs.getBoolean("estado"));
                 citasVencidas.add(cita);
@@ -231,9 +236,9 @@ public class CitaVacunacionData {
                 cita.setIdCodCita(rs.getInt("idCodCita"));
                 cita.setIdCiudadano(rs.getInt("idciudadano"));
                 cita.setCodRefuerzo(rs.getInt("codRefuerzo"));
-                cita.setFechaHoraCita(rs.getTimestamp("fechaHoraCita"));
+                cita.setFechaHoraCita(rs.getDate("fechaHoraCita").toLocalDate());
                 cita.setCentroVacunacion(rs.getString("centroVacunacion"));
-                cita.setFechaHoraColoca(rs.getTimestamp("fechaHoraColoca"));
+                cita.setFechaHoraColoca(rs.getDate("fechaHoraColoca").toLocalDate());
                 cita.setDosis(rs.getInt("dosis"));
                 cita.setEstado(rs.getBoolean("estado"));
                 citasCumplidas.add(cita);
@@ -259,9 +264,9 @@ public class CitaVacunacionData {
                 cit.setIdCodCita(rs.getInt("idCodCita"));
                 cit.setIdCiudadano(rs.getInt("idCiudadano"));
                 cit.setCodRefuerzo(rs.getInt("codRefuerzo"));
-                cit.setFechaHoraCita(rs.getTimestamp("fechaHoraCita"));
+                cit.setFechaHoraCita(rs.getDate("fechaHoraCita").toLocalDate());
                 cit.setCentroVacunacion(rs.getString("centroVacunacion"));
-                cit.setFechaHoraColoca(rs.getTimestamp("fechaHoraColoca"));
+                cit.setFechaHoraColoca(rs.getDate("fechaHoraColoca").toLocalDate());
                 cit.setDosis(rs.getInt("dosis"));
                 cit.setEstado(rs.getBoolean("estado"));
                 
