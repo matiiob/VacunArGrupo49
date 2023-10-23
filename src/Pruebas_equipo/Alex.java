@@ -171,7 +171,7 @@ public class Alex {
 //        System.out.println(citaData.buscarCitaVacunacion(8, true)); //revisar antes de subir
 //******************************************************************************************
 //        MODIFICAR CITA
-//        CitaVacunacion cita = new CitaVacunacion(1,02,"2023/10/15","Centro de vacunacion ATE", LocalDate.of(2023,Month.NOVEMBER,9), 2,true);
+//        CitaVacunacion cita = new CitaVacunacion(6,02,LocalDate.of(2023,Month.NOVEMBER,1),"Centro de vacunacion ATE", LocalDate.of(2023,Month.NOVEMBER,9), 2,true);
 //        CitaVacunacionData citaData = new CitaVacunacionData();
 //        citaData.modificarCitaVacunacion(cita);
 //****************************************************************************************

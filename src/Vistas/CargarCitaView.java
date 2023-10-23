@@ -163,6 +163,11 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         jBModificar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jBModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/editar.png"))); // NOI18N
         jBModificar.setText("Modificar");
+        jBModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificarActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel11.setText("CARGAR CITAS DE VACUNACION");
@@ -347,37 +352,24 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         // BOTON GUARDAR CITAVACUNACION // actualizar la base de datos que hizo Cris
  
-            int idCiudadano = Integer.parseInt(jTIdCiudadano.getText());
-            int codRefuerzo = jCBCodigoRefuerzo.getSelectedIndex();
-            String centroVacunacion = (String) jCBCentroDeVacunacion.getSelectedItem();
-            
-            Date fechaHoraCita = jDCFechaCita.getDate();
-            Instant instantCita = fechaHoraCita.toInstant();
-            LocalDate fechaCit= instantCita.atZone(ZoneId.systemDefault()).toLocalDate();
-            
-            Date fechaHoraColoca = jDCProximaFecha.getDate();
-            Instant instantColoca = fechaHoraColoca.toInstant();
-            LocalDate fechaProx = instantColoca.atZone(ZoneId.systemDefault()).toLocalDate();
-            
-            int dosis = jCBDosis.getSelectedIndex()+1;
-            boolean estado = jRBColocada.isSelected();
-        
+           int idCiudadano = Integer.parseInt(jTIdCiudadano.getText());
+        int codRefuerzo = jCBCodigoRefuerzo.getSelectedIndex();
+        String centroVacunacion = (String) jCBCentroDeVacunacion.getSelectedItem();
 
-//        if (cita == null) {
+        Date fechaHoraCita = jDCFechaCita.getDate();
+        Instant instantCita = fechaHoraCita.toInstant();
+        LocalDate fechaCit = instantCita.atZone(ZoneId.systemDefault()).toLocalDate();
 
-            cita = new CitaVacunacion(idCiudadano, codRefuerzo, fechaCit, centroVacunacion, fechaProx, dosis, estado);
-            cvd.guardarCitaVacunacion(cita);
+        Date fechaHoraColoca = jDCProximaFecha.getDate();
+        Instant instantColoca = fechaHoraColoca.toInstant();
+        LocalDate fechaProx = instantColoca.atZone(ZoneId.systemDefault()).toLocalDate();
 
-//        } else {
-            cita.setCodRefuerzo(jCBCodigoRefuerzo.getSelectedIndex());
-            cita.setFechaHoraCita(fechaCit);
-            cita.setCentroVacunacion(centroVacunacion);
-            cita.setFechaHoraColoca(fechaProx);
-            cita.getDosis();
-            cita.setEstado(jRBColocada.isSelected());
-            cvd.modificarCitaVacunacion(cita);
+        int dosis = jCBDosis.getSelectedIndex() + 1;
+        boolean estado = jRBColocada.isSelected();
 
-//        }
+        cita = new CitaVacunacion(idCiudadano, codRefuerzo, fechaCit, centroVacunacion, fechaProx, dosis, estado);
+        cvd.guardarCitaVacunacion(cita);
+
     }//GEN-LAST:event_jBGuardarActionPerformed
     
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
@@ -391,6 +383,39 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
                 jTAmbitoLaboral.setText("");
         
     }//GEN-LAST:event_jBLimpiarActionPerformed
+
+    private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
+        // TODO add your handling code here:
+        
+// UPDATE citavacunacion SET codRefuerzo=?,fechaHoraCita=?,centroVacunacion=?,fechaHoraColoca=?,dosis=?,estado=? WHERE idCiudadano="+citav.getIdCiudadano()+"       
+//        int idCiudadano = Integer.parseInt(jTIdCiudadano.getText());
+        int codRefuerzo = jCBCodigoRefuerzo.getSelectedIndex();
+        String centroVacunacion = (String) jCBCentroDeVacunacion.getSelectedItem();
+
+        Date fechaHoraCita = jDCFechaCita.getDate();
+        Instant instantCita = fechaHoraCita.toInstant();
+        LocalDate fechaCit = instantCita.atZone(ZoneId.systemDefault()).toLocalDate();
+        
+
+        Date fechaHoraColoca = jDCProximaFecha.getDate();
+        Instant instantColoca = fechaHoraColoca.toInstant();
+        LocalDate fechaProx = instantColoca.atZone(ZoneId.systemDefault()).toLocalDate();
+
+        int dosis = jCBDosis.getSelectedIndex() + 1;
+        boolean estado = jRBColocada.isSelected();
+        
+        cita = new CitaVacunacion();
+
+        cita.setCodRefuerzo(codRefuerzo);
+        cita.setFechaHoraCita(fechaCit);
+        cita.setCentroVacunacion(centroVacunacion);
+        cita.setFechaHoraColoca(fechaProx);
+        cita.setDosis(dosis);
+        cita.setEstado(estado);
+        
+        cvd.modificarCitaVacunacion(cita);
+
+    }//GEN-LAST:event_jBModificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

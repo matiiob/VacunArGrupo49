@@ -91,14 +91,14 @@ public class CitaVacunacionData {
        try {
            PreparedStatement ps = con.prepareStatement(sql);
            ps.setInt(1,citav.getCodRefuerzo());
-           ps.setDate(3, Date.valueOf(citav.getFechaHoraCita()));
+           ps.setDate(2, Date.valueOf(citav.getFechaHoraCita()));
 //           ps.setTimestamp(2, new Timestamp(citav.getFechaHoraCita().getTime()));
            ps.setString(3,citav.getCentroVacunacion());
-           ps.setDate(5, Date.valueOf(citav.getFechaHoraColoca()));
+           ps.setDate(4, Date.valueOf(citav.getFechaHoraColoca()));
 //           ps.setTimestamp(4, new Timestamp(citav.getFechaHoraColoca().getTime()));
            ps.setInt(5,citav.getDosis());
            ps.setBoolean(6,citav.isEstado());
-            ps.setInt(8,citav.getIdCiudadano());
+            ps.setInt(7,citav.getIdCiudadano());
          
            int citaModificada = ps.executeUpdate();
            
