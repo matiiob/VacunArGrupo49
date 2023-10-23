@@ -3,7 +3,7 @@
 
 <h3 align="center">Apasionados desarrolladores Java FullStack</h3>
 <p>* I -Del Castello, Gonzalo</p>
-<p>* II -[Garay, Christian]  <img aling="center" src="linkedin (1).png" whidt="25" style="max-width: 50%;"/> [https://www.linkedin.com/in/christian-garay959](https://www.linkedin.com/in/christian-garay959) </p>
+<p>* II - 📄 Conoce mis experiencias [https://www.linkedin.com/in/christian-garay959](https://www.linkedin.com/in/christian-garay959)</p>
 <p>* III -[Obregón, Matías]  <img aling="center" src="gmail (1).png" whidt="25" style="max-width: 50%;"/> <a href="mailto:obregonmati@gmail.com">Enviar correo</a> </p>
 <p>* IV -Quiñones, Alejandro</p>
 <h3 align="left">Herramientas utilizadas:</h3>
