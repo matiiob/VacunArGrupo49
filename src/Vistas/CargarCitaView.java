@@ -359,16 +359,16 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
             Instant instantColoca = fechaHoraColoca.toInstant();
             LocalDate fechaProx = instantColoca.atZone(ZoneId.systemDefault()).toLocalDate();
             
-            String dosis = (String)jCBDosis.getSelectedItem();
-//            boolean estado = jRBColocada.isSelected();
+            int dosis = jCBDosis.getSelectedIndex()+1;
+            boolean estado = jRBColocada.isSelected();
         
 
-        if (cita == null) {
+//        if (cita == null) {
 
-            cita = new CitaVacunacion(idCiudadano,codRefuerzo,fechaHoraCita,centroVacunacion,fechaHoraColoca,dosis,estado);
+            cita = new CitaVacunacion(idCiudadano, codRefuerzo, fechaCit, centroVacunacion, fechaProx, dosis, estado);
             cvd.guardarCitaVacunacion(cita);
 
-        } else {
+//        } else {
             cita.setCodRefuerzo(jCBCodigoRefuerzo.getSelectedIndex());
             cita.setFechaHoraCita(fechaCit);
             cita.setCentroVacunacion(centroVacunacion);
@@ -377,7 +377,7 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
             cita.setEstado(jRBColocada.isSelected());
             cvd.modificarCitaVacunacion(cita);
 
-        }
+//        }
     }//GEN-LAST:event_jBGuardarActionPerformed
     
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
