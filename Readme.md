@@ -1,10 +1,10 @@
-<h1 align="center">Hola 👋, somos los integrantes del grupo {49} <img aling="center" src="ideas.png" whidt="250" style="max-width: 100%;"/> de la ULP de San Luis Argentina}<a href="https://github.com/GonzaloDelCastello/universidadgrupo49/README.md"></h1>
+<h1 align="center">Hola 👋, somos los integrantes del grupo {49}  <img aling="center" src="ideas.png" whidt="250" style="max-width: 100%;"/>  de la ULP de San Luis Argentina}<a href="https://github.com/GonzaloDelCastello/universidadgrupo49/README.md"></h1>
 
 
 <h3 align="center">Apasionados desarrolladores Java FullStack</h3>
 <p>Del Castello, Gonzalo</p>
-<p>Garay, Christian</p>
-<p>Obregón, Matías</p>
+<p>Garay, Christian<img aling="center" src="gmail.png" whidt="250" style="max-width: 100%;"/>christian-garay959</p>
+<p>Obregón, Matías<img aling="center" src="gmail.png" whidt="250" style="max-width: 100%;"/> obregonmati@gmail.com</p>
 <p>Quiñones, Alejandro</p>
 <h3 align="left">Herramientas utilizadas:</h3>
 
