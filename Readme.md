@@ -1,4 +1,4 @@
-<h1 align="center">Hola 👋, somos los integrantes del grupo {49}<img aling="center" src="ideas.png" whidt="250" style="max-width: 100%;"/> de la ULP de San Luis Argentina}<a href="https://github.com/GonzaloDelCastello/universidadgrupo49/README.md"></h1>
+<h1 align="center">Hola 👋, somos los integrantes del grupo {49} <img aling="center" src="ideas.png" whidt="250" style="max-width: 100%;"/> de la ULP de San Luis Argentina}<a href="https://github.com/GonzaloDelCastello/universidadgrupo49/README.md"></h1>
 
 
 <h3 align="center">Apasionados desarrolladores Java FullStack</h3>
