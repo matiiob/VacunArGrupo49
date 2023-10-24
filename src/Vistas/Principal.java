@@ -13,7 +13,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
-        jPCargarCita.setVisible(false);
+        jPSubMenuCita.setVisible(false);
     }
 
     /**
@@ -39,9 +39,11 @@ public class Principal extends javax.swing.JFrame {
         jLBotonLaboratorio = new javax.swing.JLabel();
         jPBotonCita = new javax.swing.JPanel();
         jLBotonCita = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        jPSubMenuCita = new javax.swing.JPanel();
         jPCargarCita = new javax.swing.JPanel();
         jLCargarCita = new javax.swing.JLabel();
+        jPListarCitas = new javax.swing.JPanel();
+        jLListarCitas = new javax.swing.JLabel();
         ImageIcon icon = new ImageIcon(getClass().getResource("/Recursos/fondoTexto.jpg"));
         Image imagenFondo = icon.getImage();
         jDEscritorio = new javax.swing.JDesktopPane(){
@@ -249,7 +251,8 @@ public class Principal extends javax.swing.JFrame {
 
         jPanelLateral.add(jPBotonCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 240, 40));
 
-        jPanel1.setOpaque(false);
+        jPSubMenuCita.setOpaque(false);
+        jPSubMenuCita.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPCargarCita.setBackground(new java.awt.Color(174, 215, 245));
 
@@ -282,20 +285,40 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLCargarCita, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPCargarCita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        jPSubMenuCita.add(jPCargarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPListarCitas.setBackground(new java.awt.Color(195, 227, 250));
+
+        jLListarCitas.setForeground(new java.awt.Color(0, 51, 153));
+        jLListarCitas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLListarCitas.setText("Listar Citas");
+        jLListarCitas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLListarCitas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLListarCitasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLListarCitasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLListarCitasMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPListarCitasLayout = new javax.swing.GroupLayout(jPListarCitas);
+        jPListarCitas.setLayout(jPListarCitasLayout);
+        jPListarCitasLayout.setHorizontalGroup(
+            jPListarCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLListarCitas, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPCargarCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 120, Short.MAX_VALUE))
+        jPListarCitasLayout.setVerticalGroup(
+            jPListarCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLListarCitas, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPanelLateral.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 230, 160));
+        jPSubMenuCita.add(jPListarCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 230, -1));
+
+        jPanelLateral.add(jPSubMenuCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 230, 260));
 
         jPBackGround.add(jPanelLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 660));
 
@@ -372,7 +395,7 @@ public class Principal extends javax.swing.JFrame {
     private void jLBotonCiudadanoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonCiudadanoMouseEntered
         jPBotonCiudadano.setBackground(new Color(207, 64, 32));
         jLBotonCiudadano.setForeground(Color.white);
-        jPCargarCita.setVisible(false);
+        jPSubMenuCita.setVisible(false);
     }//GEN-LAST:event_jLBotonCiudadanoMouseEntered
 
     private void jLBotonCiudadanoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonCiudadanoMouseExited
@@ -383,7 +406,7 @@ public class Principal extends javax.swing.JFrame {
     private void jLBotonVacunaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonVacunaMouseEntered
         jPBotonVacuna.setBackground(new Color(207, 64, 32));
         jLBotonVacuna.setForeground(Color.white);
-        jPCargarCita.setVisible(false);
+        jPSubMenuCita.setVisible(false);
     }//GEN-LAST:event_jLBotonVacunaMouseEntered
 
     private void jLBotonVacunaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonVacunaMouseExited
@@ -394,7 +417,7 @@ public class Principal extends javax.swing.JFrame {
     private void jLBotonLaboratorioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonLaboratorioMouseEntered
         jPBotonLaboratorio.setBackground(new Color(207, 64, 32));
         jLBotonLaboratorio.setForeground(Color.white);
-        jPCargarCita.setVisible(false);
+        jPSubMenuCita.setVisible(false);
     }//GEN-LAST:event_jLBotonLaboratorioMouseEntered
 
     private void jLBotonLaboratorioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonLaboratorioMouseExited
@@ -405,7 +428,7 @@ public class Principal extends javax.swing.JFrame {
     private void jLBotonCitaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonCitaMouseEntered
         jPBotonCita.setBackground(new Color(207, 64, 32));
         jLBotonCita.setForeground(Color.white);
-        jPCargarCita.setVisible(true);
+        jPSubMenuCita.setVisible(true);
     }//GEN-LAST:event_jLBotonCitaMouseEntered
 
     private void jLBotonCitaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonCitaMouseExited
@@ -441,8 +464,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLBotonLaboratorioMouseClicked
 
     private void jLCargarCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCargarCitaMouseClicked
-        // TODO add your handling code here:
-        jPCargarCita.setVisible(false);
+        jPSubMenuCita.setVisible(false);
         jDEscritorio.removeAll();
         jDEscritorio.repaint();
         CargarCitaView ccv = new CargarCitaView();
@@ -460,6 +482,26 @@ public class Principal extends javax.swing.JFrame {
         jPCargarCita.setBackground(new Color(174,215,245));
         jLCargarCita.setForeground(new Color(0, 51, 53));
     }//GEN-LAST:event_jLCargarCitaMouseExited
+
+    private void jLListarCitasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLListarCitasMouseEntered
+        jPListarCitas.setBackground(new Color(207, 64, 32));
+        jLListarCitas.setForeground(Color.white);
+    }//GEN-LAST:event_jLListarCitasMouseEntered
+
+    private void jLListarCitasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLListarCitasMouseExited
+        jPListarCitas.setBackground(new Color(195,227,250));
+        jLListarCitas.setForeground(new Color(0, 51, 53));
+    }//GEN-LAST:event_jLListarCitasMouseExited
+
+    private void jLListarCitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLListarCitasMouseClicked
+        jPSubMenuCita.setVisible(false);
+        jDEscritorio.removeAll();
+        jDEscritorio.repaint();
+        ConsultaCitasFechaEstado ccfe = new ConsultaCitasFechaEstado();
+        ccfe.setVisible(true);
+        jDEscritorio.add(ccfe).setLocation(30, 30);
+        jDEscritorio.moveToFront(ccfe);
+    }//GEN-LAST:event_jLListarCitasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -504,6 +546,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLBotonVacuna;
     private javax.swing.JLabel jLCargarCita;
     private javax.swing.JLabel jLCerrar;
+    private javax.swing.JLabel jLListarCitas;
     private javax.swing.JLabel jLLogoProyecto;
     private javax.swing.JLabel jLLogoministerio;
     private javax.swing.JPanel jPBackGround;
@@ -514,7 +557,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPBotonLaboratorio;
     private javax.swing.JPanel jPBotonVacuna;
     private javax.swing.JPanel jPCargarCita;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPListarCitas;
+    private javax.swing.JPanel jPSubMenuCita;
     private javax.swing.JPanel jPanelLateral;
     // End of variables declaration//GEN-END:variables
 }
