@@ -390,12 +390,12 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
 // UPDATE citavacunacion SET codRefuerzo=?,fechaHoraCita=?,centroVacunacion=?,fechaHoraColoca=?,dosis=?,estado=? WHERE idCiudadano="+citav.getIdCiudadano()+"       
 //        int idCiudadano = Integer.parseInt(jTIdCiudadano.getText());
         int codRefuerzo = jCBCodigoRefuerzo.getSelectedIndex();
-        String centroVacunacion = (String) jCBCentroDeVacunacion.getSelectedItem();
-
+        
         Date fechaHoraCita = jDCFechaCita.getDate();
         Instant instantCita = fechaHoraCita.toInstant();
         LocalDate fechaCit = instantCita.atZone(ZoneId.systemDefault()).toLocalDate();
         
+        String centroVacunacion = (String) jCBCentroDeVacunacion.getSelectedItem();
 
         Date fechaHoraColoca = jDCProximaFecha.getDate();
         Instant instantColoca = fechaHoraColoca.toInstant();
