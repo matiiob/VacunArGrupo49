@@ -5,11 +5,19 @@ package Vistas;
 import AccesoADatos.CiudadanoData;
 import Entidades.Ciudadano;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+
 
 
 public class GestionarCiudadano extends javax.swing.JInternalFrame {
@@ -426,13 +434,39 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalirMouseReleased
     
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        String [] botones = {"SI", "CANCELAR"};
-        int x = JOptionPane.showOptionDialog(this, "¿Esta seguro que desea salir?", "Elije una Opción", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
-                                                                   //mensaje               //titulo                                                                                      //String
+//        String [] botones = {"SI", "CANCELAR"};                                                                                                                                                                                                                                                                                                              
+//        int x = JOptionPane.showOptionDialog(this, "<html><p style=\" color: #f70c28; font: 13px; font-weight: bold; font-family: Roboto;\" >¿Esta seguro que deseas salir?</p></html>", "Elije una Opción!!!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
+//                                                                   //mensaje                                                                                                                  //titulo                                                                                      //String
+//                                 
+//        if (x == 0) {
+//            dispose();
+//        } 
+ //----------------------------------------------------------------------------------
+   
+            
+           
 
-        if (x == 0) {
-            dispose();
-        } 
+        JPanel panel = new JPanel();
+        Font customFont = new Font("Roboto", Font.BOLD, 15); 
+    
+
+        JLabel label = new JLabel("<html><p style=\" color: #eb4034; font: 13px; font-weight: bold; font-family: Roboto;\" >¿Esta seguro que deseas salir?</p></html>");
+        label.setForeground(Color.black);
+        label.setFont(customFont); // fuente custom etiqueta-*-
+        panel.add(label);
+
+        ImageIcon icono = new ImageIcon(getClass().getResource("../recursos/escudo.png"));
+
+        String[] options = {"Salir", "Cancelar"}; // agregar opción "Cancelar"
+        int result = JOptionPane.showOptionDialog(this, panel, "Ministerio de Salud Argentina", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, icono, options, null);
+
+        if (result == JOptionPane.YES_OPTION) { // si se hace clic en "Salir"
+        dispose(); // cerrar la ventana
+    }
+//------------------------------------------------------------------------------------
+
+
+
 
     }//GEN-LAST:event_btnSalirActionPerformed
 
