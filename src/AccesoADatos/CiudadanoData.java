@@ -85,7 +85,7 @@ public class CiudadanoData {
     public Ciudadano buscarCiudadanoDni(int dni) {
         // La busqueda permite al usuario buscar un Ciudadano por su dni.
         
-        String sql = "SELECT dni, nombreCompleto, email, celular, patologia, "
+        String sql = "SELECT idCiudadano, dni, nombreCompleto, email, celular, patologia, "
                 + "ambitoTrabajo FROM ciudadano WHERE dni = ?";
 
         Ciudadano ciudadano = null;
@@ -96,6 +96,7 @@ public class CiudadanoData {
 
             if (rs.next()) {
                 ciudadano = new Ciudadano();
+                ciudadano.setIdCiudadano(rs.getInt("idCiudadano"));
                 ciudadano.setDni(rs.getInt("dni"));
                 ciudadano.setNombreCompleto(rs.getString("nombreCompleto"));
                 ciudadano.setEmail(rs.getString("email"));
@@ -150,6 +151,8 @@ public class CiudadanoData {
             if (fila == 1) {
 
                 JOptionPane.showMessageDialog(null, "Se eliminó el Ciudadano.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe ingresar el DNI del Ciudadano.");
             }
             ps.close();
 

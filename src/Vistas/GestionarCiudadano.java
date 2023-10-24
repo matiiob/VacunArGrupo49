@@ -4,19 +4,13 @@ package Vistas;
 
 import AccesoADatos.CiudadanoData;
 import Entidades.Ciudadano;
-
 import java.awt.Color;
 import java.awt.event.KeyEvent;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+
 
 public class GestionarCiudadano extends javax.swing.JInternalFrame {
 
@@ -28,8 +22,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         initComponents();
         cd = new CiudadanoData();
         ciudadano = new Ciudadano();
-      //  cargarPatologias();
-         
+              
     }
 
    
@@ -57,6 +50,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         jCBPatologia = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -163,7 +157,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         btnCargarCiudadano.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         btnCargarCiudadano.setForeground(new java.awt.Color(0, 0, 0));
         btnCargarCiudadano.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/agregar-usuario.png"))); // NOI18N
-        btnCargarCiudadano.setText("Cargar/Modificar");
+        btnCargarCiudadano.setText("Cargar");
         btnCargarCiudadano.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCargarCiudadanoMouseEntered(evt);
@@ -189,7 +183,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/lupa.png"))); // NOI18N
         btnBuscar.setText("Buscar");
-        btnBuscar.setToolTipText("Ingresar un numero de DNI ");
+        btnBuscar.setToolTipText("<html>\n<style {\"background: white\"; \"color: green;\"}><p>Ingresar un numero de DNI</p></style>\n</html>");
         btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBuscarMouseEntered(evt);
@@ -207,7 +201,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEliminar.setBackground(new java.awt.Color(224, 9, 78));
+        btnEliminar.setBackground(new java.awt.Color(138, 4, 17));
         btnEliminar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/basura.png"))); // NOI18N
@@ -229,6 +223,28 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
             }
         });
 
+        btnModificar.setBackground(new java.awt.Color(224, 131, 38));
+        btnModificar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(0, 0, 0));
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/editar.png"))); // NOI18N
+        btnModificar.setText("Modificar");
+        btnModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnModificarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnModificarMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnModificarMouseReleased(evt);
+            }
+        });
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -239,15 +255,6 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(btnCargarCiudadano)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLimpiar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                        .addComponent(btnEliminar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSalir))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(156, 156, 156)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,13 +279,24 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel14))))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTFNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                            .addComponent(jTFNombre)
                             .addComponent(jTFEmail)
                             .addComponent(jTFCelular)
                             .addComponent(jCBPatologia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jCBAmbitoTrabajo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(btnCargarCiudadano)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnModificar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLimpiar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSalir)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,7 +335,8 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
                     .addComponent(btnLimpiar)
                     .addComponent(btnEliminar)
                     .addComponent(btnSalir)
-                    .addComponent(btnCargarCiudadano))
+                    .addComponent(btnCargarCiudadano)
+                    .addComponent(btnModificar))
                 .addGap(28, 28, 28))
         );
 
@@ -368,17 +387,21 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         btnLimpiar.setBackground(myColor);
     }//GEN-LAST:event_btnLimpiarMouseEntered
     
+    
+     // PARA BORRAR-----------------------
+    
     private void jCBAmbitoTrabajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAmbitoTrabajoActionPerformed
         
     }//GEN-LAST:event_jCBAmbitoTrabajoActionPerformed
-
+     // PARA BORRAR-----------------------
+    
     private void jTFDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFDniActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFDniActionPerformed
 
     private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
 
-        Color myColor = new Color(88, 144, 173); // creo mí color personalizado-*-
+        Color myColor = new Color(41, 124, 166); // creo mí color personalizado-*-
 
         btnSalir.setBackground(myColor);
 
@@ -408,7 +431,6 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
                                                                    //mensaje               //titulo                                                                                      //String
 
         if (x == 0) {
-//            JOptionPane.showMessageDialog(this, "Gracias por tu visita!!!");
             dispose();
         } 
 
@@ -453,87 +475,75 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
             String patologiaText = (String) jCBPatologia.getSelectedItem();
             String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getSelectedItem();
             boolean eliminado = false;
-        
-                      // Condicional para datos vacios-*-
-        
-       if (dniText.isEmpty() || nombreText.isEmpty() || emailText.isEmpty() || celularText.isEmpty() || patologiaText.isEmpty() || ambitoTrabajoText.isEmpty()) {
-    JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
-    return;
-} 
-                      // DNI  
-        
-        if (dniText.length()>=9 || dniText.length()<5){
-            JOptionPane.showMessageDialog(this, "Debe introducir un dni válido");
-            jTFDni.setText("");
-            return; // <= buena práctica
-        }
-        
-                         
-                      // No se permiten acentos ni carateres especiales en la DB-*-
-        
-        if (nombreText.length()>=25 || nombreText.length()<3 || !nombreText.matches("[a-zA-Z\\s]+")) {
-            JOptionPane.showMessageDialog(this, "Debe introducir un nombre válido");
-            jTFNombre.setText("");
-            return;
+
+            // Condicional para datos vacios-*-
+            if (dniText.isEmpty() || nombreText.isEmpty() || emailText.isEmpty() || celularText.isEmpty() || patologiaText.isEmpty() || ambitoTrabajoText.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
+                return;
+            }
+            // DNI  
+
+            if (dniText.length() >= 9 || dniText.length() < 5) {
+                JOptionPane.showMessageDialog(this, "Debe introducir un dni válido");
+                jTFDni.setText("");
+                return; // <= buena práctica
+            }
+
+            // No se permiten acentos ni carateres especiales en la DB-*-
+            if (nombreText.length() >= 25 || nombreText.length() < 3 || !nombreText.matches("[a-zA-Z\\s]+")) {
+                JOptionPane.showMessageDialog(this, "Debe introducir un nombre válido");
+                jTFNombre.setText("");
+                return;
             } else {
-            nombreText = nombreText.toLowerCase();
-}
-               
-                      // No se permiten letras mayusculas ni caracteres especiales-*-    
-      
-          if(emailText.length()>=25 || emailText.length()<10 || !emailText.matches("[a-z0-9._-]+@[a-z0-9.-]+\\.[a-z]{2,4}")) {
-             JOptionPane.showMessageDialog(this, "Ingrese un Email en minuscula, que contenga '@' y sin caracteres especiales");    
-             jTFEmail.setText("");
-             return;
-             } else {
-             emailText = emailText.toLowerCase();
-}
+                nombreText = nombreText.toLowerCase();
+            }
 
+            // No se permiten letras mayusculas ni caracteres especiales-*-    
+            if (emailText.length() >= 25 || emailText.length() < 10 || !emailText.matches("[a-z0-9._-]+@[a-z0-9.-]+\\.[a-z]{2,4}")) {
+                JOptionPane.showMessageDialog(this, "Ingrese un Email en minuscula, que contenga '@' y sin caracteres especiales");
+                jTFEmail.setText("");
+                return;
+            } else {
+                emailText = emailText.toLowerCase();
+            }
 
-                      // Celular 
+            // Celular 
+            if (celularText.length() >= 15 || celularText.length() < 8 || !celularText.matches("[0-9]+")) {
+                JOptionPane.showMessageDialog(this, "Ingrese un numero de celular válido");
+                jTFCelular.setText("");
+                return; // <= buena práctica
+            }
 
-        if(celularText.length()>=15 || celularText.length()<8 || !celularText.matches("[0-9]+")) {
-            JOptionPane.showMessageDialog(this, "Ingrese un numero de celular válido");
-            jTFCelular.setText("");
-            return; // <= buena práctica
+            // Patología
+            if (jCBPatologia.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(this, "Debe seleccionar una patología.");
+                jCBPatologia.setSelectedIndex(-1);
+                return;
+            }
+
+            // Ambito Trabajo 
+            if (jCBAmbitoTrabajo.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(this, "Debe seleccionar un ámbito de trabajo válido.");
+                jCBAmbitoTrabajo.setSelectedIndex(-1);
+                return;
+            }
+
+            int dni = Integer.parseInt(jTFDni.getText());
+            ciudadano.setDni(dni);
+            ciudadano.setNombreCompleto(nombreText);
+            ciudadano.setCelular(celularText);
+            ciudadano.setEmail(emailText);
+            ciudadano.setPatologia(patologiaText);
+            ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
+            ciudadano.setEstado(eliminado);
+
+            cd.guardarCiudadano(ciudadano);
+            limpiarPantalla();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El campo DNI debe ser un número válido.");
         }
-        
-        
-                     // Patología
-        
-        if(jCBPatologia.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar una patología.");
-            jCBPatologia.setSelectedIndex(-1);
-            return;
-        }             
-        
-        
-                     // Ambito Trabajo 
-        
-        if (jCBAmbitoTrabajo.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar un ámbito de trabajo válido.");
-            jCBAmbitoTrabajo.setSelectedIndex(-1);
-            return;
-}
-        
-        
-             
-        int dni = Integer.parseInt(jTFDni.getText());
-        ciudadano.setDni(dni);
-        ciudadano.setNombreCompleto(nombreText);
-        ciudadano.setCelular(celularText);
-        ciudadano.setEmail(emailText);
-        ciudadano.setPatologia(patologiaText);
-        ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
-        ciudadano.setEstado(eliminado);
-        
-        cd.guardarCiudadano(ciudadano);
-          
-        limpiarPantalla();
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "El campo DNI debe ser un número válido.");
-    }  
-   
+
 
     }//GEN-LAST:event_btnCargarCiudadanoActionPerformed
 
@@ -549,10 +559,8 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
             jTFNombre.setText(ciudadano.getNombreCompleto());
             jTFEmail.setText(ciudadano.getEmail());
             jTFCelular.setText(ciudadano.getCelular());
-//          String patologiaText = (String) jCBPatologia.getSelectedItem();
-//          String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getSelectedItem();
-          jCBPatologia.setSelectedItem(ciudadano.getPatologia());
-          jCBAmbitoTrabajo.setSelectedItem(ciudadano.getAmbitoTrabajo());
+            jCBPatologia.setSelectedItem(ciudadano.getPatologia());
+            jCBAmbitoTrabajo.setSelectedItem(ciudadano.getAmbitoTrabajo());
           
 
         } else {
@@ -565,11 +573,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     
-    
-    
-    
-    
-    
+        
                   // BTN Eliminar  
      
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -577,7 +581,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
      try {
             cd.eliminarCiudadano(ciudadano.getIdCiudadano());
             btnLimpiar.doClick();
-            JOptionPane.showMessageDialog(this, "El ciudadano ha sido eliminado."+"id ciudadano: "+ciudadano.getIdCiudadano()+" nombre: " +ciudadano.getNombreCompleto());
+         
         } catch (NullPointerException npe) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar un Ciudadano.");
         }
@@ -631,7 +635,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
     
     private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
        
-         Color myColor = new Color(94, 7, 12); // creo mí color personalizado-*-
+         Color myColor = new Color(224,9,78); // creo mí color personalizado-*-
 
         btnEliminar.setBackground(myColor);
     }//GEN-LAST:event_btnEliminarMouseEntered
@@ -640,7 +644,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
     
     private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
        
-         btnEliminar.setBackground(new Color(224,9,78));
+         btnEliminar.setBackground(new Color(138, 4, 17));
         
     }//GEN-LAST:event_btnEliminarMouseExited
  
@@ -657,32 +661,88 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnEliminarMouseReleased
+
+                  // BTN Modificar
+    
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        
+        try {
+
+         int dni = Integer.parseInt(jTFDni.getText());
+        
+         Ciudadano ciudadano = cd.buscarCiudadanoDni(dni); // retrieve the citizen object from the database
+        if (ciudadano == null) {
+            JOptionPane.showMessageDialog(this, "El ciudadano no existe en la base de datos.");
+            return;
+        }
+             
+        String nombreText = (String) jTFNombre.getText();
+        String emailText = (String) jTFEmail.getText();
+        String celularText = (String) jTFCelular.getText();
+        String patologiaText = (String) jCBPatologia.getSelectedItem();
+        String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getSelectedItem();
+        boolean eliminado = false;
+        
+        
+        ciudadano.setNombreCompleto(nombreText);
+        ciudadano.setEmail(emailText);
+        ciudadano.setCelular(celularText);
+        ciudadano.setPatologia(patologiaText);
+        ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
+        ciudadano.setEstado(eliminado);
+        
+        cd.modificarCiudadano(ciudadano);
+        
+     
+     limpiarPantalla();
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "El campo DNI debe ser un número válido.");
+    }
+        
+        
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+                  // Hover BTN Modificar 
+               
+    private void btnModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseEntered
+    
+         Color myColor = new Color(138, 71, 4); // creo mí color personalizado-*-
+
+        btnModificar.setBackground(myColor);
+    }//GEN-LAST:event_btnModificarMouseEntered
+
+                 // Hover BTN Modificar
+    
+    private void btnModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseExited
+       
+       btnModificar.setBackground(new Color(224,131,38)); 
+    }//GEN-LAST:event_btnModificarMouseExited
+
+                // Hover BTN Modificar
+    
+    private void btnModificarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseReleased
+        
+         try {
+            TimeUnit.MILLISECONDS.sleep(300);
+
+            // En caso de haber funciones van aquí dentro-*-
+
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnModificarMouseReleased
      
     
-
-
     
-             // SUSPENDIDA-*-
-    
-//    private void cargarPatologias() {
-//    List<String> listasAmbitoTrabajo = new ArrayList<>();
-//    listasAmbitoTrabajo.add("Educación");
-//    listasAmbitoTrabajo.add("Salud");
-//    listasAmbitoTrabajo.add("Otros");
-//    
-//    jCBAmbitoTrabajo.removeAllItems();
-//    
-//    for (String ambitoTrabajo : listasAmbitoTrabajo) {
-//        jCBAmbitoTrabajo.addItem(ambitoTrabajo); 
-//    }
-//}
-  
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCargarCiudadano;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> jCBAmbitoTrabajo;
     private javax.swing.JComboBox<String> jCBPatologia;
@@ -703,13 +763,17 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
 
     public void limpiarPantalla() {
 
-        jTFDni.setText("");
-        jTFNombre.setText("");
-        jTFEmail.setText("");
-        jTFCelular.setText("");
-        jCBPatologia.setSelectedIndex(0); // toma indice 0
-        jCBAmbitoTrabajo.setSelectedIndex(0); // toma indice 0
+        if (jTFDni.getText().isEmpty() && jTFNombre.getText().isEmpty() && jTFEmail.getText().isEmpty() && jTFCelular.getText().isEmpty() && jCBPatologia.getSelectedIndex() == 0 && jCBAmbitoTrabajo.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Todos los campos ya están vacíos.");
+        } else {
 
+            jTFDni.setText("");
+            jTFNombre.setText("");
+            jTFEmail.setText("");
+            jTFCelular.setText("");
+            jCBPatologia.setSelectedIndex(0); // toma indice 0
+            jCBAmbitoTrabajo.setSelectedIndex(0); // toma indice 0
 
+        }
     }
 }
