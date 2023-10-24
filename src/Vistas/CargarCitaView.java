@@ -92,29 +92,39 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         jTIdCiudadano = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jDCProximaFecha = new com.toedter.calendar.JDateChooser();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(142, 170, 189));
         setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        setClosable(true);
         setForeground(new java.awt.Color(0, 0, 0));
-        setResizable(true);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/min_salud (1).png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel2.setText("Nombre Completo");
 
+        jTNombreCompleto.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setText("Email");
+
+        jTEmail.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel4.setText("Celular");
 
+        jTCelular.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel5.setText("Patologia Base");
 
+        jTPatologiaBase.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel6.setText("Ambito Laboral");
+
+        jTAmbitoLaboral.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel7.setText("Centro de Vacunacion");
@@ -175,6 +185,8 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         jLabel12.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel12.setText("Documento");
 
+        jTDocumento.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+
         jBBuscar.setBackground(new java.awt.Color(195, 227, 250));
         jBBuscar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/lupa.png"))); // NOI18N
@@ -186,10 +198,32 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         });
 
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel13.setText("IdCiudadano?");
+        jLabel13.setText("IdCiudadano");
+
+        jTIdCiudadano.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel14.setText("proxima Fecha");
+
+        jDCProximaFecha.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+
+        jButton1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida.png"))); // NOI18N
+        jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/basura.png"))); // NOI18N
+        jButton2.setText("Eliminar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -200,23 +234,33 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
                 .addComponent(jLabel11)
                 .addGap(85, 85, 85))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel10)
-                    .addComponent(jBLimpiar)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jRBColocada)
+                        .addGap(89, 89, 89)
+                        .addComponent(jCBDosis, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jCBCentroDeVacunacion, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCBCodigoRefuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDCProximaFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jCBCentroDeVacunacion, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBLimpiar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBModificar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBGuardar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(18, 18, 18)
                         .addComponent(jDCFechaCita, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel14))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -229,27 +273,30 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
                             .addComponent(jLabel9))
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jTDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jBBuscar))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jBModificar)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jBGuardar))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jRBColocada)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jCBDosis, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jTNombreCompleto, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTCelular, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTPatologiaBase, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTAmbitoLaboral, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jTIdCiudadano, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(32, Short.MAX_VALUE))
+                            .addComponent(jTPatologiaBase)
+                            .addComponent(jTAmbitoLaboral)
+                            .addComponent(jTEmail)
+                            .addComponent(jTCelular)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jTNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jTDocumento)
+                                            .addComponent(jTIdCiudadano, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                                        .addGap(112, 112, 112)
+                                        .addComponent(jBBuscar)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addGap(18, 18, 18)
+                                .addComponent(jDCProximaFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jCBCodigoRefuerzo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,7 +314,7 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jTIdCiudadano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -295,15 +342,15 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel8))
+                            .addComponent(jLabel8)
                             .addComponent(jDCFechaCita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addComponent(jLabel9))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addComponent(jDCProximaFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jDCProximaFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14))
                         .addGap(18, 18, 18)
                         .addComponent(jCBCodigoRefuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -315,12 +362,17 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBLimpiar)
                     .addComponent(jBGuardar)
-                    .addComponent(jBModificar))
+                    .addComponent(jBModificar)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap())
         );
 
+        jLabel13.getAccessibleContext().setAccessibleDescription("Numero de identificacion unico del ciudadano");
+
         getAccessibleContext().setAccessibleName("www.argentina.gob.ar");
         getAccessibleContext().setAccessibleDescription("");
+        getAccessibleContext().setAccessibleParent(this);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -350,26 +402,30 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        // BOTON GUARDAR CITAVACUNACION // actualizar la base de datos que hizo Cris
- 
-           int idCiudadano = Integer.parseInt(jTIdCiudadano.getText());
-        int codRefuerzo = jCBCodigoRefuerzo.getSelectedIndex();
-        String centroVacunacion = (String) jCBCentroDeVacunacion.getSelectedItem();
+        // BOTON GUARDAR CITAVACUNACION 
+        try {
+            int idCiudadano = Integer.parseInt(jTIdCiudadano.getText());
+            int codRefuerzo = jCBCodigoRefuerzo.getSelectedIndex();
+            String centroVacunacion = (String) jCBCentroDeVacunacion.getSelectedItem();
 
-        Date fechaHoraCita = jDCFechaCita.getDate();
-        Instant instantCita = fechaHoraCita.toInstant();
-        LocalDate fechaCit = instantCita.atZone(ZoneId.systemDefault()).toLocalDate();
+            Date fechaHoraCita = jDCFechaCita.getDate();
+            Instant instantCita = fechaHoraCita.toInstant();
+            LocalDate fechaCit = instantCita.atZone(ZoneId.systemDefault()).toLocalDate();
 
-        Date fechaHoraColoca = jDCProximaFecha.getDate();
-        Instant instantColoca = fechaHoraColoca.toInstant();
-        LocalDate fechaProx = instantColoca.atZone(ZoneId.systemDefault()).toLocalDate();
+            Date fechaHoraColoca = jDCProximaFecha.getDate();
+            Instant instantColoca = fechaHoraColoca.toInstant();
+            LocalDate fechaProx = instantColoca.atZone(ZoneId.systemDefault()).toLocalDate();
 
-        int dosis = jCBDosis.getSelectedIndex() + 1;
-        boolean estado = jRBColocada.isSelected();
+            int dosis = jCBDosis.getSelectedIndex() + 1;
+            boolean estado = jRBColocada.isSelected();
 
-        cita = new CitaVacunacion(idCiudadano, codRefuerzo, fechaCit, centroVacunacion, fechaProx, dosis, estado);
-        cvd.guardarCitaVacunacion(cita);
-
+            cita = new CitaVacunacion(idCiudadano, codRefuerzo, fechaCit, centroVacunacion, fechaProx, dosis, estado);
+            cvd.guardarCitaVacunacion(cita);
+        } catch (NumberFormatException nbe) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar números en el campo DNI." + nbe);
+        } catch (NullPointerException npe) {
+            JOptionPane.showMessageDialog(this, "El ciudadano no existe." + npe);
+        }
     }//GEN-LAST:event_jBGuardarActionPerformed
     
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
@@ -385,37 +441,65 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
-        // TODO add your handling code here:
-        
-// UPDATE citavacunacion SET codRefuerzo=?,fechaHoraCita=?,centroVacunacion=?,fechaHoraColoca=?,dosis=?,estado=? WHERE idCiudadano="+citav.getIdCiudadano()+"       
-//        int idCiudadano = Integer.parseInt(jTIdCiudadano.getText());
-        int codRefuerzo = jCBCodigoRefuerzo.getSelectedIndex();
-        
-        Date fechaHoraCita = jDCFechaCita.getDate();
-        Instant instantCita = fechaHoraCita.toInstant();
-        LocalDate fechaCit = instantCita.atZone(ZoneId.systemDefault()).toLocalDate();
-        
-        String centroVacunacion = (String) jCBCentroDeVacunacion.getSelectedItem();
+        // Boton modificar
+      
+        try {
+            int idCiudadano = Integer.parseInt(jTIdCiudadano.getText());
+            int codRefuerzo = jCBCodigoRefuerzo.getSelectedIndex();
 
-        Date fechaHoraColoca = jDCProximaFecha.getDate();
-        Instant instantColoca = fechaHoraColoca.toInstant();
-        LocalDate fechaProx = instantColoca.atZone(ZoneId.systemDefault()).toLocalDate();
+            Date fechaHoraCita = jDCFechaCita.getDate();
+            Instant instantCita = fechaHoraCita.toInstant();
+            LocalDate fechaCit = instantCita.atZone(ZoneId.systemDefault()).toLocalDate();
 
-        int dosis = jCBDosis.getSelectedIndex() + 1;
-        boolean estado = jRBColocada.isSelected();
-        
-        cita = new CitaVacunacion();
+            String centroVacunacion = (String) jCBCentroDeVacunacion.getSelectedItem();
 
-        cita.setCodRefuerzo(codRefuerzo);
-        cita.setFechaHoraCita(fechaCit);
-        cita.setCentroVacunacion(centroVacunacion);
-        cita.setFechaHoraColoca(fechaProx);
-        cita.setDosis(dosis);
-        cita.setEstado(estado);
-        
-        cvd.modificarCitaVacunacion(cita);
+            Date fechaHoraColoca = jDCProximaFecha.getDate();
+            Instant instantColoca = fechaHoraColoca.toInstant();
+            LocalDate fechaProx = instantColoca.atZone(ZoneId.systemDefault()).toLocalDate();
 
+            int dosis = jCBDosis.getSelectedIndex() + 1;
+            boolean estado = jRBColocada.isSelected();
+
+            cita = new CitaVacunacion(idCiudadano, codRefuerzo, fechaCit, centroVacunacion, fechaProx, dosis, estado);
+
+            cita.setCodRefuerzo(codRefuerzo);
+            cita.setFechaHoraCita(fechaCit);
+            cita.setCentroVacunacion(centroVacunacion);
+            cita.setFechaHoraColoca(fechaProx);
+            cita.setDosis(dosis);
+            cita.setEstado(estado);
+
+            cvd.modificarCitaVacunacion(cita);
+        } catch (NumberFormatException nbe) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar números en el campo DNI." + nbe);
+        } catch (NullPointerException npe) {
+            JOptionPane.showMessageDialog(this, "El ciudadano no existe." + npe);
+        }
     }//GEN-LAST:event_jBModificarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // boton salir
+        
+         String[] botones = {"SI", "CANCELAR"};
+        int x = JOptionPane.showOptionDialog(this, "¿Esta seguro que desea salir?", "Elije una Opción", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
+        if (x == 0) {
+//            JOptionPane.showMessageDialog(this, "Gracias por tu visita!!!");
+            dispose();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // Elimina la cita de forma LOGICA
+//        "UPDATE citavacunacion SET estado = 0  WHERE idCodCita= ?";
+        try {
+
+        } catch (NumberFormatException nbe) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar números en el campo DNI." + nbe);
+        } catch (NullPointerException npe) {
+            JOptionPane.showMessageDialog(this, "El ciudadano no existe." + npe);
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -423,6 +507,8 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBLimpiar;
     private javax.swing.JButton jBModificar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jCBCentroDeVacunacion;
     private javax.swing.JComboBox<String> jCBCodigoRefuerzo;
     private javax.swing.JComboBox<String> jCBDosis;
