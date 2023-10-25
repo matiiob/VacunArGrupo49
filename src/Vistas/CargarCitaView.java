@@ -85,8 +85,8 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         jTIdCiudadano = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jDCProximaFecha = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBSalir = new javax.swing.JButton();
+        jBEliminar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(142, 170, 189));
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "www.argentina.gob.ar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12), new java.awt.Color(3, 67, 97))); // NOI18N
@@ -233,21 +233,45 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         jLabel14.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel14.setText("proxima Fecha");
 
-        jButton1.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida.png"))); // NOI18N
-        jButton1.setText("Salir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBSalir.setBackground(new java.awt.Color(0, 204, 204));
+        jBSalir.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jBSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/salida.png"))); // NOI18N
+        jBSalir.setText("Salir");
+        jBSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBSalirMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jBSalirMouseReleased(evt);
+            }
+        });
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBSalirActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/basura.png"))); // NOI18N
-        jButton2.setText("Eliminar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBEliminar.setBackground(new java.awt.Color(138, 4, 17));
+        jBEliminar.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/basura.png"))); // NOI18N
+        jBEliminar.setText("Eliminar");
+        jBEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBEliminarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBEliminarMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jBEliminarMouseReleased(evt);
+            }
+        });
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBEliminarActionPerformed(evt);
             }
         });
 
@@ -297,9 +321,9 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(155, 155, 155)
-                                    .addComponent(jButton2)
+                                    .addComponent(jBEliminar)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1))
+                                    .addComponent(jBSalir))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jTDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -384,8 +408,8 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
                     .addComponent(jBLimpiar)
                     .addComponent(jBGuardar)
                     .addComponent(jBModificar)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jBSalir)
+                    .addComponent(jBEliminar))
                 .addContainerGap())
         );
 
@@ -603,7 +627,11 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jBGuardarMouseReleased
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    
+    
+    
+    
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         // Boton salir:
         JPanel panel = new JPanel();
         Font customFont = new Font("Roboto", Font.BOLD, 15); 
@@ -623,9 +651,9 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         dispose(); // cerrar la ventana
     }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBSalirActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         // Boton Eliminar logico:
         try {
 //            int idCodCita = Integer.parseInt();
@@ -649,19 +677,71 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         } catch (NullPointerException npe) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una cita.");
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBEliminarActionPerformed
 
     
-   // BTN HOVER -------------------------------------
     
+    private void jBEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEliminarMouseEntered
+        
+        Color myColor = new Color(224,9,78); // creo mí color personalizado-*-
+
+        jBEliminar.setBackground(myColor);
+    }//GEN-LAST:event_jBEliminarMouseEntered
+
+        
+    private void jBEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEliminarMouseExited
+    
+         jBEliminar.setBackground(new Color(138, 4, 17));
+        
+    }//GEN-LAST:event_jBEliminarMouseExited
+
+    private void jBEliminarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEliminarMouseReleased
+        
+          try {
+            TimeUnit.MILLISECONDS.sleep(300);
+
+            // En caso de haber funciones van aquí dentro-*-
+
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jBEliminarMouseReleased
+
+    private void jBSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseEntered
+        
+         Color myColor = new Color(41, 124, 166); // creo mí color personalizado-*-
+
+        jBSalir.setBackground(myColor);
+    }//GEN-LAST:event_jBSalirMouseEntered
+
+    private void jBSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseExited
+       
+         jBSalir.setBackground(new Color(0,204,204));
+    }//GEN-LAST:event_jBSalirMouseExited
+
+    private void jBSalirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseReleased
+        
+         try {
+            TimeUnit.MILLISECONDS.sleep(300);
+
+            // En caso de haber funciones van aquí dentro-*-
+
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBSalirMouseReleased
+
+    
+           
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBLimpiar;
     private javax.swing.JButton jBModificar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBSalir;
     private javax.swing.JComboBox<String> jCBCentroDeVacunacion;
     private javax.swing.JComboBox<String> jCBCodigoRefuerzo;
     private javax.swing.JComboBox<String> jCBDosis;

@@ -11,12 +11,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.WindowConstants;
+
 
 
 
@@ -465,9 +463,6 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
     }
 //------------------------------------------------------------------------------------
 
-
-
-
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnCargarCiudadanoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarCiudadanoMouseEntered
@@ -497,7 +492,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnCargarCiudadanoMouseReleased
 
-                       // BTN CARGAR CIUDADANO  
+                  // BTN CARGAR CIUDADANO  
     
     private void btnCargarCiudadanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarCiudadanoActionPerformed
   
