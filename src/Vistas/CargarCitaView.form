@@ -53,7 +53,13 @@
               <EmptySpace pref="29" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBLimpiar" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jBLimpiar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jBModificar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jBGuardar" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -83,17 +89,22 @@
                       </Group>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jTIdCiudadano" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
+                                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jTDocumento" min="-2" pref="206" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jBBuscar" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="jBModificar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jBGuardar" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jRBColocada" min="-2" max="-2" attributes="0"/>
@@ -105,11 +116,6 @@
                               <Component id="jTCelular" alignment="0" max="32767" attributes="0"/>
                               <Component id="jTPatologiaBase" alignment="0" max="32767" attributes="0"/>
                               <Component id="jTAmbitoLaboral" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="jTIdCiudadano" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -141,7 +147,7 @@
                   <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTIdCiudadano" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="7" max="32767" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTNombreCompleto" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -202,6 +208,8 @@
                   <Component id="jBLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -280,12 +288,13 @@
           <Font name="Roboto" size="14" style="1"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
-            <StringItem index="0" value="Centro de Vacunacion 1."/>
-            <StringItem index="1" value="Centro de Vacunacion 2."/>
-            <StringItem index="2" value="Centro de Vacunacion 3."/>
-            <StringItem index="3" value="Centro de Vacunacion 4."/>
-            <StringItem index="4" value="Centro de Vacunacion 5."/>
+          <StringArray count="6">
+            <StringItem index="0" value="Elija una opcion."/>
+            <StringItem index="1" value="Centro de Vacunacion 1."/>
+            <StringItem index="2" value="Centro de Vacunacion 2."/>
+            <StringItem index="3" value="Centro de Vacunacion 3."/>
+            <StringItem index="4" value="Centro de Vacunacion 4."/>
+            <StringItem index="5" value="Centro de Vacunacion 5."/>
           </StringArray>
         </Property>
       </Properties>
@@ -322,10 +331,11 @@
           <Font name="Roboto" size="14" style="1"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="1 Aplicacion."/>
-            <StringItem index="1" value="2 Aplicacion."/>
-            <StringItem index="2" value="3 Aplicacion."/>
+          <StringArray count="4">
+            <StringItem index="0" value="Elija una opcion."/>
+            <StringItem index="1" value="1 Aplicacion."/>
+            <StringItem index="2" value="2 Aplicacion."/>
+            <StringItem index="3" value="3 Aplicacion."/>
           </StringArray>
         </Property>
       </Properties>
@@ -355,12 +365,13 @@
           <Font name="Roboto" size="14" style="1"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
-            <StringItem index="0" value="1-ARNm (Pfiser)"/>
-            <StringItem index="1" value="2-mRNA-1273 (Moderna)"/>
-            <StringItem index="2" value="3-ChAdOx1-s (AstraSeneca)"/>
-            <StringItem index="3" value="4-BBIBP-Corv (Sinopharm)"/>
-            <StringItem index="4" value="5-Gam-Covid-VacM (Sputnik)"/>
+          <StringArray count="6">
+            <StringItem index="0" value="Elija una opcion."/>
+            <StringItem index="1" value="1-ARNm (Pfiser)"/>
+            <StringItem index="2" value="2-mRNA-1273 (Moderna)"/>
+            <StringItem index="3" value="3-ChAdOx1-s (AstraSeneca)"/>
+            <StringItem index="4" value="4-BBIBP-Corv (Sinopharm)"/>
+            <StringItem index="5" value="5-Gam-Covid-VacM (Sputnik)"/>
           </StringArray>
         </Property>
       </Properties>
@@ -374,10 +385,7 @@
           <Color blue="9e" green="a1" red="9d" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Roboto" size="14" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+          <Font name="Roboto" size="12" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Recursos/escoba.png"/>
@@ -397,10 +405,7 @@
           <Color blue="43" green="99" red="23" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Roboto" size="14" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+          <Font name="Roboto" size="12" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Recursos/guardar-datos_1.png"/>
@@ -420,10 +425,7 @@
           <Color blue="26" green="83" red="e0" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Roboto" size="14" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+          <Font name="Roboto" size="12" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Recursos/editar.png"/>
@@ -463,9 +465,6 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Roboto" size="14" style="1"/>
         </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
-        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Recursos/lupa.png"/>
         </Property>
@@ -483,7 +482,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Roboto" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="IdCiudadano?"/>
+        <Property name="text" type="java.lang.String" value="IdCiudadano"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTIdCiudadano">
@@ -497,6 +496,34 @@
       </Properties>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="jDCProximaFecha">
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Roboto" size="12" style="1"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Recursos/salida.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Salir"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Roboto" size="12" style="1"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Recursos/basura.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Eliminar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
