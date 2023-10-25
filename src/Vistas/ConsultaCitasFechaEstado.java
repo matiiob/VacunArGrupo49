@@ -45,8 +45,8 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
         LocalDate desdeLocalDate = desdeInstant.atZone(ZoneId.systemDefault()).toLocalDate();
         // Fecha hasta
         Date hastaDate = jDCFechaHasta.getDate();
-        Instant hastaInstant = desdeDate.toInstant();
-        LocalDate hastaLocalDate = desdeInstant.atZone(ZoneId.systemDefault()).toLocalDate();
+        Instant hastaInstant = hastaDate.toInstant();
+        LocalDate hastaLocalDate = hastaInstant.atZone(ZoneId.systemDefault()).toLocalDate();
         // Estado
         boolean estado = !jRBCanceladas.isSelected();
         // Lista Citas
@@ -108,9 +108,9 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBBuscar = new javax.swing.JButton();
+        jBSalir = new javax.swing.JButton();
+        jBLimpiar = new javax.swing.JButton();
 
         jLabel1.setText("Listar Citas");
 
@@ -247,21 +247,21 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBBuscar.setText("Buscar");
+        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBBuscarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Salir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBSalirActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Limpiar");
+        jBLimpiar.setText("Limpiar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -269,11 +269,11 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addComponent(jButton1)
+                .addComponent(jBBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(jBLimpiar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jBSalir)
                 .addGap(63, 63, 63))
         );
         jPanel3Layout.setVerticalGroup(
@@ -281,9 +281,9 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jBBuscar)
+                    .addComponent(jBSalir)
+                    .addComponent(jBLimpiar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -312,22 +312,22 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBSalirActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        if (jRBCanceladas.isSelected()) {
+    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+        if (!jRBCanceladas.isSelected()) {
             listarCitasPorFechas();
-//        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        }
+    }//GEN-LAST:event_jBBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBLimpiar;
+    private javax.swing.JButton jBSalir;
     private com.toedter.calendar.JDateChooser jDCFechaDesde;
     private com.toedter.calendar.JDateChooser jDCFechaHasta;
     private javax.swing.JLabel jLabel1;
