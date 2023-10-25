@@ -13,6 +13,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,19 +39,34 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
     }
 
     private void listarCitasPorFechas() {
+        try {
+            borrarFilasTabla();
+            // Fecha desde
+            Date desdeDate = jDCFechaDesde.getDate();
+            Instant desdeInstant = desdeDate.toInstant();
+            LocalDate desdeLocalDate = desdeInstant.atZone(ZoneId.systemDefault()).toLocalDate();
+            // Fecha hasta
+            Date hastaDate = jDCFechaHasta.getDate();
+            Instant hastaInstant = hastaDate.toInstant();
+            LocalDate hastaLocalDate = hastaInstant.atZone(ZoneId.systemDefault()).toLocalDate();
+            // Estado
+            boolean estado = !jRBCanceladas.isSelected();
+            // Lista Citas
+            citas = cvd.obtenerCitasPorFechas(desdeLocalDate, hastaLocalDate, estado);
+            // Rellenar filas
+            for (CitaVacunacion cita : citas) {
+                modelo.addRow(new Object[]{cita.getIdCodCita(), cita.getIdCiudadano(), cita.getCodRefuerzo(), cita.getFechaHoraCita(),
+                    cita.getCentroVacunacion(), cita.getFechaHoraColoca(), cita.getDosis(), cita.isEstado()});
+            }
+        } catch (NullPointerException npe) {
+            JOptionPane.showMessageDialog(this, "Selecciona una Fecha Desde y Hasta.");
+        }
+    }
+
+    private void listarCitasVencidas() {
         borrarFilasTabla();
-        // Fecha desde
-        Date desdeDate = jDCFechaDesde.getDate();
-        Instant desdeInstant = desdeDate.toInstant();
-        LocalDate desdeLocalDate = desdeInstant.atZone(ZoneId.systemDefault()).toLocalDate();
-        // Fecha hasta
-        Date hastaDate = jDCFechaHasta.getDate();
-        Instant hastaInstant = hastaDate.toInstant();
-        LocalDate hastaLocalDate = hastaInstant.atZone(ZoneId.systemDefault()).toLocalDate();
-        // Estado
-        boolean estado = !jRBCanceladas.isSelected();
         // Lista Citas
-        citas = cvd.obtenerCitasPorFechas(desdeLocalDate, hastaLocalDate, estado);
+        citas = cvd.obtenerCitasVencidas();
         // Rellenar filas
         for (CitaVacunacion cita : citas) {
             modelo.addRow(new Object[]{cita.getIdCodCita(), cita.getIdCiudadano(), cita.getCodRefuerzo(), cita.getFechaHoraCita(),
@@ -317,8 +333,11 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        if (!jRBCanceladas.isSelected()) {
+        if (!jRBCanceladas.isSelected() && !jRBCumplidas.isSelected() && !jRBVencidas.isSelected()) {
             listarCitasPorFechas();
+        }
+        if (jRBVencidas.isSelected()) {
+            listarCitasVencidas();
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
