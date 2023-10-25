@@ -74,9 +74,9 @@ public class LaboratorioData {
             ps.setInt(1, idLaboratorio);
             int fila = ps.executeUpdate();
             if (fila == 1) {
-                JOptionPane.showMessageDialog(null, "Se eliminó el laboratorio.");
+        // modificado 25-10       JOptionPane.showMessageDialog(null, "Se eliminó el laboratorio.");
             } else {
-                JOptionPane.showMessageDialog(null, "No existe el Laboratorio.");
+        // modificado 25-10       JOptionPane.showMessageDialog(null, "No existe el Laboratorio.");
             }
             ps.close();
         } catch (SQLException ex) {
