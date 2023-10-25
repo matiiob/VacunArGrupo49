@@ -151,7 +151,7 @@
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                       <Component id="jDCFechaCaduca" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="54" max="32767" attributes="0"/>
+                  <EmptySpace pref="48" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnSalir" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                       <Component id="btnLimpiar" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
@@ -295,6 +295,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCBLaboratorioActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>

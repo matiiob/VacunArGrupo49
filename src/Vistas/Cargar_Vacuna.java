@@ -85,6 +85,11 @@ public class Cargar_Vacuna extends javax.swing.JInternalFrame {
 
         jCBLaboratorio.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jCBLaboratorio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " -  -", "1", "2", "3", "4", "5" }));
+        jCBLaboratorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBLaboratorioActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel9.setText("Fecha Caducidad:");
@@ -236,7 +241,7 @@ public class Cargar_Vacuna extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel9)
                     .addComponent(jDCFechaCaduca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,33 +274,33 @@ public class Cargar_Vacuna extends javax.swing.JInternalFrame {
     
     private void btnGuardarVacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarVacunaActionPerformed
 
-    String nroSerieDosisText = jTFNroSerieDosis.getText();
-    String marca = (String) jCBMarca.getSelectedItem();
-    String medidaText = (String) jCBMedida.getSelectedItem();
-    String laboratorioText = (String) jCBLaboratorio.getSelectedItem();
-    
-    if (nroSerieDosisText.isEmpty() || marca.isEmpty() || medidaText.isEmpty() || laboratorioText.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
-    } else if (nroSerieDosisText.length() == 10 && nroSerieDosisText.matches("[0-9]+")) {
-        Long nroSerieDosis = Long.parseLong(nroSerieDosisText);
-        // verifica si ya existe la vacuna en la DB
-        VacunaData vacunaData = new VacunaData();
-        if (!(vacunaData.existeVacuna(nroSerieDosis))) {
-            // si no existe se almacena en DB
-            Double medida = Double.parseDouble(medidaText);
-            LocalDate fechaCaduca = jDCFechaCaduca.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            Boolean colocada = jRBColocada.isSelected();
-            Integer laboratorio = Integer.parseInt(laboratorioText);
-            Boolean eliminada = jRBEliminada.isSelected();
-            Vacuna vacuna = new Vacuna(nroSerieDosis, marca, medida, fechaCaduca, colocada, laboratorio, eliminada);
-            vacunaData.GuardarVacuna(vacuna);
-            limpiarPantalla();
-        } else {
-            JOptionPane.showMessageDialog(this, "Ya existe una vacuna con ese número de serie.");
-        }
-    } else {
-        JOptionPane.showMessageDialog(this, "Debe ingresar 10 digitos, sin punto ni caracteres especiales.");
-     }
+//    String nroSerieDosisText = jTFNroSerieDosis.getText();
+//    String marca = (String) jCBMarca.getSelectedItem();
+//    String medidaText = (String) jCBMedida.getSelectedItem();
+//    String laboratorioText = (String) jCBLaboratorio.getSelectedItem();
+//    
+//    if (nroSerieDosisText.isEmpty() || marca.isEmpty() || medidaText.isEmpty() || laboratorioText.isEmpty()) {
+//        JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
+//    } else if (nroSerieDosisText.length() == 10 && nroSerieDosisText.matches("[0-9]+")) {
+//        Long nroSerieDosis = Long.parseLong(nroSerieDosisText);
+//        // verifica si ya existe la vacuna en la DB
+//        VacunaData vacunaData = new VacunaData();
+//        if (!(vacunaData.existeVacuna(nroSerieDosis))) {
+//            // si no existe se almacena en DB
+//            Double medida = Double.parseDouble(medidaText);
+//            LocalDate fechaCaduca = jDCFechaCaduca.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//            Boolean colocada = jRBColocada.isSelected();
+//            Integer laboratorio = Integer.parseInt(laboratorioText);
+//            Boolean eliminada = jRBEliminada.isSelected();
+//            Vacuna vacuna = new Vacuna(nroSerieDosis, marca, medida, fechaCaduca, colocada, laboratorio, eliminada);
+//            vacunaData.GuardarVacuna(vacuna);
+//            limpiarPantalla();
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Ya existe una vacuna con ese número de serie.");
+//        }
+//    } else {
+//        JOptionPane.showMessageDialog(this, "Debe ingresar 10 digitos, sin punto ni caracteres especiales.");
+//     }
 
     }//GEN-LAST:event_btnGuardarVacunaActionPerformed
 
@@ -398,6 +403,10 @@ public class Cargar_Vacuna extends javax.swing.JInternalFrame {
             Logger.getLogger(Cargar_Vacuna.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSalirMouseReleased
+
+    private void jCBLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBLaboratorioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBLaboratorioActionPerformed
 
      // EVENTOS HOVER DE LOS BTN-------------------------
     

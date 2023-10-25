@@ -171,7 +171,37 @@ public class VacunaData {
     return vacunasVencidas;
 }
     
+      // METODO BUSCAR nroSerieDosis 
      
+    public Vacuna buscarVacunaNroSerieDosis(long nroSerieDosis ) {
+    Vacuna vacuna = new Vacuna();
+    String sql = "SELECT * FROM vacuna WHERE nroSerieDosis = ?";
+    // > busca la ultima fecha- < busca la fecha mas antigua- 'con Operadores'
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setLong(1, nroSerieDosis);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            
+            vacuna.setIdVacuna(rs.getInt("IdVacuna"));
+            vacuna.setNroSerieDosis(nroSerieDosis);
+            vacuna.setMarca(rs.getString("marca"));
+            vacuna.setMedida(rs.getDouble("medida"));
+            vacuna.setLaboratorio(rs.getInt("laboratorio"));
+            vacuna.setFechaCaduca(rs.getDate("fechaCaduca").toLocalDate());
+            vacuna.setColocada(rs.getBoolean("colocada"));
+            vacuna.setEliminada(rs.getBoolean("eliminada"));
+            
+            
+            
+        }
+        ps.close();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla vacuna" + e.getMessage());
+    }
+    return vacuna;
+}
                      // METODO BUSCAR VACUNA POR LABORATORIO
     
     public List<Vacuna> buscarVacunaPorLaboratorio(int laboratorio, boolean colocada) {
@@ -205,14 +235,14 @@ public class VacunaData {
     
                     // METODO EXISTE VACUNA (evitar duplicados)-*-
     
-    public boolean existeVacuna(Long nroSerieDosis) {
+    public boolean existeVacuna(int nroSerieDosis) {
         
         boolean existe = false;
     try {
         Connection con = Conexion.getConexion();
         String sql = "SELECT * FROM vacuna WHERE nroSerieDosis = ?";
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setLong(1, nroSerieDosis);
+        ps.setInt(1, nroSerieDosis);
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
             existe = true;

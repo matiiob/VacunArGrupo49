@@ -448,7 +448,7 @@ public class Principal extends javax.swing.JFrame {
     private void jLBotonVacunaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonVacunaMouseClicked
         jDEscritorio.removeAll();
         jDEscritorio.repaint();
-        Cargar_Vacuna cv = new Cargar_Vacuna();
+        GestionarVacunas cv = new GestionarVacunas();
         cv.setVisible(true);
         jDEscritorio.add(cv).setLocation(30, 30);
         jDEscritorio.moveToFront(cv);
