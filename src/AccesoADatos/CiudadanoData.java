@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package AccesoADatos;
 
 import Entidades.Ciudadano;
@@ -30,7 +26,7 @@ public class CiudadanoData {
         
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-          //  ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+          
             ps.setInt(1, ciudadano.getDni());
             ps.setString(2, ciudadano.getNombreCompleto());
             ps.setString(3, ciudadano.getEmail());
@@ -55,8 +51,6 @@ public class CiudadanoData {
         String sql = "UPDATE ciudadano SET dni=?, nombreCompleto=?, email=?,"
                 + " celular=?, patologia=?, ambitoTrabajo=?, eliminado = ? WHERE idCiudadano="+ciudadano.getIdCiudadano();
                                                            // agregado 19-10 
-        
-      
         
         PreparedStatement ps;
         try {
@@ -139,9 +133,7 @@ public class CiudadanoData {
         return ciudadano;
     }
     
-    
-    
-    
+           
     public void eliminarCiudadano(int id) { 
     try {
         String sql = "UPDATE ciudadano SET eliminado = 1 WHERE idCiudadano = ?";
@@ -150,7 +142,7 @@ public class CiudadanoData {
         int fila = ps.executeUpdate();
             if (fila == 1) {
 
-                JOptionPane.showMessageDialog(null, "Se eliminó el Ciudadano.");
+         //  odificado 25-10     JOptionPane.showMessageDialog(null, "Se eliminó el Ciudadano.");
             } else {
                 JOptionPane.showMessageDialog(null, "Debe ingresar el DNI del Ciudadano.");
             }

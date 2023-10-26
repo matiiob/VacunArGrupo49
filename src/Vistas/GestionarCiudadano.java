@@ -442,9 +442,6 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
 //        } 
  //----------------------------------------------------------------------------------
    
-            
-           
-
         JPanel panel = new JPanel();
         Font customFont = new Font("Roboto", Font.BOLD, 15); 
     
@@ -462,8 +459,6 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         if (result == JOptionPane.YES_OPTION) { // si se hace clic en "Salir"
         dispose(); // cerrar la ventana
     }
-//------------------------------------------------------------------------------------
-
     }//GEN-LAST:event_btnSalirActionPerformed
       // Hover BTN Cargar
     private void btnCargarCiudadanoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarCiudadanoMouseEntered
@@ -475,9 +470,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCargarCiudadanoMouseEntered
       // Hover BTN Cargar
     private void btnCargarCiudadanoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarCiudadanoMouseExited
-
         btnCargarCiudadano.setBackground(new Color(35,153,67));
-
     }//GEN-LAST:event_btnCargarCiudadanoMouseExited
       // Hover BTN Cargar
     private void btnCargarCiudadanoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarCiudadanoMouseReleased
@@ -490,7 +483,6 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         } catch (InterruptedException ex) {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_btnCargarCiudadanoMouseReleased
 
                   // BTN CARGAR CIUDADANO  
@@ -580,9 +572,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
                   // BTN Buscar
     
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        
- 
-    try {
+     try {
         int dni = Integer.parseInt(jTFDni.getText());
         ciudadano = cd.buscarCiudadanoDni(dni);
         if (ciudadano != null) {
@@ -614,8 +604,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
          
         } catch (NullPointerException npe) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar un Ciudadano.");
-        }
-        
+        }      
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     // Evento de teclado captura tecla en el campo DNI acciona BTN Buscar
@@ -624,8 +613,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         
          if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnBuscar.doClick();
-        }
-        
+        }        
     }//GEN-LAST:event_jTFDniKeyPressed
 
     
@@ -634,14 +622,12 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
     
          Color myColor = new Color(29, 34, 179); // creo mí color personalizado-*-
 
-        btnBuscar.setBackground(myColor);
-   
+        btnBuscar.setBackground(myColor);   
     }//GEN-LAST:event_btnBuscarMouseEntered
                   // Hover BTN Buscar    
     private void btnBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseExited
     
-        btnBuscar.setBackground(new Color(41,84,171));
-        
+        btnBuscar.setBackground(new Color(41,84,171));        
     }//GEN-LAST:event_btnBuscarMouseExited
                   // Hover BTN Buscar      
     private void btnBuscarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseReleased
@@ -653,8 +639,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
 
         } catch (InterruptedException ex) {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        }        
     }//GEN-LAST:event_btnBuscarMouseReleased
 
                   // Hover BTN Eliminar 
@@ -669,8 +654,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
                   // Hover BTN Eliminar    
     private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
        
-         btnEliminar.setBackground(new Color(138, 4, 17));
-        
+         btnEliminar.setBackground(new Color(138, 4, 17));        
     }//GEN-LAST:event_btnEliminarMouseExited
                    // Hover BTN Eliminar                     
     private void btnEliminarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseReleased

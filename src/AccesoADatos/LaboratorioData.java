@@ -76,7 +76,7 @@ public class LaboratorioData {
             if (fila == 1) {
         // modificado 25-10       JOptionPane.showMessageDialog(null, "Se eliminó el laboratorio.");
             } else {
-        // modificado 25-10       JOptionPane.showMessageDialog(null, "No existe el Laboratorio.");
+              JOptionPane.showMessageDialog(null, "Debe ingresar un Laboratorio.");
             }
             ps.close();
         } catch (SQLException ex) {
