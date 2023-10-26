@@ -184,7 +184,11 @@ public class CitaVacunacionData {
                 cita.setCodRefuerzo(rs.getInt("codRefuerzo"));
                 cita.setFechaHoraCita(rs.getDate("fechaHoraCita").toLocalDate());
                 cita.setCentroVacunacion(rs.getString("centroVacunacion"));
-                cita.setFechaHoraColoca(rs.getDate("fechaHoraColoca").toLocalDate());
+                try {
+                    cita.setFechaHoraColoca(rs.getDate("fechaHoraColoca").toLocalDate());
+                } catch (NullPointerException npe) {
+                    cita.setFechaHoraColoca(null);
+                }
                 cita.setDosis(rs.getInt("dosis"));
                 cita.setEstado(estado);
                 citasMes.add(cita);
