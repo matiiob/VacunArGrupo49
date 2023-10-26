@@ -8,6 +8,7 @@ package Vistas;
 import AccesoADatos.VacunaData;
 import Entidades.Vacuna;
 import java.awt.Color;
+import java.awt.Font;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.awt.event.KeyEvent;
@@ -16,7 +17,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.Date;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class GestionarVacunas extends javax.swing.JInternalFrame {
 
@@ -114,7 +118,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/min_salud (1).png"))); // NOI18N
 
         jCBMedida.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jCBMedida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "0.3", "0.5", "0.9" }));
+        jCBMedida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una Opción", "0.3", "0.5", "0.9" }));
         jCBMedida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBMedidaActionPerformed(evt);
@@ -190,7 +194,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
         btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/lupa.png"))); // NOI18N
         btnBuscar.setText("Buscar");
-        btnBuscar.setToolTipText("<html>\n<style {\"background: white\"; \"color: green;\"}><p>Ingresar un numero de DNI</p></style>\n</html>");
+        btnBuscar.setToolTipText("Debe Ingresar un número de Serie");
         btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBuscarMouseEntered(evt);
@@ -264,7 +268,8 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
             }
         });
 
-        jCBLaboratorio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "1", "2", "3", "4", "5" }));
+        jCBLaboratorio.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jCBLaboratorio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una Opción", "1", "2", "3", "4", "5" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -281,7 +286,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnModificar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addComponent(btnLimpiar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar)
@@ -321,7 +326,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                                         .addComponent(btnBuscar))
                                     .addComponent(jCBMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -418,7 +423,9 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
 
         limpiarPantalla();
     }//GEN-LAST:event_btnLimpiarActionPerformed
-
+    
+    
+    // PARA BORRAR
     private void jTFNroSerieDosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNroSerieDosisActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFNroSerieDosisActionPerformed
@@ -430,7 +437,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_jTFNroSerieDosisKeyPressed
-
+    // PARA BORRAR
     private void jCBMedidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBMedidaActionPerformed
 
     }//GEN-LAST:event_jCBMedidaActionPerformed
@@ -459,13 +466,22 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalirMouseReleased
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        String[] botones = {"SI", "CANCELAR"};
-        int x = JOptionPane.showOptionDialog(this, "¿Esta seguro que desea salir?", "Elije una Opción", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
-        //mensaje               //titulo                                                                                      //String
+        JPanel panel = new JPanel();
+        Font customFont = new Font("Roboto", Font.BOLD, 15);
 
-        if (x == 0) {
-            dispose();
-        }
+        JLabel label = new JLabel("<html><p style=\" color: #eb4034; font: 13px; font-weight: bold; font-family: Roboto;\" >¿Esta seguro que deseas salir?</p></html>");
+        label.setForeground(Color.black);
+        label.setFont(customFont); // fuente custom etiqueta-*-
+        panel.add(label);
+
+        ImageIcon icono = new ImageIcon(getClass().getResource("../recursos/escudo.png"));
+
+        String[] options = {"Salir", "Cancelar"}; // agregar opción "Cancelar"
+        int result = JOptionPane.showOptionDialog(this, panel, "Ministerio de Salud Argentina", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, icono, options, null);
+
+        if (result == JOptionPane.YES_OPTION) { // si se hace clic en "Salir"
+            dispose(); // cerrar la ventana
+    }
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnCargarVacunaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarVacunaMouseEntered
@@ -754,6 +770,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnModificarActionPerformed
 
+    // PARA BORRAR 
     private void jCBMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBMarcaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCBMarcaActionPerformed
@@ -786,7 +803,10 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     public void limpiarPantalla() {
-
+      
+    if (jTFNroSerieDosis.getText().isEmpty() && jCBMarca.getSelectedItem().equals("Seleccione una Opción") && jDCFechaCaduca.getDate() == null && !jRBColocada.isSelected() && jCBMedida.getSelectedItem().equals("Seleccione una Opción") && jCBLaboratorio.getSelectedItem().equals("Seleccione una Opción") && !jRBEliminada.isSelected()) {
+        JOptionPane.showMessageDialog(null, "Campos vacíos");
+    } else {
         jTFNroSerieDosis.setText("");
         jCBMarca.setSelectedItem("Seleccione una Opción");
         jDCFechaCaduca.setDate(null);
@@ -794,6 +814,6 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
         jCBMedida.setSelectedItem("Seleccione una Opción");
         jCBLaboratorio.setSelectedItem("Seleccione una Opción");
         jRBEliminada.setSelected(false);
-
     }
+  }
 }

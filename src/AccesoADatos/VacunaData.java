@@ -88,9 +88,9 @@ public class VacunaData {
             ps.setInt(1, id);
             int fila = ps.executeUpdate();
             if (fila == 1) {
-                JOptionPane.showMessageDialog(null, "Se eliminó la vacuna.");
+        //  modificado 25-10        JOptionPane.showMessageDialog(null, "Se eliminó la vacuna.");
             } else {
-                JOptionPane.showMessageDialog(null, "No existe la vacuna.");
+                JOptionPane.showMessageDialog(null, "Debe ingresar una Vacuna.");
             }
             ps.close();
         } catch (SQLException e) {
@@ -185,8 +185,8 @@ public class VacunaData {
         }
         return vacuna;
     }
+    
     // METODO BUSCAR VACUNA POR LABORATORIO
-
     public List<Vacuna> buscarVacunaPorLaboratorio(int laboratorio, boolean colocada) {
         List<Vacuna> vacunaPorLaboratorio = new ArrayList<>();
         //String sql = "SELECT * FROM vacuna WHERE laboratorio = ?";
