@@ -127,6 +127,7 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
         jBBuscar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
         jBLimpiar = new javax.swing.JButton();
+        jBEliminar = new javax.swing.JButton();
 
         jLabel1.setText("Listar Citas");
 
@@ -279,6 +280,13 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
 
         jBLimpiar.setText("Limpiar");
 
+        jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -288,6 +296,8 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
                 .addComponent(jBBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBLimpiar)
+                .addGap(27, 27, 27)
+                .addComponent(jBEliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBSalir)
                 .addGap(63, 63, 63))
@@ -299,7 +309,8 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBBuscar)
                     .addComponent(jBSalir)
-                    .addComponent(jBLimpiar))
+                    .addComponent(jBLimpiar)
+                    .addComponent(jBEliminar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -341,10 +352,19 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        int fila = jTable1.getSelectedRow();
+        int idCita = (Integer)modelo.getValueAt(fila, 0);
+        if (fila != -1) {
+            cvd.eliminarCitaVacunacion(idCita);
+        }
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBLimpiar;
     private javax.swing.JButton jBSalir;
     private com.toedter.calendar.JDateChooser jDCFechaDesde;
