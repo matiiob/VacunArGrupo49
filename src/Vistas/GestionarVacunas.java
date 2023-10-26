@@ -498,9 +498,9 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
             String marca = (String) jCBMarca.getSelectedItem();
             String medidaText = (String) jCBMedida.getSelectedItem();
             String laboratorioText = (String) jCBLaboratorio.getSelectedItem();
-            String fechaCaducatex = (String) jDCFechaCaduca.getDateFormatString();
+            
 
-            if (nroSerieDosisText.isEmpty() || marca.isEmpty() || medidaText.isEmpty() || laboratorioText.isEmpty()) {
+            if (nroSerieDosisText.isEmpty() || marca=="Seleccione una Opción" || medidaText=="Seleccione una Opción" || laboratorioText=="Seleccione una Opción") {
                 JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
             } else if (nroSerieDosisText.length() < 12 && nroSerieDosisText.matches("[0-9]+")) {
                 int nroSerieDosis = Integer.parseInt(nroSerieDosisText);
@@ -588,7 +588,9 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
         //
         //    }
         catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "El campo Número de serie debe ser un número válido.");
+            JOptionPane.showMessageDialog(this, "El campo Número de serie debe ser un número válido."+e);
+        } catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una fecha."+ ex);
         }
 
     }//GEN-LAST:event_btnCargarVacunaActionPerformed
@@ -624,6 +626,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
 
         try {
             int nroSerieDosis = Integer.parseInt(jTFNroSerieDosis.getText());
+            
             vacuna = vc.buscarVacunaNroSerieDosis(nroSerieDosis);
             if (vacuna != null) {
                 JOptionPane.showMessageDialog(this, vacuna.toString());
@@ -635,15 +638,19 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                 Date date = Date.from(instant);
                 jDCFechaCaduca.setDate(date);
 
-                jRBColocada.setOpaque(vacuna.isColocada());
-                boolean eliminada = jRBEliminada.isSelected();
+                jRBColocada.setSelected(vacuna.isColocada());
+                jRBEliminada.setSelected(vacuna.isEliminada());
+//                boolean eliminada = jRBEliminada.isSelected();
 
             } else {
                 JOptionPane.showMessageDialog(this, "El número de serie no está registrado.");
             }
         } catch (NumberFormatException nbe) {
             JOptionPane.showMessageDialog(this, "Debe ingresar números en el campo número de serie." + nbe);
+        } catch(NullPointerException ex){
+            JOptionPane.showMessageDialog(this, "El número de serie no está registrado.");
         }
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
@@ -715,8 +722,8 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
 
             long nroSerieDosis = Long.parseLong(jTFNroSerieDosis.getText());
 
-            Vacuna vacuna1 = vc.buscarVacunaNroSerieDosis(nroSerieDosis);
-            if (vacuna1 == null) {
+            vacuna = vc.buscarVacunaNroSerieDosis(nroSerieDosis);
+            if (vacuna == null) {
                 JOptionPane.showMessageDialog(this, "La vacuna no existe en la base de datos.");
                 return;
             }
@@ -729,15 +736,16 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
             boolean colocada = jRBColocada.isSelected();
             boolean eliminada = jRBEliminada.isSelected();
             
+            
 
-            vacuna1.setLaboratorio(laboratorioInt);
-            vacuna1.setFechaCaduca(fechaCaduca);
-            vacuna1.setMarca(marcaText);
-            vacuna1.setMedida(medidaDouble);
-            vacuna1.setColocada(colocada);
-            vacuna1.setEliminada(eliminada);
+            vacuna.setLaboratorio(laboratorioInt);
+            vacuna.setFechaCaduca(fechaCaduca);
+            vacuna.setMarca(marcaText);
+            vacuna.setMedida(medidaDouble);
+            vacuna.setColocada(colocada);
+            vacuna.setEliminada(eliminada);
 
-            vc.modificarVacuna(vacuna1);
+            vc.modificarVacuna(vacuna);
 
             limpiarPantalla();
         } catch (NumberFormatException e) {
@@ -784,7 +792,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
         jDCFechaCaduca.setDate(null);
         jRBColocada.setSelected(false);
         jCBMedida.setSelectedItem("Seleccione una Opción");
-        jCBLaboratorio.setSelectedItem(1);
+        jCBLaboratorio.setSelectedItem("Seleccione una Opción");
         jRBEliminada.setSelected(false);
 
     }

@@ -13,6 +13,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,19 +39,34 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
     }
 
     private void listarCitasPorFechas() {
+        try {
+            borrarFilasTabla();
+            // Fecha desde
+            Date desdeDate = jDCFechaDesde.getDate();
+            Instant desdeInstant = desdeDate.toInstant();
+            LocalDate desdeLocalDate = desdeInstant.atZone(ZoneId.systemDefault()).toLocalDate();
+            // Fecha hasta
+            Date hastaDate = jDCFechaHasta.getDate();
+            Instant hastaInstant = hastaDate.toInstant();
+            LocalDate hastaLocalDate = hastaInstant.atZone(ZoneId.systemDefault()).toLocalDate();
+            // Estado
+            boolean estado = !jRBCanceladas.isSelected();
+            // Lista Citas
+            citas = cvd.obtenerCitasPorFechas(desdeLocalDate, hastaLocalDate, estado);
+            // Rellenar filas
+            for (CitaVacunacion cita : citas) {
+                modelo.addRow(new Object[]{cita.getIdCodCita(), cita.getIdCiudadano(), cita.getCodRefuerzo(), cita.getFechaHoraCita(),
+                    cita.getCentroVacunacion(), cita.getFechaHoraColoca(), cita.getDosis(), cita.isEstado()});
+            }
+        } catch (NullPointerException npe) {
+            JOptionPane.showMessageDialog(this, "Selecciona una Fecha Desde y Hasta.");
+        }
+    }
+
+    private void listarCitasVencidas() {
         borrarFilasTabla();
-        // Fecha desde
-        Date desdeDate = jDCFechaDesde.getDate();
-        Instant desdeInstant = desdeDate.toInstant();
-        LocalDate desdeLocalDate = desdeInstant.atZone(ZoneId.systemDefault()).toLocalDate();
-        // Fecha hasta
-        Date hastaDate = jDCFechaHasta.getDate();
-        Instant hastaInstant = hastaDate.toInstant();
-        LocalDate hastaLocalDate = hastaInstant.atZone(ZoneId.systemDefault()).toLocalDate();
-        // Estado
-        boolean estado = !jRBCanceladas.isSelected();
         // Lista Citas
-        citas = cvd.obtenerCitasPorFechas(desdeLocalDate, hastaLocalDate, estado);
+        citas = cvd.obtenerCitasVencidas();
         // Rellenar filas
         for (CitaVacunacion cita : citas) {
             modelo.addRow(new Object[]{cita.getIdCodCita(), cita.getIdCiudadano(), cita.getCodRefuerzo(), cita.getFechaHoraCita(),
@@ -111,6 +127,7 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
         jBBuscar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
         jBLimpiar = new javax.swing.JButton();
+        jBEliminar = new javax.swing.JButton();
 
         jLabel1.setText("Listar Citas");
 
@@ -263,6 +280,13 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
 
         jBLimpiar.setText("Limpiar");
 
+        jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -272,6 +296,8 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
                 .addComponent(jBBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBLimpiar)
+                .addGap(27, 27, 27)
+                .addComponent(jBEliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBSalir)
                 .addGap(63, 63, 63))
@@ -283,7 +309,8 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBBuscar)
                     .addComponent(jBSalir)
-                    .addComponent(jBLimpiar))
+                    .addComponent(jBLimpiar)
+                    .addComponent(jBEliminar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -317,15 +344,27 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        if (!jRBCanceladas.isSelected()) {
+        if (!jRBCanceladas.isSelected() && !jRBCumplidas.isSelected() && !jRBVencidas.isSelected()) {
             listarCitasPorFechas();
         }
+        if (jRBVencidas.isSelected()) {
+            listarCitasVencidas();
+        }
     }//GEN-LAST:event_jBBuscarActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        int fila = jTable1.getSelectedRow();
+        int idCita = (Integer)modelo.getValueAt(fila, 0);
+        if (fila != -1) {
+            cvd.eliminarCitaVacunacion(idCita);
+        }
+    }//GEN-LAST:event_jBEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBLimpiar;
     private javax.swing.JButton jBSalir;
     private com.toedter.calendar.JDateChooser jDCFechaDesde;
