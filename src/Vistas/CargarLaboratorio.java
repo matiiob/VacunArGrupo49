@@ -319,7 +319,7 @@ public class CargarLaboratorio extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-            // BTN BUSCAR
+    // BTN BUSCAR
     private void btnBuscarLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarLaboratorioActionPerformed
         
          try {
@@ -367,7 +367,7 @@ public class CargarLaboratorio extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnBuscarLaboratorioMouseReleased
             
-            // BTN CARGAR  
+    // BTN CARGAR  
     private void btnCargarLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarLaboratorioActionPerformed
        try {
     String cuitText = jTFCuit.getText();
@@ -379,10 +379,10 @@ public class CargarLaboratorio extends javax.swing.JInternalFrame {
     if (!cuitText.matches("\\d{11}")) {
         JOptionPane.showMessageDialog(this, "El campo CUIT debe tener 11 dígitos enteros.");
     }   // Nombre  
-    else if (!nombreLaboratorioText.matches("[a-zA-Z]{3,15}")) {
+    else if (!nombreLaboratorioText.matches("[a-zA-Z ]{3,30}")) {
         JOptionPane.showMessageDialog(this, "El campo Nombre debe tener entre 3 y 15 caracteres sin caracteres especiales.");
     }   // Pais
-    else if (!paisText.matches("[a-zA-Z]{4,15}")) {
+    else if (!paisText.matches("[a-zA-Z ]{4,15}")) {
         JOptionPane.showMessageDialog(this, "El campo País debe tener entre 4 y 15 caracteres sin caracteres especiales.");
     }   // Domicilio                                                                                    // espacio en blanco para numeros-*-                         
     else if (domicilioText.length() < 6 || domicilioText.length() > 25 || !domicilioText.matches("[a-zA-Z0-9° ]{6,25}")) {
@@ -430,7 +430,7 @@ public class CargarLaboratorio extends javax.swing.JInternalFrame {
                     }
     }//GEN-LAST:event_btnCargarLaboratorioMouseReleased
 
-            // BTN LIMPIAR
+    // BTN LIMPIAR
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
          limpiarPantalla();
     }//GEN-LAST:event_btnLimpiarActionPerformed
@@ -457,7 +457,7 @@ public class CargarLaboratorio extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnLimpiarMouseReleased
 
     
-            // BTN MODIFICAR
+    // BTN MODIFICAR
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         try {
             String cuit = jTFCuit.getText();
@@ -505,7 +505,7 @@ public class CargarLaboratorio extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnModificarMouseReleased
 
     
-            // BTN ELIMINAR 
+    // BTN ELIMINAR 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         
         try {
@@ -546,7 +546,7 @@ public class CargarLaboratorio extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarMouseReleased
 
     
-            // BTN SALIR
+    // BTN SALIR
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
          JPanel panel = new JPanel();
         Font customFont = new Font("Roboto", Font.BOLD, 15);
@@ -588,8 +588,8 @@ public class CargarLaboratorio extends javax.swing.JInternalFrame {
                     }
     }//GEN-LAST:event_btnSalirMouseReleased
 
-            // BTN ALTERNANCIA 
-    private boolean isBlack = false; // inicializamos colour-*-
+    // BTN ALTERNANCIA 
+    private boolean isBlack = false; // inicializamos color-*-
     private Color defaultColor = new Color(142, 170, 189); // color x default-*-
     
     private void btnAlternanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlternanciaActionPerformed
