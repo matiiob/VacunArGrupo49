@@ -5,6 +5,7 @@ package Vistas;
 import AccesoADatos.CiudadanoData;
 import Entidades.Ciudadano;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
@@ -41,7 +42,6 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         btnLimpiar = new javax.swing.JButton();
         jTFDni = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jCBAmbitoTrabajo = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jTFNombre = new javax.swing.JTextField();
@@ -57,6 +57,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
+        btnAlternancia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -64,9 +65,10 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "www.argentina.gob.ar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12), new java.awt.Color(3, 67, 97))); // NOI18N
         jPanel1.setDoubleBuffered(false);
         jPanel1.setFocusCycleRoot(true);
+        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(750, 400));
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(245, 245, 245));
         jLabel1.setText("GESTIONAR CIUDADANO");
 
@@ -106,8 +108,6 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
                 jTFDniKeyPressed(evt);
             }
         });
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/min_salud (1).png"))); // NOI18N
 
         jCBAmbitoTrabajo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jCBAmbitoTrabajo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una Opción  ", "Personal de Educación", "Personal de Salud", "Personal de Seguridad", "Personal de Fuerzas Armadas", "Personal de Bomberos", "Autoridad de Gobierno", "Otro" }));
@@ -251,100 +251,105 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
             }
         });
 
+        btnAlternancia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sol_luna.png"))); // NOI18N
+        btnAlternancia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlternanciaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(229, 229, 229)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
+                        .addGap(133, 133, 133)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                            .addComponent(jLabel11)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
-                                .addGap(54, 54, 54)
-                                .addComponent(jTFDni, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel15))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(156, 156, 156)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel14))))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTFNombre)
-                            .addComponent(jTFEmail)
-                            .addComponent(jTFCelular)
-                            .addComponent(jCBPatologia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCBAmbitoTrabajo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(49, 49, 49)
+                                .addComponent(jTFDni, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
+                        .addContainerGap()
                         .addComponent(btnCargarCiudadano)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnModificar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnLimpiar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(13, 13, 13)
                         .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addComponent(btnSalir)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCBPatologia, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCBAmbitoTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(68, 68, 68))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnAlternancia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTFDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnBuscar))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCBPatologia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCBAmbitoTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLimpiar)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnSalir)
-                    .addComponent(btnCargarCiudadano)
-                    .addComponent(btnModificar))
-                .addGap(28, 28, 28))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnAlternancia)
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel1)
+                        .addGap(251, 251, 251)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCBPatologia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCBAmbitoTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCargarCiudadano)
+                            .addComponent(btnModificar)
+                            .addComponent(btnLimpiar)
+                            .addComponent(btnEliminar)
+                            .addComponent(btnSalir)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTFDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscar)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTFEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTFCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -365,7 +370,9 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-      // BTN LIMPIAR
+      
+                  // BTN Limpiar
+    
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
 
         limpiarPantalla();
@@ -431,16 +438,9 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_btnSalirMouseReleased
-      // BTN SALIR
+                  // BTN Salir
+    
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-//        String [] botones = {"SI", "CANCELAR"};                                                                                                                                                                                                                                                                                                              
-//        int x = JOptionPane.showOptionDialog(this, "<html><p style=\" color: #f70c28; font: 13px; font-weight: bold; font-family: Roboto;\" >¿Esta seguro que deseas salir?</p></html>", "Elije una Opción!!!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, botones, botones[0]);
-//                                                                   //mensaje                                                                                                                  //titulo                                                                                      //String
-//                                 
-//        if (x == 0) {
-//            dispose();
-//        } 
- //----------------------------------------------------------------------------------
    
         JPanel panel = new JPanel();
         Font customFont = new Font("Roboto", Font.BOLD, 15); 
@@ -485,7 +485,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnCargarCiudadanoMouseReleased
 
-                  // BTN CARGAR CIUDADANO  
+                  // BTN Cargar  
     
     private void btnCargarCiudadanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarCiudadanoActionPerformed
   
@@ -591,9 +591,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
     }
 
     }//GEN-LAST:event_btnBuscarActionPerformed
-
-    
-        
+         
                   // BTN Eliminar  
      
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -617,19 +615,19 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTFDniKeyPressed
 
     
-                  // Hover BTN Buscar    
+      // Hover BTN Buscar    
     private void btnBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseEntered
     
          Color myColor = new Color(29, 34, 179); // creo mí color personalizado-*-
 
         btnBuscar.setBackground(myColor);   
     }//GEN-LAST:event_btnBuscarMouseEntered
-                  // Hover BTN Buscar    
+      // Hover BTN Buscar    
     private void btnBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseExited
     
         btnBuscar.setBackground(new Color(41,84,171));        
     }//GEN-LAST:event_btnBuscarMouseExited
-                  // Hover BTN Buscar      
+      // Hover BTN Buscar      
     private void btnBuscarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseReleased
         
         try {
@@ -642,21 +640,19 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         }        
     }//GEN-LAST:event_btnBuscarMouseReleased
 
-                  // Hover BTN Eliminar 
-    
+      // Hover BTN Eliminar     
     private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
        
          Color myColor = new Color(224,9,78); // creo mí color personalizado-*-
 
         btnEliminar.setBackground(myColor);
     }//GEN-LAST:event_btnEliminarMouseEntered
-
-                  // Hover BTN Eliminar    
+      // Hover BTN Eliminar    
     private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
        
          btnEliminar.setBackground(new Color(138, 4, 17));        
     }//GEN-LAST:event_btnEliminarMouseExited
-                   // Hover BTN Eliminar                     
+      // Hover BTN Eliminar                     
     private void btnEliminarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseReleased
        
          try {
@@ -709,21 +705,19 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnModificarActionPerformed
 
-                  // Hover BTN Modificar               
+      // Hover BTN Modificar               
     private void btnModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseEntered
     
          Color myColor = new Color(138, 71, 4); // creo mí color personalizado-*-
 
         btnModificar.setBackground(myColor);
     }//GEN-LAST:event_btnModificarMouseEntered
-
-                 // Hover BTN Modificar    
+      // Hover BTN Modificar    
     private void btnModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseExited
        
        btnModificar.setBackground(new Color(224,131,38)); 
     }//GEN-LAST:event_btnModificarMouseExited
-
-                // Hover BTN Modificar    
+      // Hover BTN Modificar    
     private void btnModificarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseReleased
         
          try {
@@ -736,9 +730,26 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_btnModificarMouseReleased
+
+                  //BTN Alternancia
+    private boolean isBlack = false; // inicializamos colour-*-
+    private Color defaultColor = new Color(142, 170, 189); // color x default-*-
+    private void btnAlternanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlternanciaActionPerformed
+         Container c = getContentPane();
+    if (isBlack) {
+        c.setBackground(defaultColor);
+        isBlack = false;
+    } else {
+        c.setBackground(Color.BLACK);
+        isBlack = true;
+      }
+    }//GEN-LAST:event_btnAlternanciaActionPerformed
      
     
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlternancia;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCargarCiudadano;
     private javax.swing.JButton btnEliminar;
@@ -753,7 +764,6 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTFCelular;
