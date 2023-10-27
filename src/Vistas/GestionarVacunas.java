@@ -428,8 +428,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
 
         limpiarPantalla();
     }//GEN-LAST:event_btnLimpiarActionPerformed
-    
-    
+
     // PARA BORRAR
     private void jTFNroSerieDosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNroSerieDosisActionPerformed
         // TODO add your handling code here:
@@ -486,7 +485,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
 
         if (result == JOptionPane.YES_OPTION) { // si se hace clic en "Salir"
             dispose(); // cerrar la ventana
-    }
+        }
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnCargarVacunaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarVacunaMouseEntered
@@ -506,7 +505,6 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
         try {
             TimeUnit.MILLISECONDS.sleep(300);
 
-            // En caso de haber funciones van aquí dentro-*-
         } catch (InterruptedException ex) {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -519,9 +517,8 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
             String marca = (String) jCBMarca.getSelectedItem();
             String medidaText = (String) jCBMedida.getSelectedItem();
             String laboratorioText = (String) jCBLaboratorio.getSelectedItem();
-            
 
-            if (nroSerieDosisText.isEmpty() || marca=="Seleccione una Opción" || medidaText=="Seleccione una Opción" || laboratorioText=="Seleccione una Opción") {
+            if (nroSerieDosisText.isEmpty() || marca == "Seleccione una Opción" || medidaText == "Seleccione una Opción" || laboratorioText == "Seleccione una Opción") {
                 JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
             } else if (nroSerieDosisText.length() < 12 && nroSerieDosisText.matches("[0-9]+")) {
                 int nroSerieDosis = Integer.parseInt(nroSerieDosisText);
@@ -543,75 +540,10 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Debe ingresar 10 digitos, sin punto ni caracteres especiales.");
             }
-        } //         Condicional para datos vacios-*-
-        //        if (nroSerieDosisText.isEmpty() || nombreText.isEmpty() || emailText.isEmpty() || celularText.isEmpty() || patologiaText.isEmpty() || ambitoTrabajoText.isEmpty()) {
-        //            JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
-        //            return;
-        //        }
-        //         DNI
-        //
-        //        if (dniText.length() >= 9 || dniText.length() < 5) {
-        //            JOptionPane.showMessageDialog(this, "Debe introducir un dni válido");
-        //            jTFNroSerieDosis.setText("");
-        //            return; // <= buena práctica
-        //        }
-        //
-        //         No se permiten acentos ni carateres especiales en la DB-*-
-        //        if (nombreText.length() >= 25 || nombreText.length() < 3 || !nombreText.matches("[a-zA-Z\\s]+")) {
-        //            JOptionPane.showMessageDialog(this, "Debe introducir un nombre válido");
-        //            jTFMarca.setText("");
-        //            return;
-        //        } else {
-        //            nombreText = nombreText.toLowerCase();
-        //        }
-        //
-        //         No se permiten letras mayusculas ni caracteres especiales-*-
-        //        if (emailText.length() >= 25 || emailText.length() < 10 || !emailText.matches("[a-z0-9._-]+@[a-z0-9.-]+\\.[a-z]{2,4}")) {
-        //            JOptionPane.showMessageDialog(this, "Ingrese un Email en minuscula, que contenga '@' y sin caracteres especiales");
-        //            jTFEmail.setText("");
-        //            return;
-        //        } else {
-        //            emailText = emailText.toLowerCase();
-        //        }
-        //
-        //         Celular
-        //        if (celularText.length() >= 15 || celularText.length() < 8 || !celularText.matches("[0-9]+")) {
-        //            JOptionPane.showMessageDialog(this, "Ingrese un numero de celular válido");
-        //            jTFCelular.setText("");
-        //            return; // <= buena práctica
-        //        }
-        //
-        //         Patología
-        //        if (jCBLaboratorio.getSelectedIndex() == 0) {
-        //            JOptionPane.showMessageDialog(this, "Debe seleccionar una patología.");
-        //            jCBLaboratorio.setSelectedIndex(-1);
-        //            return;
-        //        }
-        //
-        //         Ambito Trabajo
-        //        if (jCBMedida.getSelectedIndex() == 0) {
-        //            JOptionPane.showMessageDialog(this, "Debe seleccionar un ámbito de trabajo válido.");
-        //            jCBMedida.setSelectedIndex(-1);
-        //            return;
-        //        }
-        //
-        //        int dni = Integer.parseInt(jTFNroSerieDosis.getText());
-        //        ciudadano.setDni(dni);
-        //        ciudadano.setNombreCompleto(nombreText);
-        //        ciudadano.setCelular(celularText);
-        //        ciudadano.setEmail(emailText);
-        //        ciudadano.setPatologia(patologiaText);
-        //        ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
-        //        ciudadano.setEstado(eliminado);
-        //
-        //        cd.guardarCiudadano(ciudadano);
-        //        limpiarPantalla();
-        //
-        //    }
-        catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "El campo Número de serie debe ser un número válido."+e);
-        } catch (NullPointerException ex){
-            JOptionPane.showMessageDialog(this, "Debe seleccionar una fecha."+ ex);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El campo Número de serie debe ser un número válido." + e);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una fecha." + ex);
         }
 
     }//GEN-LAST:event_btnCargarVacunaActionPerformed
@@ -647,7 +579,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
 
         try {
             int nroSerieDosis = Integer.parseInt(jTFNroSerieDosis.getText());
-            
+
             vacuna = vc.buscarVacunaNroSerieDosis(nroSerieDosis);
             if (vacuna != null) {
 //                JOptionPane.showMessageDialog(this, vacuna.toString());
@@ -668,10 +600,10 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
             }
         } catch (NumberFormatException nbe) {
             JOptionPane.showMessageDialog(this, "Debe ingresar números en el campo número de serie." + nbe);
-        } catch(NullPointerException ex){
+        } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(this, "El número de serie no está registrado.");
         }
-        
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
@@ -750,14 +682,12 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
             }
             String marcaText = (String) jCBMarca.getSelectedItem();
             String laboratoriotex = (String) jCBLaboratorio.getSelectedItem();
-            int laboratorioInt  = Integer.valueOf(laboratoriotex);
+            int laboratorioInt = Integer.valueOf(laboratoriotex);
             String medidaText = (String) jCBMedida.getSelectedItem();
             double medidaDouble = Double.valueOf(medidaText);
             LocalDate fechaCaduca = jDCFechaCaduca.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             boolean colocada = jRBColocada.isSelected();
             boolean eliminada = jRBEliminada.isSelected();
-            
-            
 
             vacuna.setLaboratorio(laboratorioInt);
             vacuna.setFechaCaduca(fechaCaduca);
@@ -808,17 +738,17 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     public void limpiarPantalla() {
-      
-    if (jTFNroSerieDosis.getText().isEmpty() && jCBMarca.getSelectedItem().equals("Seleccione una Opción") && jDCFechaCaduca.getDate() == null && !jRBColocada.isSelected() && jCBMedida.getSelectedItem().equals("Seleccione una Opción") && jCBLaboratorio.getSelectedItem().equals("Seleccione una Opción") && !jRBEliminada.isSelected()) {
-        JOptionPane.showMessageDialog(null, "Campos vacíos");
-    } else {
-        jTFNroSerieDosis.setText("");
-        jCBMarca.setSelectedItem("Seleccione una Opción");
-        jDCFechaCaduca.setDate(null);
-        jRBColocada.setSelected(false);
-        jCBMedida.setSelectedItem("Seleccione una Opción");
-        jCBLaboratorio.setSelectedItem("Seleccione una Opción");
-        jRBEliminada.setSelected(false);
+
+        if (jTFNroSerieDosis.getText().isEmpty() && jCBMarca.getSelectedItem().equals("Seleccione una Opción") && jDCFechaCaduca.getDate() == null && !jRBColocada.isSelected() && jCBMedida.getSelectedItem().equals("Seleccione una Opción") && jCBLaboratorio.getSelectedItem().equals("Seleccione una Opción") && !jRBEliminada.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Campos vacíos");
+        } else {
+            jTFNroSerieDosis.setText("");
+            jCBMarca.setSelectedItem("Seleccione una Opción");
+            jDCFechaCaduca.setDate(null);
+            jRBColocada.setSelected(false);
+            jCBMedida.setSelectedItem("Seleccione una Opción");
+            jCBLaboratorio.setSelectedItem("Seleccione una Opción");
+            jRBEliminada.setSelected(false);
+        }
     }
-  }
 }
