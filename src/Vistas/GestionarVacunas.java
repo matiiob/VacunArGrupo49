@@ -54,7 +54,6 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         btnCargarVacuna = new javax.swing.JButton();
@@ -63,10 +62,9 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
         btnModificar = new javax.swing.JButton();
         jDCFechaCaduca = new com.toedter.calendar.JDateChooser();
         jLabel16 = new javax.swing.JLabel();
-        jRBColocada = new javax.swing.JRadioButton();
-        jRBEliminada = new javax.swing.JRadioButton();
         jCBMarca = new javax.swing.JComboBox<>();
-        jCBLaboratorio = new javax.swing.JComboBox<>();
+        jCBColocada = new javax.swing.JComboBox<>();
+        jCBEliminada = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(142, 170, 189));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "www.argentina.gob.ar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12), new java.awt.Color(3, 67, 97))); // NOI18N
@@ -136,10 +134,6 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(245, 245, 245));
         jLabel13.setText("Fecha de caducidad");
-
-        jLabel14.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(245, 245, 245));
-        jLabel14.setText("Laboratorio");
 
         jLabel15.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(245, 245, 245));
@@ -268,8 +262,16 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
             }
         });
 
-        jCBLaboratorio.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jCBLaboratorio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una Opción", "1", "2", "3", "4", "5" }));
+        jCBColocada.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jCBColocada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una Opción", "Si", "No" }));
+        jCBColocada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBColocadaActionPerformed(evt);
+            }
+        });
+
+        jCBEliminada.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jCBEliminada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una Opción", "Si", "No" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -283,22 +285,17 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13)
                             .addComponent(jLabel12)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel14))
+                            .addComponent(jLabel11))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jRBColocada)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel16)
-                                .addGap(36, 36, 36)
-                                .addComponent(jRBEliminada))
                             .addComponent(jDCFechaCaduca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCBMarca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCBLaboratorio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jCBMarca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
@@ -315,10 +312,6 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(jLabel1)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnModificar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                                 .addComponent(btnLimpiar)
@@ -326,7 +319,19 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                                 .addComponent(btnEliminar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSalir)
-                                .addContainerGap())))))
+                                .addContainerGap())
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(31, 31, 31)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jCBEliminada, 0, 1, Short.MAX_VALUE)
+                                            .addComponent(jCBColocada, 0, 0, Short.MAX_VALUE))
+                                        .addGap(254, 254, 254))))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,35 +345,27 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTFNroSerieDosis, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
+                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13))
+                        .addGap(13, 13, 13)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jCBColocada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jCBMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGap(54, 54, 54)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCBEliminada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jRBColocada, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDCFechaCaduca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jRBEliminada))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jCBLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDCFechaCaduca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCBMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -516,9 +513,10 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
             String nroSerieDosisText = jTFNroSerieDosis.getText();
             String marca = (String) jCBMarca.getSelectedItem();
             String medidaText = (String) jCBMedida.getSelectedItem();
-            String laboratorioText = (String) jCBLaboratorio.getSelectedItem();
-
-            if (nroSerieDosisText.isEmpty() || marca == "Seleccione una Opción" || medidaText == "Seleccione una Opción" || laboratorioText == "Seleccione una Opción") {
+            int laboratorio = 1;
+            Boolean colocada = false;
+            Boolean eliminada = false;
+            if (nroSerieDosisText.isEmpty() || marca == "Seleccione una Opción" || medidaText == "Seleccione una Opción") {
                 JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
             } else if (nroSerieDosisText.length() < 12 && nroSerieDosisText.matches("[0-9]+")) {
                 int nroSerieDosis = Integer.parseInt(nroSerieDosisText);
@@ -528,9 +526,52 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                     // si no existe se almacena en DB
                     Double medida = Double.parseDouble(medidaText);
                     LocalDate fechaCaduca = jDCFechaCaduca.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                    Boolean colocada = jRBColocada.isSelected();
-                    Integer laboratorio = Integer.parseInt(laboratorioText);
-                    Boolean eliminada = jRBEliminada.isSelected();
+                    String colocadaText = (String) jCBColocada.getSelectedItem();
+                    String eliminadaText = (String) jCBEliminada.getSelectedItem();
+                    switch (colocadaText) {
+                        case "Si":
+                            colocada = true;
+                            break;
+                        case "No":
+                            colocada = false;
+                            break;
+                        case "Elija una Opción":
+                            JOptionPane.showMessageDialog(this, "Debe seleccionar una Opción de elimanada.");
+                            break;
+                    }
+
+                    switch (eliminadaText) {
+                        case "Si":
+                            eliminada = true;
+                            break;
+                        case "No":
+                            eliminada = false;
+                            break;
+                        case "Elija una Opción":
+                            JOptionPane.showMessageDialog(this, "Debe seleccionar una Opción de colocada.");
+                            break;
+                    }
+                    switch (marca) {
+
+                        case "ARNm (Pfiser)":
+                            laboratorio = 1;
+                            break;
+                        case "mRNA-1273 (Moderna)":
+                            laboratorio = 2;
+                            break;
+                        case "ChAdOx1-s (AstraSeneca)":
+                            laboratorio = 3;
+                            break;
+                        case "BBIBP-Corv (Sinopharm)":
+                            laboratorio = 4;
+                            break;
+                        case "Gam-Covid-VacM (Sputnik)":
+                            laboratorio = 5;
+                            break;
+                    }
+//                    Boolean colocada = jRBColocada.isSelected();
+//                    Integer laboratorio = Integer.parseInt(laboratorioText);
+//                    Boolean eliminada = jRBEliminada.isSelected();
                     Vacuna vacuna = new Vacuna(nroSerieDosis, marca, medida, fechaCaduca, colocada, laboratorio, eliminada);
                     vacunaData.GuardarVacuna(vacuna);
                     limpiarPantalla();
@@ -583,7 +624,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
             vacuna = vc.buscarVacunaNroSerieDosis(nroSerieDosis);
             if (vacuna != null) {
 //                JOptionPane.showMessageDialog(this, vacuna.toString());
-                jCBLaboratorio.setSelectedItem(String.valueOf(vacuna.getLaboratorio()));
+//                jCBLaboratorio.setSelectedItem(String.valueOf(vacuna.getLaboratorio()));
                 jCBMarca.setSelectedItem(vacuna.getMarca());
                 jCBMedida.setSelectedItem(String.valueOf(vacuna.getMedida()));
                 LocalDate fecha = (LocalDate) vacuna.getFechaCaduca();
@@ -591,10 +632,19 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                 Date date = Date.from(instant);
                 jDCFechaCaduca.setDate(date);
 
-                jRBColocada.setSelected(vacuna.isColocada());
-                jRBEliminada.setSelected(vacuna.isEliminada());
-//                boolean eliminada = jRBEliminada.isSelected();
+                if (vacuna.isColocada()) {
+                    jCBColocada.setSelectedItem("Si");
+                } else {
+                    jCBColocada.setSelectedItem("No");
+                }
 
+                if (vacuna.isEliminada()) {
+                    jCBEliminada.setSelectedItem("Si");
+                } else {
+                    jCBEliminada.setSelectedItem("No");
+                }
+
+//                boolean eliminada = jRBEliminada.isSelected();
             } else {
                 JOptionPane.showMessageDialog(this, "El número de serie no está registrado.");
             }
@@ -681,20 +731,60 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                 return;
             }
             String marcaText = (String) jCBMarca.getSelectedItem();
-            String laboratoriotex = (String) jCBLaboratorio.getSelectedItem();
-            int laboratorioInt = Integer.valueOf(laboratoriotex);
+            int laboratorio = 1;
+//            int laboratorioInt = Integer.valueOf(laboratoriotex);
             String medidaText = (String) jCBMedida.getSelectedItem();
             double medidaDouble = Double.valueOf(medidaText);
             LocalDate fechaCaduca = jDCFechaCaduca.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            boolean colocada = jRBColocada.isSelected();
-            boolean eliminada = jRBEliminada.isSelected();
+            String colocadaText = (String) jCBColocada.getSelectedItem();
+            String eliminadaText = (String) jCBEliminada.getSelectedItem();
 
-            vacuna.setLaboratorio(laboratorioInt);
+            switch (eliminadaText) {
+                case "Si":
+                    vacuna.setEliminada(true);
+                    break;
+                case "No":
+                    vacuna.setEliminada(false);
+                    break;
+                case "Elija una Opción":
+                    JOptionPane.showMessageDialog(this, "Debe seleccionar una Opción de elimanada.");
+                    break;
+            }
+
+            switch (colocadaText) {
+                case "Si":
+                    vacuna.setColocada(true);
+                    break;
+                case "No":
+                    vacuna.setColocada(false);
+                    break;
+                case "Elija una Opción":
+                    JOptionPane.showMessageDialog(this, "Debe seleccionar una Opción de colocada.");
+                    break;
+            }
+            
+            switch (marcaText) {
+
+                        case "ARNm (Pfiser)":
+                            laboratorio = 1;
+                            break;
+                        case "mRNA-1273 (Moderna)":
+                            laboratorio = 2;
+                            break;
+                        case "ChAdOx1-s (AstraSeneca)":
+                            laboratorio = 3;
+                            break;
+                        case "BBIBP-Corv (Sinopharm)":
+                            laboratorio = 4;
+                            break;
+                        case "Gam-Covid-VacM (Sputnik)":
+                            laboratorio = 5;
+                            break;
+                    }
+            vacuna.setLaboratorio(laboratorio);
             vacuna.setFechaCaduca(fechaCaduca);
             vacuna.setMarca(marcaText);
             vacuna.setMedida(medidaDouble);
-            vacuna.setColocada(colocada);
-            vacuna.setEliminada(eliminada);
 
             vc.modificarVacuna(vacuna);
 
@@ -710,6 +800,10 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCBMarcaActionPerformed
 
+    private void jCBColocadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBColocadaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBColocadaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
@@ -718,7 +812,8 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JComboBox<String> jCBLaboratorio;
+    private javax.swing.JComboBox<String> jCBColocada;
+    private javax.swing.JComboBox<String> jCBEliminada;
     private javax.swing.JComboBox<String> jCBMarca;
     private javax.swing.JComboBox<String> jCBMedida;
     private com.toedter.calendar.JDateChooser jDCFechaCaduca;
@@ -726,29 +821,26 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRBColocada;
-    private javax.swing.JRadioButton jRBEliminada;
     private javax.swing.JTextField jTFNroSerieDosis;
     // End of variables declaration//GEN-END:variables
 
     public void limpiarPantalla() {
 
-        if (jTFNroSerieDosis.getText().isEmpty() && jCBMarca.getSelectedItem().equals("Seleccione una Opción") && jDCFechaCaduca.getDate() == null && !jRBColocada.isSelected() && jCBMedida.getSelectedItem().equals("Seleccione una Opción") && jCBLaboratorio.getSelectedItem().equals("Seleccione una Opción") && !jRBEliminada.isSelected()) {
+        if (jTFNroSerieDosis.getText().isEmpty() && jCBMarca.getSelectedItem().equals("Seleccione una Opción") && jDCFechaCaduca.getDate() == null && jCBColocada.getSelectedItem().equals("Seleccione una Opción") && jCBMedida.getSelectedItem().equals("Seleccione una Opción") && jCBMedida.getSelectedItem().equals("Seleccione una Opción")) {
             JOptionPane.showMessageDialog(null, "Campos vacíos");
         } else {
             jTFNroSerieDosis.setText("");
             jCBMarca.setSelectedItem("Seleccione una Opción");
             jDCFechaCaduca.setDate(null);
-            jRBColocada.setSelected(false);
             jCBMedida.setSelectedItem("Seleccione una Opción");
-            jCBLaboratorio.setSelectedItem("Seleccione una Opción");
-            jRBEliminada.setSelected(false);
+//            jCBLaboratorio.setSelectedItem("Seleccione una Opción");
+            jCBColocada.setSelectedItem("Seleccione una Opción");
+            jCBEliminada.setSelectedItem("Seleccione una Opción");
         }
     }
 }
