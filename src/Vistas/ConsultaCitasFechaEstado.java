@@ -12,7 +12,10 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.List;
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -74,6 +77,28 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
         }
     }
 
+    private void listarCitasCumplidas() {
+        borrarFilasTabla();
+        // Listar Citas
+        citas = cvd.obtenerCitasCumplidas();
+        // Rellenar filas
+        for (CitaVacunacion cita : citas) {
+            modelo.addRow(new Object[]{cita.getIdCodCita(), cita.getIdCiudadano(), cita.getCodRefuerzo(), cita.getFechaHoraCita(),
+                cita.getCentroVacunacion(), cita.getFechaHoraColoca(), cita.getDosis(), cita.isEstado()});
+        }
+    }
+
+    private void listarCitasCanceladas() {
+        borrarFilasTabla();
+        // Listar Citas
+        citas = cvd.obtenerCitasCanceladas();
+        // Rellenar filas
+        for (CitaVacunacion cita : citas) {
+            modelo.addRow(new Object[]{cita.getIdCodCita(), cita.getIdCiudadano(), cita.getCodRefuerzo(), cita.getFechaHoraCita(),
+                cita.getCentroVacunacion(), cita.getFechaHoraColoca(), cita.getDosis(), cita.isEstado()});
+        }
+    }
+
     private void borrarFilasTabla() {
         int indice = modelo.getRowCount() - 1;
 
@@ -115,6 +140,7 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
         jRBCumplidas = new javax.swing.JRadioButton();
         jRBVencidas = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
+        jRBFechas = new javax.swing.JRadioButton();
         jPanel5 = new javax.swing.JPanel();
         jDCFechaDesde = new com.toedter.calendar.JDateChooser();
         jDCFechaHasta = new com.toedter.calendar.JDateChooser();
@@ -127,7 +153,7 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
         jBBuscar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
         jBLimpiar = new javax.swing.JButton();
-        jBEliminar = new javax.swing.JButton();
+        jBCancelar = new javax.swing.JButton();
 
         jLabel1.setText("Listar Citas");
 
@@ -142,14 +168,24 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Criterio de busqueda");
 
+        buttonGroup1.add(jRBFechas);
+        jRBFechas.setSelected(true);
+        jRBFechas.setText("Por fecha");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(33, 33, 33)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(33, 33, 33))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jRBFechas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRBCanceladas)
                     .addComponent(jRBCumplidas)
@@ -164,7 +200,9 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
                     .addComponent(jRBCanceladas)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRBCumplidas)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRBCumplidas)
+                    .addComponent(jRBFechas))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jRBVencidas)
                 .addContainerGap())
@@ -279,11 +317,16 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
         });
 
         jBLimpiar.setText("Limpiar");
-
-        jBEliminar.setText("Eliminar");
-        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+        jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBEliminarActionPerformed(evt);
+                jBLimpiarActionPerformed(evt);
+            }
+        });
+
+        jBCancelar.setText("Cancelar Cita");
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarActionPerformed(evt);
             }
         });
 
@@ -297,7 +340,7 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBLimpiar)
                 .addGap(27, 27, 27)
-                .addComponent(jBEliminar)
+                .addComponent(jBCancelar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBSalir)
                 .addGap(63, 63, 63))
@@ -310,7 +353,7 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
                     .addComponent(jBBuscar)
                     .addComponent(jBSalir)
                     .addComponent(jBLimpiar)
-                    .addComponent(jBEliminar))
+                    .addComponent(jBCancelar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -344,27 +387,49 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-        if (!jRBCanceladas.isSelected() && !jRBCumplidas.isSelected() && !jRBVencidas.isSelected()) {
+        if (jRBFechas.isSelected()) {
             listarCitasPorFechas();
         }
         if (jRBVencidas.isSelected()) {
             listarCitasVencidas();
         }
+        if (jRBCanceladas.isSelected()) {
+            listarCitasCanceladas();
+        }
+        if (jRBCumplidas.isSelected()) {
+            listarCitasCumplidas();
+        }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
-    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         int fila = jTable1.getSelectedRow();
-        int idCita = (Integer)modelo.getValueAt(fila, 0);
-        if (fila != -1) {
-            cvd.eliminarCitaVacunacion(idCita);
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una fila para cancelar.");
+        } else {
+            int cerrar = JOptionPane.showConfirmDialog(this, "¿Está seguro de que quiere cancelar el registro seleccionado?", "Cancelar cita", 0, 2);
+            if (cerrar == 0) {
+                fila = jTable1.getSelectedRow();
+                int idCita = (Integer) modelo.getValueAt(fila, 0);
+                if (fila != -1) {
+                    cvd.eliminarCitaVacunacion(idCita);
+                }
+                jBBuscar.doClick();
+            }
         }
-    }//GEN-LAST:event_jBEliminarActionPerformed
+    }//GEN-LAST:event_jBCancelarActionPerformed
+
+    private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
+        jRBFechas.setSelected(true);
+        jDCFechaDesde.setDate(null);
+        jDCFechaHasta.setDate(null);
+        borrarFilasTabla();
+    }//GEN-LAST:event_jBLimpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jBBuscar;
-    private javax.swing.JButton jBEliminar;
+    private javax.swing.JButton jBCancelar;
     private javax.swing.JButton jBLimpiar;
     private javax.swing.JButton jBSalir;
     private com.toedter.calendar.JDateChooser jDCFechaDesde;
@@ -380,6 +445,7 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JRadioButton jRBCanceladas;
     private javax.swing.JRadioButton jRBCumplidas;
+    private javax.swing.JRadioButton jRBFechas;
     private javax.swing.JRadioButton jRBVencidas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
