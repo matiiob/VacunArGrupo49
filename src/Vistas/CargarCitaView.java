@@ -16,6 +16,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import java.time.Instant;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -96,27 +97,34 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/min_salud (1).png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre Completo");
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Email");
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Celular");
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Patologia Base");
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Ambito Laboral");
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Centro de Vacunacion");
 
         jCBCentroDeVacunacion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jCBCentroDeVacunacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elija una opcion.", "Centro de Vacunacion 1.", "Centro de Vacunacion 2.", "Centro de Vacunacion 3.", "Centro de Vacunacion 4.", "Centro de Vacunacion 5." }));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Fecha de Cita");
 
         jDCFechaCita.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -127,15 +135,18 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         });
 
         jLabel9.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Codigo de Refuerzo");
 
         jCBCodigoRefuerzo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jCBCodigoRefuerzo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elija una opcion.", "1 Aplicacion.", "2 Aplicacion.", "3 Aplicacion." }));
 
         jLabel10.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Dosis");
 
         jRBColocada.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jRBColocada.setForeground(new java.awt.Color(255, 255, 255));
         jRBColocada.setText("(Colocada)");
 
         jCBDosis.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -205,9 +216,11 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         });
 
         jLabel11.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("CARGAR APLICACION DE VACUNA");
 
         jLabel12.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Documento");
 
         jBBuscar.setBackground(new java.awt.Color(41, 84, 171));
@@ -233,9 +246,11 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         });
 
         jLabel13.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("IdCiudadano");
 
         jLabel14.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("proxima Fecha");
 
         jDCProximaFecha.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -431,16 +446,26 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        // BOTON GUARDAR CITAVACUNACION // actualizar la base de datos que hizo Cris
+        // BOTON GUARDAR CITAVACUNACION // 
         try{
         int idCiudadano = Integer.parseInt(jTIdCiudadano.getText());
         int codRefuerzo = jCBCodigoRefuerzo.getSelectedIndex();
         String centroVacunacion = (String) jCBCentroDeVacunacion.getSelectedItem();
-        
-       
+        try{
         Date fechaHoraCita = jDCFechaCita.getDate();
+        if(fechaHoraCita ==null){
+        JOptionPane.showMessageDialog(this,"La fecha es invalida");
+        }
+        
         Instant instantCita = fechaHoraCita.toInstant();
         LocalDate fechaCit = instantCita.atZone(ZoneId.systemDefault()).toLocalDate();
+        
+        LocalDate fechaMinima = LocalDate.of(2023,10,1);
+        if(fechaCit.isBefore(fechaMinima)){
+         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");   
+        JOptionPane.showMessageDialog(this,"La fecha debe ser despúes de: "+fechaMinima.format(dtf));
+        return;
+        }
         
         Date fechaHoraColoca = jDCProximaFecha.getDate();
         Instant instantColoca = fechaHoraColoca.toInstant();
@@ -451,8 +476,15 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
 
         cita = new CitaVacunacion(idCiudadano, codRefuerzo, fechaCit, centroVacunacion, fechaProx, dosis, estado);
         cvd.guardarCitaVacunacion(cita);
+        
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        JOptionPane.showMessageDialog(this,"La proxima cita es: "+fechaProx.format(dtf));
+        
         } catch (NumberFormatException nbe) {
             JOptionPane.showMessageDialog(this, "Debe ingresar datos validos.");
+            }catch(NullPointerException e){
+         JOptionPane.showMessageDialog(this, "Falta ingresar la fecha de cita o la fecha de proxima cita");
+        }
         } catch (NullPointerException npe) {
             JOptionPane.showMessageDialog(this, "El ciudadano no existe.");
         
