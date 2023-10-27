@@ -58,15 +58,19 @@ public class VacunaData {
 
     // METODO MODIFICAR-*-
     public void modificarVacuna(Vacuna vacuna) {
-        String sql = "UPDATE vacuna SET nroSerieDosis=?, marca=?, medida=?, fechaCaduca=? WHERE idVacuna=?";
+        String sql = "UPDATE vacuna SET nroSerieDosis=?, marca=?, laboratorio=?, medida=?, fechaCaduca=? , colocada=?, eliminada=? WHERE idVacuna=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setLong(1, vacuna.getNroSerieDosis());
             ps.setString(2, vacuna.getMarca());
-            ps.setDouble(3, vacuna.getMedida());
-            ps.setDate(4, Date.valueOf(vacuna.getFechaCaduca()));
-            ps.setInt(5, vacuna.getIdVacuna());
+            ps.setInt(3, vacuna.getLaboratorio());
+            ps.setDouble(4, vacuna.getMedida());
+            ps.setDate(5, Date.valueOf(vacuna.getFechaCaduca()));
+            ps.setBoolean(6, vacuna.isColocada());
+            ps.setBoolean(7, vacuna.isEliminada());
+            ps.setInt(8, vacuna.getIdVacuna());
+            
             int cargado = ps.executeUpdate();
             if (cargado == 1) {
                 JOptionPane.showMessageDialog(null, "Vacuna modificada con exito!");
