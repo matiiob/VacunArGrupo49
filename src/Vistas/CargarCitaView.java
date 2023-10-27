@@ -10,6 +10,7 @@ import AccesoADatos.CiudadanoData;
 import Entidades.CitaVacunacion;
 import Entidades.Ciudadano;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Font;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -56,7 +57,6 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         jLocaleChooser1 = new com.toedter.components.JLocaleChooser();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jScrollBar1 = new javax.swing.JScrollBar();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTNombreCompleto = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -88,13 +88,12 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         jLabel14 = new javax.swing.JLabel();
         jDCProximaFecha = new com.toedter.calendar.JDateChooser();
         jBSalir = new javax.swing.JButton();
+        btnAlternancia = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(142, 170, 189));
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "www.argentina.gob.ar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12), new java.awt.Color(3, 67, 97))); // NOI18N
         setForeground(new java.awt.Color(0, 0, 0));
         setResizable(true);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/min_salud (1).png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -215,9 +214,9 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("CARGAR APLICACION DE VACUNA");
+        jLabel11.setText("Cargar Aplicación de Vacuna");
 
         jLabel12.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -276,12 +275,19 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
             }
         });
 
+        btnAlternancia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sol_luna.png"))); // NOI18N
+        btnAlternancia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlternanciaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel10)
                     .addComponent(jBLimpiar)
@@ -310,9 +316,6 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTIdCiudadano, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jLabel1))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jTDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -340,18 +343,21 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jBSalir))
                             .addComponent(jCBDosis, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addComponent(jLabel11)
+                .addContainerGap(108, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnAlternancia)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnAlternancia)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel11)
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -412,7 +418,7 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
                     .addComponent(jBGuardar)
                     .addComponent(jBModificar)
                     .addComponent(jBSalir))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("www.argentina.gob.ar");
@@ -717,11 +723,30 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
 //           JOptionPane.showMessageDialog(this,ex);
        }
     }//GEN-LAST:event_jDCFechaCitaPropertyChange
+    // BTN ALTERNANCIA 
+    private boolean isBlack = false; // inicializamos color-*-
+    private Color defaultColor = new Color(142, 170, 189); // color x default-*-
+    private void btnAlternanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlternanciaActionPerformed
+    
+          Container c = getContentPane();
+    if (isBlack) {
+        c.setBackground(defaultColor);
+        isBlack = false;
+    } else {
+        c.setBackground(Color.BLACK);
+        isBlack = true;
+      }
+        
+    }//GEN-LAST:event_btnAlternanciaActionPerformed
 
+    
+    
+    
     
            
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlternancia;
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBLimpiar;
@@ -733,7 +758,6 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
     private com.toedter.calendar.JDateChooser jDCFechaCita;
     private com.toedter.calendar.JDateChooser jDCProximaFecha;
     private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
