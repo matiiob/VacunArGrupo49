@@ -3,15 +3,15 @@
 
 <h1 align="center">Hola 👋, somos los integrantes del grupo {49}  <img aling="center" src="ideas.png" whidt="250" style="max-width: 100%;"/>  de la ULP de San Luis Argentina<a href="https://github.com/GonzaloDelCastello/universidadgrupo49/README.md"></h1>
 
-https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=#5353f9&background=148AA600&width=435&lines=Powered+by+Grupo+{49}
+<a aling="center" href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=#5353f9&background=148AA600&width=435&lines=Powered+by+Grupo+{49}" alt="Typing SVG" /></a>
 
 
 
 <h3 align="center">Apasionados desarrolladores Java FullStack</h3>
-<p>* I -Del Castello, Gonzalo</p>
+<p>* I -[Del Castello, Gonzalo] <img aling="center" src="gmail (1).png" whidt="25" style="max-width: 50%;"/> <a href="mailto:delcastello.gonzalo@sanluis.edu.ar">Enviar correo</a> </p>
 <p>* II - [Garay, Christian]  <img aling="center" src="gmail (1).png" whidt="25" style="max-width: 50%;"/> <a href="mailto:christiangaray959@gmail.com">Enviar correo</a> </p>
 <p>* III -[Obregón, Matías]  <img aling="center" src="gmail (1).png" whidt="25" style="max-width: 50%;"/> <a href="mailto:obregonmati@gmail.com">Enviar correo</a> </p>
-<p>* IV -Quiñones, Alejandro</p>
+<p>* IV -[Quiñonez, Alejandro] <img aling="center" src="gmail (1).png" whidt="25" style="max-width: 50%;"/> <a href="mailto:m.alejandro.q@gmail.com">Enviar correo</a> </p>
 <h3 align="left">Herramientas utilizadas:</h3>
 
 <p align="left"> 
