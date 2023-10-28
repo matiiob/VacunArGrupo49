@@ -70,7 +70,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(245, 245, 245));
-        jLabel1.setText("GESTIONAR CIUDADANO");
+        jLabel1.setText("Gestionar Ciudadano");
 
         jLabel8.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(245, 245, 245));
