@@ -81,7 +81,7 @@ public class CiudadanoData {
         // La busqueda permite al usuario buscar un Ciudadano por su dni.
         
         String sql = "SELECT idCiudadano, dni, nombreCompleto, email, celular, patologia, "
-                + "ambitoTrabajo FROM ciudadano WHERE dni = ?";
+                + "ambitoTrabajo, eliminado FROM ciudadano WHERE dni = ?";
 
         Ciudadano ciudadano = null;
         try {
@@ -98,6 +98,7 @@ public class CiudadanoData {
                 ciudadano.setCelular(rs.getString("celular"));
                 ciudadano.setPatologia(rs.getString("patologia"));
                 ciudadano.setAmbitoTrabajo(rs.getString("ambitoTrabajo"));
+                ciudadano.setEliminado(rs.getBoolean("eliminado"));
             }
             ps.close();
         } catch (SQLException e) {
@@ -154,6 +155,23 @@ public class CiudadanoData {
         }
     }
         
-        
+         public void restaurarCiudadano(int id) { 
+    try {
+        String sql = "UPDATE ciudadano SET eliminado = 0 WHERE idCiudadano = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, id);
+        int fila = ps.executeUpdate();
+            if (fila == 1) {
+
+         //  odificado 25-10     JOptionPane.showMessageDialog(null, "Se restauró el Ciudadano.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe ingresar el DNI del Ciudadano.");
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al restaurar al Ciudadano: " + e.getMessage());
+        }
+    }
     
 }

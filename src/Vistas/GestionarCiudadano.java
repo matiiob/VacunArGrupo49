@@ -32,7 +32,8 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         initComponents();
         cd = new CiudadanoData();
         ciudadano = new Ciudadano();
-         c.setBackground(defaultColor);      
+         c.setBackground(defaultColor);    
+         jLTagEliminado.setVisible(false);
     }
 
    
@@ -61,6 +62,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         btnEliminar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnAlternancia = new javax.swing.JButton();
+        jLTagEliminado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -261,6 +263,9 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
             }
         });
 
+        jLTagEliminado.setForeground(new java.awt.Color(255, 0, 0));
+        jLTagEliminado.setText("Eliminado");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -271,13 +276,15 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
                         .addGap(133, 133, 133)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(49, 49, 49)
-                                .addComponent(jTFDni, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLTagEliminado)
+                                    .addComponent(jTFDni, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
@@ -313,13 +320,15 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnAlternancia)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLTagEliminado)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnAlternancia)
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel1)
-                        .addGap(251, 251, 251)
+                        .addGap(229, 229, 229)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCBPatologia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -335,7 +344,6 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
                             .addComponent(btnEliminar)
                             .addComponent(btnSalir)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTFDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscar)
@@ -579,12 +587,16 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         int dni = Integer.parseInt(jTFDni.getText());
         ciudadano = cd.buscarCiudadanoDni(dni);
         if (ciudadano != null) {
-            if (!ciudadano.isEliminado()) {
+            if (ciudadano.isEliminado()==true) {
                 int restaurar = JOptionPane.showConfirmDialog(this, "Este ciudadano se encuentra en estado ELIMINADO. "
                         + "¿Desea restaurarlo? Si presiona NO, no se restaurará pero podrá visualizar"
                         + " igualmente los datos.", "Ciudadano eliminado", 0, 1);
                 if (restaurar == 0) {
-                    ciudadano.setEliminado(true);
+                    cd.restaurarCiudadano(ciudadano.getIdCiudadano());
+                    ciudadano.setEliminado(false);
+                    jLTagEliminado.setVisible(false);
+                } else {
+                    jLTagEliminado.setVisible(true);
                 }
             }
             jTFNombre.setText(ciudadano.getNombreCompleto());
@@ -769,6 +781,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> jCBAmbitoTrabajo;
     private javax.swing.JComboBox<String> jCBPatologia;
+    private javax.swing.JLabel jLTagEliminado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
