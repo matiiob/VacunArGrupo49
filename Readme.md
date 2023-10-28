@@ -3,7 +3,7 @@
 
 <h1 align="center">Hola 👋, somos los integrantes del grupo {49}  <img aling="center" src="ideas.png" whidt="250" style="max-width: 100%;"/>  de la ULP de San Luis Argentina<a href="https://github.com/GonzaloDelCastello/universidadgrupo49/README.md"></h1>
 
-<a aling="center" href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=#5353f9&background=148AA600&width=435&lines=Powered+by+Grupo+49" alt="Typing SVG" /></a>
+
 
 <a aling="center" href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=F7631C&background=148AA600&width=435&lines=Powered+by+Grupo+49+ULP+San+Luis+Argentina" alt="Typing SVG" /></a>
 
