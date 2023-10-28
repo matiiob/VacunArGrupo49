@@ -309,7 +309,7 @@ public class CitaVacunacionData {
                 cit.setCentroVacunacion(rs.getString("centroVacunacion"));
 //                cit.setFechaHoraColoca(rs.getTimestamp("fechaHoraColoca"));
                 cit.setDosis(rs.getInt("dosis"));
-//                cit.setEstado(rs.getBoolean("estado"));
+//                cit.setEliminado(rs.getBoolean("estado"));
 
                 citas.add(cit);
             }

@@ -23,13 +23,16 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
 
     private CiudadanoData cd;
     private Ciudadano ciudadano;
+    private Color defaultColor = new Color(142, 170, 189);
+    private Container c = getContentPane();
+    
     
     
     public GestionarCiudadano() {
         initComponents();
         cd = new CiudadanoData();
         ciudadano = new Ciudadano();
-              
+         c.setBackground(defaultColor);      
     }
 
    
@@ -285,7 +288,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
                         .addComponent(btnLimpiar)
                         .addGap(13, 13, 13)
                         .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSalir)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -557,7 +560,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
             ciudadano.setEmail(emailText);
             ciudadano.setPatologia(patologiaText);
             ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
-            ciudadano.setEstado(eliminado);
+            ciudadano.setEliminado(eliminado);
 
             cd.guardarCiudadano(ciudadano);
             limpiarPantalla();
@@ -576,6 +579,14 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         int dni = Integer.parseInt(jTFDni.getText());
         ciudadano = cd.buscarCiudadanoDni(dni);
         if (ciudadano != null) {
+            if (!ciudadano.isEliminado()) {
+                int restaurar = JOptionPane.showConfirmDialog(this, "Este ciudadano se encuentra en estado ELIMINADO. "
+                        + "¿Desea restaurarlo? Si presiona NO, no se restaurará pero podrá visualizar"
+                        + " igualmente los datos.", "Ciudadano eliminado", 0, 1);
+                if (restaurar == 0) {
+                    ciudadano.setEliminado(true);
+                }
+            }
             jTFNombre.setText(ciudadano.getNombreCompleto());
             jTFEmail.setText(ciudadano.getEmail());
             jTFCelular.setText(ciudadano.getCelular());
@@ -584,7 +595,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
           
 
         } else {
-            JOptionPane.showMessageDialog(this, "El ciudadano no existe.");
+            JOptionPane.showMessageDialog(this, "El dni ingresado no existe en la base de datos.");
         }
     } catch (NumberFormatException nbe) {
         JOptionPane.showMessageDialog(this, "Debe ingresar números en el campo DNI.");
@@ -692,7 +703,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         ciudadano.setCelular(celularText);
         ciudadano.setPatologia(patologiaText);
         ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
-        ciudadano.setEstado(eliminado);
+        ciudadano.setEliminado(eliminado);
         
         cd.modificarCiudadano(ciudadano);
         
@@ -733,9 +744,9 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
 
                   //BTN Alternancia
     private boolean isBlack = false; // inicializamos colour-*-
-    private Color defaultColor = new Color(142, 170, 189); // color x default-*-
+//    private Color defaultColor = new Color(142, 170, 189); // color x default-*-
     private void btnAlternanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlternanciaActionPerformed
-         Container c = getContentPane();
+//         Container c = getContentPane();
     if (isBlack) {
         c.setBackground(defaultColor);
         isBlack = false;

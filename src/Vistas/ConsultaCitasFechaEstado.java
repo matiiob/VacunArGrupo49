@@ -177,28 +177,30 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Listar Citas");
 
+        jPanel4.setOpaque(false);
+
         buttonGroup1.add(jRBCanceladas);
         jRBCanceladas.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jRBCanceladas.setForeground(new java.awt.Color(0, 0, 0));
+        jRBCanceladas.setForeground(new java.awt.Color(255, 255, 255));
         jRBCanceladas.setText("Canceladas");
 
         buttonGroup1.add(jRBCumplidas);
         jRBCumplidas.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jRBCumplidas.setForeground(new java.awt.Color(0, 0, 0));
+        jRBCumplidas.setForeground(new java.awt.Color(255, 255, 255));
         jRBCumplidas.setText("Cumplidas");
 
         buttonGroup1.add(jRBVencidas);
         jRBVencidas.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jRBVencidas.setForeground(new java.awt.Color(0, 0, 0));
+        jRBVencidas.setForeground(new java.awt.Color(255, 255, 255));
         jRBVencidas.setText("Vencidas");
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Criterio de busqueda");
 
         buttonGroup1.add(jRBFechas);
         jRBFechas.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jRBFechas.setForeground(new java.awt.Color(0, 0, 0));
+        jRBFechas.setForeground(new java.awt.Color(255, 255, 255));
         jRBFechas.setSelected(true);
         jRBFechas.setText("Por fecha");
 
@@ -238,12 +240,14 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        jPanel5.setOpaque(false);
+
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Hasta");
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Desde");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -287,7 +291,7 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -302,6 +306,8 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
+
+        jPanel2.setOpaque(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -322,7 +328,7 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -332,6 +338,8 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        jPanel3.setOpaque(false);
 
         jBBuscar.setBackground(new java.awt.Color(41, 84, 171));
         jBBuscar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -464,7 +472,7 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAlternancia)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -475,7 +483,7 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(btnAlternancia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)

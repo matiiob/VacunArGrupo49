@@ -101,11 +101,11 @@ public class Ciudadano {
         this.ambitoTrabajo = ambitoTrabajo;
     }
 
-    public boolean isEstado() {
+    public boolean isEliminado() {
         return eliminado;
     }
 
-    public void setEstado(boolean eliminado) {
+    public void setEliminado(boolean eliminado) {
         this.eliminado = eliminado;
     }
 

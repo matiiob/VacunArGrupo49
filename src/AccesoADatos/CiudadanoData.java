@@ -33,7 +33,7 @@ public class CiudadanoData {
             ps.setString(4, ciudadano.getCelular());
             ps.setString(5, ciudadano.getPatologia());
             ps.setString(6, ciudadano.getAmbitoTrabajo());
-            ps.setBoolean(7, ciudadano.isEstado());
+            ps.setBoolean(7, ciudadano.isEliminado());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -41,7 +41,8 @@ public class CiudadanoData {
                 JOptionPane.showMessageDialog(null, "Ciudadano cargado con éxito..!!");
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectar con la Base de Datos" + ex);
+            JOptionPane.showMessageDialog(null, "Error. Posiblemente estes intentando ingresar un DNI que ya existe"
+                    + " o hayas perdido conexion con la base de datos.");
         }
 
     }
@@ -61,7 +62,7 @@ public class CiudadanoData {
             ps.setString(4, ciudadano.getCelular());
             ps.setString(5, ciudadano.getPatologia());
             ps.setString(6, ciudadano.getAmbitoTrabajo());
-            ps.setBoolean(7, ciudadano.isEstado());  // agregado 19-10
+            ps.setBoolean(7, ciudadano.isEliminado());  // agregado 19-10
             int cargado = ps.executeUpdate();
             if (cargado == 1) {
                 JOptionPane.showMessageDialog(null, "Ciudadano modificado con éxito..!");
