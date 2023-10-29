@@ -681,32 +681,34 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 
         try {
-
             int dni = Integer.parseInt(jTFDni.getText());
-
             Ciudadano ciudadano = cd.buscarCiudadanoDni(dni); // recuperar el objeto ciudadano de la DB
             if (ciudadano == null) {
                 JOptionPane.showMessageDialog(this, "El ciudadano no existe en la base de datos.");
                 return;
             }
+            int confirmar = JOptionPane.showConfirmDialog(this, "¿Esta seguro de querer guardar las modificaciones"
+                    + " realizadas?", "Modificar", 0, 2);
+            if (confirmar == 0) {
+                String nombreText = (String) jTFNombre.getText();
+                String emailText = (String) jTFEmail.getText();
+                String celularText = (String) jTFCelular.getText();
+                String patologiaText = (String) jCBPatologia.getSelectedItem();
+                String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getSelectedItem();
+                boolean eliminado = false;
 
-            String nombreText = (String) jTFNombre.getText();
-            String emailText = (String) jTFEmail.getText();
-            String celularText = (String) jTFCelular.getText();
-            String patologiaText = (String) jCBPatologia.getSelectedItem();
-            String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getSelectedItem();
-            boolean eliminado = false;
+                ciudadano.setNombreCompleto(nombreText);
+                ciudadano.setEmail(emailText);
+                ciudadano.setCelular(celularText);
+                ciudadano.setPatologia(patologiaText);
+                ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
+                ciudadano.setEliminado(eliminado);
 
-            ciudadano.setNombreCompleto(nombreText);
-            ciudadano.setEmail(emailText);
-            ciudadano.setCelular(celularText);
-            ciudadano.setPatologia(patologiaText);
-            ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
-            ciudadano.setEliminado(eliminado);
+                cd.modificarCiudadano(ciudadano);
 
-            cd.modificarCiudadano(ciudadano);
+                limpiarPantalla();
+            }
 
-            limpiarPantalla();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El campo DNI debe ser un número válido.");
         }
