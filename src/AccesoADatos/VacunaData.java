@@ -84,12 +84,12 @@ public class VacunaData {
     }
 
     // METODO BORRAR              
-    public void eliminarVacuna(int id) {
+    public void eliminarVacuna(int nroSerieDosis) {
 
         try {
-            String sql = "UPDATE vacuna SET eliminada = true WHERE idVacuna = ?";
+            String sql = "UPDATE vacuna SET eliminada = true WHERE nroSerieDosis = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, nroSerieDosis);
             int fila = ps.executeUpdate();
             if (fila == 1) {
         //  modificado 25-10        JOptionPane.showMessageDialog(null, "Se eliminó la vacuna.");
@@ -242,4 +242,20 @@ public class VacunaData {
 
     }
 
+    public void restaurarVacuna (int nroSerieDosis){
+        try {
+            String sql = "UPDATE vacuna SET eliminada = false WHERE nroSerieDosis = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, nroSerieDosis);
+            int fila = ps.executeUpdate();
+            if (fila == 1) {
+        //  modificado 25-10        JOptionPane.showMessageDialog(null, "Se eliminó la vacuna.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe ingresar una Vacuna.");
+            }
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar vacuna: " + e.getMessage());
+        }
+    }
 }

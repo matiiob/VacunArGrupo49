@@ -27,6 +27,8 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
 
     private Vacuna vacuna;
     private final VacunaData vc;
+    private Color defaultColor = new Color(142, 170, 189);
+    private Container c = getContentPane();
 
     public GestionarVacunas() {
 
@@ -34,6 +36,8 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
 
         vc = new VacunaData();
         vacuna = new Vacuna();
+         c.setBackground(defaultColor);    
+         jLTagEliminado.setVisible(false);
     }
 
     /**
@@ -61,11 +65,10 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
         btnEliminar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         jDCFechaCaduca = new com.toedter.calendar.JDateChooser();
-        jLabel16 = new javax.swing.JLabel();
         jCBMarca = new javax.swing.JComboBox<>();
         jCBColocada = new javax.swing.JComboBox<>();
-        jCBEliminada = new javax.swing.JComboBox<>();
         btnAlternancia = new javax.swing.JButton();
+        jLTagEliminado = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(142, 170, 189));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "www.argentina.gob.ar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12), new java.awt.Color(3, 67, 97))); // NOI18N
@@ -250,10 +253,6 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel16.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(245, 245, 245));
-        jLabel16.setText("Eliminada");
-
         jCBMarca.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jCBMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una Opción", "ARNm (Pfiser)", "mRNA-1273 (Moderna)", "ChAdOx1-s (AstraSeneca)", "BBIBP-Corv (Sinopharm)", "Gam-Covid-VacM (Sputnik)" }));
         jCBMarca.addActionListener(new java.awt.event.ActionListener() {
@@ -270,15 +269,15 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
             }
         });
 
-        jCBEliminada.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jCBEliminada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Si", " " }));
-
         btnAlternancia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/sol_luna.png"))); // NOI18N
         btnAlternancia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlternanciaActionPerformed(evt);
             }
         });
+
+        jLTagEliminado.setForeground(new java.awt.Color(255, 0, 0));
+        jLTagEliminado.setText("Eliminada");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -293,25 +292,24 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel13)
-                                    .addComponent(jLabel15))
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel12))
                                 .addGap(10, 10, 10)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jDCFechaCaduca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jTFNroSerieDosis, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addComponent(jCBEliminada, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel12)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                                        .addComponent(jCBColocada, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jCBMedida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jCBMarca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(jLabel16)
+                                    .addComponent(jCBMarca, 0, 392, Short.MAX_VALUE)
+                                    .addComponent(jCBColocada, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addGap(267, 267, 267)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel8)
+                                            .addGap(267, 267, 267))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLTagEliminado, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(131, 131, 131)))
                                     .addComponent(btnBuscar))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel11)
@@ -339,7 +337,9 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(32, 32, 32)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLTagEliminado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnBuscar)
                             .addComponent(jTFNroSerieDosis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -349,9 +349,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDCFechaCaduca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -359,11 +357,9 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                     .addComponent(jCBMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCBColocada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCBEliminada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                    .addComponent(jCBColocada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCargarVacuna)
                     .addComponent(btnModificar)
@@ -512,7 +508,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
             Boolean eliminada = false;
             if (nroSerieDosisText.isEmpty() || marca == "Seleccione una Opción" || medidaText == "Seleccione una Opción") {
                 JOptionPane.showMessageDialog(this, "Debe completar todos los campos.");
-            } else if (nroSerieDosisText.length() < 11 && nroSerieDosisText.length()>8 && nroSerieDosisText.matches("[0-9]+")) {
+            } else if (nroSerieDosisText.length() < 11 && nroSerieDosisText.length() > 8 && nroSerieDosisText.matches("[0-9]+")) {
                 int nroSerieDosis = Integer.parseInt(nroSerieDosisText);
                 // verifica si ya existe la vacuna en la DB
                 VacunaData vacunaData = new VacunaData();
@@ -521,7 +517,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                     Double medida = Double.parseDouble(medidaText);
                     LocalDate fechaCaduca = jDCFechaCaduca.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                     String colocadaText = (String) jCBColocada.getSelectedItem();
-                    String eliminadaText = (String) jCBEliminada.getSelectedItem();
+//                    String eliminadaText = (String) jCBEliminada.getSelectedItem();
                     switch (colocadaText) {
                         case "Si":
                             colocada = true;
@@ -529,20 +525,16 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                         case "No":
                             colocada = false;
                             break;
-                        
                     }
-
-                    switch (eliminadaText) {
-                        case "Si":
-                            eliminada = true;
-                            break;
-                        case "No":
-                            eliminada = false;
-                            break;
-                      
-                    }
+//                    switch (eliminadaText) {
+//                        case "Si":
+//                            eliminada = true;
+//                            break;
+//                        case "No":
+//                            eliminada = false;
+//                            break;
+//                    }
                     switch (marca) {
-
                         case "ARNm (Pfiser)":
                             laboratorio = 1;
                             break;
@@ -572,7 +564,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Número de serie inválido. Debe contener entre 9 y 10 caracteres.");
             }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "El campo Número de serie debe ser un número válido." );
+            JOptionPane.showMessageDialog(this, "El campo Número de serie debe ser un número válido.");
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una fecha.");
         }
@@ -613,6 +605,18 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
 
             vacuna = vc.buscarVacunaNroSerieDosis(nroSerieDosis);
             if (vacuna != null) {
+                if (vacuna.isEliminada()==true) {
+                int restaurar = JOptionPane.showConfirmDialog(this, "Esta vacuna se encuentra en estado ELIMINADA. "
+                        + "¿Desea restaurarla? Si presiona NO, no se restaurará pero podrá visualizar"
+                        + " igualmente los datos.", "Vacuna eliminada", 0, 1);
+                if (restaurar == 0) {
+                    vc.restaurarVacuna(nroSerieDosis);
+                    vacuna.setEliminada(false);
+                    jLTagEliminado.setVisible(false);
+                } else {
+                    jLTagEliminado.setVisible(true);
+                }
+            }
 //                JOptionPane.showMessageDialog(this, vacuna.toString());
 //                jCBLaboratorio.setSelectedItem(String.valueOf(vacuna.getLaboratorio()));
                 jCBMarca.setSelectedItem(vacuna.getMarca());
@@ -628,11 +632,11 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                     jCBColocada.setSelectedItem("No");
                 }
 
-                if (vacuna.isEliminada()) {
-                    jCBEliminada.setSelectedItem("Si");
-                } else {
-                    jCBEliminada.setSelectedItem("No");
-                }
+//                if (vacuna.isEliminada()) {
+//                    jCBEliminada.setSelectedItem("Si");
+//                } else {
+//                    jCBEliminada.setSelectedItem("No");
+//                }
 
 //                boolean eliminada = jRBEliminada.isSelected();
             } else {
@@ -674,8 +678,20 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
 
         try {
-            vc.eliminarVacuna(vacuna.getIdVacuna());
-            btnLimpiar.doClick();
+            int nroSerieDosis = Integer.parseInt(jTFNroSerieDosis.getText());
+            int eliminar = JOptionPane.showConfirmDialog(this, "Está por eliminar esta vacuna."
+                        + "¿Está seguro? Si presiona SI, la vacuna podrá ser restaurada",
+                        "Eliminar Vacuna", 0, 1);
+                if (eliminar == 0) {
+                    vc.eliminarVacuna(nroSerieDosis);
+//                    vacuna.setEliminada(false);
+//                    jLTagEliminado.setVisible(false);
+                     btnLimpiar.doClick();
+                } else {
+//                    jLTagEliminado.setVisible(true);
+                }
+//            vc.eliminarVacuna(vacuna.getIdVacuna());
+           
 
         } catch (NullPointerException npe) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una vacuna.");
@@ -727,17 +743,17 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
             double medidaDouble = Double.valueOf(medidaText);
             LocalDate fechaCaduca = jDCFechaCaduca.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             String colocadaText = (String) jCBColocada.getSelectedItem();
-            String eliminadaText = (String) jCBEliminada.getSelectedItem();
+//            String eliminadaText = (String) jCBEliminada.getSelectedItem();
 
-            switch (eliminadaText) {
-                case "Si":
-                    vacuna.setEliminada(true);
-                    break;
-                case "No":
-                    vacuna.setEliminada(false);
-                    break;
-                
-            }
+//            switch (eliminadaText) {
+//                case "Si":
+//                    vacuna.setEliminada(true);
+//                    break;
+//                case "No":
+//                    vacuna.setEliminada(false);
+//                    break;
+//
+//            }
 
             switch (colocadaText) {
                 case "Si":
@@ -746,27 +762,27 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                 case "No":
                     vacuna.setColocada(false);
                     break;
-                
+
             }
-            
+
             switch (marcaText) {
 
-                        case "ARNm (Pfiser)":
-                            laboratorio = 1;
-                            break;
-                        case "mRNA-1273 (Moderna)":
-                            laboratorio = 2;
-                            break;
-                        case "ChAdOx1-s (AstraSeneca)":
-                            laboratorio = 3;
-                            break;
-                        case "BBIBP-Corv (Sinopharm)":
-                            laboratorio = 4;
-                            break;
-                        case "Gam-Covid-VacM (Sputnik)":
-                            laboratorio = 5;
-                            break;
-                    }
+                case "ARNm (Pfiser)":
+                    laboratorio = 1;
+                    break;
+                case "mRNA-1273 (Moderna)":
+                    laboratorio = 2;
+                    break;
+                case "ChAdOx1-s (AstraSeneca)":
+                    laboratorio = 3;
+                    break;
+                case "BBIBP-Corv (Sinopharm)":
+                    laboratorio = 4;
+                    break;
+                case "Gam-Covid-VacM (Sputnik)":
+                    laboratorio = 5;
+                    break;
+            }
             vacuna.setLaboratorio(laboratorio);
             vacuna.setFechaCaduca(fechaCaduca);
             vacuna.setMarca(marcaText);
@@ -790,23 +806,20 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCBColocadaActionPerformed
 
-    
     // BTN ALTERNANCIA 
     private boolean isBlack = false; // inicializamos color-*-
-    private Color defaultColor = new Color(142, 170, 189); // color x default-*-
+//    private Color defaultColor = new Color(142, 170, 189); // color x default-*-
     private void btnAlternanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlternanciaActionPerformed
-       Container c = getContentPane();
-    if (isBlack) {
-        c.setBackground(defaultColor);
-        isBlack = false;
-    } else {
-        c.setBackground(Color.BLACK);
-        isBlack = true;
-      }
+        Container c = getContentPane();
+        if (isBlack) {
+            c.setBackground(defaultColor);
+            isBlack = false;
+        } else {
+            c.setBackground(Color.BLACK);
+            isBlack = true;
+        }
     }//GEN-LAST:event_btnAlternanciaActionPerformed
 
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlternancia;
@@ -817,16 +830,15 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> jCBColocada;
-    private javax.swing.JComboBox<String> jCBEliminada;
     private javax.swing.JComboBox<String> jCBMarca;
     private javax.swing.JComboBox<String> jCBMedida;
     private com.toedter.calendar.JDateChooser jDCFechaCaduca;
+    private javax.swing.JLabel jLTagEliminado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTFNroSerieDosis;
@@ -843,7 +855,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
             jCBMedida.setSelectedItem("Seleccione una Opción");
 //            jCBLaboratorio.setSelectedItem("Seleccione una Opción");
             jCBColocada.setSelectedItem("No");
-            jCBEliminada.setSelectedItem("No");
+//            jCBEliminada.setSelectedItem("No");
         }
     }
 }
