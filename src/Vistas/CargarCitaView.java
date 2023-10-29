@@ -449,7 +449,7 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         } catch (NumberFormatException nbe) {
             JOptionPane.showMessageDialog(this, "Debe ingresar números en el campo DNI.");
         } catch (NullPointerException npe) {
-            JOptionPane.showMessageDialog(this, "El ciudadano no existe.");
+            JOptionPane.showMessageDialog(this, "La cita de este ciudadano no se puede confirmar, faltan datos.");
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
@@ -459,11 +459,8 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
             int idCiudadano = Integer.parseInt(jTIdCiudadano.getText());
             int codRefuerzo = jCBCodigoRefuerzo.getSelectedIndex();
             String centroVacunacion = (String) jCBCentroDeVacunacion.getSelectedItem();
-            try {
-                Date fechaHoraCita = jDCFechaCita.getDate();
-                if (fechaHoraCita == null) {
-                    JOptionPane.showMessageDialog(this, "La fecha es invalida");
-                }
+            Date fechaHoraCita = jDCFechaCita.getDate();
+
 
                 Instant instantCita = fechaHoraCita.toInstant();
                 LocalDate fechaCit = instantCita.atZone(ZoneId.systemDefault()).toLocalDate();
@@ -481,26 +478,31 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
 
                 int dosis = jCBDosis.getSelectedIndex() + 1;
                 boolean estado = jRBColocada.isSelected();
-
+                 
+                if(idCiudadano==0&&codRefuerzo==0&&centroVacunacion.isEmpty()/*&&fechaHoraCita == null*/){
+                    JOptionPane.showMessageDialog(this,"No debe haber campo vacios o fechas invalidas");
+                    return;
+                    }
                 cita = new CitaVacunacion(idCiudadano, codRefuerzo, fechaCit, centroVacunacion, fechaProx, dosis, estado);
                 cvd.guardarCitaVacunacion(cita);
 
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 JOptionPane.showMessageDialog(this, "La proxima cita es: " + fechaProx.format(dtf));
 
-            } catch (NumberFormatException nbe) {
-                JOptionPane.showMessageDialog(this, "Debe ingresar datos validos.");
-            } catch (NullPointerException e) {
-                JOptionPane.showMessageDialog(this, "Falta ingresar la fecha de cita o la fecha de proxima cita");
-            }
+                
         } catch (NullPointerException npe) {
-            JOptionPane.showMessageDialog(this, "El ciudadano no existe.");
-
-        }
+            JOptionPane.showMessageDialog(this, "La cita del ciudadano no se puede confirmar, faltan datos.");
+        } catch (NumberFormatException nbe) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar datos validos.");
+            }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
         // LIMPIA LA PANTALLA DE EVENTOS 
+        if (jTDocumento.getText().isEmpty() && jTIdCiudadano.getText().isEmpty() && jTNombreCompleto.getText().isEmpty() && jTCelular.getText().isEmpty() &&jTPatologiaBase.getText().isEmpty() &&jTAmbitoLaboral.getText().isEmpty() &&jCBCentroDeVacunacion.getSelectedIndex()==0 && jDCFechaCita.getDate() == null && jDCProximaFecha.getDate() == null&& jCBCodigoRefuerzo.getSelectedIndex() == 0 && jCBDosis.getSelectedIndex()==0 ) {
+            JOptionPane.showMessageDialog(this, "Todos los campos están vacíos.");
+        } else {
+        
         jTDocumento.setText("");
         jTIdCiudadano.setText("");
         jTNombreCompleto.setText("");
@@ -515,7 +517,7 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         jCBCodigoRefuerzo.setSelectedIndex(0);
         jRBColocada.setSelected(false);
     }//GEN-LAST:event_jBLimpiarActionPerformed
-
+    }
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
         // TODO add your handling code here:
         try {
@@ -547,7 +549,7 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         } catch (NumberFormatException nbe) {
             JOptionPane.showMessageDialog(this, "Debe ingresar datos validos.");
         } catch (NullPointerException npe) {
-            JOptionPane.showMessageDialog(this, "El ciudadano no existe.");
+            JOptionPane.showMessageDialog(this, "Faltan datos para validar esta cita .");
 
         }
     }//GEN-LAST:event_jBModificarActionPerformed
