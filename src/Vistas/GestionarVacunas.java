@@ -164,7 +164,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
         btnCargarVacuna.setBackground(new java.awt.Color(35, 153, 67));
         btnCargarVacuna.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         btnCargarVacuna.setForeground(new java.awt.Color(0, 0, 0));
-        btnCargarVacuna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/agregar-usuario.png"))); // NOI18N
+        btnCargarVacuna.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/jeringuilla.png"))); // NOI18N
         btnCargarVacuna.setText("Cargar");
         btnCargarVacuna.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
