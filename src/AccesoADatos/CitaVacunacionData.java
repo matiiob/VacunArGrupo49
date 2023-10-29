@@ -206,7 +206,6 @@ public class CitaVacunacionData {
         String sql = "SELECT * FROM citavacunacion WHERE fechaHoraCita < CURRENT_TIMESTAMP AND fechaHoraColoca IS null AND estado = 1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 CitaVacunacion cita = new CitaVacunacion();

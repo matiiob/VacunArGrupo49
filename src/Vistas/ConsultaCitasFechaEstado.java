@@ -65,9 +65,13 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
             // Lista Citas
             citas = cvd.obtenerCitasPorFechas(desdeLocalDate, hastaLocalDate, estado);
             // Rellenar filas
-            for (CitaVacunacion cita : citas) {
-                modelo.addRow(new Object[]{cita.getIdCodCita(), cita.getIdCiudadano(), cita.getCodRefuerzo(), cita.getFechaHoraCita(),
-                    cita.getCentroVacunacion(), cita.getFechaHoraColoca(), cita.getDosis(), cita.isEstado()});
+            if (citas.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No se encontraron citas entre las fechas seleccionadas.");
+            } else {
+                for (CitaVacunacion cita : citas) {
+                    modelo.addRow(new Object[]{cita.getIdCodCita(), cita.getIdCiudadano(), cita.getCodRefuerzo(), cita.getFechaHoraCita(),
+                        cita.getCentroVacunacion(), cita.getFechaHoraColoca(), cita.getDosis(), cita.isEstado()});
+                }
             }
         } catch (NullPointerException npe) {
             JOptionPane.showMessageDialog(this, "Selecciona una Fecha Desde y Hasta.");
@@ -79,9 +83,13 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
         // Lista Citas
         citas = cvd.obtenerCitasVencidas();
         // Rellenar filas
-        for (CitaVacunacion cita : citas) {
-            modelo.addRow(new Object[]{cita.getIdCodCita(), cita.getIdCiudadano(), cita.getCodRefuerzo(), cita.getFechaHoraCita(),
-                cita.getCentroVacunacion(), cita.getFechaHoraColoca(), cita.getDosis(), cita.isEstado()});
+        if (citas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No se encontraron citas vencidas.");
+        } else {
+            for (CitaVacunacion cita : citas) {
+                modelo.addRow(new Object[]{cita.getIdCodCita(), cita.getIdCiudadano(), cita.getCodRefuerzo(), cita.getFechaHoraCita(),
+                    cita.getCentroVacunacion(), cita.getFechaHoraColoca(), cita.getDosis(), cita.isEstado()});
+            }
         }
     }
 
@@ -90,9 +98,13 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
         // Listar Citas
         citas = cvd.obtenerCitasCumplidas();
         // Rellenar filas
-        for (CitaVacunacion cita : citas) {
-            modelo.addRow(new Object[]{cita.getIdCodCita(), cita.getIdCiudadano(), cita.getCodRefuerzo(), cita.getFechaHoraCita(),
-                cita.getCentroVacunacion(), cita.getFechaHoraColoca(), cita.getDosis(), cita.isEstado()});
+        if (citas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No se encontraron citas cumplidas.");
+        } else {
+            for (CitaVacunacion cita : citas) {
+                modelo.addRow(new Object[]{cita.getIdCodCita(), cita.getIdCiudadano(), cita.getCodRefuerzo(), cita.getFechaHoraCita(),
+                    cita.getCentroVacunacion(), cita.getFechaHoraColoca(), cita.getDosis(), cita.isEstado()});
+            }
         }
     }
 
@@ -101,9 +113,13 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
         // Listar Citas
         citas = cvd.obtenerCitasCanceladas();
         // Rellenar filas
-        for (CitaVacunacion cita : citas) {
-            modelo.addRow(new Object[]{cita.getIdCodCita(), cita.getIdCiudadano(), cita.getCodRefuerzo(), cita.getFechaHoraCita(),
-                cita.getCentroVacunacion(), cita.getFechaHoraColoca(), cita.getDosis(), cita.isEstado()});
+        if (citas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No se encontraron citas canceladas.");
+        } else {
+            for (CitaVacunacion cita : citas) {
+                modelo.addRow(new Object[]{cita.getIdCodCita(), cita.getIdCiudadano(), cita.getCodRefuerzo(), cita.getFechaHoraCita(),
+                    cita.getCentroVacunacion(), cita.getFechaHoraColoca(), cita.getDosis(), cita.isEstado()});
+            }
         }
     }
 
@@ -166,7 +182,6 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "www.argentina.gob.ar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 1, 12), new java.awt.Color(3, 67, 97))); // NOI18N
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(750, 610));
 
         jPanel1.setBackground(new java.awt.Color(142, 170, 189));
         jPanel1.setOpaque(false);
@@ -290,7 +305,7 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -471,7 +486,7 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAlternancia)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -482,7 +497,7 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(btnAlternancia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
