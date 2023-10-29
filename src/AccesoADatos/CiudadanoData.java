@@ -1,4 +1,3 @@
-
 package AccesoADatos;
 
 import Entidades.Ciudadano;
@@ -23,10 +22,9 @@ public class CiudadanoData {
         String sql = "INSERT INTO ciudadano (dni, nombreCompleto, email, celular, patologia, ambitoTrabajo, eliminado)"
                 + "VALUES(?,?,?,?,?,?,?)";
 
-        
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-          
+
             ps.setInt(1, ciudadano.getDni());
             ps.setString(2, ciudadano.getNombreCompleto());
             ps.setString(3, ciudadano.getEmail());
@@ -50,9 +48,9 @@ public class CiudadanoData {
     public void modificarCiudadano(Ciudadano ciudadano) {
 
         String sql = "UPDATE ciudadano SET dni=?, nombreCompleto=?, email=?,"
-                + " celular=?, patologia=?, ambitoTrabajo=?, eliminado = ? WHERE idCiudadano="+ciudadano.getIdCiudadano();
-                                                           // agregado 19-10 
-        
+                + " celular=?, patologia=?, ambitoTrabajo=?, eliminado = ? WHERE idCiudadano=" + ciudadano.getIdCiudadano();
+        // agregado 19-10 
+
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql);
@@ -79,7 +77,7 @@ public class CiudadanoData {
 
     public Ciudadano buscarCiudadanoDni(int dni) {
         // La busqueda permite al usuario buscar un Ciudadano por su dni.
-        
+
         String sql = "SELECT idCiudadano, dni, nombreCompleto, email, celular, patologia, "
                 + "ambitoTrabajo, eliminado FROM ciudadano WHERE dni = ?";
 
@@ -106,10 +104,10 @@ public class CiudadanoData {
         }
         return ciudadano;
     }
-    
+
     public Ciudadano buscarCiudadanoId(int idCiudadano) {
         // La busqueda permite al usuario buscar un Ciudadano por su Id.
-        
+
         String sql = "SELECT dni, nombreCompleto, email, celular, patologia, "
                 + "ambitoTrabajo FROM ciudadano WHERE idCiudadano = ?";
 
@@ -134,17 +132,16 @@ public class CiudadanoData {
         }
         return ciudadano;
     }
-    
-           
-    public void eliminarCiudadano(int id) { 
-    try {
-        String sql = "UPDATE ciudadano SET eliminado = 1 WHERE idCiudadano = ?";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setInt(1, id);
-        int fila = ps.executeUpdate();
+
+    public void eliminarCiudadano(int id) {
+        try {
+            String sql = "UPDATE ciudadano SET eliminado = 1 WHERE idCiudadano = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int fila = ps.executeUpdate();
             if (fila == 1) {
 
-         //  odificado 25-10     JOptionPane.showMessageDialog(null, "Se eliminó el Ciudadano.");
+                JOptionPane.showMessageDialog(null, "Se eliminó el Ciudadano.");
             } else {
                 JOptionPane.showMessageDialog(null, "Debe ingresar el DNI del Ciudadano.");
             }
@@ -154,16 +151,16 @@ public class CiudadanoData {
             JOptionPane.showMessageDialog(null, "Error al eliminar al Ciudadano: " + e.getMessage());
         }
     }
-        
-         public void restaurarCiudadano(int id) { 
-    try {
-        String sql = "UPDATE ciudadano SET eliminado = 0 WHERE idCiudadano = ?";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ps.setInt(1, id);
-        int fila = ps.executeUpdate();
+
+    public void restaurarCiudadano(int id) {
+        try {
+            String sql = "UPDATE ciudadano SET eliminado = 0 WHERE idCiudadano = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int fila = ps.executeUpdate();
             if (fila == 1) {
 
-         //  odificado 25-10     JOptionPane.showMessageDialog(null, "Se restauró el Ciudadano.");
+                //  odificado 25-10     JOptionPane.showMessageDialog(null, "Se restauró el Ciudadano.");
             } else {
                 JOptionPane.showMessageDialog(null, "Debe ingresar el DNI del Ciudadano.");
             }
@@ -173,5 +170,5 @@ public class CiudadanoData {
             JOptionPane.showMessageDialog(null, "Error al restaurar al Ciudadano: " + e.getMessage());
         }
     }
-    
+
 }

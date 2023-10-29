@@ -810,7 +810,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
     private boolean isBlack = false; // inicializamos color-*-
 //    private Color defaultColor = new Color(142, 170, 189); // color x default-*-
     private void btnAlternanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlternanciaActionPerformed
-        Container c = getContentPane();
+//        Container c = getContentPane();
         if (isBlack) {
             c.setBackground(defaultColor);
             isBlack = false;

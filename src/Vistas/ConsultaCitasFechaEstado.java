@@ -15,13 +15,10 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Enumeration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.AbstractButton;
-import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -41,13 +38,15 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
     };
     private CitaVacunacionData cvd;
     private List<CitaVacunacion> citas;
+    private Color defaultColor = new Color(142, 170, 189); // color x default-*-
+    private Container c = getContentPane();
 
     public ConsultaCitasFechaEstado() {
         initComponents();
         modelo = new DefaultTableModel();
         armarCabeceraTabla();
         cvd = new CitaVacunacionData();
-
+        c.setBackground(defaultColor);
     }
 
     private void listarCitasPorFechas() {
@@ -494,7 +493,7 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-          JPanel panel = new JPanel();
+        JPanel panel = new JPanel();
         Font customFont = new Font("Roboto", Font.BOLD, 15);
 
         JLabel label = new JLabel("<html><p style=\" color: #eb4034; font: 13px; font-weight: bold; font-family: Roboto;\" >¿Esta seguro que deseas salir?</p></html>");
@@ -509,7 +508,7 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
 
         if (result == JOptionPane.YES_OPTION) { // si se hace clic en "Salir"
             dispose(); // cerrar la ventana
-    }
+        }
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
@@ -545,126 +544,119 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBCancelarActionPerformed
 
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
-       
-       if (jRBFechas.getText().isEmpty() && jDCFechaDesde.getDate() == null && jDCFechaHasta.getDate() == null) {
-        JOptionPane.showMessageDialog(this, "No hay datos para limpiar.");
-    } else {
-        
-        jRBFechas.setSelected(true);
-        jDCFechaDesde.setDate(null);
-        jDCFechaHasta.setDate(null);
-        borrarFilasTabla();
-        
-         }  
+
+        if (jRBFechas.getText().isEmpty() && jDCFechaDesde.getDate() == null && jDCFechaHasta.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "No hay datos para limpiar.");
+        } else {
+
+            jRBFechas.setSelected(true);
+            jDCFechaDesde.setDate(null);
+            jDCFechaHasta.setDate(null);
+            borrarFilasTabla();
+
+        }
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
     // BTN ALTERNANCIA 
     private boolean isBlack = false; // inicializamos color-*-
-    private Color defaultColor = new Color(142, 170, 189); // color x default-*-
-    
+//    private Color defaultColor = new Color(142, 170, 189); // color x default-*-
+
     private void btnAlternanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlternanciaActionPerformed
-         Container c = getContentPane();
-    if (isBlack) {
-        c.setBackground(defaultColor);
-        isBlack = false;
-    } else {
-        c.setBackground(Color.BLACK);
-        isBlack = true;
-      }
+//         Container c = getContentPane();
+        if (isBlack) {
+            c.setBackground(defaultColor);
+            isBlack = false;
+        } else {
+            c.setBackground(Color.BLACK);
+            isBlack = true;
+        }
     }//GEN-LAST:event_btnAlternanciaActionPerformed
 
-    
-                 // HOVER Buscar 
+    // HOVER Buscar 
     private void jBBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBBuscarMouseEntered
-         Color myColor = new Color(29, 34, 179); // creo mí color personalizado-*-
+        Color myColor = new Color(29, 34, 179); // creo mí color personalizado-*-
 
         jBBuscar.setBackground(myColor);
     }//GEN-LAST:event_jBBuscarMouseEntered
-                 // HOVER Buscar 
+    // HOVER Buscar 
     private void jBBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBBuscarMouseExited
-        jBBuscar.setBackground(new Color(41,84,171));     
+        jBBuscar.setBackground(new Color(41, 84, 171));
     }//GEN-LAST:event_jBBuscarMouseExited
-                 // HOVER Buscar  
+    // HOVER Buscar  
     private void jBBuscarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBBuscarMouseReleased
         try {
             TimeUnit.MILLISECONDS.sleep(300);
 
             // En caso de haber funciones van aquí dentro-*-
-
         } catch (InterruptedException ex) {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBBuscarMouseReleased
 
-    
-                 // HOVER Limpiar
+    // HOVER Limpiar
     private void jBLimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBLimpiarMouseEntered
-       Color myColor = new Color(213, 230, 224); // creo mí color personalizado-*-
+        Color myColor = new Color(213, 230, 224); // creo mí color personalizado-*-
 
-                jBLimpiar.setBackground(myColor);    
+        jBLimpiar.setBackground(myColor);
     }//GEN-LAST:event_jBLimpiarMouseEntered
-                 // HOVER Limpiar
+    // HOVER Limpiar
     private void jBLimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBLimpiarMouseExited
         jBLimpiar.setBackground(new Color(157, 161, 158));
     }//GEN-LAST:event_jBLimpiarMouseExited
-                 // HOVER Limpiar
+    // HOVER Limpiar
     private void jBLimpiarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBLimpiarMouseReleased
         try {
-                        TimeUnit.MILLISECONDS.sleep(300);
-            
-                        // En caso de haber funciones van aquí dentro-*-
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(CargarLaboratorio.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+            TimeUnit.MILLISECONDS.sleep(300);
+
+            // En caso de haber funciones van aquí dentro-*-
+        } catch (InterruptedException ex) {
+            Logger.getLogger(CargarLaboratorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBLimpiarMouseReleased
 
-                 // HOVER Cancelar 
+    // HOVER Cancelar 
     private void jBCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCancelarMouseEntered
-    Color myColor = new Color(224,9,78); // creo mí color personalizado-*-
+        Color myColor = new Color(224, 9, 78); // creo mí color personalizado-*-
 
-        jBCancelar.setBackground(myColor);    
+        jBCancelar.setBackground(myColor);
     }//GEN-LAST:event_jBCancelarMouseEntered
-                 // HOVER Cancelar 
+    // HOVER Cancelar 
     private void jBCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCancelarMouseExited
         jBCancelar.setBackground(new Color(138, 4, 17));
     }//GEN-LAST:event_jBCancelarMouseExited
-                 // HOVER Cancelar 
+    // HOVER Cancelar 
     private void jBCancelarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCancelarMouseReleased
         try {
             TimeUnit.MILLISECONDS.sleep(300);
 
             // En caso de haber funciones van aquí dentro-*-
-
         } catch (InterruptedException ex) {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBCancelarMouseReleased
 
-    
-                 // HOVER Salir
+    // HOVER Salir
     private void jBSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseEntered
-    Color myColor = new Color(88, 144, 173); // creo mí color personalizado-*-
+        Color myColor = new Color(88, 144, 173); // creo mí color personalizado-*-
 
-                jBSalir.setBackground(myColor);    
+        jBSalir.setBackground(myColor);
     }//GEN-LAST:event_jBSalirMouseEntered
-                 // HOVER Salir
+    // HOVER Salir
     private void jBSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseExited
-         jBSalir.setBackground(new Color(0,204,204));
+        jBSalir.setBackground(new Color(0, 204, 204));
     }//GEN-LAST:event_jBSalirMouseExited
-                 // HOVER Salir
+    // HOVER Salir
     private void jBSalirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseReleased
-         try {
-                        TimeUnit.MILLISECONDS.sleep(300);
-            
-                        // En caso de haber funciones van aquí dentro-*-
-            
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(CargarLaboratorio.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+        try {
+            TimeUnit.MILLISECONDS.sleep(300);
+
+            // En caso de haber funciones van aquí dentro-*-
+        } catch (InterruptedException ex) {
+            Logger.getLogger(CargarLaboratorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBSalirMouseReleased
 
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlternancia;
     private javax.swing.ButtonGroup buttonGroup1;

@@ -1,6 +1,4 @@
-
 package Vistas;
-
 
 import AccesoADatos.LaboratorioData;
 import Entidades.Laboratorio;
@@ -16,21 +14,20 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
 
-
-
-
 public class CargarLaboratorio extends javax.swing.JInternalFrame {
+
     private LaboratorioData ld;
     private Laboratorio laboratorio;
-    
-    
+    private Color defaultColor = new Color(142, 170, 189); // color x default-*-
+    private Container c = getContentPane();
+
     public CargarLaboratorio() {
         initComponents();
         ld = new LaboratorioData();
         laboratorio = new Laboratorio();
+        c.setBackground(defaultColor);
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -318,15 +315,14 @@ public class CargarLaboratorio extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     // BTN BUSCAR
     private void btnBuscarLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarLaboratorioActionPerformed
-        
-         try {
+
+        try {
 
             String cuit = jTFCuit.getText();
             long cuitLong = Long.parseLong(cuit);
-            
+
             laboratorio = ld.buscarLaboratorioCuit(cuitLong, true);
             if (laboratorio != null) {
                 jTFNombreLaboratorio.setText(laboratorio.getNomLaboratorio());
@@ -341,122 +337,118 @@ public class CargarLaboratorio extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Debe ingresar números en el Cuit.");
         }
 
-        
+
     }//GEN-LAST:event_btnBuscarLaboratorioActionPerformed
 
-            // HOVER Buscar
+    // HOVER Buscar
     private void btnBuscarLaboratorioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarLaboratorioMouseEntered
-       
-         Color myColor = new Color(29, 34, 179); // creo mí color personalizado-*-
+
+        Color myColor = new Color(29, 34, 179); // creo mí color personalizado-*-
 
         btnBuscarLaboratorio.setBackground(myColor);
     }//GEN-LAST:event_btnBuscarLaboratorioMouseEntered
-            // HOVER Buscar 
+    // HOVER Buscar 
     private void btnBuscarLaboratorioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarLaboratorioMouseExited
-        btnBuscarLaboratorio.setBackground(new Color(41,84,171));        
+        btnBuscarLaboratorio.setBackground(new Color(41, 84, 171));
     }//GEN-LAST:event_btnBuscarLaboratorioMouseExited
-            // HOVER Buscar  
+    // HOVER Buscar  
     private void btnBuscarLaboratorioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarLaboratorioMouseReleased
         try {
             TimeUnit.MILLISECONDS.sleep(300);
 
             // En caso de haber funciones van aquí dentro-*-
-
         } catch (InterruptedException ex) {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnBuscarLaboratorioMouseReleased
-            
+
     // BTN CARGAR  
     private void btnCargarLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarLaboratorioActionPerformed
-       try {
-    String cuitText = jTFCuit.getText();
-    String nombreLaboratorioText = (String) jTFNombreLaboratorio.getText();
-    String paisText = (String) jTFPais.getText();
-    String domicilioText = (String) jTFDomicilio.getText();
+        try {
+            String cuitText = jTFCuit.getText();
+            String nombreLaboratorioText = (String) jTFNombreLaboratorio.getText();
+            String paisText = (String) jTFPais.getText();
+            String domicilioText = (String) jTFDomicilio.getText();
 
-        // Cuit
-    if (!cuitText.matches("\\d{11}")) {
-        JOptionPane.showMessageDialog(this, "El campo CUIT debe tener 11 dígitos enteros.");
-    }   // Nombre  
-    else if (!nombreLaboratorioText.matches("[a-zA-Z ]{3,30}")) {
-        JOptionPane.showMessageDialog(this, "El campo Nombre debe tener entre 3 y 15 caracteres sin caracteres especiales.");
-    }   // Pais
-    else if (!paisText.matches("[a-zA-Z ]{4,15}")) {
-        JOptionPane.showMessageDialog(this, "El campo País debe tener entre 4 y 15 caracteres sin caracteres especiales.");
-    }   // Domicilio                                                                                    // espacio en blanco para numeros-*-                         
-    else if (domicilioText.length() < 6 || domicilioText.length() > 25 || !domicilioText.matches("[a-zA-Z0-9° ]{6,25}")) {
-        JOptionPane.showMessageDialog(this, "El campo Domicilio debe tener entre 6 y 25 caracteres sin caracteres especiales.");
-    }   // Laboratorio
-    else if (ld.buscarLaboratorioCuit(Long.parseLong(cuitText), true) != null) { // Se debe Parsear-*-
-        JOptionPane.showMessageDialog(this, "El laboratorio ya existe en la base de datos.");
-    }
-    else {
-        long cuit = Long.parseLong(jTFCuit.getText());
-        laboratorio.setCuit(cuit);
-        laboratorio.setNomLaboratorio(nombreLaboratorioText.toLowerCase());
-        laboratorio.setPais(paisText.toLowerCase());
-        laboratorio.setDomComercial(domicilioText.toLowerCase());
-        laboratorio.setEstado(true);
+            // Cuit
+            if (!cuitText.matches("\\d{11}")) {
+                JOptionPane.showMessageDialog(this, "El campo CUIT debe tener 11 dígitos enteros.");
+            } // Nombre  
+            else if (!nombreLaboratorioText.matches("[a-zA-Z ]{3,30}")) {
+                JOptionPane.showMessageDialog(this, "El campo Nombre debe tener entre 3 y 15 caracteres sin caracteres especiales.");
+            } // Pais
+            else if (!paisText.matches("[a-zA-Z ]{4,15}")) {
+                JOptionPane.showMessageDialog(this, "El campo País debe tener entre 4 y 15 caracteres sin caracteres especiales.");
+            } // Domicilio                                                                                    // espacio en blanco para numeros-*-                         
+            else if (domicilioText.length() < 6 || domicilioText.length() > 25 || !domicilioText.matches("[a-zA-Z0-9° ]{6,25}")) {
+                JOptionPane.showMessageDialog(this, "El campo Domicilio debe tener entre 6 y 25 caracteres sin caracteres especiales.");
+            } // Laboratorio
+            else if (ld.buscarLaboratorioCuit(Long.parseLong(cuitText), true) != null) { // Se debe Parsear-*-
+                JOptionPane.showMessageDialog(this, "El laboratorio ya existe en la base de datos.");
+            } else {
+                long cuit = Long.parseLong(jTFCuit.getText());
+                laboratorio.setCuit(cuit);
+                laboratorio.setNomLaboratorio(nombreLaboratorioText.toLowerCase());
+                laboratorio.setPais(paisText.toLowerCase());
+                laboratorio.setDomComercial(domicilioText.toLowerCase());
+                laboratorio.setEstado(true);
 
-        ld.guardarLaboratorio(laboratorio);
-        limpiarPantalla();
-    }
-} catch (NumberFormatException e) {
-    JOptionPane.showMessageDialog(this, "El campo CUIT debe ser un número válido.");
-}
+                ld.guardarLaboratorio(laboratorio);
+                limpiarPantalla();
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El campo CUIT debe ser un número válido.");
+        }
 
     }//GEN-LAST:event_btnCargarLaboratorioActionPerformed
 
-            // HOVER Cargar
+    // HOVER Cargar
     private void btnCargarLaboratorioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarLaboratorioMouseEntered
         Color myColor = new Color(12, 71, 6); // creo mí color personalizado-*-
 
-                btnCargarLaboratorio.setBackground(myColor);
+        btnCargarLaboratorio.setBackground(myColor);
     }//GEN-LAST:event_btnCargarLaboratorioMouseEntered
-            // HOVER Cargar
+    // HOVER Cargar
     private void btnCargarLaboratorioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarLaboratorioMouseExited
-         btnCargarLaboratorio.setBackground(new Color(35,153,67));
+        btnCargarLaboratorio.setBackground(new Color(35, 153, 67));
     }//GEN-LAST:event_btnCargarLaboratorioMouseExited
-            // HOVER Cargar
+    // HOVER Cargar
     private void btnCargarLaboratorioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarLaboratorioMouseReleased
-         try {
-                        TimeUnit.MILLISECONDS.sleep(300);
-            
-                        // En caso de haber funciones van aquí dentro-*-
-            
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(CargarLaboratorio.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+        try {
+            TimeUnit.MILLISECONDS.sleep(300);
+
+            // En caso de haber funciones van aquí dentro-*-
+        } catch (InterruptedException ex) {
+            Logger.getLogger(CargarLaboratorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnCargarLaboratorioMouseReleased
 
     // BTN LIMPIAR
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-         limpiarPantalla();
+        limpiarPantalla();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
-            // HOVER Limpiar
+    // HOVER Limpiar
     private void btnLimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseEntered
-         Color myColor = new Color(213, 230, 224); // creo mí color personalizado-*-
+        Color myColor = new Color(213, 230, 224); // creo mí color personalizado-*-
 
-                btnLimpiar.setBackground(myColor);
+        btnLimpiar.setBackground(myColor);
     }//GEN-LAST:event_btnLimpiarMouseEntered
-            // HOVER Limpiar
+    // HOVER Limpiar
     private void btnLimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseExited
-       btnLimpiar.setBackground(new Color(157, 161, 158));
+        btnLimpiar.setBackground(new Color(157, 161, 158));
     }//GEN-LAST:event_btnLimpiarMouseExited
-            // HOVER Limpiar
+    // HOVER Limpiar
     private void btnLimpiarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseReleased
-          try {
-                        TimeUnit.MILLISECONDS.sleep(300);
-            
-                        // En caso de haber funciones van aquí dentro-*-
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(CargarLaboratorio.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+        try {
+            TimeUnit.MILLISECONDS.sleep(300);
+
+            // En caso de haber funciones van aquí dentro-*-
+        } catch (InterruptedException ex) {
+            Logger.getLogger(CargarLaboratorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnLimpiarMouseReleased
 
-    
     // BTN MODIFICAR
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         try {
@@ -482,32 +474,30 @@ public class CargarLaboratorio extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 
-            // HOVER Modificar
+    // HOVER Modificar
     private void btnModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseEntered
         Color myColor = new Color(138, 71, 4); // creo mí color personalizado-*-
 
         btnModificar.setBackground(myColor);
     }//GEN-LAST:event_btnModificarMouseEntered
-            // HOVER Modificar
+    // HOVER Modificar
     private void btnModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseExited
-         btnModificar.setBackground(new Color(224,131,38)); 
+        btnModificar.setBackground(new Color(224, 131, 38));
     }//GEN-LAST:event_btnModificarMouseExited
-            // HOVER Modificar 
+    // HOVER Modificar 
     private void btnModificarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseReleased
         try {
             TimeUnit.MILLISECONDS.sleep(300);
 
             // En caso de haber funciones van aquí dentro-*-
-
         } catch (InterruptedException ex) {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnModificarMouseReleased
 
-    
     // BTN ELIMINAR 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        
+
         try {
             if (laboratorio != null) {
                 ld.eliminarLaboratorio(laboratorio.getIdLaboratorio());
@@ -517,38 +507,36 @@ public class CargarLaboratorio extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Debe seleccionar un Laboratorio.");
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
-            // EVENTO CLIC-> MOUSE 
+    // EVENTO CLIC-> MOUSE 
     private void jTFCuitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCuitKeyPressed
-          if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnBuscarLaboratorio.doClick();
         }
     }//GEN-LAST:event_jTFCuitKeyPressed
-            // HOVER Eliminar  
+    // HOVER Eliminar  
     private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
-         Color myColor = new Color(224,9,78); // creo mí color personalizado-*-
+        Color myColor = new Color(224, 9, 78); // creo mí color personalizado-*-
 
         btnEliminar.setBackground(myColor);
     }//GEN-LAST:event_btnEliminarMouseEntered
-            // HOVER Eliminar   
+    // HOVER Eliminar   
     private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
         btnEliminar.setBackground(new Color(138, 4, 17));
     }//GEN-LAST:event_btnEliminarMouseExited
-            // HOVER Eliminar   
+    // HOVER Eliminar   
     private void btnEliminarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseReleased
         try {
             TimeUnit.MILLISECONDS.sleep(300);
 
             // En caso de haber funciones van aquí dentro-*-
-
         } catch (InterruptedException ex) {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnEliminarMouseReleased
 
-    
     // BTN SALIR
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-         JPanel panel = new JPanel();
+        JPanel panel = new JPanel();
         Font customFont = new Font("Roboto", Font.BOLD, 15);
 
         JLabel label = new JLabel("<html><p style=\" color: #eb4034; font: 13px; font-weight: bold; font-family: Roboto;\" >¿Esta seguro que deseas salir?</p></html>");
@@ -563,45 +551,44 @@ public class CargarLaboratorio extends javax.swing.JInternalFrame {
 
         if (result == JOptionPane.YES_OPTION) { // si se hace clic en "Salir"
             dispose(); // cerrar la ventana
-    }
+        }
     }//GEN-LAST:event_btnSalirActionPerformed
 
-            // HOVER Salir
+    // HOVER Salir
     private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
         Color myColor = new Color(88, 144, 173); // creo mí color personalizado-*-
 
-                btnSalir.setBackground(myColor);
+        btnSalir.setBackground(myColor);
     }//GEN-LAST:event_btnSalirMouseEntered
-            // HOVER Salir
+    // HOVER Salir
     private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
-          btnSalir.setBackground(new Color(0,204,204));
+        btnSalir.setBackground(new Color(0, 204, 204));
     }//GEN-LAST:event_btnSalirMouseExited
-            // HOVER Salir
+    // HOVER Salir
     private void btnSalirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseReleased
-         try {
-                        TimeUnit.MILLISECONDS.sleep(300);
-            
-                        // En caso de haber funciones van aquí dentro-*-
-            
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(CargarLaboratorio.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+        try {
+            TimeUnit.MILLISECONDS.sleep(300);
+
+            // En caso de haber funciones van aquí dentro-*-
+        } catch (InterruptedException ex) {
+            Logger.getLogger(CargarLaboratorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnSalirMouseReleased
 
     // BTN ALTERNANCIA 
     private boolean isBlack = false; // inicializamos color-*-
-    private Color defaultColor = new Color(142, 170, 189); // color x default-*-
-    
+//    private Color defaultColor = new Color(142, 170, 189); // color x default-*-
+
     private void btnAlternanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlternanciaActionPerformed
-  
-    Container c = getContentPane();
-    if (isBlack) {
-        c.setBackground(defaultColor);
-        isBlack = false;
-    } else {
-        c.setBackground(Color.BLACK);
-        isBlack = true;
-      }
+
+//    Container c = getContentPane();
+        if (isBlack) {
+            c.setBackground(defaultColor);
+            isBlack = false;
+        } else {
+            c.setBackground(Color.BLACK);
+            isBlack = true;
+        }
     }//GEN-LAST:event_btnAlternanciaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -624,7 +611,8 @@ public class CargarLaboratorio extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTFPais;
     // End of variables declaration//GEN-END:variables
 // METODO LIMPIAR -*-
-public void limpiarPantalla() {
+
+    public void limpiarPantalla() {
         if (jTFCuit.getText().isEmpty() && jTFNombreLaboratorio.getText().isEmpty() && jTFPais.getText().isEmpty() && jTFDomicilio.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Todos los campos ya están vacíos.");
         } else {

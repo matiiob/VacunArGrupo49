@@ -399,7 +399,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLBotonCiudadanoMouseEntered
 
     private void jLBotonCiudadanoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonCiudadanoMouseExited
-        jPBotonCiudadano.setBackground(new Color(195,227,250));
+        jPBotonCiudadano.setBackground(new Color(195, 227, 250));
         jLBotonCiudadano.setForeground(new Color(0, 51, 53));
     }//GEN-LAST:event_jLBotonCiudadanoMouseExited
 
@@ -410,7 +410,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLBotonVacunaMouseEntered
 
     private void jLBotonVacunaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonVacunaMouseExited
-        jPBotonVacuna.setBackground(new Color(174,215,245));
+        jPBotonVacuna.setBackground(new Color(174, 215, 245));
         jLBotonVacuna.setForeground(new Color(0, 51, 53));
     }//GEN-LAST:event_jLBotonVacunaMouseExited
 
@@ -421,7 +421,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLBotonLaboratorioMouseEntered
 
     private void jLBotonLaboratorioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonLaboratorioMouseExited
-        jPBotonLaboratorio.setBackground(new Color(167,206,235));
+        jPBotonLaboratorio.setBackground(new Color(167, 206, 235));
         jLBotonLaboratorio.setForeground(new Color(0, 51, 53));
     }//GEN-LAST:event_jLBotonLaboratorioMouseExited
 
@@ -432,7 +432,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLBotonCitaMouseEntered
 
     private void jLBotonCitaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBotonCitaMouseExited
-        jPBotonCita.setBackground(new Color(122,184,225));
+        jPBotonCita.setBackground(new Color(122, 184, 225));
         jLBotonCita.setForeground(new Color(0, 51, 53));
     }//GEN-LAST:event_jLBotonCitaMouseExited
 
@@ -479,7 +479,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLCargarCitaMouseEntered
 
     private void jLCargarCitaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCargarCitaMouseExited
-        jPCargarCita.setBackground(new Color(174,215,245));
+        jPCargarCita.setBackground(new Color(174, 215, 245));
         jLCargarCita.setForeground(new Color(0, 51, 53));
     }//GEN-LAST:event_jLCargarCitaMouseExited
 
@@ -489,7 +489,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLListarCitasMouseEntered
 
     private void jLListarCitasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLListarCitasMouseExited
-        jPListarCitas.setBackground(new Color(195,227,250));
+        jPListarCitas.setBackground(new Color(195, 227, 250));
         jLListarCitas.setForeground(new Color(0, 51, 53));
     }//GEN-LAST:event_jLListarCitasMouseExited
 

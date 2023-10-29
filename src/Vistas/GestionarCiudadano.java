@@ -1,5 +1,3 @@
-
- 
 package Vistas;
 
 import AccesoADatos.CiudadanoData;
@@ -16,27 +14,21 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-
-
-
 public class GestionarCiudadano extends javax.swing.JInternalFrame {
 
     private CiudadanoData cd;
     private Ciudadano ciudadano;
     private Color defaultColor = new Color(142, 170, 189);
     private Container c = getContentPane();
-    
-    
-    
+
     public GestionarCiudadano() {
         initComponents();
         cd = new CiudadanoData();
         ciudadano = new Ciudadano();
-         c.setBackground(defaultColor);    
-         jLTagEliminado.setVisible(false);
+        c.setBackground(defaultColor);
+        jLTagEliminado.setVisible(false);
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -314,7 +306,7 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
                 .addGap(68, 68, 68))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnAlternancia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAlternancia)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -381,14 +373,14 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-      
-                  // BTN Limpiar
-    
+
+    // BTN Limpiar
+
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
 
         limpiarPantalla();
     }//GEN-LAST:event_btnLimpiarActionPerformed
-      // Hover BTN Limpiar
+    // Hover BTN Limpiar
     private void btnLimpiarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseReleased
 
         try {
@@ -399,31 +391,30 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnLimpiarMouseReleased
-      // Hover BTN Limpiar
+    // Hover BTN Limpiar
     private void btnLimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseExited
 
         btnLimpiar.setBackground(new Color(157, 161, 158));
     }//GEN-LAST:event_btnLimpiarMouseExited
-      // Hover BTN Limpiar
+    // Hover BTN Limpiar
     private void btnLimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseEntered
 
         Color myColor = new Color(213, 230, 224); // creo mí color personalizado-*-
 
         btnLimpiar.setBackground(myColor);
     }//GEN-LAST:event_btnLimpiarMouseEntered
-    
-    
-     // PARA BORRAR-----------------------
-    
+
+    // PARA BORRAR-----------------------
+
     private void jCBAmbitoTrabajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBAmbitoTrabajoActionPerformed
-        
+
     }//GEN-LAST:event_jCBAmbitoTrabajoActionPerformed
-     // PARA BORRAR-----------------------
-    
+    // PARA BORRAR-----------------------
+
     private void jTFDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFDniActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFDniActionPerformed
-      // Hover BTN Salir  
+    // Hover BTN Salir  
     private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
 
         Color myColor = new Color(41, 124, 166); // creo mí color personalizado-*-
@@ -431,31 +422,29 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         btnSalir.setBackground(myColor);
 
     }//GEN-LAST:event_btnSalirMouseEntered
-      // Hover BTN Salir
+    // Hover BTN Salir
     private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
 
-        btnSalir.setBackground(new Color(0,204,204));
+        btnSalir.setBackground(new Color(0, 204, 204));
     }//GEN-LAST:event_btnSalirMouseExited
-      // Hover BTN Salir
+    // Hover BTN Salir
     private void btnSalirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseReleased
 
         try {
             TimeUnit.MILLISECONDS.sleep(300);
 
             // En caso de haber funciones van aquí dentro-*-
-
         } catch (InterruptedException ex) {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_btnSalirMouseReleased
-                  // BTN Salir
-    
+    // BTN Salir
+
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-   
+
         JPanel panel = new JPanel();
-        Font customFont = new Font("Roboto", Font.BOLD, 15); 
-    
+        Font customFont = new Font("Roboto", Font.BOLD, 15);
 
         JLabel label = new JLabel("<html><p style=\" color: #eb4034; font: 13px; font-weight: bold; font-family: Roboto;\" >¿Esta seguro que deseas salir?</p></html>");
         label.setForeground(Color.black);
@@ -468,10 +457,10 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         int result = JOptionPane.showOptionDialog(this, panel, "Ministerio de Salud Argentina", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, icono, options, null);
 
         if (result == JOptionPane.YES_OPTION) { // si se hace clic en "Salir"
-        dispose(); // cerrar la ventana
-    }
+            dispose(); // cerrar la ventana
+        }
     }//GEN-LAST:event_btnSalirActionPerformed
-      // Hover BTN Cargar
+    // Hover BTN Cargar
     private void btnCargarCiudadanoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarCiudadanoMouseEntered
 
         Color myColor = new Color(12, 71, 6); // creo mí color personalizado-*-
@@ -479,27 +468,26 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
         btnCargarCiudadano.setBackground(myColor);
 
     }//GEN-LAST:event_btnCargarCiudadanoMouseEntered
-      // Hover BTN Cargar
+    // Hover BTN Cargar
     private void btnCargarCiudadanoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarCiudadanoMouseExited
-        btnCargarCiudadano.setBackground(new Color(35,153,67));
+        btnCargarCiudadano.setBackground(new Color(35, 153, 67));
     }//GEN-LAST:event_btnCargarCiudadanoMouseExited
-      // Hover BTN Cargar
+    // Hover BTN Cargar
     private void btnCargarCiudadanoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCargarCiudadanoMouseReleased
 
         try {
             TimeUnit.MILLISECONDS.sleep(300);
 
             // En caso de haber funciones van aquí dentro-*-
-
         } catch (InterruptedException ex) {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnCargarCiudadanoMouseReleased
 
-                  // BTN Cargar  
-    
+    // BTN Cargar  
+
     private void btnCargarCiudadanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarCiudadanoActionPerformed
-  
+
         try {
             String dniText = jTFDni.getText();
             String nombreText = (String) jTFNombre.getText();
@@ -580,197 +568,192 @@ public class GestionarCiudadano extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnCargarCiudadanoActionPerformed
 
-                  // BTN Buscar
-    
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-     try {
-        int dni = Integer.parseInt(jTFDni.getText());
-        ciudadano = cd.buscarCiudadanoDni(dni);
-        if (ciudadano != null) {
-            if (ciudadano.isEliminado()==true) {
-                int restaurar = JOptionPane.showConfirmDialog(this, "Este ciudadano se encuentra en estado ELIMINADO. "
-                        + "¿Desea restaurarlo? Si presiona NO, no se restaurará pero podrá visualizar"
-                        + " igualmente los datos.", "Ciudadano eliminado", 0, 1);
-                if (restaurar == 0) {
-                    cd.restaurarCiudadano(ciudadano.getIdCiudadano());
-                    ciudadano.setEliminado(false);
-                    jLTagEliminado.setVisible(false);
-                } else {
-                    jLTagEliminado.setVisible(true);
-                }
-            }
-            jTFNombre.setText(ciudadano.getNombreCompleto());
-            jTFEmail.setText(ciudadano.getEmail());
-            jTFCelular.setText(ciudadano.getCelular());
-            jCBPatologia.setSelectedItem(ciudadano.getPatologia());
-            jCBAmbitoTrabajo.setSelectedItem(ciudadano.getAmbitoTrabajo());
-          
+    // BTN Buscar
 
-        } else {
-            JOptionPane.showMessageDialog(this, "El dni ingresado no existe en la base de datos.");
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        try {
+            int dni = Integer.parseInt(jTFDni.getText());
+            ciudadano = cd.buscarCiudadanoDni(dni);
+            if (ciudadano != null) {
+                if (ciudadano.isEliminado() == true) {
+                    int restaurar = JOptionPane.showConfirmDialog(this, "Este ciudadano se encuentra en estado ELIMINADO. "
+                            + "¿Desea restaurarlo? Si presiona NO, no se restaurará pero podrá visualizar"
+                            + " igualmente los datos.", "Ciudadano eliminado", 0, 1);
+                    if (restaurar == 0) {
+                        cd.restaurarCiudadano(ciudadano.getIdCiudadano());
+                        ciudadano.setEliminado(false);
+                        jLTagEliminado.setVisible(false);
+                    } else {
+                        jLTagEliminado.setVisible(true);
+                    }
+                }
+                jTFNombre.setText(ciudadano.getNombreCompleto());
+                jTFEmail.setText(ciudadano.getEmail());
+                jTFCelular.setText(ciudadano.getCelular());
+                jCBPatologia.setSelectedItem(ciudadano.getPatologia());
+                jCBAmbitoTrabajo.setSelectedItem(ciudadano.getAmbitoTrabajo());
+
+            } else {
+                JOptionPane.showMessageDialog(this, "El dni ingresado no existe en la base de datos.");
+            }
+        } catch (NumberFormatException nbe) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar números en el campo DNI.");
         }
-    } catch (NumberFormatException nbe) {
-        JOptionPane.showMessageDialog(this, "Debe ingresar números en el campo DNI.");
-    }
 
     }//GEN-LAST:event_btnBuscarActionPerformed
-         
-                  // BTN Eliminar  
-     
+
+    // BTN Eliminar  
+
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-       
-     try {
-            cd.eliminarCiudadano(ciudadano.getIdCiudadano());
-            btnLimpiar.doClick();
-         
+
+        try {
+            int confirmar = JOptionPane.showConfirmDialog(this, "¿Está seguro que quiere eliminar el ciudadano "
+                    + "seleccionado?", "Eliminar", 0, 3);
+            if (confirmar == 0) {
+                cd.eliminarCiudadano(ciudadano.getIdCiudadano());
+                btnLimpiar.doClick();
+            }
+
         } catch (NullPointerException npe) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar un Ciudadano.");
-        }      
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     // Evento de teclado captura tecla en el campo DNI acciona BTN Buscar
-    
+
     private void jTFDniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFDniKeyPressed
-        
-         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnBuscar.doClick();
-        }        
+        }
     }//GEN-LAST:event_jTFDniKeyPressed
 
-    
-      // Hover BTN Buscar    
+    // Hover BTN Buscar    
     private void btnBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseEntered
-    
-         Color myColor = new Color(29, 34, 179); // creo mí color personalizado-*-
 
-        btnBuscar.setBackground(myColor);   
+        Color myColor = new Color(29, 34, 179); // creo mí color personalizado-*-
+
+        btnBuscar.setBackground(myColor);
     }//GEN-LAST:event_btnBuscarMouseEntered
-      // Hover BTN Buscar    
+    // Hover BTN Buscar    
     private void btnBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseExited
-    
-        btnBuscar.setBackground(new Color(41,84,171));        
+
+        btnBuscar.setBackground(new Color(41, 84, 171));
     }//GEN-LAST:event_btnBuscarMouseExited
-      // Hover BTN Buscar      
+    // Hover BTN Buscar      
     private void btnBuscarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseReleased
-        
+
         try {
             TimeUnit.MILLISECONDS.sleep(300);
 
             // En caso de haber funciones van aquí dentro-*-
-
         } catch (InterruptedException ex) {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        }
     }//GEN-LAST:event_btnBuscarMouseReleased
 
-      // Hover BTN Eliminar     
+    // Hover BTN Eliminar     
     private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
-       
-         Color myColor = new Color(224,9,78); // creo mí color personalizado-*-
+
+        Color myColor = new Color(224, 9, 78); // creo mí color personalizado-*-
 
         btnEliminar.setBackground(myColor);
     }//GEN-LAST:event_btnEliminarMouseEntered
-      // Hover BTN Eliminar    
+    // Hover BTN Eliminar    
     private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
-       
-         btnEliminar.setBackground(new Color(138, 4, 17));        
+
+        btnEliminar.setBackground(new Color(138, 4, 17));
     }//GEN-LAST:event_btnEliminarMouseExited
-      // Hover BTN Eliminar                     
+    // Hover BTN Eliminar                     
     private void btnEliminarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseReleased
-       
-         try {
+
+        try {
             TimeUnit.MILLISECONDS.sleep(300);
 
             // En caso de haber funciones van aquí dentro-*-
-
         } catch (InterruptedException ex) {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnEliminarMouseReleased
 
-                  // BTN Modificar
-    
+    // BTN Modificar
+
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        
+
         try {
 
-         int dni = Integer.parseInt(jTFDni.getText());
-        
-         Ciudadano ciudadano = cd.buscarCiudadanoDni(dni); // recuperar el objeto ciudadano de la DB
-        if (ciudadano == null) {
-            JOptionPane.showMessageDialog(this, "El ciudadano no existe en la base de datos.");
-            return;
+            int dni = Integer.parseInt(jTFDni.getText());
+
+            Ciudadano ciudadano = cd.buscarCiudadanoDni(dni); // recuperar el objeto ciudadano de la DB
+            if (ciudadano == null) {
+                JOptionPane.showMessageDialog(this, "El ciudadano no existe en la base de datos.");
+                return;
+            }
+
+            String nombreText = (String) jTFNombre.getText();
+            String emailText = (String) jTFEmail.getText();
+            String celularText = (String) jTFCelular.getText();
+            String patologiaText = (String) jCBPatologia.getSelectedItem();
+            String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getSelectedItem();
+            boolean eliminado = false;
+
+            ciudadano.setNombreCompleto(nombreText);
+            ciudadano.setEmail(emailText);
+            ciudadano.setCelular(celularText);
+            ciudadano.setPatologia(patologiaText);
+            ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
+            ciudadano.setEliminado(eliminado);
+
+            cd.modificarCiudadano(ciudadano);
+
+            limpiarPantalla();
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El campo DNI debe ser un número válido.");
         }
-             
-        String nombreText = (String) jTFNombre.getText();
-        String emailText = (String) jTFEmail.getText();
-        String celularText = (String) jTFCelular.getText();
-        String patologiaText = (String) jCBPatologia.getSelectedItem();
-        String ambitoTrabajoText = (String) jCBAmbitoTrabajo.getSelectedItem();
-        boolean eliminado = false;
-        
-        
-        ciudadano.setNombreCompleto(nombreText);
-        ciudadano.setEmail(emailText);
-        ciudadano.setCelular(celularText);
-        ciudadano.setPatologia(patologiaText);
-        ciudadano.setAmbitoTrabajo(ambitoTrabajoText);
-        ciudadano.setEliminado(eliminado);
-        
-        cd.modificarCiudadano(ciudadano);
-        
-     
-     limpiarPantalla();
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "El campo DNI debe ser un número válido.");
-    }
-        
-        
+
+
     }//GEN-LAST:event_btnModificarActionPerformed
 
-      // Hover BTN Modificar               
+    // Hover BTN Modificar               
     private void btnModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseEntered
-    
-         Color myColor = new Color(138, 71, 4); // creo mí color personalizado-*-
+
+        Color myColor = new Color(138, 71, 4); // creo mí color personalizado-*-
 
         btnModificar.setBackground(myColor);
     }//GEN-LAST:event_btnModificarMouseEntered
-      // Hover BTN Modificar    
+    // Hover BTN Modificar    
     private void btnModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseExited
-       
-       btnModificar.setBackground(new Color(224,131,38)); 
+
+        btnModificar.setBackground(new Color(224, 131, 38));
     }//GEN-LAST:event_btnModificarMouseExited
-      // Hover BTN Modificar    
+    // Hover BTN Modificar    
     private void btnModificarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseReleased
-        
-         try {
+
+        try {
             TimeUnit.MILLISECONDS.sleep(300);
 
             // En caso de haber funciones van aquí dentro-*-
-
         } catch (InterruptedException ex) {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_btnModificarMouseReleased
 
-                  //BTN Alternancia
+    //BTN Alternancia
     private boolean isBlack = false; // inicializamos colour-*-
 //    private Color defaultColor = new Color(142, 170, 189); // color x default-*-
     private void btnAlternanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlternanciaActionPerformed
 //         Container c = getContentPane();
-    if (isBlack) {
-        c.setBackground(defaultColor);
-        isBlack = false;
-    } else {
-        c.setBackground(Color.BLACK);
-        isBlack = true;
-      }
+        if (isBlack) {
+            c.setBackground(defaultColor);
+            isBlack = false;
+        } else {
+            c.setBackground(Color.BLACK);
+            isBlack = true;
+        }
     }//GEN-LAST:event_btnAlternanciaActionPerformed
-     
-    
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlternancia;
     private javax.swing.JButton btnBuscar;

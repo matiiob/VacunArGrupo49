@@ -36,13 +36,13 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
     private Ciudadano ciudadano = null;             // una instancia de ciudadano inicializado en null.
     private CitaVacunacionData cvd = new CitaVacunacionData();
     private CitaVacunacion cita = null;
-    
-   
-    
+    private Color defaultColor = new Color(142, 170, 189); // color x default-*-
+    private Container c = getContentPane();
+
     public CargarCitaView() {
-        
+
         initComponents();
-   
+        c.setBackground(defaultColor);
     }
 
     /**
@@ -455,67 +455,67 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         // BOTON GUARDAR CITAVACUNACION // 
-        try{
-        int idCiudadano = Integer.parseInt(jTIdCiudadano.getText());
-        int codRefuerzo = jCBCodigoRefuerzo.getSelectedIndex();
-        String centroVacunacion = (String) jCBCentroDeVacunacion.getSelectedItem();
-        try{
-        Date fechaHoraCita = jDCFechaCita.getDate();
-        if(fechaHoraCita ==null){
-        JOptionPane.showMessageDialog(this,"La fecha es invalida");
-        }
-        
-        Instant instantCita = fechaHoraCita.toInstant();
-        LocalDate fechaCit = instantCita.atZone(ZoneId.systemDefault()).toLocalDate();
-        
-        LocalDate fechaMinima = LocalDate.of(2023,10,1);
-        if(fechaCit.isBefore(fechaMinima)){
-         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");   
-        JOptionPane.showMessageDialog(this,"La fecha debe ser despúes de: "+fechaMinima.format(dtf));
-        return;
-        }
-        
-        Date fechaHoraColoca = jDCProximaFecha.getDate();
-        Instant instantColoca = fechaHoraColoca.toInstant();
-        LocalDate fechaProx = instantColoca.atZone(ZoneId.systemDefault()).toLocalDate();
+        try {
+            int idCiudadano = Integer.parseInt(jTIdCiudadano.getText());
+            int codRefuerzo = jCBCodigoRefuerzo.getSelectedIndex();
+            String centroVacunacion = (String) jCBCentroDeVacunacion.getSelectedItem();
+            try {
+                Date fechaHoraCita = jDCFechaCita.getDate();
+                if (fechaHoraCita == null) {
+                    JOptionPane.showMessageDialog(this, "La fecha es invalida");
+                }
 
-        int dosis = jCBDosis.getSelectedIndex() + 1;
-        boolean estado = jRBColocada.isSelected();
+                Instant instantCita = fechaHoraCita.toInstant();
+                LocalDate fechaCit = instantCita.atZone(ZoneId.systemDefault()).toLocalDate();
 
-        cita = new CitaVacunacion(idCiudadano, codRefuerzo, fechaCit, centroVacunacion, fechaProx, dosis, estado);
-        cvd.guardarCitaVacunacion(cita);
-        
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        JOptionPane.showMessageDialog(this,"La proxima cita es: "+fechaProx.format(dtf));
-        
-        } catch (NumberFormatException nbe) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar datos validos.");
-            }catch(NullPointerException e){
-         JOptionPane.showMessageDialog(this, "Falta ingresar la fecha de cita o la fecha de proxima cita");
-        }
+                LocalDate fechaMinima = LocalDate.of(2023, 10, 1);
+                if (fechaCit.isBefore(fechaMinima)) {
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                    JOptionPane.showMessageDialog(this, "La fecha debe ser despúes de: " + fechaMinima.format(dtf));
+                    return;
+                }
+
+                Date fechaHoraColoca = jDCProximaFecha.getDate();
+                Instant instantColoca = fechaHoraColoca.toInstant();
+                LocalDate fechaProx = instantColoca.atZone(ZoneId.systemDefault()).toLocalDate();
+
+                int dosis = jCBDosis.getSelectedIndex() + 1;
+                boolean estado = jRBColocada.isSelected();
+
+                cita = new CitaVacunacion(idCiudadano, codRefuerzo, fechaCit, centroVacunacion, fechaProx, dosis, estado);
+                cvd.guardarCitaVacunacion(cita);
+
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                JOptionPane.showMessageDialog(this, "La proxima cita es: " + fechaProx.format(dtf));
+
+            } catch (NumberFormatException nbe) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar datos validos.");
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(this, "Falta ingresar la fecha de cita o la fecha de proxima cita");
+            }
         } catch (NullPointerException npe) {
             JOptionPane.showMessageDialog(this, "El ciudadano no existe.");
-        
+
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
-    
+
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
         // LIMPIA LA PANTALLA DE EVENTOS 
-            jTDocumento.setText("");
-            jTIdCiudadano.setText("");
-            jTNombreCompleto.setText("");
-            jTEmail.setText("");
-            jTCelular.setText("");
-            jTPatologiaBase.setText("");
-            jTAmbitoLaboral.setText("");
-            jCBCentroDeVacunacion.setSelectedIndex(0);
-            jDCFechaCita.setDate(null);
-            jDCProximaFecha.setDate(null);
-            jCBDosis.setSelectedIndex(0);
-            jCBCodigoRefuerzo.setSelectedIndex(0);
-            jRBColocada.setSelected(false);
+        jTDocumento.setText("");
+        jTIdCiudadano.setText("");
+        jTNombreCompleto.setText("");
+        jTEmail.setText("");
+        jTCelular.setText("");
+        jTPatologiaBase.setText("");
+        jTAmbitoLaboral.setText("");
+        jCBCentroDeVacunacion.setSelectedIndex(0);
+        jDCFechaCita.setDate(null);
+        jDCProximaFecha.setDate(null);
+        jCBDosis.setSelectedIndex(0);
+        jCBCodigoRefuerzo.setSelectedIndex(0);
+        jRBColocada.setSelected(false);
     }//GEN-LAST:event_jBLimpiarActionPerformed
-    
+
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
         // TODO add your handling code here:
         try {
@@ -552,50 +552,48 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jBModificarActionPerformed
 
-    
     // FUNCION BTN HOVER  -------------------------------
-    
+
     private void jBBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBBuscarMouseEntered
-        
-         Color myColor = new Color(29, 34, 179); // creo mí color personalizado-*-
+
+        Color myColor = new Color(29, 34, 179); // creo mí color personalizado-*-
 
         jBBuscar.setBackground(myColor);
-           
+
     }//GEN-LAST:event_jBBuscarMouseEntered
 
     private void jBBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBBuscarMouseExited
-       
-         jBBuscar.setBackground(new Color(41,84,171));
+
+        jBBuscar.setBackground(new Color(41, 84, 171));
     }//GEN-LAST:event_jBBuscarMouseExited
 
     private void jBBuscarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBBuscarMouseReleased
-       
-         try {
+
+        try {
             TimeUnit.MILLISECONDS.sleep(300);
 
             // En caso de haber funciones van aquí dentro-*-
-
         } catch (InterruptedException ex) {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBBuscarMouseReleased
 
-    
+
     private void jBLimpiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBLimpiarMouseEntered
-    
+
         Color myColor = new Color(213, 230, 224); // creo mí color personalizado-*-
 
         jBLimpiar.setBackground(myColor);
     }//GEN-LAST:event_jBLimpiarMouseEntered
 
     private void jBLimpiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBLimpiarMouseExited
-        
-         jBLimpiar.setBackground(new Color(157, 161, 158));
+
+        jBLimpiar.setBackground(new Color(157, 161, 158));
     }//GEN-LAST:event_jBLimpiarMouseExited
 
     private void jBLimpiarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBLimpiarMouseReleased
-        
-         try {
+
+        try {
             TimeUnit.MILLISECONDS.sleep(300);
 
             // En caso de haber funciones van aquí dentro-*-
@@ -605,33 +603,32 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBLimpiarMouseReleased
 
     private void jBModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBModificarMouseEntered
-        
+
         Color myColor = new Color(138, 71, 4); // creo mí color personalizado-*-
 
         jBModificar.setBackground(myColor);
-        
+
     }//GEN-LAST:event_jBModificarMouseEntered
 
     private void jBModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBModificarMouseExited
-       
-        jBModificar.setBackground(new Color(224,131,38));
-        
+
+        jBModificar.setBackground(new Color(224, 131, 38));
+
     }//GEN-LAST:event_jBModificarMouseExited
 
     private void jBModificarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBModificarMouseReleased
-       
-         try {
+
+        try {
             TimeUnit.MILLISECONDS.sleep(300);
 
             // En caso de haber funciones van aquí dentro-*-
-
         } catch (InterruptedException ex) {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBModificarMouseReleased
 
     private void jBGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBGuardarMouseEntered
-        
+
         Color myColor = new Color(12, 71, 6); // creo mí color personalizado-*-
 
         jBGuardar.setBackground(myColor);
@@ -639,31 +636,26 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBGuardarMouseEntered
 
     private void jBGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBGuardarMouseExited
-       
-         jBGuardar.setBackground(new Color(35,153,67));
+
+        jBGuardar.setBackground(new Color(35, 153, 67));
     }//GEN-LAST:event_jBGuardarMouseExited
 
     private void jBGuardarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBGuardarMouseReleased
-        
-         try {
+
+        try {
             TimeUnit.MILLISECONDS.sleep(300);
 
             // En caso de haber funciones van aquí dentro-*-
-
         } catch (InterruptedException ex) {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBGuardarMouseReleased
 
-    
-    
-    
-    
+
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         // Boton salir:
         JPanel panel = new JPanel();
-        Font customFont = new Font("Roboto", Font.BOLD, 15); 
-    
+        Font customFont = new Font("Roboto", Font.BOLD, 15);
 
         JLabel label = new JLabel("<html><p style=\" color: #eb4034; font: 13px; font-weight: bold; font-family: Roboto;\" >¿Esta seguro que deseas salir?</p></html>");
         label.setForeground(Color.black);
@@ -676,33 +668,30 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
         int result = JOptionPane.showOptionDialog(this, panel, "Ministerio de Salud Argentina", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, icono, options, null);
 
         if (result == JOptionPane.YES_OPTION) { // si se hace clic en "Salir"
-        dispose(); // cerrar la ventana
-    }
-        
+            dispose(); // cerrar la ventana
+        }
+
     }//GEN-LAST:event_jBSalirActionPerformed
 
-    
-    
-        
+
     private void jBSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseEntered
-        
-         Color myColor = new Color(41, 124, 166); // creo mí color personalizado-*-
+
+        Color myColor = new Color(41, 124, 166); // creo mí color personalizado-*-
 
         jBSalir.setBackground(myColor);
     }//GEN-LAST:event_jBSalirMouseEntered
 
     private void jBSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseExited
-       
-         jBSalir.setBackground(new Color(0,204,204));
+
+        jBSalir.setBackground(new Color(0, 204, 204));
     }//GEN-LAST:event_jBSalirMouseExited
 
     private void jBSalirMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseReleased
-        
-         try {
+
+        try {
             TimeUnit.MILLISECONDS.sleep(300);
 
             // En caso de haber funciones van aquí dentro-*-
-
         } catch (InterruptedException ex) {
             Logger.getLogger(GestionarCiudadano.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -711,42 +700,37 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
     private void jDCFechaCitaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDCFechaCitaPropertyChange
         // TODO add your handling code here:
         // Obtiene la fecha seleccionada en el primer JDateChooser
-       try{
-        Date selectedDate = jDCFechaCita.getDate();
-        
-        // Calcula la fecha 30 días después
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(selectedDate);
-        calendar.add(Calendar.DAY_OF_MONTH, 30);
-        
-        // Establece la fecha calculada en el segundo JDateChooser
-        jDCProximaFecha.setDate(calendar.getTime());
-       }catch(NullPointerException ex){
+        try {
+            Date selectedDate = jDCFechaCita.getDate();
+
+            // Calcula la fecha 30 días después
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(selectedDate);
+            calendar.add(Calendar.DAY_OF_MONTH, 30);
+
+            // Establece la fecha calculada en el segundo JDateChooser
+            jDCProximaFecha.setDate(calendar.getTime());
+        } catch (NullPointerException ex) {
 //           JOptionPane.showMessageDialog(this,ex);
-       }
+        }
     }//GEN-LAST:event_jDCFechaCitaPropertyChange
     // BTN ALTERNANCIA 
     private boolean isBlack = false; // inicializamos color-*-
-    private Color defaultColor = new Color(142, 170, 189); // color x default-*-
+//    private Color defaultColor = new Color(142, 170, 189); // color x default-*-
     private void btnAlternanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlternanciaActionPerformed
-    
-          Container c = getContentPane();
-    if (isBlack) {
-        c.setBackground(defaultColor);
-        isBlack = false;
-    } else {
-        c.setBackground(Color.BLACK);
-        isBlack = true;
-      }
-        
+
+//          Container c = getContentPane();
+        if (isBlack) {
+            c.setBackground(defaultColor);
+            isBlack = false;
+        } else {
+            c.setBackground(Color.BLACK);
+            isBlack = true;
+        }
+
     }//GEN-LAST:event_btnAlternanciaActionPerformed
 
-    
-    
-    
-    
-           
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlternancia;
     private javax.swing.JButton jBBuscar;
@@ -784,5 +768,5 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTNombreCompleto;
     private javax.swing.JTextField jTPatologiaBase;
     // End of variables declaration//GEN-END:variables
- 
+
 }
