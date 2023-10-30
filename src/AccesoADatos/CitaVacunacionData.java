@@ -60,7 +60,8 @@ public class CitaVacunacionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla CitaVacunacion" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error. Posiblemente estes intentando ingresar un DNI que ya tiene cita"
+                    + "o hayas perdido conexion con la base de datos.");
 
         }
     }
@@ -244,7 +245,11 @@ public class CitaVacunacionData {
                 cita.setCodRefuerzo(rs.getInt("codRefuerzo"));
                 cita.setFechaHoraCita(rs.getDate("fechaHoraCita").toLocalDate());
                 cita.setCentroVacunacion(rs.getString("centroVacunacion"));
-                cita.setFechaHoraColoca(rs.getDate("fechaHoraColoca").toLocalDate());
+                try { // Se agrega este try-catch porque este campo acepta nulos.
+                    cita.setFechaHoraColoca(rs.getDate("fechaHoraColoca").toLocalDate());
+                } catch (NullPointerException npe) {
+                    cita.setFechaHoraColoca(null);
+                }
                 cita.setDosis(rs.getInt("dosis"));
                 cita.setEstado(rs.getBoolean("estado"));
                 citasCumplidas.add(cita);
@@ -273,7 +278,11 @@ public class CitaVacunacionData {
                 cit.setCodRefuerzo(rs.getInt("codRefuerzo"));
                 cit.setFechaHoraCita(rs.getDate("fechaHoraCita").toLocalDate());
                 cit.setCentroVacunacion(rs.getString("centroVacunacion"));
-                cit.setFechaHoraColoca(rs.getDate("fechaHoraColoca").toLocalDate());
+                try { // Se agrega este try-catch porque este campo acepta nulos.
+                    cit.setFechaHoraColoca(rs.getDate("fechaHoraColoca").toLocalDate());
+                } catch (NullPointerException npe) {
+                    cit.setFechaHoraColoca(null);
+                }
                 cit.setDosis(rs.getInt("dosis"));
                 cit.setEstado(rs.getBoolean("estado"));
 

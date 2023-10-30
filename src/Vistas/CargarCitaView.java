@@ -484,7 +484,7 @@ public class CargarCitaView extends javax.swing.JInternalFrame {
                 cita = new CitaVacunacion(idCiudadano, codRefuerzo, fechaCit, centroVacunacion, fechaProx, dosis, estado);
 //                if(cita.getIdCodCita())
                 cvd.guardarCitaVacunacion(cita);
-
+            
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 JOptionPane.showMessageDialog(this, "La proxima cita es: " + fechaProx.format(dtf));
 
