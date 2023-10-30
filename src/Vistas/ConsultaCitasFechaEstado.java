@@ -560,7 +560,7 @@ public class ConsultaCitasFechaEstado extends javax.swing.JInternalFrame {
 
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
 
-        if (jRBFechas.getText().isEmpty() && jDCFechaDesde.getDate() == null && jDCFechaHasta.getDate() == null) {
+        if (jDCFechaDesde.getDate() == null && jDCFechaHasta.getDate() == null) {
             JOptionPane.showMessageDialog(this, "No hay datos para limpiar.");
         } else {
 
