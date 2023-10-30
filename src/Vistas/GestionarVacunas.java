@@ -527,14 +527,6 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                             colocada = false;
                             break;
                     }
-//                    switch (eliminadaText) {
-//                        case "Si":
-//                            eliminada = true;
-//                            break;
-//                        case "No":
-//                            eliminada = false;
-//                            break;
-//                    }
                     switch (marca) {
                         case "ARNm (Pfiser)":
                             laboratorio = 1;
@@ -552,9 +544,6 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                             laboratorio = 5;
                             break;
                     }
-//                    Boolean colocada = jRBColocada.isSelected();
-//                    Integer laboratorio = Integer.parseInt(laboratorioText);
-//                    Boolean eliminada = jRBEliminada.isSelected();
                     Vacuna vacuna = new Vacuna(nroSerieDosis, marca, medida, fechaCaduca, colocada, laboratorio, eliminada);
                     vacunaData.GuardarVacuna(vacuna);
                     limpiarPantalla();
@@ -842,7 +831,7 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
 
     public void limpiarPantalla() {
 
-        if (jTFNroSerieDosis.getText().isEmpty() && jCBMarca.getSelectedItem().equals("Seleccione una Opción") && jDCFechaCaduca.getDate() == null && jCBColocada.getSelectedItem().equals("Seleccione una Opción") && jCBMedida.getSelectedItem().equals("Seleccione una Opción") && jCBMedida.getSelectedItem().equals("Seleccione una Opción")) {
+        if (jTFNroSerieDosis.getText().isEmpty() && jCBMarca.getSelectedItem().equals("Seleccione una Opción") && jDCFechaCaduca.getDate() == null &&  jCBMedida.getSelectedItem().equals("Seleccione una Opción")) {
             JOptionPane.showMessageDialog(null, "Campos vacíos");
         } else {
             jTFNroSerieDosis.setText("");
