@@ -36,8 +36,8 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
 
         vc = new VacunaData();
         vacuna = new Vacuna();
-         c.setBackground(defaultColor);    
-         jLTagEliminado.setVisible(false);
+        c.setBackground(defaultColor);
+        jLTagEliminado.setVisible(false);
     }
 
     /**
@@ -297,20 +297,21 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
                                 .addGap(10, 10, 10)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jDCFechaCaduca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTFNroSerieDosis, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jTFNroSerieDosis, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(98, 98, 98))
                                     .addComponent(jCBMedida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jCBMarca, 0, 392, Short.MAX_VALUE)
                                     .addComponent(jCBColocada, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel8)
-                                            .addGap(267, 267, 267))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLTagEliminado, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(131, 131, 131)))
-                                    .addComponent(btnBuscar))
+                                    .addComponent(jLabel8)
+                                    .addGap(366, 366, 366))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLTagEliminado, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(230, 230, 230))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel11)
                                     .addGap(98, 98, 98)
@@ -605,18 +606,18 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
 
             vacuna = vc.buscarVacunaNroSerieDosis(nroSerieDosis);
             if (vacuna != null) {
-                if (vacuna.isEliminada()==true) {
-                int restaurar = JOptionPane.showConfirmDialog(this, "Esta vacuna se encuentra en estado ELIMINADA. "
-                        + "¿Desea restaurarla? Si presiona NO, no se restaurará pero podrá visualizar"
-                        + " igualmente los datos.", "Vacuna eliminada", 0, 1);
-                if (restaurar == 0) {
-                    vc.restaurarVacuna(nroSerieDosis);
-                    vacuna.setEliminada(false);
-                    jLTagEliminado.setVisible(false);
-                } else {
-                    jLTagEliminado.setVisible(true);
+                if (vacuna.isEliminada() == true) {
+                    int restaurar = JOptionPane.showConfirmDialog(this, "Esta vacuna se encuentra en estado ELIMINADA. "
+                            + "¿Desea restaurarla? Si presiona NO, no se restaurará pero podrá visualizar"
+                            + " igualmente los datos.", "Vacuna eliminada", 0, 1);
+                    if (restaurar == 0) {
+                        vc.restaurarVacuna(nroSerieDosis);
+                        vacuna.setEliminada(false);
+                        jLTagEliminado.setVisible(false);
+                    } else {
+                        jLTagEliminado.setVisible(true);
+                    }
                 }
-            }
 //                JOptionPane.showMessageDialog(this, vacuna.toString());
 //                jCBLaboratorio.setSelectedItem(String.valueOf(vacuna.getLaboratorio()));
                 jCBMarca.setSelectedItem(vacuna.getMarca());
@@ -637,7 +638,6 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
 //                } else {
 //                    jCBEliminada.setSelectedItem("No");
 //                }
-
 //                boolean eliminada = jRBEliminada.isSelected();
             } else {
                 JOptionPane.showMessageDialog(this, "El número de serie no está registrado.");
@@ -678,23 +678,29 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
 
         try {
+            
             int nroSerieDosis = Integer.parseInt(jTFNroSerieDosis.getText());
-            int eliminar = JOptionPane.showConfirmDialog(this, "Está por eliminar esta vacuna."
+            vacuna = vc.buscarVacunaNroSerieDosis(nroSerieDosis);
+            if (vacuna != null) {
+            if (vacuna.isEliminada() == true) {
+                JOptionPane.showMessageDialog(this, "La vacuna ya se encuentra eliminada.");
+            } else {
+                int eliminar = JOptionPane.showConfirmDialog(this, "Está por eliminar esta vacuna."
                         + "¿Está seguro? Si presiona SI, la vacuna podrá ser restaurada",
                         "Eliminar Vacuna", 0, 1);
                 if (eliminar == 0) {
                     vc.eliminarVacuna(nroSerieDosis);
-//                    vacuna.setEliminada(false);
-//                    jLTagEliminado.setVisible(false);
-                     btnLimpiar.doClick();
-                } else {
-//                    jLTagEliminado.setVisible(true);
+                    btnLimpiar.doClick();
                 }
-//            vc.eliminarVacuna(vacuna.getIdVacuna());
-           
-
+            }
+            } else {
+                JOptionPane.showMessageDialog(c, "Debe ingresear un número de serie válido.");
+            }
+            
         } catch (NullPointerException npe) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una vacuna.");
+        } catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(c, "Debe ingresear un número de serie válido.");
         }
 
     }//GEN-LAST:event_btnEliminarActionPerformed
@@ -732,65 +738,55 @@ public class GestionarVacunas extends javax.swing.JInternalFrame {
             long nroSerieDosis = Long.parseLong(jTFNroSerieDosis.getText());
 
             vacuna = vc.buscarVacunaNroSerieDosis(nroSerieDosis);
+
             if (vacuna == null) {
                 JOptionPane.showMessageDialog(this, "La vacuna no existe en la base de datos.");
                 return;
             }
-            String marcaText = (String) jCBMarca.getSelectedItem();
-            int laboratorio = 1;
+            if (vacuna.isEliminada() == true) {
+                JOptionPane.showMessageDialog(this, "La vacuna se encuentra eliminada. No se puede modificar.");
+            } else {
+                String marcaText = (String) jCBMarca.getSelectedItem();
+                int laboratorio = 1;
 //            int laboratorioInt = Integer.valueOf(laboratoriotex);
-            String medidaText = (String) jCBMedida.getSelectedItem();
-            double medidaDouble = Double.valueOf(medidaText);
-            LocalDate fechaCaduca = jDCFechaCaduca.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            String colocadaText = (String) jCBColocada.getSelectedItem();
-//            String eliminadaText = (String) jCBEliminada.getSelectedItem();
+                String medidaText = (String) jCBMedida.getSelectedItem();
+                double medidaDouble = Double.valueOf(medidaText);
+                LocalDate fechaCaduca = jDCFechaCaduca.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                String colocadaText = (String) jCBColocada.getSelectedItem();
+                switch (colocadaText) {
+                    case "Si":
+                        vacuna.setColocada(true);
+                        break;
+                    case "No":
+                        vacuna.setColocada(false);
+                        break;
+                }
+                switch (marcaText) {
+                    case "ARNm (Pfiser)":
+                        laboratorio = 1;
+                        break;
+                    case "mRNA-1273 (Moderna)":
+                        laboratorio = 2;
+                        break;
+                    case "ChAdOx1-s (AstraSeneca)":
+                        laboratorio = 3;
+                        break;
+                    case "BBIBP-Corv (Sinopharm)":
+                        laboratorio = 4;
+                        break;
+                    case "Gam-Covid-VacM (Sputnik)":
+                        laboratorio = 5;
+                        break;
+                }
+                vacuna.setLaboratorio(laboratorio);
+                vacuna.setFechaCaduca(fechaCaduca);
+                vacuna.setMarca(marcaText);
+                vacuna.setMedida(medidaDouble);
 
-//            switch (eliminadaText) {
-//                case "Si":
-//                    vacuna.setEliminada(true);
-//                    break;
-//                case "No":
-//                    vacuna.setEliminada(false);
-//                    break;
-//
-//            }
+                vc.modificarVacuna(vacuna);
 
-            switch (colocadaText) {
-                case "Si":
-                    vacuna.setColocada(true);
-                    break;
-                case "No":
-                    vacuna.setColocada(false);
-                    break;
-
+                limpiarPantalla();
             }
-
-            switch (marcaText) {
-
-                case "ARNm (Pfiser)":
-                    laboratorio = 1;
-                    break;
-                case "mRNA-1273 (Moderna)":
-                    laboratorio = 2;
-                    break;
-                case "ChAdOx1-s (AstraSeneca)":
-                    laboratorio = 3;
-                    break;
-                case "BBIBP-Corv (Sinopharm)":
-                    laboratorio = 4;
-                    break;
-                case "Gam-Covid-VacM (Sputnik)":
-                    laboratorio = 5;
-                    break;
-            }
-            vacuna.setLaboratorio(laboratorio);
-            vacuna.setFechaCaduca(fechaCaduca);
-            vacuna.setMarca(marcaText);
-            vacuna.setMedida(medidaDouble);
-
-            vc.modificarVacuna(vacuna);
-
-            limpiarPantalla();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El campo número de serie, debe ser un número válido.");
         }
