@@ -8,10 +8,10 @@
 <a aling="center" href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=F7631C&background=148AA600&width=435&lines=Powered+by+Grupo+49+ULP+San+Luis+Argentina" alt="Typing SVG" /></a>
 
 <h3 align="center">Apasionados desarrolladores Java FullStack</h3>
-<p>* I -[Del Castello, Gonzalo] <img aling="center" src="gmail (1).png" whidt="25" style="max-width: 50%;"/> <a href="mailto:delcastello.gonzalo@sanluis.edu.ar">Enviar correo</a> </p>
-<p>* II - [Garay, Christian]  <img aling="center" src="gmail (1).png" whidt="25" style="max-width: 50%;"/> <a href="mailto:christiangaray959@gmail.com">Enviar correo</a> </p>
-<p>* III -[Obregón, Matías]  <img aling="center" src="gmail (1).png" whidt="25" style="max-width: 50%;"/> <a href="mailto:obregonmati@gmail.com">Enviar correo</a> </p>
-<p>* IV -[Quiñonez, Alejandro] <img aling="center" src="gmail (1).png" whidt="25" style="max-width: 50%;"/> <a href="mailto:m.alejandro.q@gmail.com">Enviar correo</a> </p>
+<p>* 1 -[Del Castello, Gonzalo] <img aling="center" src="gmail (1).png" whidt="25" style="max-width: 50%;"/> <a href="mailto:delcastello.gonzalo@sanluis.edu.ar">Enviar correo</a> </p>
+<p>* 2 - [Garay, Christian]  <img aling="center" src="gmail (1).png" whidt="25" style="max-width: 50%;"/> <a href="mailto:christiangaray959@gmail.com">Enviar correo</a> </p>
+<p>* 3 -[Obregón, Matías]  <img aling="center" src="gmail (1).png" whidt="25" style="max-width: 50%;"/> <a href="mailto:obregonmati@gmail.com">Enviar correo</a> </p>
+<p>* 4 -[Quiñonez, Alejandro] <img aling="center" src="gmail (1).png" whidt="25" style="max-width: 50%;"/> <a href="mailto:m.alejandro.q@gmail.com">Enviar correo</a> </p>
 <h3 align="left">Herramientas utilizadas:</h3>
 
 <p align="left"> 
